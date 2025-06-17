@@ -1,0 +1,238 @@
+# {{ system_info.name }} - Design Discussion
+
+> **What we're building**: {{ system_info.description }}  
+> **Core philosophy**: {{ system_info.user_experience_philosophy }}  
+> **Why it matters**: {{ development_context.inspiration }}
+
+{% if repository_info %}
+---
+
+## 📍 SOURCE CONTEXT
+
+**Source Repository**: {{ repository_info.source_repository }}  
+**Generated At**: {{ repository_info.generated_at }}  
+**Self-Contained**: Yes - all referenced content embedded below
+
+{% endif %}
+---
+
+## 🎮 The Player Experience
+
+### What Players Will Do
+
+{% for step_name, step in user_experience_flow.items() %}
+**{{ step.name }}**  
+{{ step.description }}
+- Player actions: {% for action in step.user_actions %}{{ action }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+{% endfor %}
+
+### Why This Flow Matters
+The **{{ system_info.user_experience_philosophy }}** ensures players always understand what mode they're in - whether they're exploring, learning story context, or being challenged academically.
+
+---
+
+## 🎯 Design Goals & Current Status
+
+**Where we are**: {{ development_context.current_status }}  
+**What we're deciding**: {{ development_context.decision_points }}  
+**Success looks like**: {{ development_context.success_metrics }}
+
+**Our constraint**: {{ development_context.constraints }} - and that's exactly why this modular approach works!
+
+---
+
+## 🏗️ The Four Key Components
+
+{% for component_name, component in components.items() %}
+### {{ component.name }}
+*{{ component.user_experience_role }}*
+
+**The experience**: {{ component.user_experience_role }}  
+**Development status**: {{ component.implementation_status }}
+
+{% if component.special_features %}
+**What makes it special**:
+{% for feature, description in component.special_features.items() %}
+- **{{ feature | title }}**: {{ description }}
+{% endfor %}
+{% endif %}
+
+{% if component.technical_unknowns %}
+**⚠️ Open questions we need to resolve**:
+{% for unknown in component.technical_unknowns %}
+- {{ unknown }}
+{% endfor %}
+{% endif %}
+
+---
+{% endfor %}
+
+## 🎨 The Asset Vision
+
+**Week 1 Focus**: {{ asset_pipeline.asset_creation_order.week_1 }}
+
+**Key visuals we need**:
+{% for category, assets in asset_pipeline.immediate_needs.items() %}
+**{{ category | title }}**:
+{% for asset in assets %}
+- {{ asset }}
+{% endfor %}
+{% endfor %}
+
+**The progression**: Each week builds on the last, so by week 4 we have "{{ asset_pipeline.asset_creation_order.week_4 }}"
+
+---
+
+## 🔗 How It Connects to Everything Else
+
+{% if repository_info.references_exported %}
+**This system works with** (see references/ folder for full details):
+{% else %}
+{% if embedded_related_systems or embedded_content_files %}
+**This system works with** (full content embedded below):
+{% else %}
+**This system works with**:
+{% endif %}
+{% endif %}
+{% for system_name in cross_references.related_systems %}
+- **{{ system_name }}** - {% if system_name == "activity-framework" %}provides the actual activities and rewards{% elif system_name == "visual-design" %}defines the art style and feel{% elif system_name == "mentors" %}gives us character personalities and dialogue{% else %}connects to overall game mechanics{% endif %}
+{% endfor %}
+
+**Integration philosophy**: Each component passes exactly what the next one needs, no more, no less. Clean handoffs = no confusion later.
+
+---
+
+## 💡 Key Design Decisions to Discuss
+
+{% if development_priorities.blocking_items %}
+**Questions that need team input**:
+{% for item in development_priorities.blocking_items %}
+- **{{ item.component | title }}**: {{ item.reason }}
+{% endfor %}
+{% endif %}
+
+**Ready to move forward on**:
+{% for item in development_priorities.ready_to_implement %}
+- **{{ item.component | title }}**: {{ item.reason }}
+{% endfor %}
+
+---
+
+{% if first_day_tutorial or night_phase_tutorial %}
+## 🎓 Tutorial Narrative Flow
+
+{% if first_day_tutorial %}
+**First Day Journey** - The complete onboarding experience:
+
+{% for section_name, section in first_day_tutorial.items() %}
+**{{ section.time if section.time else '' }} - {{ section_name | title | replace("_", " ") }}**
+{% if section.location and section.primary_mentor %}
+- Location: {{ section.location }} with {{ section.primary_mentor }}
+{% endif %}
+{% if section.objectives %}
+- Goals: {% for objective in section.objectives %}{{ objective | replace("_", " ") | title }}{% if not loop.last %}, {% endif %}{% endfor %}
+{% endif %}
+{% if section.dialogue_flow %}
+- Sample Dialogue: "{{ section.dialogue_flow[section.dialogue_flow.keys() | list | first].text[:100] }}..."
+{% endif %}
+
+{% endfor %}
+{% endif %}
+
+{% if night_phase_tutorial %}
+**Night Phase Introduction** - Transitioning to reflection:
+
+{% for section_name, section in night_phase_tutorial.items() %}
+**{{ section.time if section.time else '' }} - {{ section_name | title | replace("_", " ") }}**
+{% if section.location and section.guide %}
+- Setting: {{ section.location }} guided by {{ section.guide }}
+{% endif %}
+{% if section.delivery_method %}
+- Method: {{ section.delivery_method | title | replace("_", " ") }}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+
+**Design Philosophy**: The tutorial isn't a separate experience - it's your first day at the hospital with mentors who care about your learning.
+
+{% endif %}
+
+## 🎭 Character Integration
+
+**The mentors in this system**:
+- **Dr. Garcia** - Warm, patient-focused dialogue 
+- **Dr. Quinn** - Analytical, inspiring conversations
+- **Jesse Martinez** - Direct, practical discussions
+- **Dr. Kapoor** - Precise, methodical interactions
+
+Each mentor's personality shines through both the narrative dialogue (story conversations) and challenge dialogue (learning reactions).
+
+---
+
+## 🌟 What Makes This Exciting
+
+**The layered dialogue concept** - text boxes that fade and layer back, letting players review conversation history by clicking back
+
+**Clear mode distinction** - players never wonder "am I in story mode or challenge mode?" 
+
+**Asset-driven development** - we create the visual feel first, then build the tech to support it
+
+**Integration without patchwork** - each component has clear inputs/outputs, preventing future headaches
+
+---
+
+## 🎯 Next Steps for Team Discussion
+
+1. **Review the blocking items above** - what's our approach?
+2. **Asset prioritization** - does the week-by-week plan feel right?
+3. **Technical unknown resolution** - schedule collaborative sessions for complex decisions
+4. **Character voice consistency** - how do mentors feel different in narrative vs challenge modes?
+
+---
+
+{% if repository_info.references_exported %}
+## 📚 REFERENCE FILES
+
+**All referenced content available in local files:**
+{% for ref_file in exported_reference_files %}
+- [`{{ ref_file }}`]({{ ref_file }})
+{% endfor %}
+
+*Check the references/ folder for complete system details and supporting documentation.*
+
+{% elif embedded_related_systems or embedded_content_files %}
+## 📚 EMBEDDED REFERENCE CONTENT
+
+{% if embedded_related_systems %}
+### Related System Data
+{% for system_name, system_info in embedded_related_systems.items() %}
+#### {{ system_name | title | replace("-", " ") }}
+**Source**: `{{ system_info.file_path }}`
+
+```
+{{ system_info.content }}
+```
+
+---
+{% endfor %}
+{% endif %}
+
+{% if embedded_content_files %}
+### Supporting Documentation
+{% for content_file, content in embedded_content_files.items() %}
+#### {{ content_file }}
+
+```markdown
+{{ content }}
+```
+
+---
+{% endfor %}
+{% endif %}
+
+{% endif %}
+
+*This overview focuses on design and player experience with all referenced content embedded inline*  
+*Self-contained - no external dependencies required* 

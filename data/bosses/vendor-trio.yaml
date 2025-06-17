@@ -1,0 +1,168 @@
+system_info:
+  name: "The Vendor Trio"
+  type: "boss_encounter"
+  subtitle: "Triskelion Solutions"
+  mastery_threshold: 50  # 50% mastery required to unlock
+  primary_domain: "LA"
+  secondary_domain: "DOS"
+  season_availability: "End of Summer"
+  difficulty: "intermediate_advanced"
+  estimated_duration: "25-30_minutes"
+  content_reference: "content/boss-encounters/vendor-trio.md"
+
+character_data:
+  name: "Triskelion Solutions Sales Team"
+  composition: "Three synchronized sales representatives"
+  special_traits: ["uncanny_coordination", "polished_presentations", "technical_claims"]
+  challenge_type: "technology_evaluation"
+
+encounter_concept:
+  metaphorical_role: "Critical evaluation of technology claims"
+  educational_purpose: "Tests ability to evaluate technology claims and specifications"
+  narrative_placement: "End of Summer (available at 50% mastery)"
+
+boss_encounter:
+  name: "Technology Acquisition Evaluation"
+  setting: "conference_room_presentation"
+  special_mechanic: "critical_assessment_system"
+  
+  phases:
+    phase_1:
+      name: "Presentation Analysis"
+      duration: "5_minutes"
+      format: "Technical specification review"
+      primary_challenge: "Identify key technical specifications and their implications"
+      special_mechanic: "Critical Assessment - Evaluate claims against technical knowledge"
+      secondary_challenge: "Formulate technically precise questions"
+      difficulty_modifier: 1.0
+      
+    phase_2:
+      name: "Equipment Evaluation"
+      duration: "6_minutes"
+      format: "Performance verification testing"
+      primary_challenge: "Design tests to verify vendor performance claims"
+      special_mechanic: "Test Design - Create technically sound verification protocols"
+      secondary_challenge: "Interpret measurement results accurately"
+      difficulty_modifier: 1.2
+      
+    phase_3:
+      name: "Specification Comparison"
+      duration: "7_minutes"
+      format: "Technical document analysis"
+      primary_challenge: "Compare competing technical specifications quantitatively"
+      special_mechanic: "Technical Discrepancy - Identify contradictions in specifications"
+      secondary_challenge: "Assess real-world implications of technical differences"
+      difficulty_modifier: 1.4
+      
+    phase_4:
+      name: "Technical Interrogation"
+      duration: "5_minutes"
+      format: "In-depth technical questioning"
+      primary_challenge: "Probe technical limitations using domain knowledge"
+      special_mechanic: "Knowledge Application - Apply specific technical concepts to reveal issues"
+      secondary_challenge: "Identify optimal configuration based on physics principles"
+      difficulty_modifier: 1.6
+      
+    phase_5:
+      name: "Final Recommendation"
+      duration: "2_minutes"
+      format: "Technical evaluation synthesis"
+      primary_challenge: "Produce evidence-based technical assessment"
+      special_mechanic: "Physics-Based Evaluation - Apply fundamental physics to evaluation"
+      resolution_condition: "Recommendation based on sound technical principles"
+      difficulty_modifier: 1.0
+
+strategic_counter_knowledge:
+  effective_stars:
+    - id: "la-components"
+      importance: "Critical for understanding equipment fundamentals"
+    - id: "la-beam-generation"
+      importance: "Understanding core technology principles"
+    - id: "dos-qa"
+      importance: "Testing methodologies for verification"
+    - id: "la-beam-modification"
+      importance: "Knowledge of beam-shaping technologies"
+      
+  effective_patterns:
+    - name: "Technical Assessment Triangle"
+      description: "Connection between evaluation stars"
+    - name: "Machine Mastery Path"
+      description: "Linear connection of equipment-related stars"
+    - name: "Verification Cluster"
+      description: "QA and testing-related stars"
+
+preparation_activities:
+  - name: "Technology Evaluation Seminar with Technician Jesse"
+    effect: "+20% effectiveness in specification analysis"
+  - name: "Measurement Protocol Review"
+    effect: "Improves ability to design verification tests"
+  - name: "Technical Specification Workshop"
+    effect: "Better understanding of technical documentation"
+  - name: "Component Analysis Training"
+    effect: "Enhanced ability to evaluate technical claims"
+
+recommended_configuration:
+  active_stars: "Linac anatomy and equipment-related stars"
+  application_cards: ["Fast Learner", "Second Chance", "Emergency Protocol"]
+  mentor_boon: "Technician Jesse's Technical Insight (reveals hidden specifications)"
+
+rewards:
+  sp_reward: 26  # BOSS_2_SP_REWARD
+  insight_reward: "75-100 based on performance"
+  mastery_boost: "BOSS_MASTERY_BOOST (+15% to stars used during encounter)"
+  relationship_reward: "+5 relationship points with Technician Jesse"
+  special_rewards:
+    - "Advanced equipment access"
+    - "Technical evaluation expertise"
+    - "Vendor relationship insights"
+
+resolution_paths:
+  victory_high_performance:
+    condition: "90%+ technical accuracy"
+    outcome: "Comprehensive vendor understanding"
+    rewards: ["full_sp_reward", "bonus_insight", "equipment_mastery"]
+    
+  victory_standard:
+    condition: "70-89% technical accuracy"
+    outcome: "Solid technical evaluation"
+    rewards: ["standard_sp_reward", "equipment_knowledge"]
+    
+  victory_minimal:
+    condition: "50-69% technical accuracy"
+    outcome: "Basic evaluation competence"
+    rewards: ["reduced_sp_reward", "retry_opportunity"]
+    
+  defeat:
+    condition: "<50% technical accuracy"
+    outcome: "Overwhelmed by technical claims"
+    consequences: ["retry_required", "additional_preparation_needed"]
+
+cross_references:
+  unlocks:
+    - "advanced_equipment_access"
+    - "fall_specialization_options"
+    - "technical_mentor_relationships"
+    
+  related_systems:
+    - "equipment_systems"
+    - "qa_procedures"
+    - "technical_specifications"
+    
+  related_characters:
+    - "technician_jesse"
+    - "vendor_representatives"
+    - "department_technical_staff"
+
+implementation_notes:
+  priority: "high"
+  dependencies:
+    - "technical_specification_system"
+    - "equipment_evaluation_interface"
+    - "performance_testing_mechanics"
+    - "vendor_ai_behavior"
+    
+  technical_requirements:
+    - "multi_vendor_presentation_system"
+    - "specification_comparison_tools"
+    - "testing_protocol_designer"
+    - "technical_accuracy_tracker" 

@@ -1,0 +1,473 @@
+# {{ system_info.name }} - Development Plan
+
+> **Focus**: {{ system_info.development_focus }}  
+> **Philosophy**: {{ system_info.user_experience_philosophy }}  
+> **Status**: {{ development_context.current_status }}
+
+{% if repository_info %}
+---
+
+## 📍 SOURCE CONTEXT
+
+**Source Repository**: {{ repository_info.source_repository }}  
+**Generated At**: {{ repository_info.generated_at }}  
+**Self-Contained**: Yes - all referenced files embedded below
+
+{% endif %}
+---
+
+## 🔥 IMMEDIATE ACTIONS (Triage-Style)
+
+{% if development_priorities.completed_implementations %}
+### ✅ **COMPLETED IMPLEMENTATIONS** (Foundation Complete)
+{% for item in development_priorities.completed_implementations %}
+**{{ item.component | title | replace("_", " ") }}**
+- **STATUS**: {{ item.status }}
+- **ACHIEVEMENT**: {{ item.achievement }}
+{% if item.technical_files %}
+- **KEY FILES**: {% for file in item.technical_files %}{{ file }}{% if not loop.last %}, {% endif %}{% endfor %}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+
+### 🚨 **BLOCKING ITEMS** (Resolve First)
+{% if development_priorities.blocking_items %}
+{% for item in development_priorities.blocking_items %}
+**{{ item.component | title }}**
+- **WHY BLOCKING**: {{ item.reason }}
+- **COLLABORATION NEEDED**: {% if item.collaborative_exploration_needed %}YES - Schedule brainstorming session{% else %}NO - Clear solo work{% endif %}
+- **NEXT STEP**: Research and discussion to resolve technical unknowns
+
+{% endfor %}
+{% else %}
+🎉 **No blocking items!** All critical technical unknowns have been resolved.
+
+{% endif %}
+
+### ⚡ **READY TO IMPLEMENT** (High Impact)
+{% for item in development_priorities.ready_to_implement %}
+**{{ item.component | title | replace("_", " ") }}**
+- **WHY NOW**: {{ item.reason }}
+{% if item.priority %}
+- **PRIORITY**: {{ item.priority | upper }}
+{% endif %}
+{% if item.specific_needs %}
+- **SPECIFIC NEEDS**:
+{% for need in item.specific_needs %}
+  - {{ need }}
+{% endfor %}
+{% endif %}
+{% if item.technical_context %}
+- **TECHNICAL CONTEXT**: {{ item.technical_context }}
+{% endif %}
+{% if item.asset_dependencies %}
+- **ASSETS NEEDED**: {{ item.asset_dependencies }}
+{% endif %}
+- **GO/NO-GO**: {% if item.priority == "high" %}🔥 HIGH PRIORITY - Ready to start{% else %}Ready when capacity available{% endif %}
+
+{% endfor %}
+
+---
+
+## 🎨 ASSET PIPELINE (Asset-First Workflow)
+
+{% if asset_pipeline.technical_readiness %}
+### **🔧 Technical Readiness Status**
+{% for system, status in asset_pipeline.technical_readiness.items() %}
+- **{{ system | title }}**: {{ status }}
+{% endfor %}
+{% endif %}
+
+{% if asset_pipeline.current_status %}
+### **📊 Current Asset Status**
+
+**✅ Implemented & Ready:**
+{% for item in asset_pipeline.current_status.implemented %}
+- {{ item }}
+{% endfor %}
+
+**🎨 Needs Assets:**
+{% for item in asset_pipeline.current_status.needs_assets %}
+- {{ item }}
+{% endfor %}
+
+**📝 Content Pipeline:**
+{% for item in asset_pipeline.current_status.content_pipeline %}
+- {{ item }}
+{% endfor %}
+{% endif %}
+
+### **Week 1 Priority**
+{{ asset_pipeline.asset_creation_order.week_1 }}
+
+**Immediate Asset Needs:**
+{% for category, assets in asset_pipeline.immediate_needs.items() %}
+**{{ category | title }}:**
+{% for asset in assets %}
+- {{ asset }}
+{% endfor %}
+{% endfor %}
+
+{% if asset_pipeline.integration_ready %}
+### **🔌 Integration Ready**
+{% for item in asset_pipeline.integration_ready %}
+- {{ item }}
+{% endfor %}
+{% endif %}
+
+**⏭️ Future Weeks:**
+- **Week 2**: {{ asset_pipeline.asset_creation_order.week_2 }}
+- **Week 3**: {{ asset_pipeline.asset_creation_order.week_3 }}
+- **Week 4**: {{ asset_pipeline.asset_creation_order.week_4 }}
+
+---
+
+## 🔧 COMPONENT IMPLEMENTATION GUIDE
+
+{% for component_name, component in components.items() %}
+### {{ component.name }}
+
+**UX Role**: {{ component.user_experience_role }}  
+**Status**: {{ component.implementation_status }}  
+**Priority**: {{ component.development_priority }}
+
+{% if component.implementation_details %}
+**✅ Implementation Details:**
+{% for detail in component.implementation_details %}
+- {{ detail }}
+{% endfor %}
+{% endif %}
+
+{% if component.technical_files %}
+**📁 Technical Files:**
+{% for file in component.technical_files %}
+- `{{ file }}`
+{% endfor %}
+{% endif %}
+
+{% if component.technical_unknowns %}
+**🔴 TECHNICAL UNKNOWNS:**
+{% for unknown in component.technical_unknowns %}
+- {{ unknown }}
+{% endfor %}
+*⚠️ Resolve these before implementation!*
+{% endif %}
+
+**Implementation Requirements:**
+{% for req_type, requirement in component.technical_requirements.items() %}
+- **{{ req_type | title }}**: {{ requirement }}
+{% endfor %}
+
+**Asset Dependencies:**
+{% if component.asset_requirements.visual_assets %}
+*Visual:* {% for asset in component.asset_requirements.visual_assets %}{{ asset }}{% if not loop.last %}, {% endif %}{% endfor %}
+{% endif %}
+{% if component.asset_requirements.audio_assets %}
+*Audio:* {% for asset in component.asset_requirements.audio_assets %}{{ asset }}{% if not loop.last %}, {% endif %}{% endfor %}
+{% endif %}
+
+**Integration Points:**
+{% if component.integration_points.incoming %}
+- **Receives data from**: {{ component.integration_points.incoming }}
+{% endif %}
+{% if component.integration_points.outgoing %}
+- **Sends data to**: {{ component.integration_points.outgoing }}
+{% endif %}
+{% if component.integration_points.data_dependencies %}
+- **Dependencies**: {{ component.integration_points.data_dependencies }}
+{% endif %}
+
+{% if component.special_features %}
+**🌟 Special Features:**
+{% for feature, description in component.special_features.items() %}
+- **{{ feature | title }}**: {{ description }}
+{% endfor %}
+{% endif %}
+
+---
+{% endfor %}
+
+{% if first_day_tutorial or night_phase_tutorial %}
+## 🎓 DETAILED TUTORIAL SEQUENCES
+
+{% if first_day_tutorial %}
+### 📅 First Day Tutorial Sequence
+
+{% for section_name, section in first_day_tutorial.items() %}
+#### {{ section_name | title | replace("_", " ") }}
+
+{% if section.location %}
+**Location**: {{ section.location }}  
+{% endif %}
+{% if section.time %}
+**Time**: {{ section.time }}  
+{% endif %}
+{% if section.primary_mentor or section.mentor %}
+**Mentor**: {{ section.primary_mentor or section.mentor }}  
+{% endif %}
+
+{% if section.objectives %}
+**Objectives**:
+{% for objective in section.objectives %}
+- {{ objective | replace("_", " ") | title }}
+{% endfor %}
+{% endif %}
+
+{% if section.dialogue_flow %}
+**Dialogue Flow**:
+{% for flow_name, flow in section.dialogue_flow.items() %}
+- **{{ flow_name | title }}** ({{ flow.speaker }}): "{{ flow.text }}"
+{% if flow.choices %}
+  - Player Choices:
+{% for choice in flow.choices %}
+    - "{{ choice.option }}" → {{ choice.effect or choice.get('next_scene', 'Continue') }}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if section.tutorial_elements %}
+**Tutorial Elements**:
+{% for element in section.tutorial_elements %}
+- {{ element | replace("_", " ") | title }}
+{% endfor %}
+{% endif %}
+
+{% if section.activity_structure %}
+**Activity Structure**:
+{% for activity_name, activity in section.activity_structure.items() %}
+- **{{ activity_name | title }}**: {{ activity.speaker }} - "{{ activity.text }}"
+{% if activity.tutorial_popup %}
+  - Tutorial: {{ activity.tutorial_popup }}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if section.sample_question %}
+**Sample Question**:
+- **Question**: {{ section.sample_question.question }}
+- **Correct Answer**: {{ section.sample_question.options[0].text if section.sample_question.options[0].correct }}
+- **Feedback**: "{{ section.sample_question.correct_feedback.text if section.sample_question.correct_feedback }}"
+{% endif %}
+
+{% if section.ability_grant %}
+**Ability Introduction**:
+- **Setup**: {{ section.ability_grant.setup.text }}
+- **Explanation**: {{ section.ability_grant.explanation.text }}
+{% if section.ability_grant.ability_details %}
+- **Ability**: {{ section.ability_grant.ability_details.name }}
+  - Domain: {{ section.ability_grant.ability_details.domain }}
+  - Passive: {{ section.ability_grant.ability_details.passive_effect }}
+  - Active: {{ section.ability_grant.ability_details.active_effect }}
+{% endif %}
+{% endif %}
+
+---
+{% endfor %}
+{% endif %}
+
+{% if night_phase_tutorial %}
+### 🌙 Night Phase Tutorial Sequence
+
+{% for section_name, section in night_phase_tutorial.items() %}
+#### {{ section_name | title | replace("_", " ") }}
+
+{% if section.location %}
+**Location**: {{ section.location }}  
+{% endif %}
+{% if section.time %}
+**Time**: {{ section.time }}  
+{% endif %}
+{% if section.guide %}
+**Guide**: {{ section.guide }}  
+{% endif %}
+{% if section.delivery_method %}
+**Delivery**: {{ section.delivery_method | title | replace("_", " ") }}  
+{% endif %}
+
+{% if section.sequence %}
+**Sequence**:
+{% for seq_name, seq in section.sequence.items() %}
+- **{{ seq_name | title | replace("_", " ") }}**:
+{% if seq.speaker %}
+  - {{ seq.speaker }}: "{{ seq.text or seq.message }}"
+{% endif %}
+{% if seq.tutorial_popup %}
+  - Tutorial: {{ seq.tutorial_popup }}
+{% endif %}
+{% if seq.guided_action %}
+  - Guided Action: {{ seq.guided_action | replace("_", " ") | title }}
+{% endif %}
+{% if seq.choices %}
+  - Player Choices:
+{% for choice in seq.choices %}
+    - "{{ choice.option }}" → {{ choice.action | replace("_", " ") | title }}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+---
+{% endfor %}
+{% endif %}
+
+{% endif %}
+
+## 🔗 INTEGRATION STRATEGY (Anti-Patchwork)
+
+### **Data Flow Architecture**
+{% for flow in integration_points.data_flow %}
+{{ flow }}
+{% endfor %}
+
+### **Shared Dependencies** (Plan for these)
+{% for dependency in integration_points.shared_dependencies %}
+- {{ dependency }}
+{% endfor %}
+
+### **💥 FAILURE MODES TO PREVENT**
+{% for failure_mode in integration_points.failure_modes_to_prevent %}
+- {{ failure_mode }}
+{% endfor %}
+
+### **�� Testing Strategy**
+{% for test_requirement in integration_points.testing_requirements %}
+- {{ test_requirement }}
+{% endfor %}
+
+---
+
+## 👥 LLM COLLABORATION PREP
+
+{% if repository_info.references_exported %}
+**All implementation context available in references/ folder:**
+
+{% for ref_file in exported_reference_files %}
+- [`{{ ref_file }}`]({{ ref_file }})
+{% endfor %}
+
+*Everything you need is available locally - no external dependencies required.*
+
+{% elif embedded_related_systems or embedded_content_files %}
+**Implementation context is embedded below - no additional files needed!**
+
+All referenced systems and content files are included in the "Embedded Reference Content" section.
+{% else %}
+**When ready for implementation, gather this context:**
+
+**Core System Files:**
+{% for system in cross_references.related_systems %}
+- `data/{{ system }}.yaml`
+{% endfor %}
+
+**Narrative Context:**
+{% for content_file in cross_references.content_files %}
+- `{{ content_file }}`
+{% endfor %}
+{% endif %}
+
+**Technical Dependencies:**
+{% for dependency in cross_references.implementation_dependencies %}
+- {{ dependency }}
+{% endfor %}
+
+---
+
+## 📊 DECISION CONTEXT
+
+**Current Status**: {{ development_context.current_status }}  
+{% if development_context.current_focus_areas %}
+**Current Focus Areas**:
+{% for area in development_context.current_focus_areas %}
+- {{ area }}
+{% endfor %}
+{% endif %}
+
+{% if development_context.immediate_blockers %}
+**Immediate Blockers**:
+{% for blocker in development_context.immediate_blockers %}
+- {{ blocker }}
+{% endfor %}
+{% else %}
+**Immediate Blockers**: ✅ None! Clear to proceed with high-priority items
+{% endif %}
+
+{% if development_context.ready_to_work_on %}
+**Ready to Work On**:
+{% for item in development_context.ready_to_work_on %}
+- {{ item }}
+{% endfor %}
+{% endif %}
+
+{% if development_context.technical_achievements %}
+**Technical Achievements**:
+{% for achievement in development_context.technical_achievements %}
+- {{ achievement }}
+{% endfor %}
+{% endif %}
+
+**Decision Points**: {{ development_context.decision_points }}  
+**Inspiration**: {{ development_context.inspiration }}  
+**Constraints**: {{ development_context.constraints }}  
+**Success Metrics**: {{ development_context.success_metrics }}
+
+---
+
+## 🎯 USER EXPERIENCE FLOW
+
+{% for step_name, step in user_experience_flow.items() %}
+### {{ step.name }}
+{{ step.description }}
+
+**User Actions**: {% for action in step.user_actions %}{{ action }}{% if not loop.last %}, {% endif %}{% endfor %}
+**System Requirements**: {% for req in step.system_requirements %}{{ req }}{% if not loop.last %}, {% endif %}{% endfor %}
+
+{% endfor %}
+
+---
+
+{% if repository_info.references_exported %}
+## 📚 REFERENCE FILES
+
+**Referenced content exported to local files:**
+{% for ref_file in exported_reference_files %}
+- [`{{ ref_file }}`]({{ ref_file }})
+{% endfor %}
+
+*All system data and narrative context available in the references/ directory.*
+
+{% elif embedded_related_systems or embedded_content_files %}
+## 📚 EMBEDDED REFERENCE CONTENT
+
+{% if embedded_related_systems %}
+### Core System Data (Full Content)
+{% for system_name, system_info in embedded_related_systems.items() %}
+#### {{ system_name | title | replace("-", " ") }}
+**Source**: `{{ system_info.file_path }}`
+
+```
+{{ system_info.content }}
+```
+
+---
+{% endfor %}
+{% endif %}
+
+{% if embedded_content_files %}
+### Narrative Context Files (Full Content)
+{% for content_file, content in embedded_content_files.items() %}
+#### {{ content_file }}
+
+```markdown
+{{ content }}
+```
+
+---
+{% endfor %}
+{% endif %}
+
+{% endif %}
+
+*Generated from structured YAML data with all referenced content embedded inline*
+*Self-contained development plan - no external dependencies required* 

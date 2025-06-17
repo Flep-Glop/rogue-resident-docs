@@ -1,0 +1,193 @@
+system_info:
+  name: "Journal Integration System"
+  description: "Physical interface for card collection, etching catalog, and progress tracking"
+  content_reference: "content/cards/journal-integration.md"
+  related_systems: ["cards", "etchings", "stars", "progress-tracking"]
+
+journal_overview:
+  location: "Study desk in hill home"
+  visual_style: "Leather-bound medical journal aesthetic"
+  authenticity_details: ["Coffee stains", "paperclips", "post-its", "progressive page filling"]
+  contents_mix: "Mix of printed forms and handwritten notes"
+
+journal_sections:
+  card_collection_pages:
+    organization: "Organized by domain"
+    purpose: "Storage for discovered application cards"
+    visual_style: "Domain-specific section dividers"
+    capacity: "All 26 cards when fully discovered"
+    
+  daily_card_selection:
+    name: "Three Card Slots"
+    capacity: 3
+    description: "Three distinct card pockets for equipped cards"
+    selection_phase: "Night Phase"
+    visual_design: "Physical pockets/slots in journal"
+    
+  etching_catalog:
+    organization: "Chronological discovery order"
+    purpose: "Discovered etching patterns"
+    visual_style: "Hand-drawn constellation diagrams"
+    page_design: "Protective sleeves for fragile etchings"
+    
+  connection_notes:
+    purpose: "Formed star connections"
+    content: "Player notes on constellation patterns"
+    visual_style: "Hand-drawn connection maps"
+    updates: "Real-time as connections form"
+    
+  progress_tracking:
+    mastery_notes: "Progress by domain"
+    discovery_timeline: "Record of when/where items found"
+    milestone_markers: "Key achievement documentation"
+    
+  blank_pages:
+    purpose: "Player can sketch suspected patterns"
+    interaction: "Free-form constellation theorizing"
+    discovery_aid: "Helps identify potential etching patterns"
+
+card_slot_design:
+  slot_characteristics:
+    count: 3
+    design: "Distinct card pockets with domain theming"
+    visibility: "Cards slightly stick out for easy identification"
+    accessibility: "Easy drag-and-drop interface"
+    
+  mentor_styled_pockets:
+    dr_garcia:
+      style: "Soft leather pouches"
+      color_theme: "Warm, patient-care colors"
+      personality: "Gentle, nurturing design"
+      
+    jesse:
+      style: "Technical clip holders"
+      color_theme: "Industrial, mechanical colors"
+      personality: "Practical, functional design"
+      
+    dr_kapoor:
+      style: "Precise plastic sleeves"
+      color_theme: "Clean, measurement-focused colors"
+      personality: "Organized, methodical design"
+      
+    dr_quinn:
+      style: "Chaotic but functional paper clips"
+      color_theme: "Theoretical, abstract colors"
+      personality: "Creative, unconventional design"
+
+card_selection_interface:
+  night_phase_flow:
+    step_1: "Open journal to card collection pages"
+    step_2: "Browse available cards by domain"
+    step_3: "Drag cards into the three pocket slots"
+    step_4: "Close journal to confirm selection"
+    
+  visual_feedback:
+    available_cards: "Glow when selectable"
+    equipped_cards: "Distinctive highlight in slots"
+    domain_organization: "Color-coded section tabs"
+    selection_confirmation: "Visual feedback on drag completion"
+    
+  interaction_design:
+    drag_and_drop: "Intuitive card movement"
+    domain_filtering: "Easy browsing by category"
+    slot_validation: "Prevents over-slotting (max 3)"
+    quick_swap: "Easy card replacement"
+
+etching_application_interface:
+  usage_flow:
+    step_1: "Open journal to etching catalog during Night Phase"
+    step_2: "Review available etchings"
+    step_3: "Select an etching to apply"
+    step_4: "View potential star connections in constellation"
+    step_5: "Confirm connections if stars meet requirements"
+    step_6: "Connection forms in constellation with visual feedback"
+    
+  visual_design:
+    etching_display: "Authentic hand-drawn appearance"
+    pattern_preview: "Show required star positions"
+    compatibility_check: "Highlight if pattern completable"
+    application_confirmation: "Clear feedback on successful formation"
+    
+  pattern_formation:
+    requirement_check: "Validate required stars are unlocked"
+    visual_overlay: "Show pattern on constellation"
+    connection_animation: "Lines form matching etching pattern"
+    completion_feedback: "Card unlock notification if applicable"
+
+journal_visual_design:
+  physical_characteristics:
+    binding: "Leather-bound medical journal aesthetic"
+    pages: "Mix of printed forms and handwritten notes"
+    wear_details: "Coffee stains, paperclips, post-its for authenticity"
+    progression: "Pages fill up as you progress"
+    
+  domain_organization:
+    treatment_planning: "Blue-themed section with optimization diagrams"
+    radiation_therapy: "Green-themed section with patient care notes"
+    linear_accelerator: "Orange-themed section with technical schematics"
+    dosimetry: "Pink-themed section with measurement charts"
+    cross_domain: "Purple-themed section with integrated patterns"
+    
+  authenticity_elements:
+    coffee_stains: "Realistic study session remnants"
+    paperclips: "Marking important pages"
+    post_it_notes: "Quick reference markers"
+    handwriting_variation: "Different pens, writing styles over time"
+    page_wear: "Increasing use evidence on frequently accessed pages"
+
+progressive_filling:
+  early_game:
+    appearance: "Mostly empty with basic templates"
+    content: "Initial mentor introductions, first cards"
+    organization: "Simple, guided structure"
+    
+  mid_game:
+    appearance: "Partially filled with growing collections"
+    content: "Expanding card library, first etchings"
+    organization: "Player begins personalizing layout"
+    
+  late_game:
+    appearance: "Rich, well-used reference document"
+    content: "Complete card collection, multiple etchings"
+    organization: "Highly personalized, efficient layout"
+    
+  endgame:
+    appearance: "Comprehensive professional reference"
+    content: "All cards, legendary etchings, pattern mastery"
+    organization: "Masterful understanding reflected in organization"
+
+interaction_mechanics:
+  discovery_notifications:
+    new_card: "Red exclamation point on desk"
+    new_etching: "Subtle glow from journal"
+    pattern_available: "Gentle pulsing when patterns become completable"
+    
+  access_patterns:
+    daily_selection: "Night phase card selection ritual"
+    discovery_review: "Browse new findings"
+    pattern_planning: "Theoretical constellation sketching"
+    progress_tracking: "Review mastery advancement"
+    
+  visual_feedback_systems:
+    discovery_state: "Visual indicators for new content"
+    completion_state: "Checkmarks and progress bars"
+    availability_state: "Highlighting for usable items"
+    relationship_state: "Visual connections between related items"
+
+technical_implementation:
+  data_persistence:
+    card_states: "Discovered, equipped, available"
+    etching_states: "Discovered, applied, completable"
+    journal_state: "Page layouts, personal notes, organization"
+    
+  interface_requirements:
+    drag_and_drop: "Smooth card manipulation"
+    page_navigation: "Intuitive journal browsing"
+    real_time_updates: "Immediate feedback on changes"
+    visual_consistency: "Cohesive design across all sections"
+    
+  integration_points:
+    constellation_system: "Real-time pattern formation feedback"
+    mentor_system: "Relationship-based content unlocks"
+    progress_system: "Mastery tracking and milestone recognition"
+    narrative_system: "Story-appropriate discovery moments" 

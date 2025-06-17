@@ -1,0 +1,325 @@
+system_info:
+  name: "Treatment Planning System (TPS) Mini-Game"
+  description: "Simplified TPS educational mini-game specifications and design"
+  version: "3.0"
+  content_reference: "content/tps-design.md"
+
+# TPS Mini-Game Goals
+tps_goals:
+  educational_objectives:
+    conceptual_understanding: "Demonstrate fundamental treatment planning principles without overwhelming technical complexity"
+    visual_learning: "Provide intuitive visualization of dose distribution concepts"
+    interactive_exploration: "Allow hands-on experimentation with beam placement and parameters"
+    knowledge_application: "Connect theoretical knowledge to practical planning scenarios"
+    
+  gameplay_integration:
+    challenge_mode: "Create planning puzzles with specific dose objectives"
+    skill_progression: "Tie planning proficiency to Knowledge Constellation development"
+    time_management: "Balance accuracy with efficiency in clinical scenarios"
+    decision_making: "Present trade-offs between competing planning goals"
+    
+  technical_feasibility:
+    performance: "Maintain smooth gameplay with real-time dose calculations"
+    simplicity: "Use simplified physics models that capture essential behaviors"
+    modularity: "Design system to easily add features as needed"
+    accessibility: "Ensure intuitive controls and clear visual feedback"
+
+# Core System Components
+core_components:
+  ct_simulation_layer:
+    goals:
+      - "Represent anatomical structures using grayscale pixel values"
+      - "Provide density information for dose calculation"
+      - "Support multiple preset patient scenarios"
+    design_decisions:
+      - "Use 2D slices instead of full 3D volumes for simplicity"
+      - "Map pixel intensity (0-255) directly to relative density"
+      - "Pre-generate patient scenarios with clear anatomical features"
+      
+  beam_placement_system:
+    goals:
+      - "Allow intuitive beam positioning and angling"
+      - "Support up to 3 beams per plan"
+      - "Provide immediate visual feedback on beam paths"
+    design_decisions:
+      - "Click-and-drag interface for beam placement"
+      - "Rotation wheel or angle slider for beam orientation"
+      - "Visual beam path overlay showing entry/exit points"
+      - "Beam parameter adjustments (width, intensity)"
+      
+  dose_calculation_engine:
+    goals:
+      - "Calculate dose distribution in real-time"
+      - "Model basic tissue interactions and attenuation"
+      - "Demonstrate dose buildup and falloff concepts"
+    design_decisions:
+      - "Ray-casting algorithm for computational efficiency"
+      - "Exponential attenuation model based on pixel density"
+      - "Simple scatter approximation for realism"
+      - "Grid-based dose accumulation"
+      
+  visualization_system:
+    goals:
+      - "Display dose distribution clearly and intuitively"
+      - "Show isodose lines at clinically relevant levels"
+      - "Highlight hot spots and cold regions"
+    design_decisions:
+      - "Color wash overlay (blue→green→yellow→red)"
+      - "Toggleable isodose lines (20%, 50%, 80%, 95%, 100%)"
+      - "Dose profile tools for analysis"
+      - "DVH display for plan evaluation"
+
+# Educational Content Integration
+educational_integration:
+  concept_reinforcement:
+    inverse_square_law: "Demonstrate dose falloff with distance"
+    tissue_heterogeneity: "Show effects of different densities"
+    beam_overlap: "Illustrate dose summation principles"
+    critical_structures: "Highlight OAR sparing techniques"
+    
+  knowledge_star_connections:
+    tp_dose_calculation: "Core calculation algorithms"
+    tp_optimization: "Plan quality improvement"
+    tp_heterogeneity: "Tissue density effects"
+    tp_target_volumes: "PTV/OAR delineation"
+    rt_fractionation: "Dose prescription concepts"
+    
+  clinical_application_ties:
+    dose_calculation: "Improved calculation speed/accuracy"
+    optimization_algorithm: "Better automated planning"
+    target_volumes: "Enhanced contouring tools"
+    plan_evaluation: "Advanced analysis metrics"
+
+# Gameplay Scenarios
+gameplay_scenarios:
+  tutorial_missions:
+    - name: "Basic Beam Placement"
+      objective: "Learn to position and orient treatment beams"
+      difficulty: "beginner"
+      
+    - name: "Understanding Dose Distribution"
+      objective: "Visualize how beams create dose patterns"
+      difficulty: "beginner"
+      
+    - name: "Achieving Target Coverage"
+      objective: "Cover the target volume with prescription dose"
+      difficulty: "intermediate"
+      
+    - name: "Avoiding Critical Structures"
+      objective: "Minimize dose to organs at risk"
+      difficulty: "intermediate"
+      
+  clinical_challenges:
+    - name: "Prostate Treatment Planning"
+      anatomy: "prostate_with_bladder_rectum"
+      challenge_type: "standard_case"
+      difficulty: "intermediate"
+      
+    - name: "Lung Tumor with Motion"
+      anatomy: "lung_tumor_mobile"
+      challenge_type: "motion_management"
+      difficulty: "advanced"
+      
+    - name: "Brain Lesion Near Critical Structures"
+      anatomy: "brain_lesion_near_brainstem"
+      challenge_type: "critical_sparing"
+      difficulty: "advanced"
+      
+    - name: "Palliative Spine Treatment"
+      anatomy: "spine_with_cord"
+      challenge_type: "palliative_care"
+      difficulty: "intermediate"
+      
+  time_pressure_scenarios:
+    - name: "Emergency Planning Situations"
+      time_limit: "10_minutes"
+      objective: "Create acceptable plan under time pressure"
+      
+    - name: "Multiple Patient Queue Management"
+      scenario: "sequential_planning_challenges"
+      objective: "Balance efficiency across multiple cases"
+      
+    - name: "Balancing Quality vs. Efficiency"
+      scenario: "optimization_time_tradeoffs"
+      objective: "Find optimal balance for clinical workflow"
+      
+  optimization_puzzles:
+    - name: "Achieve Specific Dose Constraints"
+      constraints: "precise_numerical_targets"
+      objective: "Meet exact dose-volume requirements"
+      
+    - name: "Minimize Dose to Specific OARs"
+      focus: "organ_sparing_optimization"
+      objective: "Reduce critical organ doses"
+      
+    - name: "Maximize Target Conformity"
+      metric: "conformity_index_optimization"
+      objective: "Achieve best possible dose conformity"
+      
+    - name: "Meet Multiple Competing Objectives"
+      complexity: "multi_criteria_optimization"
+      objective: "Balance conflicting planning goals"
+
+# Progression Framework
+progression_framework:
+  difficulty_scaling:
+    beginner:
+      characteristics:
+        - "Simple geometries"
+        - "Single target volumes"
+        - "Basic constraints"
+        - "Generous time limits"
+        
+    intermediate:
+      characteristics:
+        - "Complex anatomy"
+        - "Multiple targets"
+        - "Strict OAR limits"
+        - "Moderate time pressure"
+        
+    advanced:
+      characteristics:
+        - "Challenging cases"
+        - "Competing objectives"
+        - "Tight constraints"
+        - "Significant time pressure"
+        
+  feature_unlocking:
+    progression_rewards:
+      - "Additional beam slots"
+      - "Advanced visualization tools"
+      - "Automated optimization hints"
+      - "Special beam modifiers"
+      
+  scoring_system:
+    evaluation_criteria:
+      target_coverage: "percentage_of_target_receiving_prescription"
+      oar_sparing: "dose_to_organs_at_risk"
+      conformity_index: "dose_conformity_measurement"
+      time_efficiency: "planning_time_score"
+      overall_plan_quality: "composite_clinical_score"
+
+# Technical Implementation Specifications
+technical_implementation:
+  performance_considerations:
+    - "Use efficient ray-casting algorithms"
+    - "Implement level-of-detail for calculations"
+    - "Cache frequently used computations"
+    - "Optimize visualization rendering"
+    
+  user_interface_design:
+    - "Intuitive drag-and-drop beam placement"
+    - "Clear visual feedback for all actions"
+    - "Responsive controls for parameter adjustment"
+    - "Informative tooltips and help system"
+    
+  data_structures:
+    - "Efficient grid representation for dose"
+    - "Optimized beam path calculations"
+    - "Fast lookup tables for attenuation"
+    - "Compressed storage for patient data"
+
+# Success Metrics
+success_metrics:
+  educational_effectiveness:
+    - "Player understanding of dose distribution concepts"
+    - "Ability to create clinically reasonable plans"
+    - "Knowledge retention of planning principles"
+    - "Transfer of skills to real-world understanding"
+    
+  gameplay_engagement:
+    - "Time spent in planning activities"
+    - "Completion rate of challenges"
+    - "Player satisfaction scores"
+    - "Replay value of scenarios"
+    
+  system_performance:
+    calculation_speed: "< 100ms for updates"
+    visual_refresh_rate: "60 FPS"
+    memory_usage: "< 100MB"
+    load_times: "< 2 seconds"
+
+# Future Enhancement Possibilities
+future_enhancements:
+  advanced_features:
+    - "3D visualization options"
+    - "IMRT/VMAT simulation"
+    - "Biological dose modeling"
+    - "Multi-criteria optimization"
+    
+  extended_scenarios:
+    - "Adaptive planning challenges"
+    - "Special technique simulations"
+    - "Historical case studies"
+    - "Competitive planning modes"
+    
+  integration_expansions:
+    - "Connection to QA mini-games"
+    - "Link to dosimetry calculations"
+    - "Treatment delivery simulation"
+    - "Plan verification activities"
+
+# Activity Integration
+activity_integration:
+  star_relationships:
+    tp_dose_calculation:
+      relevance: "primary"
+      unlocks: "basic_dose_calculation_scenarios"
+      
+    tp_optimization:
+      relevance: "primary"
+      unlocks: "optimization_challenge_modes"
+      
+    tp_heterogeneity:
+      relevance: "secondary"
+      unlocks: "tissue_heterogeneity_scenarios"
+      
+    tp_evaluation:
+      relevance: "primary"
+      unlocks: "plan_evaluation_tools"
+      
+  mentor_connections:
+    dr_quinn:
+      role: "primary_guide"
+      specializations: ["optimization", "evaluation", "advanced_techniques"]
+      
+    dr_garcia:
+      role: "clinical_context"
+      specializations: ["patient_cases", "clinical_priorities"]
+      
+    dr_kapoor:
+      role: "quality_assurance"
+      specializations: ["dose_accuracy", "measurement_validation"]
+
+# Mini-Game Flow Examples
+minigame_flow_examples:
+  basic_tutorial:
+    steps:
+      1: "Introduction to interface and anatomy"
+      2: "Place first beam"
+      3: "Observe dose distribution"
+      4: "Adjust beam parameters"
+      5: "Add second beam"
+      6: "Evaluate combined dose"
+      7: "Submit plan for scoring"
+      
+  advanced_challenge:
+    steps:
+      1: "Review case presentation and objectives"
+      2: "Analyze anatomy and identify challenges"
+      3: "Plan beam arrangement strategy"
+      4: "Place and optimize beams iteratively"
+      5: "Check dose-volume histogram"
+      6: "Refine plan based on constraints"
+      7: "Final evaluation and submission"
+
+cross_references:
+  related_documents:
+    - "data/stars/stars-definitions.yaml"
+    - "data/mentors/mentors.yaml"
+    - "data/constants/game-constants.yaml"
+    - "data/interfaces/tutorial-flows.yaml"
+  export_templates:
+    - "claude-context"
+    - "cursor-dev"
+    - "tps-reference" 

@@ -1,0 +1,293 @@
+system_info:
+  name: "Activity Framework"
+  description: "Core activity mechanics, scheduling, and reward systems"
+  content_reference: "content/activity-framework.md"
+  related_systems: ["educational-framework", "stars", "mentors", "bosses"]
+
+activity_properties:
+  core_properties:
+    - "Identifier: Unique ID for the activity"
+    - "Title: Display name shown to the player"
+    - "Description: Brief activity description"
+    - "Location: Where activity takes place"
+    - "Mentor: Associated mentor ID (if any)"
+    - "Domain: Primary knowledge domain"
+    - "Secondary Domain: Optional secondary domain"
+    - "Difficulty: Level 1, 2, or 3"
+    
+  time_properties:
+    - "Duration Impact: How much time is advanced per challenge"
+    - "Start Phase: Earliest phase activity can start (morning, afternoon, evening)"
+    - "End Phase: Latest phase activity can end"
+    - "Fixed Time: Whether activity can be rescheduled"
+    
+  reward_properties:
+    - "Insight Reward: Base Insight reward"
+    - "SP Reward: Base Star Points reward"
+    - "Mastery Rewards: Star mastery gains"
+    
+  knowledge_properties:
+    - "Related Stars: Star IDs related to this activity"
+    - "Discovery Chance: Chance to discover new stars"
+    - "Etching Discovery: Chance to find etchings"
+    
+  challenge_properties:
+    - "Challenge Type: Format of educational challenges"
+    - "Challenge Count: Number of challenges in activity"
+    - "Questions Per Challenge: Typically 4-8 questions per challenge"
+
+activity_categories:
+  clinical:
+    focus: "Practical application of knowledge"
+    locations: ["Treatment Rooms", "Simulation Suite"]
+    challenge_types: ["Case studies", "treatment delivery", "patient setup"]
+    primary_domains: ["RT", "TP"]
+    
+  technical:
+    focus: "Equipment operation and quality assurance"
+    locations: ["Treatment Rooms", "Dosimetry Lab"]
+    challenge_types: ["Equipment operation", "measurements", "troubleshooting"]
+    primary_domains: ["LA", "DOS"]
+    
+  planning:
+    focus: "Treatment planning and optimization"
+    locations: ["Simulation Suite", "Physics Office"]
+    challenge_types: ["Plan creation", "plan evaluation", "optimization"]
+    primary_domains: ["TP", "RT"]
+    
+  didactic:
+    focus: "Theoretical knowledge acquisition"
+    locations: ["Classroom", "Library"]
+    challenge_types: ["Multiple choice", "matching", "calculation"]
+    primary_domains: ["All domains"]
+    
+  research:
+    focus: "Exploration and discovery"
+    locations: ["Library", "Physics Office"]
+    challenge_types: ["Literature review", "experiment design"]
+    primary_domains: ["All domains"]
+    
+  social:
+    focus: "Relationship building and professional skills"
+    locations: ["Cafeteria", "Conference Room"]
+    challenge_types: ["Dialogue", "presentations", "team interactions"]
+    primary_domains: ["Related to mentor"]
+
+difficulty_levels:
+  level_1:
+    name: "Basic"
+    availability: "Spring"
+    prerequisites: "None or minimal"
+    challenge_types: ["Multiple choice", "matching"]
+    insight_reward: "10-15 base"
+    sp_reward: "2-3 base"
+    mastery_gain: "DIRECT_ACTIVITY_MASTERY_GAIN (5-10% for related stars)"
+    
+  level_2:
+    name: "Intermediate"
+    availability: "Summer, Fall"
+    prerequisites: "Related star unlocks, some mastery"
+    challenge_types: ["Matching", "procedural", "simple calculations"]
+    insight_reward: "15-25 base"
+    sp_reward: "3-4 base"
+    mastery_gain: "DIRECT_ACTIVITY_MASTERY_GAIN (10-15% for related stars)"
+    
+  level_3:
+    name: "Advanced"
+    availability: "Fall, Winter"
+    prerequisites: "Significant mastery, mentor relationships"
+    challenge_types: ["Complex calculations", "case analyses", "research"]
+    insight_reward: "25-35 base"
+    sp_reward: "4-5 base"
+    mastery_gain: "DIRECT_ACTIVITY_MASTERY_GAIN (15-20% for related stars)"
+
+activity_generation:
+  base_activities:
+    count: "4-6 per day"
+    description: "One activity from each main category, balanced across domains, level-appropriate difficulty"
+    
+  specialization_activities:
+    count: "0-3 per day"
+    description: "Based on player's domain affinity, higher chance for activities in primary domain"
+    requirements: "Specialized activities require higher mastery"
+    
+  relationship_activities:
+    count: "0-4 per day"
+    description: "Mentor-specific activities, unlocked based on relationship level"
+    special: "Special events with higher rewards"
+    
+  integrated_activities:
+    count: "0-1 per day"
+    description: "Cross-domain activities, require balanced development"
+    benefits: "Higher difficulty but better rewards"
+
+availability_factors:
+  - "Season: Activities are gated by season"
+  - "Player Progress: Domain affinity and mastery requirements"
+  - "Constellation State: Unlocked and active stars"
+  - "Mentor Relationships: Relationship levels unlock activities"
+  - "Previous Completions: Some activities have cooldowns"
+  - "Story Events: Special activities for narrative progression"
+
+progressive_scheduling_control:
+  phase_1:
+    name: "Guided Learning (Early Spring)"
+    mandatory_activities: "2-3 daily"
+    optional_slots: "1-2"
+    choices_per_slot: "2-3 options"
+    
+  phase_2:
+    name: "Applied Learning (Late Spring/Early Summer)"
+    mandatory_activities: "1-2 daily"
+    optional_slots: "2-3"
+    choices_per_slot: "3-4 options"
+    
+  phase_3:
+    name: "Specialist Development (Late Summer/Fall)"
+    mandatory_activities: "0-1 daily"
+    optional_slots: "3-4"
+    choices_per_slot: "4-5 options"
+    
+  phase_4:
+    name: "Professional Autonomy (Winter)"
+    mandatory_activities: "Rare"
+    optional_slots: "4-5"
+    choices_per_slot: "5+ options"
+
+reward_types:
+  insight_rewards:
+    base_range: "10-35 points based on activity difficulty"
+    performance_modifier: "×0.5 to ×2.0 based on challenge success"
+    momentum_bonus: "+25% at Level 2, +50% at Level 3"
+    relationship_bonus: "RELATIONSHIP_INSIGHT_BONUS_L1 to L5 (+5% to +25% per mentor relationship level)"
+    constellation_bonus: "Various bonuses from patterns and abilities"
+    
+  star_points_rewards:
+    base_range: "2-5 SP based on activity difficulty"
+    performance_modifier: "+/-1 SP based on overall success"
+    special_activities: "Bonus SP for narrative events, boss preparation"
+    domain_affinity_bonus: "+1 SP for high (70%+) domain affinity"
+    
+  mastery_rewards:
+    direct_gain: "DIRECT_ACTIVITY_MASTERY_GAIN (5-20% mastery for directly related stars)"
+    secondary_gain: "INDIRECT_ACTIVITY_MASTERY_GAIN (1-5% mastery for indirectly related stars)"
+    connection_strengthening: "Increases connection strength between used stars"
+    pattern_bonus: "Additional mastery when completing pattern-related activities"
+    
+  knowledge_discovery:
+    star_glimpses: "Chance to glimpse new stars related to activity"
+    connection_insights: "Discover potential connections between stars"
+    etching_discoveries: "Find etchings in books, mentor interactions, or environments"
+    domain_affinity: "Increases domain affinity for the activity's domain"
+    
+  relationship_development:
+    mentor_present: "STANDARD_INTERACTION_POINTS (+1 relationship point with activity mentor)"
+    successful_boast: "BOAST_SUCCESS_RELATIONSHIP (+1 additional relationship point)"
+    failed_boast: "BOAST_FAILURE_RELATIONSHIP (-1 relationship point)"
+    special_interaction: "SPECIAL_EVENT_POINTS (+2-3 points for special events)"
+
+challenge_integration:
+  standard_distribution:
+    difficulty_1: "3-5 challenges (mostly Multiple Choice)"
+    difficulty_2: "5-7 challenges (Mixed types)"
+    difficulty_3: "7-10 challenges (Complex types)"
+    
+  mastery_relationship:
+    low_mastery:
+      range: "<25%"
+      characteristics: "Simpler versions, more hints, lower gain but easier, focus on acquisition"
+      
+    moderate_mastery:
+      range: "25-50%"
+      characteristics: "Standard difficulty, some hints, balanced gain and difficulty, tests application"
+      
+    high_mastery:
+      range: "50-75%"
+      characteristics: "More difficult, fewer hints, higher gain but harder, tests deeper understanding"
+      
+    expert_mastery:
+      range: "75-100%"
+      characteristics: "Expert-level, no hints, highest gain but most difficult, tests novel contexts"
+
+seasonal_themes:
+  spring:
+    name: "Fundamentals"
+    focus: "Basic concepts across all domains"
+    activity_types: ["Didactic", "guided practice"]
+    challenge_types: ["Multiple choice", "matching"]
+    primary_domains: "Balanced across all"
+    progressive_introduction:
+      days_1_2: "Dr. Garcia & RT domain only"
+      days_3_4: "Dr. Quinn & TP domain added"
+      days_5_6: "Technician Jesse & LA domain added"
+      days_7_8: "Dr. Kapoor & DOS domain added"
+      
+  summer:
+    name: "Clinical Introduction"
+    focus: "Patient care and treatment basics"
+    activity_types: ["Clinical observation", "basic planning"]
+    challenge_types: ["Case analysis", "treatment setup"]
+    primary_domains: ["RT", "TP"]
+    
+  fall:
+    name: "Integration & Specialization"
+    focus: "Connecting concepts across domains, deep knowledge in primary domain"
+    activity_types: ["Multi-domain practice", "advanced practice"]
+    challenge_types: ["Mixed types with integration", "complex calculations"]
+    primary_domains: "All domains with connections, player's specialization"
+    
+  winter:
+    name: "Professional Identity"
+    focus: "Synthesis of complete skillset"
+    activity_types: ["Independent practice", "special challenges"]
+    challenge_types: ["Novel scenarios", "comprehensive cases"]
+    primary_domains: "Full integration across domains"
+
+activity_duration_balance:
+  short:
+    difficulty_1: "3-4 challenges"
+    difficulty_2: "4-5 challenges"
+    difficulty_3: "5-6 challenges"
+    
+  medium:
+    difficulty_1: "5-7 challenges"
+    difficulty_2: "7-9 challenges"
+    difficulty_3: "9-12 challenges"
+    
+  long:
+    difficulty_1: "10-15 challenges"
+    difficulty_2: "15-20 challenges"
+    difficulty_3: "20-25 challenges"
+
+time_challenge_balance:
+  time_per_challenge_type:
+    multiple_choice: "30-60 seconds"
+    matching: "60-120 seconds"
+    procedural: "90-180 seconds"
+    calculation: "120-300 seconds"
+    case_analysis: "180-360 seconds"
+    special_types: "Varies by implementation"
+    
+  total_challenge_time: "60-80% of activity duration"
+  remaining_time_for:
+    - "Introduction and context"
+    - "Transitions between challenges"
+    - "Feedback and explanation"
+    - "Summary and conclusion"
+
+library_special_mechanics:
+  discovery_mode:
+    description: "Browse for knowledge through a card catalog interface"
+    features: ["Find etchings hidden in specific books", "Special rewards for exploration"]
+    
+  research_minigame:
+    description: "Search and cross-reference research topics"
+    features: ["Connect papers with related concepts", "Discover connections between stars"]
+    
+  flexible_difficulty:
+    description: "Player chooses depth of research"
+    features: ["Higher difficulty yields better rewards", "Advanced research requires higher mastery"]
+    
+  time_manipulation:
+    description: "Extended hours and time dilation"
+    features: ["Available in evening", "Activities take less time", "Special night research options"] 

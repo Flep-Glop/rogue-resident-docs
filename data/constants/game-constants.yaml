@@ -1,0 +1,236 @@
+system_info:
+  name: "Rogue Resident Game Constants"
+  description: "Core numerical values and mechanical constants for all game systems"
+  version: "3.0"
+  content_reference: "content/master-gdd.md"
+
+# Resource System Constants
+resource_systems:
+  star_points:
+    total_available: 300
+    total_required: 450
+    economy_gap: 150  # 33.3% specialization requirement
+    seasonal_distribution:
+      spring: 75
+      summer: 75
+      fall: 75
+      winter: 75
+    earning_mechanisms:
+      activity_completion: [2, 5]  # range based on difficulty
+      boss_encounters: 110  # total from all bosses
+      special_events: 60    # total available
+      insight_conversion_rate: 5  # 5 Insight → 1 SP
+      max_daily_conversion: 4   # max 4 SP per day from conversion
+    expenditure:
+      core_star_cost: 10
+      standard_star_base: 20
+      advanced_star_base: [25, 30]  # range
+      domain_discount: 5     # subsequent stars in domain cost 5 less
+      minimum_cost: 10       # absolute minimum after discounts
+
+  insight:
+    daily_reset: true
+    starting_value: 0
+    maximum_capacity: 100
+    daily_generation_target: [80, 120]  # range
+    generation_per_activity: [15, 30]   # range based on difficulty
+    active_star_bonus: 1  # +1 per domain with 25% mastery
+    expenditure:
+      ability_activation: [20, 75]  # range based on power
+      boast_cost: 50
+      sp_conversion: 5  # cost to convert to 1 SP
+      max_daily_sp_conversion: 20  # max Insight spent on SP per day
+
+  momentum:
+    levels: [0, 1, 2, 3]
+    visualization: "pips"  # ⚡ symbols
+    gain_rate: 1  # per consecutive correct answer
+    decay_on_incorrect: true
+    decay_on_activity_complete: true
+    level_effects:
+      level_1: 
+        insight_bonus: 0
+        special_actions: []
+      level_2:
+        insight_bonus: 0.25  # +25% Insight
+        special_actions: []
+      level_3:
+        insight_bonus: 0.50  # +50% Insight
+        special_actions: ["boast"]  # Unlocks Boast action
+
+# Knowledge System Constants
+knowledge_systems:
+  mastery:
+    tiers:
+      beginner: [0, 25]
+      intermediate: [25, 50]
+      advanced: [50, 75]
+      expert: [75, 100]
+    gain_rates:
+      challenge_completion: [1, 8]  # % per challenge based on difficulty
+      activity_completion: [5, 10]  # % for related activities
+      connected_stars_passive: 0.5  # % per day per connection
+      mentor_relationship_bonus: 5   # % gain rate per relationship level
+    difficulty_scaling:
+      tier_1_gains: [5, 10]  # 0-25% mastery gains
+      tier_2_gains: [3, 6]   # 25-50% mastery gains
+      tier_3_gains: [2, 4]   # 50-75% mastery gains
+      tier_4_gains: [1, 3]   # 75-100% mastery gains
+
+  domain_affinity:
+    thresholds: [25, 50, 75, 100]
+    calculation_factors:
+      active_stars: "major"     # Major contribution
+      mentor_relationships: 0.1  # Divided by 10
+      domain_abilities: 5       # Multiplied by 5
+    threshold_effects:
+      25: "domain_dialogue_options"
+      50: "activity_time_reduction_25"
+      75: "expertise_mode_unlock"
+      100: "maximum_domain_bonuses"
+
+# Boss Encounter Constants
+boss_encounters:
+  unlock_thresholds:
+    marcus-chen: 40    # % mastery in primary domain
+    vendor_trio: 50          # % mastery in primary domain
+    audit_team: 60           # % mastery in primary domain
+    ionix: 75                # % mastery in primary domain
+  preparation_thresholds:
+    marcus-chen: 35    # Available for prep at 35%
+    vendor_trio: 45          # Available for prep at 45%
+    audit_team: 55           # Available for prep at 55%
+    ionix: 70                # Available for prep at 70%
+  structure:
+    phases: 5                # All bosses have 5 phases
+    retry_available: true    # Can retry immediately after failure
+
+# Progression Constants
+progression:
+  seasons: 4
+  season_names: ["spring", "summer", "fall", "winter"]
+  time_control_phases: 4
+  progressive_time_control:
+    phase_1:
+      mastery_range: [0, 25]
+      control_level: "fixed_schedule"
+      activities_fixed: 4
+    phase_2:
+      mastery_range: [25, 50]
+      control_level: "limited_choice"
+      activities_choice: 2
+      activities_fixed: 2
+    phase_3:
+      mastery_range: [50, 75]
+      control_level: "flexible_choice"
+      activities_choice: 3
+      activities_fixed: 1
+    phase_4:
+      mastery_range: [75, 100]
+      control_level: "full_control"
+      activities_choice: 4
+      activities_fixed: 0
+
+# Time System Constants
+time_system:
+  activity_durations:
+    standard: 2    # hours (1 block)
+    extended: 4    # hours (2 blocks)
+    quick: 1       # hours (half block)
+    lunch: 1       # hours (fixed)
+  mastery_time_modifiers:
+    low_mastery: 1.25      # <30% mastery (takes longer)
+    standard: 1.0          # 30-70% mastery
+    high_mastery: 0.75     # 70-90% mastery (25% faster)
+    expert: 0.5            # >90% mastery (50% faster)
+  relevant_star_modifiers:
+    mastery_50: 0.9        # 50-75% relevant star mastery (10% faster)
+    mastery_75: 0.8        # 75-90% relevant star mastery (20% faster)
+    mastery_90: 0.7        # >90% relevant star mastery (30% faster)
+
+# Application System Constants
+application_system:
+  daily_slots: 3           # Number of cards that can be equipped
+  effect_tiers:
+    minor: [20, 25]        # Insight cost range
+    standard: [25, 35]     # Insight cost range
+    major: [35, 50]        # Insight cost range
+    special: [45, 75]      # Insight cost range
+  card_introduction_rate: [1, 2]  # Cards per week
+  progressive_introduction: true   # Domains unlock gradually
+
+# Connection System Constants
+connection_system:
+  formation_requirements:
+    same_domain_mastery: 40      # % minimum mastery for same domain
+    cross_domain_mastery: 65     # % minimum mastery for cross domain
+    cross_domain_with_bonus: 50  # % with ability bonus
+  connection_types:
+    same_domain: "standard"
+    cross_domain: "advanced"
+  pattern_types:
+    triangle: 3    # stars required
+    line: 3        # stars required
+    cluster: 4     # minimum stars required
+    web: 6         # minimum stars required
+
+# Professional Aptitude Constants
+aptitude_system:
+  stats: ["comprehension", "fluency", "precision", "innovation"]
+  star_contributions:
+    treatment_planning:
+      primary: "comprehension"
+      secondary: "innovation"
+      primary_value: 1
+      secondary_value: 0.5
+    radiation_therapy:
+      primary: "fluency"
+      secondary: "comprehension"
+      primary_value: 1
+      secondary_value: 0.5
+    linac_anatomy:
+      primary: "precision"
+      secondary: "innovation"
+      primary_value: 1
+      secondary_value: 0.5
+    dosimetry:
+      primary: "precision"
+      secondary: "fluency"
+      primary_value: 1
+      secondary_value: 0.5
+  mentor_bonuses:
+    levels: [2, 3, 4, 5]  # Relationship levels that provide bonuses
+    values: [1, 1, 2, 2]  # Bonus values at each level
+
+# Discovery System Constants
+discovery_system:
+  glimpse_requirements: [3, 5]  # Range of exposures needed for discovery
+  context_types:
+    - "theoretical_mention"
+    - "practical_application"
+    - "clinical_context"
+    - "mentor_discussion"
+  seasonal_gating:
+    spring:
+      core_stars: 4          # All core stars
+      additional_per_domain: 2
+    summer:
+      intermediate_per_domain: 2
+      advanced_per_domain: 1
+    fall:
+      additional_intermediate: 2
+      additional_advanced: 1
+    winter:
+      final_advanced: 1      # Final advanced star per domain
+
+cross_references:
+  related_documents:
+    - "content/master-gdd.md"
+    - "content/core-systems-design.md"
+    - "data/stars/stars-definitions.yaml"
+    - "data/mentors/mentors.yaml"
+    - "data/bosses/"
+  export_templates:
+    - "claude-context"
+    - "cursor-dev"
+    - "team-review" 

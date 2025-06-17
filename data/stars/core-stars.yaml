@@ -1,0 +1,61 @@
+system_info:
+  name: "Core Star System"
+  description: "Foundational stars that unlock application cards"
+  total_stars: 25
+  domains: ["TP", "IM", "PH", "QA"]
+
+stars:
+  tp-optimization:
+    name: "Treatment Planning Optimization"
+    domain: "TP"
+    description: "Master the art of optimizing dose distributions"
+    requirements:
+      - "Complete 10 optimization challenges"
+      - "Achieve 95% dose conformity"
+      - "Minimize healthy tissue exposure"
+    rewards:
+      - "Unlock Perfect Path card"
+      - "Access to advanced optimization algorithms"
+    visual_theme: "Golden geometric patterns overlaying anatomy"
+    implementation_notes: "Links to optimization challenge system"
+    
+  tp-heterogeneity:
+    name: "Tissue Heterogeneity Mastery"
+    domain: "TP"
+    description: "Account for varying tissue densities in dose calculations"
+    requirements:
+      - "Calculate dose in 5 heterogeneous cases"
+      - "Understand tissue correction factors"
+      - "Demonstrate Monte Carlo principles"
+    rewards:
+      - "Unlock Adaptive Flux card"
+      - "Heterogeneity correction algorithms"
+    visual_theme: "Swirling density maps with color gradients"
+    implementation_notes: "Requires physics simulation backend"
+    
+  tp-conformation:
+    name: "Dose Conformation Artist"
+    domain: "TP"
+    description: "Shape dose distributions to match target volumes perfectly"
+    requirements:
+      - "Achieve <2mm margins on 3 complex cases"
+      - "Master IMRT and VMAT techniques"
+      - "Understand inverse planning concepts"
+    rewards:
+      - "Unlock Dose Sculptor card"
+      - "Advanced beam modeling tools"
+    visual_theme: "3D sculpting tools shaping glowing dose clouds"
+    implementation_notes: "Integration with 3D visualization required"
+
+cross_references:
+  cards:
+    - "perfect-path"
+    - "adaptive-flux" 
+    - "dose-sculptor"
+  mentors:
+    - "quinn"
+  systems:
+    - "challenges"
+    - "optimization"
+    - "physics-simulation"
+    - "3d-visualization" 

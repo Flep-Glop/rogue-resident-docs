@@ -1,0 +1,169 @@
+system_info:
+  name: "The Audit Team"
+  type: "boss_encounter"
+  subtitle: "Protocol Incarnate"
+  mastery_threshold: 60  # 60% mastery required to unlock
+  primary_domain: "DOS"
+  secondary_domain: "LA"
+  season_availability: "End of Fall"
+  difficulty: "advanced"
+  estimated_duration: "25-35_minutes"
+  content_reference: "content/boss-encounters/audit-team.md"
+
+character_data:
+  name: "Quality Assurance Audit Team"
+  composition: "Trio of clipboard-wielding figures led by Dr. Kapoor's former mentor"
+  leader: "Dr. Kapoor's former mentor"
+  special_traits: ["strict_but_fair", "procedurally_rigorous", "technically_exacting"]
+  challenge_type: "quality_assurance_procedures"
+
+encounter_concept:
+  metaphorical_role: "Technical standards and quality assurance principles"
+  educational_purpose: "Tests mastery of quality assurance procedures and protocol knowledge"
+  narrative_placement: "End of Fall (available at 60% mastery)"
+
+boss_encounter:
+  name: "Comprehensive QA Audit"
+  setting: "dosimetry_lab_inspection"
+  special_mechanic: "procedural_precision_system"
+  
+  phases:
+    phase_1:
+      name: "Documentation Review"
+      duration: "6_minutes"
+      format: "Protocol analysis challenges"
+      primary_challenge: "Apply knowledge of calibration protocols and standards"
+      special_mechanic: "Technical Verification - Validate technical procedures against standards"
+      secondary_challenge: "Complete missing technical information in protocols"
+      difficulty_modifier: 1.0
+      
+    phase_2:
+      name: "Measurement Verification"
+      duration: "8_minutes"
+      format: "Dosimetric calculation verification"
+      primary_challenge: "Perform complex dosimetric calculations following protocols"
+      special_mechanic: "Precision Requirement - Calculations require high accuracy"
+      secondary_challenge: "Identify sources of measurement uncertainty"
+      difficulty_modifier: 1.3
+      
+    phase_3:
+      name: "Practical Demonstration"
+      duration: "10_minutes"
+      format: "QA procedure simulation"
+      primary_challenge: "Execute quality assurance procedures in correct technical sequence"
+      special_mechanic: "Procedural Accuracy - Technical steps must be performed correctly"
+      secondary_challenge: "Troubleshoot equipment issues using technical knowledge"
+      difficulty_modifier: 1.6
+      
+    phase_4:
+      name: "Technical Compliance"
+      duration: "7_minutes"
+      format: "Case-based technical challenges"
+      primary_challenge: "Apply technical regulations to complex scenarios"
+      special_mechanic: "Standards Integration - Reconcile multiple technical standards"
+      secondary_challenge: "Prioritize technical quality and safety considerations"
+      difficulty_modifier: 1.8
+      
+    phase_5:
+      name: "Quality System Evaluation"
+      duration: "4_minutes"
+      format: "Comprehensive quality assessment"
+      primary_challenge: "Create a technically sound quality management framework"
+      special_mechanic: "Technical Integration - Combine QA, measurement, and safety knowledge"
+      resolution_condition: "System must address all technical requirements while maintaining compliance"
+      difficulty_modifier: 1.2
+
+strategic_counter_knowledge:
+  effective_stars:
+    - id: "dos-calibration"
+      importance: "Critical for understanding measurement protocols"
+    - id: "dos-qa"
+      importance: "Fundamental knowledge of QA procedures"
+    - id: "la-safety"
+      importance: "Understanding of safety systems and interlocks"
+    - id: "dos-small-field"
+      importance: "Knowledge of specialized measurement conditions"
+      
+  effective_patterns:
+    - name: "Measurement Triangle"
+      description: "Connection between dosimetry stars"
+    - name: "QA Path"
+      description: "Linear connection of quality-related stars"
+    - name: "Safety Cluster"
+      description: "Multiple safety and quality-related stars"
+
+preparation_activities:
+  - name: "QA Protocol Review with Dr. Kapoor"
+    effect: "+20% effectiveness in protocol challenges"
+  - name: "Calibration Workshop"
+    effect: "Improves ability to perform accurate calculations"
+  - name: "Mock Audit Run"
+    effect: "Practice for practical QA demonstration"
+  - name: "Regulatory Study Session"
+    effect: "Helps understand complex technical standards"
+
+recommended_configuration:
+  active_stars: "Dosimetry and quality assurance-related stars"
+  application_cards: ["Perfect Precision", "Detector Array", "Relative Measure"]
+  mentor_boon: "Dr. Kapoor's Precision Focus (reduces error margin requirements)"
+
+rewards:
+  sp_reward: 28  # BOSS_3_SP_REWARD
+  insight_reward: "100-125 based on performance"
+  mastery_boost: "BOSS_MASTERY_BOOST (+15% to stars used during encounter)"
+  relationship_reward: "+5 relationship points with Dr. Kapoor"
+  special_rewards:
+    - "Advanced QA certification"
+    - "Regulatory compliance expertise"
+    - "Technical standards mastery"
+
+resolution_paths:
+  victory_perfect_compliance:
+    condition: "95%+ procedural accuracy"
+    outcome: "Exemplary QA competence"
+    rewards: ["full_sp_reward", "bonus_insight", "qa_mastery_certification"]
+    
+  victory_standard_compliance:
+    condition: "80-94% procedural accuracy"
+    outcome: "Solid QA understanding"
+    rewards: ["standard_sp_reward", "qa_competency"]
+    
+  victory_minimal_compliance:
+    condition: "65-79% procedural accuracy"
+    outcome: "Basic compliance achieved"
+    rewards: ["reduced_sp_reward", "remedial_training_access"]
+    
+  defeat:
+    condition: "<65% procedural accuracy"
+    outcome: "Failed audit standards"
+    consequences: ["retry_required", "intensive_remediation_needed"]
+
+cross_references:
+  unlocks:
+    - "advanced_qa_procedures"
+    - "winter_synthesis_preparation"
+    - "regulatory_expertise_path"
+    
+  related_systems:
+    - "dosimetry_systems"
+    - "calibration_protocols"
+    - "safety_procedures"
+    
+  related_characters:
+    - "dr_kapoor"
+    - "audit_team_leader"
+    - "qa_specialists"
+
+implementation_notes:
+  priority: "high"
+  dependencies:
+    - "qa_procedure_system"
+    - "calibration_calculation_engine"
+    - "protocol_verification_interface"
+    - "audit_team_ai_behavior"
+    
+  technical_requirements:
+    - "precision_calculation_system"
+    - "protocol_compliance_tracker"
+    - "procedure_sequence_validator"
+    - "regulatory_standards_database" 

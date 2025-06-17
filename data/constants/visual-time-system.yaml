@@ -1,0 +1,312 @@
+system_info:
+  name: "Visual Time Flow System"
+  description: "Advanced time progression system using environmental cues and visual feedback"
+  design_philosophy: "elegant_intuitive_progression_reducing_cognitive_burden"
+  content_reference: "content/time-system-design.md"
+  related_systems: ["activity-framework", "game-constants", "visual-design"]
+
+time_tracking_framework:
+  time_unit_scale:
+    total_units_per_day: 100
+    unit_range: "0-100 float"
+    day_conclusion_threshold: 100
+    
+  phase_divisions:
+    morning:
+      range: "0-33 units"
+      description: "Dawn through mid-morning activities"
+    afternoon:
+      range: "34-66 units" 
+      description: "Late morning through mid-afternoon"
+    evening:
+      range: "67-100 units"
+      description: "Late afternoon through end of day"
+      
+  fixed_checkpoints:
+    lunch: 33  # units
+    end_of_day_conference: 90  # units
+    morning_rounds: 5  # units (optional)
+    shift_changes: 75  # units (optional)
+
+activity_duration_mapping:
+  quick_activities:
+    time_cost_range: "10-15 units"
+    visual_indicator: "short_bar"
+    player_communication: "A brief activity"
+    
+  standard_activities:
+    time_cost_range: "15-25 units"
+    visual_indicator: "medium_bar"
+    player_communication: "A typical activity"
+    
+  extended_activities:
+    time_cost_range: "25-35 units"
+    visual_indicator: "long_bar"
+    player_communication: "A substantial activity"
+    
+  special_activities:
+    time_cost_range: "variable"
+    visual_indicator: "special_icon"
+    player_communication: "context_specific_description"
+
+mastery_time_modifiers:
+  domain_mastery_modifier:
+    range: "0.5x - 1.25x"
+    implementation: "behind_scenes_no_explicit_communication"
+    effect: "higher_mastery_reduces_time_consumption"
+    
+  relevant_star_mastery_modifier:
+    range: "0.7x - 1.0x"
+    implementation: "additional_reduction_for_specific_activities"
+    effect: "star_specific_efficiency_gains"
+    
+  ability_effects:
+    range: "variable"
+    implementation: "card_abilities_can_modify_time_consumption"
+    effect: "active_time_management_tools"
+
+daily_capacity_system:
+  standard_capacity: "4-5 activities per day"
+  mastery_effect: "higher_mastery_increases_potential_activities"
+  communication_approach: "focus_on_activity_slots_not_remaining_time"
+  adaptive_scheduling: "capacity_adjusts_based_on_mastery_progression"
+
+visual_environment_system:
+  continuous_changes:
+    sky_gradient:
+      binding: "dynamically_tied_to_time_value_0_100"
+      morning_transition: "dawn_pink_to_bright_daylight_blue"
+      afternoon_transition: "warm_yellow_to_golden_hues"
+      evening_transition: "orange_to_deep_blue_twilight"
+      
+    hospital_activity_level:
+      morning: "bustling_staff_meetings_patient_breakfast"
+      afternoon: "peak_treatment_hours_consistent_activity"
+      evening: "winding_down_shift_changes_fewer_patients"
+      
+    lighting_changes:
+      factors: ["brightness", "color_temperature", "shadow_length"]
+      window_patterns: "light_patterns_shifting_across_floors_walls"
+      source_transition: "natural_to_artificial_lighting"
+
+stepped_visual_updates:
+  update_interval: "10 unit intervals"
+  environmental_timeline:
+    units_0_10:
+      environment: "morning_coffee_staff_arriving"
+      npc_behavior: "early_arrivals_preparation"
+    units_10_20:
+      environment: "patient_breakfast_morning_routines"
+      npc_behavior: "morning_rounds_consultations"
+    units_20_30:
+      environment: "treatment_preparation_planning_meetings"
+      npc_behavior: "collaborative_discussions"
+    units_30_40:
+      environment: "lunch_preparation_mid_day_setup"
+      npc_behavior: "transitions_to_lunch_shift_changes"
+    units_40_50:
+      environment: "afternoon_preparations_peak_treatment"
+      npc_behavior: "focus_on_technical_work"
+    units_50_60:
+      environment: "continued_treatments_afternoon_meetings"
+      npc_behavior: "collaborative_problem_solving"
+    units_60_70:
+      environment: "late_afternoon_wrap_up_documentation"
+      npc_behavior: "report_preparation_data_analysis"
+    units_70_80:
+      environment: "evening_transition_patient_dinner"
+      npc_behavior: "shift_handovers_day_summaries"
+    units_80_90:
+      environment: "night_preparation_equipment_checks"
+      npc_behavior: "end_of_day_conferences"
+    units_90_100:
+      environment: "final_treatments_closing_procedures"
+      npc_behavior: "departure_preparations"
+
+phase_transition_system:
+  transition_triggers:
+    morning_to_afternoon: "time_value_crosses_33_units"
+    afternoon_to_evening: "time_value_crosses_67_units"
+    
+  transition_animation:
+    duration: "2-3 seconds"
+    effect: "brief_time_lapse_with_accelerated_movement"
+    elements: ["light", "shadows", "activity"]
+    camera_adjustment: "subtle_adjustment_to_emphasize_change"
+    
+  environmental_reset:
+    simultaneous_update: "all_environmental_elements"
+    staff_repositioning: "position_changes_to_reflect_new_time_period"
+    activity_level_modification: "modified_ambient_activity_level"
+    
+  audio_changes:
+    transition_effect: "time_passing_sound_effect"
+    ambient_package: "new_ambient_audio_for_current_phase"
+    conversation_snippets: "different_background_conversation_content"
+
+player_awareness_design:
+  primary_indicators:
+    approach: "natural_environmental_cues"
+    elements: ["light", "npcs", "activity_level"]
+    
+  subtle_ui_elements:
+    horizon_line: "window_view_with_sun_position"
+    progress_bar: "minimalist_disguised_as_decorative_element"
+    hospital_clock: "visible_in_environment_no_explicit_reference"
+    
+  contextual_messages:
+    morning: "The morning is just beginning..."
+    lunch_time: "It's getting close to lunch time."
+    evening: "The day is winding down."
+
+activity_completion_processing:
+  time_advancement_procedure:
+    step_1: "add_activity_base_time_cost_to_current_time_value"
+    step_2: "apply_applicable_mastery_modifiers"
+    step_3: "determine_if_phase_boundaries_crossed"
+    step_4: "apply_appropriate_visual_transitions"
+    step_5: "update_npc_behaviors_and_environment"
+    step_6: "check_for_checkpoint_events"
+    
+  visual_transition_logic:
+    same_phase: "subtle_environmental_updates"
+    crossing_phase: "trigger_transition_animation"
+    
+  checkpoint_event_checking:
+    lunch_trigger: "time_value_near_33_units"
+    conference_trigger: "time_value_near_90_units"
+    special_events: "contextual_based_on_narrative_progression"
+
+selection_time_preview:
+  hover_calculation:
+    step_1: "calculate_projected_new_time_value"
+    step_2: "determine_resulting_time_of_day"
+    step_3: "prepare_contextual_time_message"
+    
+  visual_preview_elements:
+    lighting_preview: "subtle_change_to_lighting_preview"
+    contextual_message: "time_impact_description"
+    cost_indicator: "relative_time_cost_short_medium_long"
+    
+  checkpoint_messaging:
+    lunch_time: "This will take you to lunch time."
+    afternoon: "This will carry you into the afternoon."
+    final_activity: "This will be your final activity before day's end."
+
+activity_scheduling_logic:
+  natural_sequence:
+    morning_specific: "activities_available_early_in_day"
+    lunch_activities: "activities_at_mid_day"
+    evening_specific: "activities_available_later_in_day"
+    
+  time_restricted_options:
+    phase_specific: "some_activities_only_available_in_specific_phases"
+    insufficient_time: "activities_unavailable_if_insufficient_time_remains"
+    checkpoint_requirements: "certain_activities_require_specific_checkpoints"
+    
+  special_scheduling:
+    fixed_events: "fixed_events_at_certain_time_points"
+    mentor_availability: "mentor_specific_availability_windows"
+    emergency_events: "emergency_events_can_interrupt_schedule"
+
+technical_implementation:
+  state_variables:
+    current_time_value: "0-100 float"
+    current_phase: "enum morning_afternoon_evening"
+    activities_completed: "integer counter"
+    crossed_checkpoints: "array of triggered checkpoint flags"
+    special_event_flags: "any special time based events triggered"
+    
+  visual_asset_management:
+    environment_shader_parameters:
+      - "time_linked_lighting_parameters"
+      - "sun_position_calculations"
+      - "shadow_length_direction"
+    npc_scheduling:
+      - "position_activity_lookup_tables_based_on_time_values"
+      - "behavior_transitions_at_phase_changes"
+      - "randomized_variations_prevent_repetitive_patterns"
+    phase_specific_assets:
+      - "pre_defined_visual_states_for_key_time_points"
+      - "transition_animation_sequences"
+      - "phase_specific_ambient_elements"
+      
+  performance_considerations:
+    background_updates: "bulk_visual_changes_during_phase_transitions"
+    continuous_updates: "minimized_during_gameplay"
+    update_priorities: "distance_based_update_priorities"
+    preloading_strategy:
+      - "next_phase_assets_loaded_during_current_activities"
+      - "transition_animations_cached_before_needed"
+      - "resource_management_based_on_expected_time_progression"
+
+player_experience_benefits:
+  reduced_cognitive_load:
+    - "no_need_to_track_explicit_hours"
+    - "focus_on_activity_selection_rather_than_time_management"
+    - "intuitive_understanding_of_day_progression"
+    
+  increased_immersion:
+    - "natural_environmental_storytelling"
+    - "realistic_hospital_rhythm_and_flow"
+    - "subtle_rather_than_mechanical_progression"
+    
+  adaptive_experience:
+    - "players_with_higher_mastery_naturally_accomplish_more"
+    - "no_explicit_time_optimization_pressure"
+    - "focus_remains_on_educational_content"
+
+edge_cases_special_situations:
+  time_critical_events:
+    - "narrative_moments_require_specific_timing"
+    - "pre_scheduled_activities_mentor_meetings_boss_preparations"
+    - "emergency_events_regardless_of_time"
+    
+  day_transition:
+    - "final_activity_transitions_to_night_phase"
+    - "player_notified_when_starting_final_possible_activity"
+    - "option_to_end_day_early_if_desired"
+    
+  special_time_effects:
+    - "certain_abilities_can_compress_time"
+    - "library_special_mechanics_time_dilation"
+    - "season_specific_time_variations"
+
+implementation_phases:
+  prototype_mvp:
+    priority: "must_have"
+    features:
+      - "basic_time_unit_system"
+      - "simple_visual_indicators_lighting_changes_basic_npc_scheduling"
+      - "phase_transitions_with_minimal_animation"
+      - "initial_activity_time_costs"
+      
+  enhanced_development:
+    priority: "should_have"
+    features:
+      - "full_environmental_time_visualization"
+      - "complete_npc_scheduling_system"
+      - "polished_transition_animations"
+      - "mastery_based_time_modifiers"
+      
+  final_polish:
+    priority: "nice_to_have"
+    features:
+      - "subtle_ui_elements"
+      - "contextual_time_messaging"
+      - "special_time_effects_and_abilities"
+      - "narrative_integration_with_time_system"
+
+cross_references:
+  related_systems:
+    - "activity-framework"
+    - "game-constants"
+    - "visual-design"
+    - "mentor-relationships"
+  content_files:
+    - "content/time-system-design.md"
+    - "content/activity-framework.md"
+    - "content/visual-design-philosophy.md"
+  technical_integration:
+    - "data/constants/game-constants.yaml"
+    - "data/constants/activity-framework.yaml" 

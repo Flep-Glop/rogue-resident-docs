@@ -1,0 +1,190 @@
+system_info:
+  name: "Educational Content Framework"
+  description: "Core educational mechanics, question types, and mastery systems"
+  content_reference: "content/educational-framework.md"
+  related_systems: ["stars", "activities", "mentors"]
+
+educational_goals:
+  - "Conceptual Understanding: Build deep comprehension rather than memorization"  
+  - "Knowledge Connections: Emphasize relationships between different concepts"
+  - "Practical Application: Focus on clinically relevant scenarios"
+  - "Skill Development: Target specific professional skills defined in aptitude stats"
+  - "Domain Mastery: Support domain affinity progression"
+
+question_types:
+  multiple_choice:
+    name: "Multiple Choice Questions"
+    components:
+      - "Question text with contextual framing"
+      - "3-5 answer options"
+      - "Correct answer indication"
+      - "Educational feedback for both correct and incorrect responses"
+      - "Optional follow-up question for deeper exploration"
+    mastery_gain: "MC_QUESTION_MASTERY_GAIN"
+    mastery_range: "1-4% based on difficulty"
+    
+  matching:
+    name: "Matching Questions"
+    components:
+      - "Source set of items (concepts, components, etc.)"
+      - "Target set of items to match (definitions, functions, characteristics)"
+      - "Relationship mapping between items"
+      - "Educational feedback on connections"
+    mastery_gain: "MATCHING_QUESTION_MASTERY_GAIN"
+    mastery_range: "2-5% based on difficulty"
+    
+  procedural:
+    name: "Procedural Questions"
+    components:
+      - "Set of steps that must be ordered correctly"
+      - "Clear beginning and end points"
+      - "Educational explanations for each step"
+      - "Feedback on correct sequencing"
+    mastery_gain: "PROCEDURAL_QUESTION_MASTERY_GAIN"
+    mastery_range: "3-6% based on difficulty"
+    
+  calculation:
+    name: "Calculation Questions"
+    components:
+      - "Problem statement with context"
+      - "Variable values (either fixed or procedurally generated)"
+      - "Formula or approach to solution"
+      - "Step-by-step solution path"
+      - "Feedback explaining conceptual significance"
+    mastery_gain: "CALCULATION_QUESTION_MASTERY_GAIN"
+    mastery_range: "5-8% based on difficulty"
+    
+  boast:
+    name: "Boast Questions (Advanced Challenge)"
+    components:
+      - "Advanced difficulty version of standard question"
+      - "More nuanced or complex scenario"
+      - "Higher educational reward for success"
+      - "Greater penalty for failure"
+      - "Mentor-voiced presentation"
+    mastery_gain: "BOAST_DIFFICULTY_MULTIPLIER × standard gain"
+    mastery_multiplier: 3.0
+
+difficulty_levels:
+  beginner:
+    level: 1
+    description: "Focus on definitions, basic concepts, and foundational knowledge"
+    characteristics:
+      - "Clear, straightforward questions with obvious correct answers"
+      - "Limited variables and simple calculations"
+      - "Direct matches between concepts"
+      
+  intermediate:
+    level: 2
+    description: "Application of concepts in simple clinical contexts"
+    characteristics:
+      - "Questions requiring synthesis of multiple concepts"
+      - "Moderate calculations with multiple steps"
+      - "Less obvious connections between concepts"
+      
+  advanced:
+    level: 3
+    description: "Complex clinical scenarios requiring integration of multiple domains"
+    characteristics:
+      - "Critical analysis and evaluation of approaches"
+      - "Sophisticated calculations with multiple variables"
+      - "Nuanced distinctions between similar concepts"
+
+mastery_difficulty_distribution:
+  mastery_0_25:
+    range: "0-25%"
+    beginner: 70
+    intermediate: 30
+    advanced: 0
+    
+  mastery_25_50:
+    range: "25-50%"
+    beginner: 30
+    intermediate: 50
+    advanced: 20
+    
+  mastery_50_75:
+    range: "50-75%"
+    beginner: 10
+    intermediate: 50
+    advanced: 40
+    
+  mastery_75_100:
+    range: "75-100%"
+    beginner: 0
+    intermediate: 30
+    advanced: 70
+
+content_requirements:
+  question_quantity_per_star:
+    core:
+      multiple_choice: 30
+      matching: 20
+      procedural: 15
+      calculation: 10
+      total: 75
+      
+    standard:
+      multiple_choice: 20
+      matching: 15
+      procedural: 10
+      calculation: 10
+      total: 55
+      
+    advanced:
+      multiple_choice: 15
+      matching: 15
+      procedural: 15
+      calculation: 15
+      total: 60
+
+  difficulty_distribution_per_star:
+    core:
+      beginner: 30
+      intermediate: 30
+      advanced: 15
+      total: 75
+      
+    standard:
+      beginner: 15
+      intermediate: 25
+      advanced: 15
+      total: 55
+      
+    advanced:
+      beginner: 10
+      intermediate: 20
+      advanced: 30
+      total: 60
+
+  total_requirements:
+    core_stars: 4
+    core_questions: 300  # 4 × 75
+    standard_stars: 16
+    standard_questions: 880  # 16 × 55
+    advanced_stars: 5
+    advanced_questions: 300  # 5 × 60
+    total_minimum_questions: 1480
+
+daily_content_targets:
+  activities_per_day: "4-5"
+  challenges_per_day: "10-15"  
+  questions_per_day: "40-55"
+  total_time_minutes: "10-12"
+
+content_hierarchy:
+  question:
+    description: "Single educational prompt"
+    duration: "10-30 seconds"
+    
+  challenge:
+    description: "3-5 related questions"
+    duration: "1-3 minutes"
+    
+  activity:
+    description: "3-4 challenges around theme"
+    duration: "3-10 minutes"
+    
+  day:
+    description: "3-5 activities total"
+    duration: "10-12 minutes" 

@@ -1,0 +1,223 @@
+system_info:
+  name: "Complete Etching System"
+  description: "All 10 etchings for constellation pattern formation and card unlocks"
+  content_reference: "content/cards/etching-system-design.md"
+  related_systems: ["cards", "stars", "journal", "mentors"]
+
+etching_system_overview:
+  total_etchings: 10
+  physical_form: "Hand-drawn star maps found in various locations"
+  collection_location: "Player's journal"
+  function: "Allow players to form specific star connections"
+  usage_phase: "Night Phase during constellation interaction"
+
+etching_categories:
+  domain_etchings:
+    count: 4
+    description: "One per domain, discovered early"
+    characteristics: "Create domain-specific patterns, simpler to complete"
+    discovery_method: "Found through mentor relationships"
+    
+  cross_domain_etchings:
+    count: 3
+    description: "Connect stars across multiple domains"
+    characteristics: "Unlock special Application cards, more complex to complete"
+    discovery_method: "Found through research and exploration"
+    
+  legendary_etchings:
+    count: 3
+    description: "Rare, powerful patterns"
+    characteristics: "Special narrative significance, complex requirements"
+    discovery_method: "Hidden in special locations"
+
+pattern_forming_etchings:
+  temporal_mastery:
+    name: "Temporal Mastery"
+    pattern_shape: "The Hourglass"
+    required_stars: ["rt-fractionation", "tp-optimization", "dos-calibration"]
+    unlocked_card: "Tomorrow's Promise"
+    visual_design:
+      description: "Ancient parchment with astronomical timeline markings. Hourglass constellation with temporal flow symbols."
+      origin: "Found in library astronomy section"
+    discovery_season: "Summer"
+    pattern_type: "cross_domain"
+    
+  treatment_team:
+    name: "The Treatment Team"
+    pattern_shape: "The Compass Rose"
+    required_stars: ["rt-radiobiology", "tp-plan-evaluation", "la-components", "dos-qa"]
+    unlocked_card: "Network Effect"
+    visual_design:
+      description: "Modern medical notebook with professional team structure. Connected mentors forming compass points."
+      origin: "Gift from all four mentors at relationship milestone"
+    discovery_method: "All mentors reach relationship Level 2+"
+    pattern_type: "cross_domain"
+    
+  patient_centered_care:
+    name: "Patient-Centered Care"
+    pattern_shape: "The Embrace"
+    required_stars: ["rt-delivery-techniques", "tp-target-volumes", "rt-motion-management"]
+    unlocked_card: "Bedside Manner"
+    visual_design:
+      description: "Yellowed medical sketch with humanistic care principles. Healing hands surrounding patient outline."
+      origin: "Dr. Garcia's personal notes"
+    discovery_method: "Dr. Garcia relationship Level 3+"
+    pattern_type: "cross_domain"
+
+bonus_etchings:
+  physicians_eye:
+    name: "The Physician's Eye"
+    discovery_method: "Library event"
+    season: "Summer"
+    effects: "+15% planning Insight"
+    visual_design:
+      description: "Precise anatomical drawing with diagnostic overlays"
+      style: "Medical textbook illustration"
+    pattern_type: "domain_bonus"
+    
+  healers_path:
+    name: "The Healer's Path"
+    discovery_method: "Dr. Garcia Level 2"
+    season: "Spring"
+    effects: "-20% patient activity time"
+    visual_design:
+      description: "Warm sketch on hospital letterhead with green pen"
+      style: "Personal mentor gift"
+    pattern_type: "domain_bonus"
+    
+  engineers_blueprint:
+    name: "The Engineer's Blueprint"
+    discovery_method: "Jesse Level 2"
+    season: "Spring"
+    effects: "+1 ability reroll technical"
+    visual_design:
+      description: "Technical diagram sketched on equipment manual margins"
+      style: "Practical engineering notation"
+    pattern_type: "domain_bonus"
+    
+  metrologists_scale:
+    name: "The Metrologist's Scale"
+    discovery_method: "Dr. Kapoor Level 3"
+    season: "Fall"
+    effects: "Favorable calculation rounding"
+    visual_design:
+      description: "Perfectly drafted diagram on graph paper"
+      style: "Precision measurement aesthetic"
+    pattern_type: "domain_bonus"
+    
+  calibration_singularity:
+    name: "The Calibration Singularity"
+    discovery_method: "Quinn's office (90% mastery)"
+    season: "Winter"
+    effects: "+5 all aptitudes, secret dialogue"
+    visual_design:
+      description: "Abstract, almost incomprehensible theoretical diagram"
+      style: "Advanced physics conceptualization"
+    pattern_type: "legendary"
+    requirements: "90% mastery in any domain"
+    
+  residents_journey:
+    name: "The Resident's Journey"
+    discovery_method: "First cross-domain connection"
+    season: "Any"
+    effects: "Journey's End boss ability"
+    visual_design:
+      description: "Progressive sketch showing learning path through residency"
+      style: "Personal growth documentation"
+    pattern_type: "legendary"
+    trigger: "First successful cross-domain star connection"
+    
+  old_ways:
+    name: "The Old Ways"
+    discovery_method: "Library (10 research activities)"
+    season: "Fall"
+    effects: "+5% all mastery gains"
+    visual_design:
+      description: "Historical medical physics document fragments"
+      style: "Vintage academic papers"
+    pattern_type: "legendary"
+    requirements: "Complete 10 library research activities"
+
+etching_discovery_design:
+  library_etchings:
+    visual_style: "Yellowed paper, precise astronomical style"
+    location_method: "Tucked in medical physics textbooks"
+    appearance: "Formal, academic appearance"
+    details: "Historical references in margins"
+    examples: ["Temporal Mastery", "The Physician's Eye", "The Old Ways"]
+    
+  mentor_gifts:
+    dr_garcia:
+      style: "Drawn on hospital letterhead with green pen"
+      personality_reflection: "Warm, patient-focused sketches"
+      
+    jesse:
+      style: "Sketched on equipment manual margins"
+      personality_reflection: "Practical, technical diagrams"
+      
+    dr_kapoor:
+      style: "Perfectly drafted on graph paper"
+      personality_reflection: "Precise, methodical measurements"
+      
+    dr_quinn:
+      style: "Abstract, almost incomprehensible"
+      personality_reflection: "Theoretical, conceptual frameworks"
+      
+  environmental_discoveries:
+    conference_rooms: "Whiteboard remnants"
+    desk_drawers: "Previous resident's notes"
+    physics_office: "Scribbled on corkboard"
+    linac_panels: "Hidden in service documentation"
+
+etching_usage_mechanics:
+  application_flow:
+    - "Open journal to etching catalog during Night Phase"
+    - "Review available etchings"
+    - "Select an etching to apply"
+    - "View potential star connections in constellation"
+    - "Confirm connections if stars meet requirements"
+    - "Connection forms in constellation with visual feedback"
+    
+  visual_feedback:
+    discovery: "Finding animation shows unfolding/unwrapping"
+    cataloging: "Journal placement shows etching being cataloged"
+    activation: "Etching glows when its pattern becomes completable"
+    connection: "Connection lines match etching pattern when formed"
+
+etching_visual_themes:
+  visual_appearance:
+    - "Hand-drawn constellation diagrams"
+    - "Materials vary by source (parchment, notebook paper, etc.)"
+    - "Authentication marks and signatures"
+    - "Age-appropriate wear and color"
+    - "Astronometrical notations and measurements"
+    
+  discovery_visualization:
+    - "Finding animation shows unfolding/unwrapping"
+    - "Journal placement shows etching being cataloged"
+    - "Etching glows when its pattern becomes completable"
+    - "Connection lines match etching pattern when formed"
+
+implementation_priorities:
+  phase_1_tutorial: ["The Healer's Path", "The Engineer's Blueprint"]
+  phase_2_patterns: ["Temporal Mastery", "Treatment Team", "Patient-Centered Care"]
+  phase_3_progression: ["The Physician's Eye", "The Metrologist's Scale"]
+  phase_4_legendary: ["The Calibration Singularity", "The Resident's Journey", "The Old Ways"]
+
+cross_references:
+  unlocked_cards:
+    - "Tomorrow's Promise (Temporal Mastery)"
+    - "Network Effect (Treatment Team)"
+    - "Bedside Manner (Patient-Centered Care)"
+    
+  related_systems:
+    - "card_system"
+    - "constellation_patterns"
+    - "mentor_relationships"
+    - "journal_interface"
+    
+  discovery_locations:
+    - "library"
+    - "mentor_offices"
+    - "conference_rooms"
+    - "physics_department" 

@@ -1,0 +1,205 @@
+system_info:
+  name: "Visual Design Specifications"
+  description: "Visual storytelling elements and UI design guidelines for Rogue Resident"
+  version: "1.0"
+  content_reference: "content/visual-design-philosophy.md"
+  related_systems: ["knowledge-constellation", "journal-integration", "mentors", "cards"]
+
+knowledge_constellation_visuals:
+  star_visualization:
+    progression_states:
+      initial: "faint_outlines_or_nebulous_forms"
+      developing: "gradually_solidifying"
+      mastery: "brilliant_detailed_celestial_bodies"
+    mastery_evolution: "visual_enhancement_based_on_mastery_level"
+    discovery_animation: "subtle_reveal_from_cosmic_background"
+    
+  domain_environments:
+    treatment_planning:
+      color_scheme: "blue"
+      background_elements: ["mathematical_equations", "beam_path_visualizations"]
+      visual_theme: "precision_optimization"
+      
+    radiation_therapy:
+      color_scheme: "green"
+      background_elements: ["cell_structures", "biological_elements"]
+      visual_theme: "adaptive_biological"
+      
+    linac_anatomy:
+      color_scheme: "amber"
+      background_elements: ["technical_schematics", "mechanical_components"]
+      visual_theme: "technical_component_based"
+      
+    dosimetry:
+      color_scheme: "pink"
+      background_elements: ["measurement_devices", "calibration_markers"]
+      visual_theme: "measurement_calibration"
+      
+  connection_visualization:
+    active_connections: "particle_flows_along_connection_lines"
+    pattern_formation: "revelation_animation_with_glow_and_particles"
+    knowledge_transfer: "reflects_conceptual_relationships"
+    cross_references: "visual_indicators_for_relationship_strength"
+
+journal_visual_design:
+  physical_design:
+    cover:
+      material: "weathered_leather"
+      embossing: "medical_caduceus_with_constellation_elements"
+      personalization: "player_name_added_during_introduction"
+      
+    binding:
+      style: "visible_stitching"
+      detail: "multi_colored_thread_representing_four_domains"
+      wear_pattern: "strategic_weathering_at_frequently_referenced_pages"
+      
+    internal_organization:
+      section_tabs: "color_coded_for_domains_and_functions"
+      card_pockets: "three_ornate_pockets_inside_front_cover"
+      progressive_content: "pages_fill_gradually_with_progression"
+      hidden_elements: "fold_out_sections_transparent_overlays_invisible_ink"
+      
+  interactive_elements:
+    fold_out_pages: "expand_to_reveal_larger_patterns"
+    overlay_system: "transparent_pages_over_constellation_maps"
+    progressive_ink: "text_diagrams_appear_with_mastery_development"
+    mentor_annotations: "different_handwriting_styles_and_colors"
+    pull_tabs_wheels: "small_interactive_calculation_elements"
+    
+  amara_sato_elements:
+    identification: "initials_AS_in_page_corners_with_dates"
+    writing_evolution: "organized_to_complex_and_urgent_progression"
+    final_entry: "cryptic_calibration_singularity_note"
+    personal_touches: "coffee_stains_highlights_emotional_indicators"
+    ionix_references: "subtle_notes_about_quinn_project_in_margins"
+
+ability_cards_visual:
+  design_framework:
+    domain_consistency: "visual_language_specific_to_each_domain"
+    
+  domain_visual_languages:
+    treatment_planning:
+      imagery: "precision_optimization"
+      color_scheme: "blue"
+      visual_elements: "mathematical_precision_beam_optimization"
+      
+    radiation_therapy:
+      imagery: "adaptive_biological"
+      color_scheme: "green"
+      visual_elements: "biological_adaptation_clinical_scenarios"
+      
+    linac_anatomy:
+      imagery: "technical_component_based"
+      color_scheme: "amber"
+      visual_elements: "mechanical_components_technical_systems"
+      
+    dosimetry:
+      imagery: "measurement_calibration"
+      color_scheme: "pink"
+      visual_elements: "measurement_devices_calibration_precision"
+      
+  card_evolution:
+    mastery_reflection: "cards_gain_detail_and_animation_with_star_mastery"
+    active_passive_indicators:
+      passive: "subtle_animation_when_equipped"
+      active: "charging_animation_when_sufficient_insight"
+    insight_cost_visualization: "dynamic_meter_showing_current_vs_required"
+
+hospital_environment_visuals:
+  time_progression:
+    lighting_changes: "dynamic_lighting_shifts_based_on_time"
+    environmental_storytelling:
+      morning: "fresh_coffee_cups_crisp_paperwork_alert_staff"
+      afternoon: "busy_treatment_rooms_active_discussions"
+      evening: "dimmed_lights_maintenance_activities_tired_expressions"
+    seasonal_changes: "decorations_clothing_weather_through_windows"
+    
+  location_specific_design:
+    physics_office: "whiteboard_calculations_research_papers_technical_references"
+    treatment_rooms: "patient_positioning_devices_beam_indicators_safety_systems"
+    dosimetry_lab: "measurement_devices_water_phantoms_calibration_equipment"
+    simulation_suite: "imaging_systems_contouring_stations_planning_interfaces"
+    library: "historical_texts_research_journals_hidden_etching_locations"
+
+etching_visualization:
+  design_concept: "historical_medical_diagrams_merged_with_astronomical_charts"
+  previous_owner_elements: "handwritten_notes_observations_calculations_in_margins"
+  progressive_revelation: "begin_partially_obscured_become_clearer_with_prerequisites"
+  
+  source_based_design:
+    library_etchings:
+      style: "academic_precise"
+      medium: "aged_parchment"
+      
+    mentor_gifts:
+      style: "reflects_personal_style_of_each_mentor"
+      medium: "varies_by_mentor_personality"
+      
+    environmental_discoveries:
+      style: "found_on_various_media"
+      medium: "napkins_whiteboards_equipment_panels"
+
+implementation_priorities:
+  phase_1_core_visuals:
+    priority: "must_have"
+    elements:
+      - "constellation_basics_star_types_domain_regions"
+      - "journal_foundation_cover_design_basic_pages"
+      - "ability_cards_base_designs_per_domain"
+      - "hospital_locations_key_environment_designs"
+      
+  phase_2_enhanced_visualization:
+    priority: "should_have"
+    elements:
+      - "constellation_evolution_mastery_based_enhancement"
+      - "journal_expansion_etching_pages_progress_trackers"
+      - "ability_card_dynamics_animation_states"
+      - "environmental_details_seasonal_changes"
+      
+  phase_3_narrative_integration:
+    priority: "nice_to_have"
+    elements:
+      - "amara_presence_visual_elements"
+      - "journal_mysteries_previous_owner_notes"
+      - "ionix_visualization_entity_design"
+      - "resolution_elements_system_stabilization"
+
+production_considerations:
+  asset_optimization:
+    modular_design: "reusable_visual_elements_for_recombination"
+    progressive_detail: "base_visuals_enhanced_with_layers"
+    text_vs_visuals: "text_for_complex_narrative_when_visuals_resource_intensive"
+    animation_prioritization: "focus_on_gameplay_critical_elements_first"
+    
+  scope_management:
+    narrative_core: "maintain_focus_on_amara_ionix_central_thread"
+    visual_hierarchy: "prioritize_visuals_impacting_gameplay_understanding"
+    feature_completeness: "fewer_complete_features_vs_many_partial"
+    expandable_design: "systems_allowing_post_release_content_expansion"
+
+accessibility_considerations:
+  color_coding:
+    primary_indicators: "always_paired_with_non_color_indicators"
+    domain_colors: "sufficient_contrast_for_color_blind_users"
+    
+  text_readability:
+    journal_fonts: "clear_readable_handwriting_simulation"
+    ui_text: "high_contrast_legible_fonts"
+    
+  animation_sensitivity:
+    particle_effects: "option_to_reduce_motion"
+    revelation_animations: "alternative_static_indicators"
+
+cross_references:
+  related_systems:
+    - "knowledge-constellation"
+    - "journal-integration"
+    - "amara-narrative"
+    - "mentor-relationships"
+  content_files:
+    - "content/visual-design-philosophy.md"
+    - "content/character-arcs/amara-sato.md"
+    - "content/journal-design.md"
+  technical_specifications:
+    - "data/constants/journal-integration.yaml"
+    - "data/constants/game-constants.yaml" 

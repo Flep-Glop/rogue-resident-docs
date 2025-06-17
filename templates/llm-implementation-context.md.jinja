@@ -1,0 +1,488 @@
+# {{ system_info.name }} - Implementation Context
+
+**System Type**: {{ system_info.type }}  
+**Development Focus**: {{ system_info.development_focus }}  
+**Generated for**: Focused implementation of {{ development_context.current_status }}
+
+{% if repository_info %}
+---
+
+## 📍 REPOSITORY CONTEXT
+
+**Source Repository**: {{ repository_info.source_repository }}  
+**Base Path**: {{ repository_info.base_path }}  
+**Generated At**: {{ repository_info.generated_at }}  
+**Self-Contained**: {{ repository_info.self_contained }}
+
+*This document contains all referenced content embedded inline - no external dependencies required.*
+
+{% endif %}
+---
+
+## 🎯 IMPLEMENTATION OVERVIEW
+
+{{ system_info.description }}
+
+**User Experience Philosophy**: {{ system_info.user_experience_philosophy }}  
+**Current Development Status**: {{ development_context.current_status }}  
+**Key Decision Points**: {{ development_context.decision_points }}
+
+---
+
+## 🏗️ COMPONENT ARCHITECTURE
+
+{% for component_name, component in components.items() %}
+### {{ component.name }}
+
+**Role in System**: {{ component.user_experience_role }}  
+**Implementation Priority**: {{ component.development_priority }}  
+**Current Status**: {{ component.implementation_status }}
+
+{% if component.technical_unknowns %}
+**⚠️ TECHNICAL UNKNOWNS TO RESOLVE:**
+{% for unknown in component.technical_unknowns %}
+- {{ unknown }}
+{% endfor %}
+{% endif %}
+
+**Technical Requirements:**
+{% for req_type, requirement in component.technical_requirements.items() %}
+- **{{ req_type }}**: {{ requirement }}
+{% endfor %}
+
+**Data Flow:**
+{% if component.integration_points.incoming %}
+- **Input**: {{ component.integration_points.incoming }}
+{% endif %}
+{% if component.integration_points.outgoing %}
+- **Output**: {{ component.integration_points.outgoing }}
+{% endif %}
+{% if component.integration_points.data_dependencies %}
+- **Dependencies**: {{ component.integration_points.data_dependencies }}
+{% endif %}
+
+{% if component.special_features %}
+**Special Implementation Notes:**
+{% for feature, description in component.special_features.items() %}
+- **{{ feature }}**: {{ description }}
+{% endfor %}
+{% endif %}
+
+---
+{% endfor %}
+
+{% if first_day_tutorial or night_phase_tutorial %}
+## 🎓 DETAILED TUTORIAL IMPLEMENTATION SPECIFICATIONS
+
+{% if first_day_tutorial %}
+### 📅 First Day Tutorial Implementation
+
+{% for section_name, section in first_day_tutorial.items() %}
+#### {{ section_name | title | replace("_", " ") }} Implementation
+
+**Scene Configuration:**
+{% if section.location %}
+- **Location**: `{{ section.location }}` (existing hospital scene)
+{% endif %}
+{% if section.time %}
+- **Time**: {{ section.time }}
+{% endif %}
+{% if section.primary_mentor or section.mentor %}
+- **Mentor**: {{ section.primary_mentor or section.mentor }} (from mentor data)
+{% endif %}
+
+{% if section.objectives %}
+**Tutorial Objectives** (for progress tracking):
+{% for objective in section.objectives %}
+- `{{ objective }}`: Boolean flag for completion tracking
+{% endfor %}
+{% endif %}
+
+{% if section.dialogue_flow %}
+**Dialogue Implementation** (extends existing dialogue system):
+```javascript
+// Sample dialogue data structure for {{ section_name }}
+{% for flow_name, flow in section.dialogue_flow.items() %}
+"{{ flow_name }}": {
+  speaker: "{{ flow.speaker }}",
+  text: "{{ flow.text }}",
+{% if flow.choices %}
+  choices: [
+{% for choice in flow.choices %}
+    {
+      option: "{{ choice.option }}",
+      effect: "{{ choice.effect or choice.get('next_scene', 'continue') }}"
+    }{% if not loop.last %},{% endif %}
+{% endfor %}
+  ]
+{% endif %}
+}{% if not loop.last %},{% endif %}
+{% endfor %}
+```
+{% endif %}
+
+{% if section.tutorial_elements %}
+**UI Tutorial Elements** (overlay on existing scenes):
+{% for element in section.tutorial_elements %}
+- `{{ element }}`: Interactive overlay component
+{% endfor %}
+{% endif %}
+
+{% if section.activity_structure %}
+**Activity Integration** (with existing activity framework):
+{% for activity_name, activity in section.activity_structure.items() %}
+- **{{ activity_name | title }}**: 
+  - Speaker: {{ activity.speaker }}
+  - Text: "{{ activity.text }}"
+{% if activity.tutorial_popup %}
+  - Tutorial Popup: "{{ activity.tutorial_popup }}"
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if section.sample_question %}
+**Question System Integration**:
+```javascript
+// Sample tutorial question implementation
+{
+  question: "{{ section.sample_question.question }}",
+  type: "{{ section.sample_question.type }}",
+  options: [
+{% for option in section.sample_question.options %}
+    { text: "{{ option.text }}", correct: {{ option.correct | lower }} }{% if not loop.last %},{% endif %}
+{% endfor %}
+  ],
+  correctFeedback: {
+    speaker: "{{ section.sample_question.correct_feedback.speaker }}",
+    text: "{{ section.sample_question.correct_feedback.text }}",
+    explanation: "{{ section.sample_question.correct_feedback.explanation }}"
+  }
+}
+```
+{% endif %}
+
+{% if section.ability_grant %}
+**Ability System Integration**:
+```javascript
+// Ability card data structure
+{
+  name: "{{ section.ability_grant.ability_details.name }}",
+  domain: "{{ section.ability_grant.ability_details.domain }}",
+  passiveEffect: "{{ section.ability_grant.ability_details.passive_effect }}",
+  activeEffect: "{{ section.ability_grant.ability_details.active_effect }}",
+  usageExplanation: "{{ section.ability_grant.ability_details.usage_explanation }}"
+}
+```
+{% endif %}
+
+---
+{% endfor %}
+{% endif %}
+
+{% if night_phase_tutorial %}
+### 🌙 Night Phase Tutorial Implementation
+
+{% for section_name, section in night_phase_tutorial.items() %}
+#### {{ section_name | title | replace("_", " ") }} Implementation
+
+**Scene Configuration:**
+{% if section.location %}
+- **Location**: `{{ section.location }}` (Hill House scene)
+{% endif %}
+{% if section.time %}
+- **Time**: {{ section.time }}
+{% endif %}
+{% if section.guide %}
+- **Guide**: {{ section.guide }} (mentor reference)
+{% endif %}
+{% if section.delivery_method %}
+- **Delivery Method**: `{{ section.delivery_method }}` UI component
+{% endif %}
+
+{% if section.sequence %}
+**Implementation Sequence**:
+{% for seq_name, seq in section.sequence.items() %}
+```javascript
+// {{ seq_name | title | replace("_", " ") }} implementation
+{
+  type: "{{ seq_name }}",
+{% if seq.speaker %}
+  speaker: "{{ seq.speaker }}",
+  {% if seq.text %}text: "{{ seq.text }}"{% elif seq.message %}message: "{{ seq.message }}"{% endif %},
+{% endif %}
+{% if seq.tutorial_popup %}
+  tutorialPopup: "{{ seq.tutorial_popup }}",
+{% endif %}
+{% if seq.guided_action %}
+  guidedAction: "{{ seq.guided_action }}",
+{% endif %}
+{% if seq.choices %}
+  choices: [
+{% for choice in seq.choices %}
+    { option: "{{ choice.option }}", action: "{{ choice.action }}" }{% if not loop.last %},{% endif %}
+{% endfor %}
+  ]
+{% endif %}
+}
+```
+{% endfor %}
+{% endif %}
+
+---
+{% endfor %}
+{% endif %}
+
+**Integration Requirements:**
+- Tutorial state management (persist progress across scenes)
+- Overlay UI system for contextual help
+- Progress indicators and completion tracking
+- Skip/replay functionality for returning players
+
+{% endif %}
+
+## 🔧 IMPLEMENTATION PATTERNS
+
+### Data Flow Architecture
+{% for flow in integration_points.data_flow %}
+```
+{{ flow }}
+```
+{% endfor %}
+
+### Shared System Dependencies
+{% for dependency in integration_points.shared_dependencies %}
+- {{ dependency }}
+{% endfor %}
+
+### Error Prevention Checklist
+{% for failure_mode in integration_points.failure_modes_to_prevent %}
+- [ ] Prevent: {{ failure_mode }}
+{% endfor %}
+
+---
+
+## 🎨 ASSET SPECIFICATIONS
+
+{% for component_name, component in components.items() %}
+{% if component.asset_requirements %}
+### {{ component.name }} Assets
+
+{% if component.asset_requirements.visual_assets %}
+**Visual Assets Required:**
+{% for asset in component.asset_requirements.visual_assets %}
+- `{{ asset }}`
+{% endfor %}
+{% endif %}
+
+{% if component.asset_requirements.audio_assets %}
+**Audio Assets Required:**
+{% for asset in component.asset_requirements.audio_assets %}
+- `{{ asset }}`
+{% endfor %}
+{% endif %}
+{% endif %}
+{% endfor %}
+
+**Asset Creation Priority**: {{ asset_pipeline.asset_creation_order.week_1 }}
+
+---
+
+## 📋 TESTING REQUIREMENTS
+
+{% for test_requirement in integration_points.testing_requirements %}
+- {{ test_requirement }}
+{% endfor %}
+
+---
+
+## 🔗 REFERENCE DATA
+
+{% if repository_info.references_exported %}
+### Referenced Files (Exported Locally)
+
+{% if exported_reference_files %}
+**All referenced content exported to local files:**
+{% for ref_file in exported_reference_files %}
+- [`{{ ref_file }}`]({{ ref_file }})
+{% endfor %}
+
+*All files are available locally - no external dependencies required.*
+{% endif %}
+
+{% else %}
+{% if embedded_related_systems %}
+### Related Systems (Full Content Embedded)
+{% for system_name, system_info in embedded_related_systems.items() %}
+#### {{ system_name | title | replace("-", " ") }}
+**Source File**: `{{ system_info.file_path }}`
+
+```
+{{ system_info.content }}
+```
+
+---
+{% endfor %}
+{% endif %}
+
+{% if embedded_content_files %}
+### Supporting Content Files (Full Content Embedded)
+{% for content_file, content in embedded_content_files.items() %}
+#### {{ content_file }}
+
+```markdown
+{{ content }}
+```
+
+---
+{% endfor %}
+{% endif %}
+{% endif %}
+
+### Engine Dependencies
+{% for dependency in cross_references.implementation_dependencies %}
+- {{ dependency }}
+{% endfor %}
+
+---
+
+## 💡 IMPLEMENTATION STRATEGY
+
+**Development Approach**: {{ development_context.constraints }}  
+**Success Criteria**: {{ development_context.success_metrics }}  
+**Core Inspiration**: {{ development_context.inspiration }}
+
+### Recommended Implementation Order
+{% for item in development_priorities.ready_to_implement %}
+**{{ loop.index }}. {{ item.component | title }}**
+- Rationale: {{ item.reason }}
+- Asset Dependency: {{ item.asset_dependencies }}
+{% endfor %}
+
+### Blocking Items to Resolve First
+{% for item in development_priorities.blocking_items %}
+**{{ item.component | title }}**: {{ item.reason }}
+{% if item.collaborative_exploration_needed %}*Requires collaborative design session*{% endif %}
+{% endfor %}
+
+---
+
+## 🎮 USER EXPERIENCE SPECIFICATION
+
+{% for step_name, step in user_experience_flow.items() %}
+### {{ step.name }}
+{{ step.description }}
+
+**User Actions:**
+{% for action in step.user_actions %}
+- {{ action }}
+{% endfor %}
+
+**System Requirements:**
+{% for req in step.system_requirements %}
+- {{ req }}
+{% endfor %}
+
+---
+{% endfor %}
+
+## 📋 IMPLEMENTATION CHECKLIST
+
+**Before Starting:**
+- [ ] All blocking technical unknowns resolved
+- [ ] Required assets identified and prioritized
+- [ ] Integration points clearly defined
+- [ ] Testing strategy planned
+
+**During Implementation:**
+- [ ] Component isolation maintained
+- [ ] Data flow documented and tested
+- [ ] Error handling implemented
+- [ ] Performance monitoring in place
+
+**Before Integration:**
+- [ ] Unit tests passing
+- [ ] Integration points verified
+- [ ] Error recovery tested
+- [ ] Performance benchmarks met
+
+---
+
+{% if include_archives %}
+## 📚 COMPREHENSIVE ARCHIVED CONTEXT
+
+*Enhanced context includes all design documents, character content, and game constants*
+
+### 🎭 Character & Mentor Context
+{% if mentors_data %}
+{% for mentor_system_name, mentor_system in mentors_data.items() %}
+{% if mentor_system.mentors %}
+**Available Mentors:**
+{% for mentor_id, mentor in mentor_system.mentors.items() %}
+- **{{ mentor.full_name }}** ({{ mentor.title }}) - {{ mentor.domain_expertise }} specialist
+  - Teaching Style: {{ mentor.character_traits.teaching_style }}
+  - Communication: {{ mentor.character_traits.communication_style }}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+### ⚙️ Core Game Systems
+{% if constants_data %}
+{% for system_name, system_data in constants_data.items() %}
+**{{ system_data.system_info.name }}**:
+- {{ system_data.system_info.description }}
+- Reference: `{{ system_data.system_info.content_reference }}`
+{% endfor %}
+{% endif %}
+
+### 🃏 Card System Context
+{% if cards_data %}
+{% for card_system_name, card_system in cards_data.items() %}
+**{{ card_system.system_info.name }}**:
+- Total Cards: {{ card_system.card_system_overview.total_cards }}
+- Card Slots: {{ card_system.card_system_overview.card_slot_limit }}
+- Implementation Status: {{ card_system.implementation_status.complete_cards }} complete cards
+{% endfor %}
+{% endif %}
+
+### ⚔️ Boss Encounters Context
+{% if bosses_data %}
+{% for boss_name, boss_data in bosses_data.items() %}
+**{{ boss_data.system_info.name }}**:
+- Character: {{ boss_data.character_data.name }} ({{ boss_data.character_data.title }})
+- Difficulty: {{ boss_data.system_info.difficulty }}
+- Season: {{ boss_data.system_info.season_availability }}
+{% endfor %}
+{% endif %}
+
+### 📖 Design Documents & Philosophy
+{% if archived_content %}
+**Key Design Documents Available:**
+{% for content_path, content in archived_content.items() %}
+#### content/{{ content_path }}
+
+```markdown
+{{ content }}
+```
+
+---
+{% endfor %}
+
+**Note**: These documents contain comprehensive narrative context, character development, design philosophy, and implementation guidelines that complement the technical specifications above.
+{% endif %}
+
+---
+
+*This ENHANCED implementation context includes:*
+*- Primary system specifications*
+*- Complete archived design documents and character content ({{ archived_content | length if archived_content else 0 }} files)*
+*- All game systems, constants, and cross-system dependencies*
+*- Full content embedded inline - no external dependencies*
+
+{% else %}
+---
+
+*This implementation context is self-contained with all referenced content embedded inline.*  
+*Generated from structured YAML data with full content integration.*  
+*No external file dependencies required for implementation.*
+{% endif %} 

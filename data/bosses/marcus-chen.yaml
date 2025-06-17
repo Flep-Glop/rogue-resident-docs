@@ -1,0 +1,174 @@
+system_info:
+  name: "Marcus Chen"
+  type: "boss_encounter"
+  system_id: "marcus-chen"
+  mastery_threshold: 40  # 40% mastery required to unlock
+  primary_domain: "TP"
+  secondary_domain: "RT"
+  season_availability: "End of Spring"
+  energy_system: "emotional_energy"
+  difficulty: "intermediate"
+  estimated_duration: "20-25_minutes"
+  content_reference: "content/character-arcs/marcus-chen.md"
+
+character_data:
+  name: "Marcus Chen"
+  title: "Second-Year Resident"
+  year_in_program: 2
+  player_relationship: "senior_resident"
+  personality_traits: ["perfectionist", "competitive", "insecure", "helpful_initially"]
+  core_fear: "inadequacy_after_witnessing_failure"
+  backstory_reference: "content/character-arcs/marcus-chen.md"
+
+timeline:
+  year_0: "Amara completes residency"
+  year_1: "Failed resident(s) who couldn't adapt"
+  year_2: "Marcus Chen starts residency"
+  year_3: "Player starts (Chen is 2nd year)"
+
+progression_arc:
+  days_1_3: "helpful_senior_resident"
+  week_2: "subtle_undermining_begins"
+  week_4: "openly_competitive"
+  week_6: "breaking_point_meltdown"
+  week_7: "boss_encounter_triggered"
+
+boss_encounter:
+  name: "The Morrison Case Competition"
+  setting: "split_screen_planning_stations"
+  audience: "department_staff"
+  trigger_event: "morrison_case_assignment_to_player"
+  
+  energy_system:
+    name: "Emotional Energy"
+    abbreviation: "EE"
+    description: "Player's composure and focus under pressure"
+    starting_value: 100
+    thresholds:
+      normal: 75
+      harder_questions: 50
+      both_parties_reactive: 25
+      crisis_mode: 0
+    
+    drain_sources:
+      interruptions: 15
+      wrong_answers: 10
+      time_pressure: 5
+      chen_outperformance: 20
+    
+    recovery_sources:
+      correct_answers: 10
+      empathy_responses: 15
+      card_abilities: 20
+      combo_streaks: 25
+
+  phases:
+    phase_1:
+      duration: "3_minutes"
+      chen_behavior: "professional_competitive"
+      interruption_triggers: ["wrong_answer"]
+      interruption_chance: 0.8
+      key_dialogue: "Actually, the optimization approach would be..."
+      difficulty_modifier: 1.0
+      
+    phase_2:
+      duration: "3_minutes"  
+      chen_behavior: "increasing_pressure"
+      interruption_triggers: ["wrong_answer", "slow_response"]
+      interruption_chance: 0.9
+      key_dialogue: "No no no, it has to be PERFECT, like Amara would do!"
+      difficulty_modifier: 1.2
+      
+    phase_3:
+      duration: "4_minutes"
+      chen_behavior: "desperate_interruption"
+      interruption_triggers: ["wrong_answer", "rt_domain", "dos_domain"]
+      interruption_chance: 0.7
+      key_dialogue: "I can't be another failure. Not after watching David wash out..."
+      difficulty_modifier: 1.4
+      
+    phase_4:
+      duration: "3_minutes"
+      chen_behavior: "emotional_breakdown"
+      interruption_triggers: ["random"]
+      interruption_chance: 0.3
+      key_dialogue: "Every night I dream about the mistakes... what if I hurt someone?"
+      difficulty_modifier: 1.6
+      
+    phase_5:
+      duration: "2_minutes"
+      chen_behavior: "clarity_or_complete_breakdown"
+      interruption_triggers: ["conditional"]
+      interruption_chance: 0.1
+      key_dialogue: "Maybe... maybe there's more than one way to be excellent"
+      difficulty_modifier: 1.0
+
+  resolution_paths:
+    victory_with_high_ee:
+      ee_threshold: 50
+      outcome: "chen_finds_clarity"
+      rewards: ["storage_closet_key", "relationship_repair", "mentor_respect"]
+      
+    victory_with_low_ee:
+      ee_threshold: 25
+      outcome: "mutual_exhaustion"
+      rewards: ["storage_closet_key", "partial_reconciliation"]
+      
+    defeat:
+      outcome: "chen_breakdown"
+      consequences: ["retry_required", "chen_emotional_damage"]
+      retry_modifications: ["lower_starting_ee", "hint_system_activated"]
+
+  rewards:
+    immediate:
+      - storage_closet_key
+      - relationship_progress
+      - emotional_energy_mastery
+    
+    narrative:
+      - summer_journal_access
+      - chen_occasional_ally_status
+      - department_recognition
+
+mechanics:
+  retry_system:
+    unlimited_retries: true
+    retry_modifications:
+      attempt_2: "starting_ee_reduced_to_85"
+      attempt_3: "hint_system_activated"
+      attempt_4_plus: "chen_dialogue_acknowledges_previous_encounters"
+  
+  special_abilities:
+    emotional_intelligence_moments: false  # Keep mechanics clean
+    card_interruption_defense: true
+    momentum_ee_conversion: true
+
+cross_references:
+  unlocks:
+    - "storage_closet_access"
+    - "summer_journal_discovery"
+    - "pico_discovery_path"
+  
+  related_systems:
+    - "emotional_energy_system"
+    - "mentor_relationships"
+    - "journal_progression"
+    
+  related_characters:
+    - "amara_shepherd"  # Referenced in dialogue
+    - "david_previous_resident"  # Failed resident Chen witnessed
+    - "morrison_patient"  # Case competition subject
+
+implementation_notes:
+  priority: "high"
+  dependencies:
+    - "emotional_energy_system"
+    - "split_screen_interface"
+    - "interruption_mechanics"
+    - "storage_closet_system"
+  
+  technical_requirements:
+    - "real_time_energy_tracking"
+    - "dynamic_difficulty_scaling"
+    - "audience_reaction_system"
+    - "chen_ai_behavior_tree" 

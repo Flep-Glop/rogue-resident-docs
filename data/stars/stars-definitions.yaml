@@ -1,0 +1,528 @@
+system_info:
+  name: "Knowledge Constellation - Star Definitions"
+  description: "Complete definitions for all stars in the Knowledge Constellation system"
+  version: "3.0"
+  total_stars: 25
+  domains: 4
+  content_reference: "content/constellation-design.md"
+
+# Domain Definitions
+domains:
+  treatment_planning:
+    abbreviation: "TP"
+    color: "blue"
+    description: "Algorithms, optimization, plan evaluation"
+    core_star: "tp-dose-calculation"
+    constellation_region: "lower_right"
+    
+  radiation_therapy:
+    abbreviation: "RT"
+    color: "green"
+    description: "Clinical applications, radiobiology, treatment delivery"
+    core_star: "rt-radiobiology"
+    constellation_region: "upper_right"
+    
+  linac_anatomy:
+    abbreviation: "LA"
+    color: "amber"
+    description: "Equipment components, beam generation, safety systems"
+    core_star: "la-components"
+    constellation_region: "upper_left"
+    
+  dosimetry:
+    abbreviation: "DOS"
+    color: "pink"
+    description: "Calibration, measurement, quality assurance"
+    core_star: "dos-calibration"
+    constellation_region: "lower_left"
+
+# Star Type Definitions
+star_types:
+  core:
+    description: "Core concept for each domain"
+    sp_cost: 10
+    prerequisites: []
+    season_available: "spring"
+    provides_application: false
+    
+  standard:
+    description: "Fundamental concepts available early"
+    sp_cost_base: 20
+    prerequisites: ["core_star_in_domain"]
+    season_available: "spring_summer"
+    provides_application: true
+    
+  advanced:
+    description: "Complex concepts available later"
+    sp_cost_base: [25, 30]
+    prerequisites: ["multiple_standard_stars"]
+    season_available: "fall_winter"
+    provides_application: true
+
+# Core Stars (4 total - one per domain)
+core_stars:
+  tp-dose-calculation:
+    name: "Dose Calculation Fundamentals"
+    domain: "treatment_planning"
+    type: "core"
+    description: "Core principles of dose calculation algorithms and methods"
+    position: "domain_center"
+    sp_cost: 10
+    prerequisites: []
+    season_available: "spring"
+    provides_application: false
+    mastery_unlock_thresholds:
+      beginner: 0
+      intermediate: 25
+      advanced: 50
+      expert: 75
+    
+  rt-radiobiology:
+    name: "Radiobiology Principles"
+    domain: "radiation_therapy"
+    type: "core"
+    description: "Fundamental biological effects of radiation on tissues"
+    position: "domain_center"
+    sp_cost: 10
+    prerequisites: []
+    season_available: "spring"
+    provides_application: false
+    mastery_unlock_thresholds:
+      beginner: 0
+      intermediate: 25
+      advanced: 50
+      expert: 75
+    
+  la-components:
+    name: "Linear Accelerator Components"
+    domain: "linac_anatomy"
+    type: "core"
+    description: "Essential components and systems of medical linear accelerators"
+    position: "domain_center"
+    sp_cost: 10
+    prerequisites: []
+    season_available: "spring"
+    provides_application: false
+    mastery_unlock_thresholds:
+      beginner: 0
+      intermediate: 25
+      advanced: 50
+      expert: 75
+    
+  dos-calibration:
+    name: "Dosimetry and Calibration"
+    domain: "dosimetry"
+    type: "core"
+    description: "Fundamental principles of dose measurement and calibration"
+    position: "domain_center"
+    sp_cost: 10
+    prerequisites: []
+    season_available: "spring"
+    provides_application: false
+    mastery_unlock_thresholds:
+      beginner: 0
+      intermediate: 25
+      advanced: 50
+      expert: 75
+
+# Treatment Planning Stars (6 total: 1 core + 5 others)
+treatment_planning_stars:
+  tp-optimization:
+    name: "Treatment Plan Optimization"
+    domain: "treatment_planning"
+    type: "standard"
+    description: "Optimization algorithms and techniques for treatment planning"
+    position: "near_core"
+    sp_cost: 20
+    prerequisites: ["tp-dose-calculation"]
+    season_available: "spring"
+    provides_application: true
+    associated_application: "perfect-path"
+    connectable_to: ["tp-evaluation", "tp-heterogeneity", "rt-delivery"]
+    
+  tp-evaluation:
+    name: "Plan Evaluation Methods"
+    domain: "treatment_planning"
+    type: "standard"
+    description: "Methods and metrics for evaluating treatment plan quality"
+    position: "domain_edge"
+    sp_cost: 20
+    prerequisites: ["tp-dose-calculation"]
+    season_available: "spring"
+    provides_application: true
+    associated_application: "adaptive-flux"
+    connectable_to: ["tp-optimization", "dos-qa", "rt-delivery"]
+    
+  tp-heterogeneity:
+    name: "Tissue Heterogeneity Correction"
+    domain: "treatment_planning"
+    type: "advanced"
+    description: "Advanced methods for handling tissue heterogeneity in dose calculations"
+    position: "domain_edge"
+    sp_cost: 25
+    prerequisites: ["tp-optimization", "tp-evaluation"]
+    season_available: "summer"
+    provides_application: true
+    associated_application: "foresight"
+    connectable_to: ["tp-optimization", "dos-measurement", "la-beam-modeling"]
+    
+  tp-arc-therapy:
+    name: "Arc Therapy Techniques"
+    domain: "treatment_planning"
+    type: "advanced"
+    description: "VMAT and other arc-based delivery techniques"
+    position: "domain_boundary"
+    sp_cost: 30
+    prerequisites: ["tp-optimization", "la-components"]
+    season_available: "fall"
+    provides_application: true
+    associated_application: "dynamic-adaptation"
+    connectable_to: ["la-beam-modeling", "rt-delivery", "dos-qa"]
+    
+  tp-special-procedures:
+    name: "Special Procedure Planning"
+    domain: "treatment_planning"
+    type: "advanced"
+    description: "SRS, SBRT, and other specialized treatment planning approaches"
+    position: "domain_boundary"
+    sp_cost: 30
+    prerequisites: ["tp-heterogeneity", "tp-arc-therapy"]
+    season_available: "winter"
+    provides_application: true
+    associated_application: "precision-targeting"
+    connectable_to: ["rt-special-techniques", "dos-special-measurements", "la-advanced-features"]
+
+# Radiation Therapy Stars (7 total: 1 core + 6 others)
+radiation_therapy_stars:
+  rt-delivery:
+    name: "Treatment Delivery Principles"
+    domain: "radiation_therapy"
+    type: "standard"
+    description: "Fundamental principles of radiation treatment delivery"
+    position: "near_core"
+    sp_cost: 20
+    prerequisites: ["rt-radiobiology"]
+    season_available: "spring"
+    provides_application: true
+    associated_application: "expert-hand"
+    connectable_to: ["rt-safety", "tp-optimization", "la-beam-control"]
+    
+  rt-safety:
+    name: "Radiation Safety Systems"
+    domain: "radiation_therapy"
+    type: "standard"
+    description: "Safety protocols and radiation protection in therapy"
+    position: "domain_edge"
+    sp_cost: 20
+    prerequisites: ["rt-radiobiology"]
+    season_available: "spring"
+    provides_application: true
+    associated_application: "crystal-clear"
+    connectable_to: ["rt-delivery", "la-safety", "dos-protection"]
+    
+  rt-imaging:
+    name: "Image-Guided Radiation Therapy"
+    domain: "radiation_therapy"
+    type: "standard"
+    description: "IGRT principles and imaging for treatment guidance"
+    position: "domain_edge"
+    sp_cost: 20
+    prerequisites: ["rt-delivery"]
+    season_available: "summer"
+    provides_application: true
+    associated_application: "enhanced-vision"
+    connectable_to: ["rt-adaptive", "la-imaging-systems", "tp-evaluation"]
+    
+  rt-adaptive:
+    name: "Adaptive Radiation Therapy"
+    domain: "radiation_therapy"
+    type: "advanced"
+    description: "Adaptive planning and delivery techniques"
+    position: "domain_boundary"
+    sp_cost: 25
+    prerequisites: ["rt-imaging", "tp-evaluation"]
+    season_available: "fall"
+    provides_application: true
+    associated_application: "real-time-adaptation"
+    connectable_to: ["rt-imaging", "tp-arc-therapy", "dos-real-time"]
+    
+  rt-special-techniques:
+    name: "Advanced RT Techniques"
+    domain: "radiation_therapy"
+    type: "advanced"
+    description: "Specialized delivery techniques and protocols"
+    position: "domain_boundary"
+    sp_cost: 30
+    prerequisites: ["rt-adaptive", "rt-safety"]
+    season_available: "fall"
+    provides_application: true
+    associated_application: "technique-mastery"
+    connectable_to: ["tp-special-procedures", "la-advanced-features", "dos-special-measurements"]
+    
+  rt-patient-management:
+    name: "Patient Management Systems"
+    domain: "radiation_therapy"
+    type: "advanced"
+    description: "Comprehensive patient care and management in radiation therapy"
+    position: "domain_boundary"
+    sp_cost: 30
+    prerequisites: ["rt-safety", "rt-delivery"]
+    season_available: "winter"
+    provides_application: true
+    associated_application: "patient-advocacy"
+    connectable_to: ["rt-special-techniques", "dos-qa", "tp-evaluation"]
+
+# Linear Accelerator Stars (6 total: 1 core + 5 others)
+linac_anatomy_stars:
+  la-beam-generation:
+    name: "Beam Generation Systems"
+    domain: "linac_anatomy"
+    type: "standard"
+    description: "Electron gun, accelerating structure, and beam production"
+    position: "near_core"
+    sp_cost: 20
+    prerequisites: ["la-components"]
+    season_available: "spring"
+    provides_application: true
+    associated_application: "priority-access"
+    connectable_to: ["la-beam-control", "la-beam-modeling", "dos-beam-data"]
+    
+  la-beam-control:
+    name: "Beam Control Systems"
+    domain: "linac_anatomy"
+    type: "standard"
+    description: "Beam shaping, collimation, and delivery control systems"
+    position: "domain_edge"
+    sp_cost: 20
+    prerequisites: ["la-components"]
+    season_available: "spring"
+    provides_application: true
+    associated_application: "emergency-protocol"
+    connectable_to: ["la-beam-generation", "la-safety", "rt-delivery"]
+    
+  la-beam-modeling:
+    name: "Beam Modeling and Commissioning"
+    domain: "linac_anatomy"
+    type: "standard"
+    description: "Beam modeling principles and commissioning procedures"
+    position: "domain_edge"
+    sp_cost: 20
+    prerequisites: ["la-beam-generation"]
+    season_available: "summer"
+    provides_application: true
+    associated_application: "fast-learner"
+    connectable_to: ["la-beam-generation", "tp-heterogeneity", "dos-beam-data"]
+    
+  la-safety:
+    name: "Accelerator Safety Systems"
+    domain: "linac_anatomy"
+    type: "standard"
+    description: "Comprehensive safety systems and interlocks"
+    position: "domain_edge"
+    sp_cost: 20
+    prerequisites: ["la-beam-control"]
+    season_available: "summer"
+    provides_application: true
+    associated_application: "safety-protocols"
+    connectable_to: ["la-beam-control", "rt-safety", "dos-protection"]
+    
+  la-imaging-systems:
+    name: "Integrated Imaging Systems"
+    domain: "linac_anatomy"
+    type: "advanced"
+    description: "On-board imaging and verification systems"
+    position: "domain_boundary"
+    sp_cost: 25
+    prerequisites: ["la-beam-control", "la-safety"]
+    season_available: "fall"
+    provides_application: true
+    associated_application: "imaging-integration"
+    connectable_to: ["rt-imaging", "dos-imaging", "la-advanced-features"]
+    
+  la-advanced-features:
+    name: "Advanced Accelerator Features"
+    domain: "linac_anatomy"
+    type: "advanced"
+    description: "Flattening filter free, advanced delivery modes"
+    position: "domain_boundary"
+    sp_cost: 30
+    prerequisites: ["la-beam-modeling", "la-imaging-systems"]
+    season_available: "winter"
+    provides_application: true
+    associated_application: "advanced-operation"
+    connectable_to: ["tp-special-procedures", "rt-special-techniques", "dos-advanced-measurements"]
+
+# Dosimetry Stars (6 total: 1 core + 5 others)
+dosimetry_stars:
+  dos-measurement:
+    name: "Dose Measurement Principles"
+    domain: "dosimetry"
+    type: "standard"
+    description: "Fundamental principles of dose measurement and detection"
+    position: "near_core"
+    sp_cost: 20
+    prerequisites: ["dos-calibration"]
+    season_available: "spring"
+    provides_application: true
+    associated_application: "laser-focus"
+    connectable_to: ["dos-qa", "dos-beam-data", "tp-heterogeneity"]
+    
+  dos-qa:
+    name: "Quality Assurance Programs"
+    domain: "dosimetry"
+    type: "standard"
+    description: "Comprehensive QA programs and procedures"
+    position: "domain_edge"
+    sp_cost: 20
+    prerequisites: ["dos-calibration"]
+    season_available: "spring"
+    provides_application: true
+    associated_application: "perfect-precision"
+    connectable_to: ["dos-measurement", "dos-protection", "tp-evaluation"]
+    
+  dos-beam-data:
+    name: "Beam Data Collection"
+    domain: "dosimetry"
+    type: "standard"
+    description: "Collection and analysis of beam data for commissioning"
+    position: "domain_edge"
+    sp_cost: 20
+    prerequisites: ["dos-measurement"]
+    season_available: "summer"
+    provides_application: true
+    associated_application: "data-mastery"
+    connectable_to: ["dos-measurement", "la-beam-modeling", "tp-optimization"]
+    
+  dos-protection:
+    name: "Radiation Protection Dosimetry"
+    domain: "dosimetry"
+    type: "standard"
+    description: "Personal and area monitoring for radiation protection"
+    position: "domain_edge"
+    sp_cost: 20
+    prerequisites: ["dos-qa"]
+    season_available: "summer"
+    provides_application: true
+    associated_application: "detector-array"
+    connectable_to: ["dos-qa", "rt-safety", "la-safety"]
+    
+  dos-imaging:
+    name: "Dosimetric Imaging"
+    domain: "dosimetry"
+    type: "advanced"
+    description: "Portal imaging and dosimetric verification imaging"
+    position: "domain_boundary"
+    sp_cost: 25
+    prerequisites: ["dos-beam-data", "dos-protection"]
+    season_available: "fall"
+    provides_application: true
+    associated_application: "imaging-dosimetry"
+    connectable_to: ["la-imaging-systems", "rt-imaging", "dos-advanced-measurements"]
+    
+  dos-advanced-measurements:
+    name: "Advanced Measurement Techniques"
+    domain: "dosimetry"
+    type: "advanced"
+    description: "Advanced dosimetry techniques and novel measurement approaches"
+    position: "domain_boundary"
+    sp_cost: 30
+    prerequisites: ["dos-imaging", "dos-beam-data"]
+    season_available: "winter"
+    provides_application: true
+    associated_application: "measurement-innovation"
+    connectable_to: ["la-advanced-features", "rt-special-techniques", "tp-special-procedures"]
+
+# Connection Patterns and Etchings
+connection_patterns:
+  same_domain_triangles:
+    treatment_planning:
+      name: "TP Domain Triangle"
+      stars: ["tp-optimization", "tp-evaluation", "tp-heterogeneity"]
+      effect: "+10% Insight from TP activities"
+      etching_required: "tp-domain-etching"
+    radiation_therapy:
+      name: "RT Domain Triangle"
+      stars: ["rt-delivery", "rt-safety", "rt-imaging"]
+      effect: "+10% Insight from RT activities"
+      etching_required: "rt-domain-etching"
+    linac_anatomy:
+      name: "LA Domain Triangle"
+      stars: ["la-beam-generation", "la-beam-control", "la-beam-modeling"]
+      effect: "+10% Insight from LA activities"
+      etching_required: "la-domain-etching"
+    dosimetry:
+      name: "DOS Domain Triangle"
+      stars: ["dos-measurement", "dos-qa", "dos-beam-data"]
+      effect: "+10% Insight from DOS activities"
+      etching_required: "dos-domain-etching"
+      
+  cross_domain_triangles:
+    technical_integration:
+      name: "Technical Integration Triangle"
+      stars: ["la-beam-modeling", "dos-beam-data", "tp-optimization"]
+      effect: "Unlock Domain Synthesis ability"
+      etching_required: "technical-integration-etching"
+    clinical_delivery:
+      name: "Clinical Delivery Triangle"
+      stars: ["rt-delivery", "tp-evaluation", "dos-qa"]
+      effect: "Unlock Domain Synthesis ability"
+      etching_required: "clinical-delivery-etching"
+    safety_systems:
+      name: "Safety Systems Triangle"
+      stars: ["rt-safety", "la-safety", "dos-protection"]
+      effect: "Unlock Domain Synthesis ability"
+      etching_required: "safety-systems-etching"
+
+# Seasonal Availability
+seasonal_availability:
+  spring:
+    available_stars:
+      - "tp-dose-calculation"
+      - "rt-radiobiology"
+      - "la-components"
+      - "dos-calibration"
+      - "tp-optimization"
+      - "tp-evaluation"
+      - "rt-delivery"
+      - "rt-safety"
+      - "la-beam-generation"
+      - "la-beam-control"
+      - "dos-measurement"
+      - "dos-qa"
+      
+  summer:
+    newly_available:
+      - "tp-heterogeneity"
+      - "rt-imaging"
+      - "la-beam-modeling"
+      - "la-safety"
+      - "dos-beam-data"
+      - "dos-protection"
+      
+  fall:
+    newly_available:
+      - "tp-arc-therapy"
+      - "rt-adaptive"
+      - "rt-special-techniques"
+      - "la-imaging-systems"
+      - "dos-imaging"
+      
+  winter:
+    newly_available:
+      - "tp-special-procedures"
+      - "rt-patient-management"
+      - "la-advanced-features"  
+      - "dos-advanced-measurements"
+
+cross_references:
+  related_documents:
+    - "content/constellation-design.md"
+    - "data/constants/game-constants.yaml"
+    - "data/cards/treatment-planning.yaml"
+    - "data/cards/radiation-therapy.yaml"
+    - "data/cards/linac-anatomy.yaml"
+    - "data/cards/dosimetry.yaml"
+  export_templates:
+    - "claude-context"
+    - "cursor-dev"
+    - "constellation-reference" 
