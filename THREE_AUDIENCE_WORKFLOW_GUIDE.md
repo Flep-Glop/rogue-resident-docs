@@ -670,10 +670,111 @@ git add . && git commit -m "Update system" && git push
 ```
 
 #### **Final Architecture**:
-- **🌐 Deployed Web App**: Complete document library with pre-generated content
-- **💻 Local Development**: Same Python pipeline for consistency
-- **📄 Build Pipeline**: Automatic document generation during deployment
+- **🌐 Deployed Web App**: Complete document library with pre-generated content (technical + narrative)
+- **💻 Local Development**: Same Python pipeline for consistency  
+- **📄 Build Pipeline**: Automatic generation of workflow AND narrative documents during deployment
 - **🔄 Single Source**: YAML changes → Deploy → Documents auto-update
+- **🎭 Dual Workflows**: Technical systems (activity-interface, mentors, tutorials) + Narrative focus areas (character, world, plot, all)
+
+---
+
+## 🎭 **NARRATIVE WORKFLOW EXTENSION**
+
+### **Dual-Mode Architecture** 🎯
+
+The system now supports **two complementary workflow types**:
+
+#### **🔧 Technical Workflows**
+- **Focus**: Game systems, interfaces, mechanics
+- **Output**: Three-audience docs (conversational, planning, implementation)  
+- **Source**: `data/interfaces/*.yaml` system definitions
+- **Use Case**: Feature development, system implementation, technical collaboration
+
+#### **🎭 Narrative Workflows**  
+- **Focus**: Story, characters, world-building, lore
+- **Output**: Three-audience docs (narrative context, lore implementation, story continuity)
+- **Source**: `content/*.md` + character arcs + world-building data
+- **Use Case**: Story development, narrative consistency, creative collaboration
+
+### **Narrative Focus Areas** 📚
+
+#### **🌟 Complete Narrative** (`all`)
+- Comprehensive context across all story elements
+- Full character development, world-building, and plot progression
+- Best for: Complete story overview, major narrative decisions
+
+#### **👥 Character Focus** (`character`)  
+- Character arcs, interpersonal dynamics, mentor relationships
+- Boss encounters from character development perspective
+- Best for: Character writing, dialogue development, relationship design
+
+#### **🌍 World Building** (`world`)
+- Hospital setting, medical physics context, constellation lore
+- Environmental storytelling, authentic professional atmosphere
+- Best for: Setting design, atmospheric writing, technical authenticity
+
+#### **📖 Plot & Story** (`plot`)
+- Seasonal progression, narrative beats, story structure
+- Challenge progression and thematic development
+- Best for: Story pacing, plot development, narrative architecture
+
+### **Build Process Integration** ⚙️
+
+All narrative documents are **automatically generated during deployment**:
+
+```bash
+# Build pipeline includes both technical AND narrative workflows:
+python3 docs.py workflow activity-interface --export-references  # Technical
+python3 docs.py workflow mentors-interface --export-references   # Technical  
+python3 docs.py workflow tutorial-flows --export-references      # Technical
+python3 docs.py narrative all --export-references               # Narrative (all focus areas)
+```
+
+**Generated Narrative Documents**:
+- `narrative-context.md` (general), `narrative-character-context.md`, `narrative-plot-context.md`, `narrative-world-context.md`
+- `lore-implementation.md` (general), `lore-character-implementation.md`, `lore-plot-implementation.md`, `lore-world-implementation.md`  
+- `story-continuity.md` (general), `story-character-continuity.md`, `story-plot-continuity.md`, `story-world-continuity.md`
+
+### **Web App Interface** 🌐
+
+#### **Mode Toggle**
+- **🔧 Technical**: System-based workflow generation (existing functionality)
+- **🎭 Narrative**: Focus area-based narrative documentation
+
+#### **Focus Area Selection**  
+Users can select narrative focus for specialized documentation:
+- **Complete Narrative**: Full story context
+- **Character Focus**: Character development and relationships  
+- **World Building**: Setting and environmental context
+- **Plot & Story**: Narrative structure and progression
+
+#### **Document Categories**
+Each focus area provides three audience documents:
+- **🎭 Narrative Context**: For writers and narrative designers  
+- **🛠️ Lore Implementation**: For developers integrating story elements
+- **🧠 Story Continuity**: For AI assistants and comprehensive reference
+
+### **Benefits of Dual Workflow** ✅
+
+#### **✅ Complementary Coverage**
+- **Technical workflows**: Focus on game mechanics and systems
+- **Narrative workflows**: Focus on story, characters, and world-building
+- **Complete coverage**: Every aspect of development supported
+
+#### **✅ Specialized Context**  
+- Each workflow type provides optimized context for its domain
+- No more mixing technical implementation details with story development
+- Clear separation of concerns while maintaining cross-references
+
+#### **✅ Same Quality Standards**
+- Both workflow types use identical template system and generation process
+- Same three-audience philosophy (conversational, planning, implementation)
+- Consistent document quality and format across all outputs
+
+#### **✅ Flexible Focus**
+- Technical: Choose specific system for focused development context
+- Narrative: Choose story aspect (character/world/plot/all) for specialized creative context
+- Real-time switching between modes based on current development needs
 
 ---
 
