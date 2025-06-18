@@ -629,24 +629,51 @@ def export_for_nextjs(self):
 - ❌ `spawn python3 ENOENT` errors from API routes trying to execute Python scripts
 - ❌ `/api/narrative-workflow`, `/api/workflow-export`, `/api/python-export` routes failing
 
-#### **Solution**: Graceful Degradation with Clear Guidance
-```typescript
-// ✅ CORRECT: API routes return helpful guidance instead of trying to spawn Python
-return NextResponse.json({
-  success: false,
-  error: 'Document generation not available in deployed environment',
-  solution: {
-    title: 'Use Offline Workflow Instead',
-    steps: ['Run locally: python3 docs.py narrative ...', 'Files generated in exports/'],
-    explanation: 'Deployed app uses pre-exported JSON for performance and reliability'
+#### **Solution**: Pre-Generated Document Architecture ✅
+
+**The Best of Both Worlds**: Online document viewing with guaranteed consistency
+
+```json
+// package.json - Build process integration
+{
+  "scripts": {
+    "vercel-build": "npm run generate-docs && next build",
+    "generate-docs": "cd .. && python3 docs.py export all && python3 docs.py workflow activity-interface --export-references && python3 docs.py workflow mentors-interface --export-references && python3 docs.py workflow tutorial-flows --export-references && python3 docs.py narrative all --export-references && cp -r exports rogue-docs-web/public/"
   }
-}, { status: 501 }) // 501 Not Implemented
+}
 ```
 
-#### **Architecture Clarity**:
-- **🌐 Deployed Web App**: Data browsing, visualization, JSON consumption only
-- **💻 Local Development**: Full document generation, Python pipeline, template rendering
-- **📄 Export Pipeline**: `python3 docs.py export nextjs` syncs YAML → JSON before deploy
+#### **How It Works** 🔄:
+1. **Build Trigger**: Vercel starts deployment from Git push
+2. **Document Generation**: Python scripts generate all documents using same templates
+3. **Static Copy**: All generated docs copied to `public/exports/` directory  
+4. **Next.js Build**: Web app builds with pre-generated documents included
+5. **Static Serving**: Documents served as static files (fast, reliable)
+
+#### **Architecture Benefits**:
+- **✅ Same Templates**: Uses identical Python system for 100% consistency
+- **✅ Always Current**: Documents regenerated on every deployment
+- **✅ Fast Loading**: Static file serving (no runtime generation)
+- **✅ Offline Capable**: All documents available in deployed app
+- **✅ No Runtime Errors**: No Python dependencies in production
+
+#### **Update Workflow**:
+```bash
+# 1. Edit source files (YAML/Markdown)
+vim data/interfaces/my-system.yaml
+
+# 2. Deploy (triggers automatic document generation)
+git add . && git commit -m "Update system" && git push
+
+# 3. Documents auto-regenerate and deploy
+# → Web app immediately shows updated content
+```
+
+#### **Final Architecture**:
+- **🌐 Deployed Web App**: Complete document library with pre-generated content
+- **💻 Local Development**: Same Python pipeline for consistency
+- **📄 Build Pipeline**: Automatic document generation during deployment
+- **🔄 Single Source**: YAML changes → Deploy → Documents auto-update
 
 ---
 
