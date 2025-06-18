@@ -1,51 +1,34 @@
 import { NextResponse } from 'next/server';
-import { spawn } from 'child_process';
-import { join } from 'path';
 
 export async function POST(request: Request): Promise<NextResponse> {
   try {
     const { format, focusSystem } = await request.json();
     
-    // Path to the Python export script (go up to parent directory)
-    const scriptPath = join(process.cwd(), '..', 'scripts', 'export.py');
-    const pythonArgs = ['python3', scriptPath, '--format', format || 'all'];
-    
-    if (focusSystem) {
-      pythonArgs.push('--focus', focusSystem);
-    }
+    // Python execution is not available in deployed environment
+    let command = `python3 scripts/export.py --format ${format || 'all'}`;
+    if (focusSystem) command += ` --focus ${focusSystem}`;
 
-    return new Promise<NextResponse>((resolve) => {
-      const python = spawn(pythonArgs[0], pythonArgs.slice(1), {
-        cwd: join(process.cwd(), '..'), // Run from parent directory
-      });
-
-      let stdout = '';
-      let stderr = '';
-
-      python.stdout.on('data', (data) => {
-        stdout += data.toString();
-      });
-
-      python.stderr.on('data', (data) => {
-        stderr += data.toString();
-      });
-
-      python.on('close', (code) => {
-        if (code === 0) {
-          resolve(NextResponse.json({ 
-            success: true, 
-            output: stdout,
-            format: format
-          }));
-        } else {
-          resolve(NextResponse.json({ 
-            success: false, 
-            error: stderr || 'Export failed',
-            code: code
-          }, { status: 500 }));
-        }
-      });
-    });
+    return NextResponse.json({
+      success: false,
+      error: 'Python export not available in deployed environment',
+      solution: {
+        title: 'Use Local Development Environment',
+        steps: [
+          `Run locally: ${command}`,
+          'Execute from the project root directory',
+          'Generated files will appear in the exports/ directory',
+          'Data is pre-exported to JSON files for web app consumption'
+        ],
+        explanation: 'The deployed web app uses pre-exported JSON data for performance. Python exports require the full development environment.'
+      },
+      format: format || 'all',
+      focusSystem,
+      alternatives: {
+        dataAccess: 'Browse all system data through the Library section',
+        jsonData: 'All data is available as pre-exported JSON files',
+        offlineExecution: 'Full Python export pipeline works in local development'
+      }
+    }, { status: 501 }) // 501 Not Implemented
   } catch (_error) {
     console.error('Python export error:', _error);
     return NextResponse.json(

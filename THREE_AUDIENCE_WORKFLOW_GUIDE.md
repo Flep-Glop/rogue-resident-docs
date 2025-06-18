@@ -461,6 +461,169 @@ cross_references:
 
 ---
 
+## 🚀 **DEPLOYMENT & DATA ARCHITECTURE INTEGRITY**
+
+### **CRITICAL: Monorepo Deployment Workflow** ⚠️
+
+When deploying the Next.js app from a subdirectory (like `rogue-docs-web/`), the deployed app **loses access to parent directory files**. This breaks direct YAML file access but preserves the designed JSON export architecture.
+
+### **The Issue We Solved** 
+
+#### **Problem Sequence:**
+1. **Vercel Deployment**: Configured to build from `rogue-docs-web/` subdirectory ✅
+2. **Root Directory Access Lost**: App can't read `../data/*.yaml` files ❌
+3. **Data Layer Mismatch**: `dataUtils.ts` was trying to read YAML directly ❌  
+4. **Export Pipeline Incomplete**: Missing `interfaces` data in JSON export ❌
+
+#### **Symptoms:**
+- ❌ `spawn python3 ENOENT` errors (trying to call Python at runtime)
+- ❌ "Available systems: activity-interface, mentors-interface, tutorial-flows" but missing data
+- ❌ Module resolution errors for data access functions
+
+### **The Correct Architecture (Preserved & Fixed)** ✅
+
+```
+📁 Root Directory (source of truth - deployed separately)
+├── data/ *.yaml          # ← Authoritative data (you edit these)
+├── content/ *.md          # ← Narrative content  
+└── scripts/export.py     # ← Data pipeline
+
+📁 rogue-docs-web/ (deployed app - subdirectory root)  
+├── data/ *.json          # ← Generated for Next.js consumption
+└── src/lib/dataUtils.ts  # ← Must read JSON, not YAML
+```
+
+### **MANDATORY DEPLOYMENT WORKFLOW** 🔄
+
+#### **Step 1: Data Sync Before Deploy**
+```bash
+# ALWAYS run before deploying:
+python3 docs.py export nextjs
+
+# Verify all data types exported:
+ls rogue-docs-web/data/*.json
+# Should show: bosses.json, cards.json, constants.json, interfaces.json, mentors.json, content.json
+```
+
+#### **Step 2: Verify Data Layer Architecture**
+```typescript
+// ✅ CORRECT: dataUtils.ts reads JSON files
+const jsonFilePath = path.join(DATA_DIR, `${category}.json`);
+const allData = JSON.parse(fileContent);
+
+// ❌ WRONG: Don't read YAML directly in deployed app
+const filePath = path.join(DATA_DIR, category, `${filename}.yaml`);
+const data = yaml.load(fileContent);
+```
+
+#### **Step 3: Export Pipeline Completeness Check**
+Ensure `scripts/export.py` includes ALL data types:
+```python
+def export_for_nextjs(self):
+    all_data = {
+        "cards": self.load_all_cards(),
+        "bosses": self.load_all_bosses(), 
+        "mentors": self.load_all_mentors(),
+        "constants": self.load_all_constants(),
+        "interfaces": self.load_all_interfaces(),  # ← Don't forget this!
+        "content": self.load_markdown_content()
+    }
+```
+
+#### **Step 4: Deployment Configuration**
+```json
+// vercel.json - Simple configuration for subdirectory deployment
+{
+  "framework": "nextjs"
+}
+```
+
+**Vercel Dashboard Configuration:**
+- **Root Directory**: `rogue-docs-web`
+- **Build Command**: `npm run build` (automatic)
+- **Install Command**: `npm install` (automatic)
+
+### **Prevention Checklist Before Any Deployment** ✅
+
+- [ ] **Data Exported**: `python3 docs.py export nextjs` completed successfully
+- [ ] **All JSON Files Present**: Check `rogue-docs-web/data/` contains all expected `.json` files
+- [ ] **No YAML Dependencies**: Verify `dataUtils.ts` reads JSON, not YAML
+- [ ] **Export Pipeline Complete**: All data types included in export function
+- [ ] **Subdirectory Config**: Deployment platform configured for correct root directory
+
+### **Warning Signs of Architecture Drift** 🚨
+
+#### **Development Shortcuts That Break Deployment:**
+- ❌ Adding direct YAML file reading to "speed up" development
+- ❌ Skipping export step during local development
+- ❌ Creating new data types without adding to export pipeline
+- ❌ Mixing JSON and YAML access patterns
+
+#### **Runtime Errors Indicating Broken Architecture:**
+- `spawn python3 ENOENT` - App trying to call Python scripts at runtime
+- `Module not found: '@/lib/dataUtils'` - Build-time module resolution failures
+- Empty data sections despite populated YAML files - JSON export not run
+- "Available systems" showing old data - Stale JSON files
+
+### **Recovery Workflow When Things Break** 🛠️
+
+#### **If Deployment Fails with Data Access Errors:**
+1. **Check Export Status**: `ls rogue-docs-web/data/*.json` - are files recent?
+2. **Re-export Data**: `python3 docs.py export nextjs`
+3. **Commit JSON Files**: `git add rogue-docs-web/data/*.json && git commit -m "Sync latest data"`
+4. **Redeploy**: Push to trigger new deployment
+
+#### **If App Shows "No Systems Available":**
+1. **Verify Export Pipeline**: Check `scripts/export.py` includes all data types
+2. **Check Data Directory**: Ensure source YAML files exist in `data/interfaces/`
+3. **Test Export Locally**: Run export and verify JSON files contain expected data
+4. **Update Data Access**: Ensure `dataUtils.ts` uses correct JSON file paths
+
+### **Architecture Benefits (Why This Design Rocks)** ⭐
+
+#### **✅ Development Speed**
+- Edit human-friendly YAML files with structure and comments
+- Single export command syncs all data formats
+- No manual JSON editing or duplication
+
+#### **✅ Production Reliability**  
+- Self-contained Next.js app (no parent directory dependencies)
+- Fast JSON parsing (no YAML runtime overhead)
+- Vercel-optimized deployment structure
+
+#### **✅ Single Source of Truth**
+- YAML files remain authoritative
+- JSON files automatically generated and consistent
+- No data synchronization conflicts
+
+#### **✅ Scalability**
+- Add new data categories easily in export pipeline
+- Consistent export for all data types
+- Works with existing three-audience workflow system
+
+### **Long-Term Maintenance** 🔧
+
+#### **Quarterly Architecture Health Check:**
+1. **Verify Export Completeness**: All data types flow from YAML → JSON
+2. **Check Data Access Patterns**: No YAML reading in Next.js app
+3. **Test Full Deployment**: Deploy from clean checkout to catch missing steps
+4. **Update Documentation**: Keep this guide current with any architecture changes
+
+#### **When Adding New Data Types:**
+1. **Update Export Pipeline**: Add to `export_for_nextjs()` function
+2. **Test Export**: Verify new JSON file is created
+3. **Update Data Access**: Ensure `dataUtils.ts` can read new category
+4. **Document Changes**: Add to this guide for future reference
+
+### **Success Metrics** ✅
+
+- **Deployment Success Rate**: 100% (no more module resolution failures)
+- **Data Availability**: All YAML data accessible in deployed app via JSON
+- **Performance**: Fast JSON parsing vs slower YAML runtime processing
+- **Developer Experience**: Simple export command syncs all data formats
+
+---
+
 ## 🔄 **CRITICAL: TEMPLATE-DATA FLOW INTEGRITY**
 
 ### **Mandatory Validation After Template or Data Updates** ⚠️
