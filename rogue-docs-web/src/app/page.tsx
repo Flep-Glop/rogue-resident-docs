@@ -122,10 +122,42 @@ export default function ThreeAudienceWorkflow() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Narrative focus areas
+  const NARRATIVE_FOCUS_AREAS = [
+    {
+      id: 'all',
+      name: 'Complete Narrative',
+      icon: '🌟',
+      description: 'Comprehensive narrative context across all story elements',
+      systems: ['character-arcs', 'world-building', 'plot-progression']
+    },
+    {
+      id: 'character', 
+      name: 'Character Focus',
+      icon: '👥',
+      description: 'Character development, arcs, and interpersonal dynamics',
+      systems: ['character-arcs', 'mentor-relationships', 'boss-encounters']
+    },
+    {
+      id: 'world',
+      name: 'World Building',
+      icon: '🌍', 
+      description: 'Setting, lore, environment, and worldbuilding elements',
+      systems: ['hospital-setting', 'medical-physics', 'constellation-lore']
+    },
+    {
+      id: 'plot',
+      name: 'Plot & Story',
+      icon: '📖',
+      description: 'Story progression, narrative beats, and plot development',
+      systems: ['seasonal-progression', 'challenge-structure', 'story-beats']
+    }
+  ];
+
   useEffect(() => {
     loadAudienceDocuments();
     loadLibraryData();
-  }, [selectedSystem]);
+  }, [selectedSystem, selectedNarrativeFocus, workflowMode]);
 
   const loadAudienceDocuments = async () => {
     // Simulate loading the three audience documents
@@ -178,38 +210,86 @@ export default function ThreeAudienceWorkflow() {
       const result = await response.json();
       
       if (result.documents && result.documents.length > 0) {
-        // Find documents for the selected system
-        const systemDocs = result.documents.filter((doc: any) => 
-          doc.name.includes(selectedSystem) && doc.category === 'workflow'
-        );
+        let relevantDocs;
+        let systemIdentifier;
         
-        if (systemDocs.length > 0) {
-          const updatedDocs: AudienceDocument[] = [];
+        if (workflowMode === 'narrative') {
+          // Find narrative documents for the selected focus area
+          systemIdentifier = selectedNarrativeFocus;
+          relevantDocs = result.documents.filter((doc: any) => 
+            doc.category === 'narrative' && doc.focusArea === selectedNarrativeFocus
+          );
           
-          // Load each document type
-          for (const docType of ['conversational', 'development-plan', 'implementation-context']) {
-            const doc = systemDocs.find((d: any) => d.name.includes(docType));
-            if (doc) {
-              const contentResponse = await fetch(`/api/generated-docs?path=${encodeURIComponent(doc.path)}`);
-              const contentResult = await contentResponse.json();
-              
-              updatedDocs.push({
-                type: docType.includes('conversational') ? 'conversational' : 
-                      docType.includes('development') ? 'planning' : 'implementation',
-                title: doc.displayName,
-                description: docType.includes('conversational') ? 'Design discussions' :
-                           docType.includes('development') ? 'Implementation planning' : 'LLM collaboration',
-                size: `${Math.round(doc.size / 1024 * 10) / 10}KB`,
-                lastGenerated: new Date(doc.lastModified).toLocaleString(),
-                content: contentResult.content || 'Content not available'
-              });
+          if (relevantDocs.length > 0) {
+            const updatedDocs: AudienceDocument[] = [];
+            
+            // Load narrative document types (context, implementation, continuity)
+            const narrativeTypes = [
+              { key: 'context', title: '🎭 Narrative Context', description: 'Story development and worldbuilding' },
+              { key: 'implementation', title: '🛠️ Lore Implementation', description: 'Technical integration guide' },
+              { key: 'continuity', title: '🧠 Story Continuity', description: 'Complete story bible reference' }
+            ];
+            
+            for (const narrativeType of narrativeTypes) {
+              const doc = relevantDocs.find((d: any) => d.type === narrativeType.key);
+              if (doc) {
+                const contentResponse = await fetch(`/api/generated-docs?path=${encodeURIComponent(doc.path)}`);
+                const contentResult = await contentResponse.json();
+                
+                updatedDocs.push({
+                  type: narrativeType.key === 'context' ? 'conversational' : 
+                        narrativeType.key === 'implementation' ? 'planning' : 'implementation',
+                  title: narrativeType.title,
+                  description: narrativeType.description,
+                  size: `${Math.round(doc.size / 1024 * 10) / 10}KB`,
+                  lastGenerated: new Date(doc.lastModified).toLocaleString(),
+                  content: contentResult.content || 'Content not available'
+                });
+              }
             }
+            
+            setAudienceDocuments(updatedDocs);
+            const focusName = NARRATIVE_FOCUS_AREAS.find(f => f.id === selectedNarrativeFocus)?.name || selectedNarrativeFocus;
+            showToast(`🎭 Loaded ${updatedDocs.length} narrative documents for ${focusName}`, 'success');
+          } else {
+            const focusName = NARRATIVE_FOCUS_AREAS.find(f => f.id === selectedNarrativeFocus)?.name || selectedNarrativeFocus;
+            showToast(`📄 No narrative documents found for ${focusName}. Documents are created during build.`, 'error');
           }
-          
-          setAudienceDocuments(updatedDocs);
-          showToast(`📄 Loaded ${updatedDocs.length} pre-generated documents for ${selectedSystem}`, 'success');
         } else {
-          showToast(`📄 No pre-generated documents found for ${selectedSystem}. Documents are created during build.`, 'error');
+          // Find technical workflow documents for the selected system
+          systemIdentifier = selectedSystem;
+          relevantDocs = result.documents.filter((doc: any) => 
+            doc.name.includes(selectedSystem) && doc.category === 'workflow'
+          );
+          
+          if (relevantDocs.length > 0) {
+            const updatedDocs: AudienceDocument[] = [];
+            
+            // Load each document type
+            for (const docType of ['conversational', 'development-plan', 'implementation-context']) {
+              const doc = relevantDocs.find((d: any) => d.name.includes(docType));
+              if (doc) {
+                const contentResponse = await fetch(`/api/generated-docs?path=${encodeURIComponent(doc.path)}`);
+                const contentResult = await contentResponse.json();
+                
+                updatedDocs.push({
+                  type: docType.includes('conversational') ? 'conversational' : 
+                        docType.includes('development') ? 'planning' : 'implementation',
+                  title: doc.displayName,
+                  description: docType.includes('conversational') ? 'Design discussions' :
+                             docType.includes('development') ? 'Implementation planning' : 'LLM collaboration',
+                  size: `${Math.round(doc.size / 1024 * 10) / 10}KB`,
+                  lastGenerated: new Date(doc.lastModified).toLocaleString(),
+                  content: contentResult.content || 'Content not available'
+                });
+              }
+            }
+            
+            setAudienceDocuments(updatedDocs);
+            showToast(`📄 Loaded ${updatedDocs.length} pre-generated documents for ${selectedSystem}`, 'success');
+          } else {
+            showToast(`📄 No pre-generated documents found for ${selectedSystem}. Documents are created during build.`, 'error');
+          }
         }
       } else {
         showToast('📄 No generated documents found. Documents are created during build process.', 'error');
@@ -539,10 +619,39 @@ export default function ThreeAudienceWorkflow() {
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xl font-semibold text-gray-900">
-                  📂 Select System for Document Viewing
+                  📂 {workflowMode === 'narrative' ? 'Select Narrative Focus' : 'Select System for Document Viewing'}
                 </h3>
-                <div className="text-sm text-gray-500 bg-blue-50 px-3 py-1 rounded-lg">
-                  {WORKFLOW_SYSTEMS.length} system{WORKFLOW_SYSTEMS.length !== 1 ? 's' : ''} available
+                <div className="flex items-center space-x-3">
+                  {/* Workflow Mode Toggle */}
+                  <div className="flex bg-gray-100 rounded-lg p-1">
+                    <button
+                      onClick={() => setWorkflowMode('technical')}
+                      className={`px-3 py-1 rounded-md text-sm font-medium transition-all ${
+                        workflowMode === 'technical'
+                          ? 'bg-white text-blue-700 shadow-sm'
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      🔧 Technical
+                    </button>
+                    <button
+                      onClick={() => setWorkflowMode('narrative')}
+                      className={`px-3 py-1 rounded-md text-sm font-medium transition-all ${
+                        workflowMode === 'narrative'
+                          ? 'bg-white text-purple-700 shadow-sm'
+                          : 'text-gray-600 hover:text-gray-900'
+                      }`}
+                    >
+                      🎭 Narrative
+                    </button>
+                  </div>
+                  
+                  <div className="text-sm text-gray-500 bg-blue-50 px-3 py-1 rounded-lg">
+                    {workflowMode === 'narrative' 
+                      ? `${NARRATIVE_FOCUS_AREAS.length} focus areas` 
+                      : `${WORKFLOW_SYSTEMS.length} system${WORKFLOW_SYSTEMS.length !== 1 ? 's' : ''} available`
+                    }
+                  </div>
                 </div>
               </div>
               
@@ -557,30 +666,60 @@ export default function ThreeAudienceWorkflow() {
               )}
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {WORKFLOW_SYSTEMS.map((system) => (
-                  <button
-                    key={system.id}
-                    onClick={() => setSelectedSystem(system.id)}
-                    className={`p-4 rounded-lg border-2 transition-all duration-200 text-left ${
-                      selectedSystem === system.id
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300 bg-white'
-                    }`}
-                  >
-                    <div className="flex items-center justify-between mb-2">
-                      <h4 className="font-semibold text-gray-900">{system.name}</h4>
-                      <div className="flex items-center space-x-2">
-                        <div className={`w-2 h-2 bg-${getStatusColor(system.status)}-400 rounded-full`}></div>
-                        <div className={`w-2 h-2 bg-${getPriorityColor(system.priority)}-400 rounded-full`}></div>
+                {workflowMode === 'narrative' ? (
+                  // Narrative Focus Areas
+                  NARRATIVE_FOCUS_AREAS.map((focus) => (
+                    <button
+                      key={focus.id}
+                      onClick={() => setSelectedNarrativeFocus(focus.id)}
+                      className={`p-4 rounded-lg border-2 transition-all duration-200 text-left ${
+                        selectedNarrativeFocus === focus.id
+                          ? 'border-purple-500 bg-purple-50'
+                          : 'border-gray-200 hover:border-gray-300 bg-white'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center space-x-2">
+                          <span className="text-xl">{focus.icon}</span>
+                          <h4 className="font-semibold text-gray-900">{focus.name}</h4>
+                        </div>
                       </div>
-                    </div>
-                    <p className="text-sm text-gray-600 mb-3">{system.description}</p>
-                    <div className="flex items-center justify-between text-xs text-gray-500">
-                      <span>{system.components} components</span>
-                      <span>{system.lastUpdated}</span>
-                    </div>
-                  </button>
-                ))}
+                      <p className="text-sm text-gray-600 mb-3">{focus.description}</p>
+                      {focus.systems.length > 0 && (
+                        <div className="text-xs text-gray-500">
+                          Systems: {focus.systems.slice(0, 2).join(', ')}
+                          {focus.systems.length > 2 && ` +${focus.systems.length - 2} more`}
+                        </div>
+                      )}
+                    </button>
+                  ))
+                ) : (
+                  // Technical Workflow Systems
+                  WORKFLOW_SYSTEMS.map((system) => (
+                    <button
+                      key={system.id}
+                      onClick={() => setSelectedSystem(system.id)}
+                      className={`p-4 rounded-lg border-2 transition-all duration-200 text-left ${
+                        selectedSystem === system.id
+                          ? 'border-blue-500 bg-blue-50'
+                          : 'border-gray-200 hover:border-gray-300 bg-white'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <h4 className="font-semibold text-gray-900">{system.name}</h4>
+                        <div className="flex items-center space-x-2">
+                          <div className={`w-2 h-2 bg-${getStatusColor(system.status)}-400 rounded-full`}></div>
+                          <div className={`w-2 h-2 bg-${getPriorityColor(system.priority)}-400 rounded-full`}></div>
+                        </div>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-3">{system.description}</p>
+                      <div className="flex items-center justify-between text-xs text-gray-500">
+                        <span>{system.components} components</span>
+                        <span>{system.lastUpdated}</span>
+                      </div>
+                    </button>
+                  ))
+                )}
               </div>
             </div>
 
@@ -590,20 +729,27 @@ export default function ThreeAudienceWorkflow() {
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900">
-                      📄 Pre-Generated Documentation Viewer
+                      📄 Pre-Generated {workflowMode === 'narrative' ? 'Narrative' : 'Technical'} Documentation
                     </h3>
                     <p className="text-gray-600 mt-1">
-                      View three-audience workflow documents generated during build. Current system: {WORKFLOW_SYSTEMS.find(s => s.id === selectedSystem)?.name}
+                      {workflowMode === 'narrative' 
+                        ? `View narrative workflow documents generated during build. Current focus: ${NARRATIVE_FOCUS_AREAS.find(f => f.id === selectedNarrativeFocus)?.name || selectedNarrativeFocus}`
+                        : `View three-audience workflow documents generated during build. Current system: ${WORKFLOW_SYSTEMS.find(s => s.id === selectedSystem)?.name}`
+                      }
                     </p>
                   </div>
                 </div>
                 
                 {/* How Documents Are Generated */}
-                <div className="bg-blue-50 rounded-lg p-4 mb-4 border border-blue-200">
-                  <h4 className="text-sm font-semibold text-blue-900 mb-2">ℹ️ How Documents Are Generated</h4>
-                  <p className="text-sm text-blue-800">
-                    Documents are automatically generated during deployment using the same Python system. 
-                    To update docs, modify YAML/Markdown files and redeploy. This ensures consistency and uses the proven template system.
+                <div className={`${workflowMode === 'narrative' ? 'bg-purple-50 border-purple-200' : 'bg-blue-50 border-blue-200'} rounded-lg p-4 mb-4 border`}>
+                  <h4 className={`text-sm font-semibold ${workflowMode === 'narrative' ? 'text-purple-900' : 'text-blue-900'} mb-2`}>
+                    ℹ️ How {workflowMode === 'narrative' ? 'Narrative' : 'Technical'} Documents Are Generated
+                  </h4>
+                  <p className={`text-sm ${workflowMode === 'narrative' ? 'text-purple-800' : 'text-blue-800'}`}>
+                    {workflowMode === 'narrative' 
+                      ? 'Narrative documents are automatically generated during deployment from character arcs, world-building content, and story progression data. Each focus area provides specialized context for writers, developers, and AI assistants.'
+                      : 'Technical documents are automatically generated during deployment using the same Python system. To update docs, modify YAML/Markdown files and redeploy. This ensures consistency and uses the proven template system.'
+                    }
                   </p>
                 </div>
                 
@@ -612,7 +758,11 @@ export default function ThreeAudienceWorkflow() {
                   <button
                     onClick={loadGeneratedDocuments}
                     disabled={isGenerating}
-                    className="px-6 py-3 rounded-lg font-medium flex items-center space-x-2 transition-all duration-200 shadow-lg hover:shadow-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white disabled:opacity-50"
+                    className={`px-6 py-3 rounded-lg font-medium flex items-center space-x-2 transition-all duration-200 shadow-lg hover:shadow-xl text-white disabled:opacity-50 ${
+                      workflowMode === 'narrative'
+                        ? 'bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800'
+                        : 'bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800'
+                    }`}
                   >
                     {isGenerating ? (
                       <>
@@ -621,8 +771,8 @@ export default function ThreeAudienceWorkflow() {
                       </>
                     ) : (
                       <>
-                        <span>📄</span>
-                        <span>Load Pre-Generated Docs</span>
+                        <span>{workflowMode === 'narrative' ? '🎭' : '📄'}</span>
+                        <span>Load {workflowMode === 'narrative' ? 'Narrative' : 'Technical'} Docs</span>
                       </>
                     )}
                   </button>

@@ -47,7 +47,9 @@ export async function GET(request: NextRequest) {
             // Categorize documents
             let category = 'other'
             let type = 'document'
+            let focusArea = 'general'
             
+            // Technical Workflow Documents
             if (file.includes('conversational')) {
               category = 'workflow'
               type = 'conversational'
@@ -57,18 +59,45 @@ export async function GET(request: NextRequest) {
             } else if (file.includes('implementation-context')) {
               category = 'workflow'
               type = 'implementation'
-            } else if (file.includes('narrative') && file.includes('context')) {
+            }
+            
+            // Narrative Workflow Documents
+            else if (file.includes('narrative') && file.includes('context')) {
               category = 'narrative'
               type = 'context'
+              // Determine focus area
+              if (file.includes('character')) focusArea = 'character'
+              else if (file.includes('plot')) focusArea = 'plot'
+              else if (file.includes('world')) focusArea = 'world'
+              else focusArea = 'all'
             } else if (file.includes('lore') && file.includes('implementation')) {
               category = 'narrative'
               type = 'implementation'
+              // Determine focus area
+              if (file.includes('character')) focusArea = 'character'
+              else if (file.includes('plot')) focusArea = 'plot'
+              else if (file.includes('world')) focusArea = 'world'
+              else focusArea = 'all'
             } else if (file.includes('story') && file.includes('continuity')) {
               category = 'narrative'
               type = 'continuity'
-            } else if (file.includes('claude-context')) {
+              // Determine focus area
+              if (file.includes('character')) focusArea = 'character'
+              else if (file.includes('plot')) focusArea = 'plot'
+              else if (file.includes('world')) focusArea = 'world'
+              else focusArea = 'all'
+            } 
+            
+            // Other Documents
+            else if (file.includes('claude-context')) {
               category = 'export'
               type = 'claude'
+            } else if (file.endsWith('.mmd')) {
+              category = 'visualization'
+              type = 'mermaid'
+            } else if (file.includes('boss-narrative')) {
+              category = 'narrative'
+              type = 'worldbuilding'
             }
             
             documents.push({
@@ -76,6 +105,7 @@ export async function GET(request: NextRequest) {
               path: file,
               category,
               type,
+              focusArea,
               size: stats.size,
               lastModified: stats.mtime.toISOString(),
               displayName: file.replace(/\.md$/, '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
@@ -100,7 +130,15 @@ export async function GET(request: NextRequest) {
           workflow: documents.filter(d => d.category === 'workflow'),
           narrative: documents.filter(d => d.category === 'narrative'),
           export: documents.filter(d => d.category === 'export'),
+          visualization: documents.filter(d => d.category === 'visualization'),
           other: documents.filter(d => d.category === 'other')
+        },
+        narrativeFocusAreas: {
+          all: documents.filter(d => d.category === 'narrative' && d.focusArea === 'all'),
+          character: documents.filter(d => d.category === 'narrative' && d.focusArea === 'character'),
+          plot: documents.filter(d => d.category === 'narrative' && d.focusArea === 'plot'),
+          world: documents.filter(d => d.category === 'narrative' && d.focusArea === 'world'),
+          general: documents.filter(d => d.category === 'narrative' && d.focusArea === 'general')
         },
         total: documents.length,
         lastGenerated: documents.length > 0 ? documents[0].lastModified : null
