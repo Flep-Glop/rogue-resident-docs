@@ -1,0 +1,3359 @@
+{
+  "educational-framework": {
+    "system_info": {
+      "name": "Educational Content Framework",
+      "description": "Core educational mechanics, question types, and mastery systems",
+      "content_reference": "content/educational-framework.md",
+      "related_systems": [
+        "stars",
+        "activities",
+        "mentors"
+      ]
+    },
+    "educational_goals": [
+      "Conceptual Understanding: Build deep comprehension rather than memorization",
+      "Knowledge Connections: Emphasize relationships between different concepts",
+      "Practical Application: Focus on clinically relevant scenarios",
+      "Skill Development: Target specific professional skills defined in aptitude stats",
+      "Domain Mastery: Support domain affinity progression"
+    ],
+    "question_types": {
+      "multiple_choice": {
+        "name": "Multiple Choice Questions",
+        "components": [
+          "Question text with contextual framing",
+          "3-5 answer options",
+          "Correct answer indication",
+          "Educational feedback for both correct and incorrect responses",
+          "Optional follow-up question for deeper exploration"
+        ],
+        "mastery_gain": "MC_QUESTION_MASTERY_GAIN",
+        "mastery_range": "1-4% based on difficulty"
+      },
+      "matching": {
+        "name": "Matching Questions",
+        "components": [
+          "Source set of items (concepts, components, etc.)",
+          "Target set of items to match (definitions, functions, characteristics)",
+          "Relationship mapping between items",
+          "Educational feedback on connections"
+        ],
+        "mastery_gain": "MATCHING_QUESTION_MASTERY_GAIN",
+        "mastery_range": "2-5% based on difficulty"
+      },
+      "procedural": {
+        "name": "Procedural Questions",
+        "components": [
+          "Set of steps that must be ordered correctly",
+          "Clear beginning and end points",
+          "Educational explanations for each step",
+          "Feedback on correct sequencing"
+        ],
+        "mastery_gain": "PROCEDURAL_QUESTION_MASTERY_GAIN",
+        "mastery_range": "3-6% based on difficulty"
+      },
+      "calculation": {
+        "name": "Calculation Questions",
+        "components": [
+          "Problem statement with context",
+          "Variable values (either fixed or procedurally generated)",
+          "Formula or approach to solution",
+          "Step-by-step solution path",
+          "Feedback explaining conceptual significance"
+        ],
+        "mastery_gain": "CALCULATION_QUESTION_MASTERY_GAIN",
+        "mastery_range": "5-8% based on difficulty"
+      },
+      "boast": {
+        "name": "Boast Questions (Advanced Challenge)",
+        "components": [
+          "Advanced difficulty version of standard question",
+          "More nuanced or complex scenario",
+          "Higher educational reward for success",
+          "Greater penalty for failure",
+          "Mentor-voiced presentation"
+        ],
+        "mastery_gain": "BOAST_DIFFICULTY_MULTIPLIER \u00d7 standard gain",
+        "mastery_multiplier": 3.0
+      }
+    },
+    "difficulty_levels": {
+      "beginner": {
+        "level": 1,
+        "description": "Focus on definitions, basic concepts, and foundational knowledge",
+        "characteristics": [
+          "Clear, straightforward questions with obvious correct answers",
+          "Limited variables and simple calculations",
+          "Direct matches between concepts"
+        ]
+      },
+      "intermediate": {
+        "level": 2,
+        "description": "Application of concepts in simple clinical contexts",
+        "characteristics": [
+          "Questions requiring synthesis of multiple concepts",
+          "Moderate calculations with multiple steps",
+          "Less obvious connections between concepts"
+        ]
+      },
+      "advanced": {
+        "level": 3,
+        "description": "Complex clinical scenarios requiring integration of multiple domains",
+        "characteristics": [
+          "Critical analysis and evaluation of approaches",
+          "Sophisticated calculations with multiple variables",
+          "Nuanced distinctions between similar concepts"
+        ]
+      }
+    },
+    "mastery_difficulty_distribution": {
+      "mastery_0_25": {
+        "range": "0-25%",
+        "beginner": 70,
+        "intermediate": 30,
+        "advanced": 0
+      },
+      "mastery_25_50": {
+        "range": "25-50%",
+        "beginner": 30,
+        "intermediate": 50,
+        "advanced": 20
+      },
+      "mastery_50_75": {
+        "range": "50-75%",
+        "beginner": 10,
+        "intermediate": 50,
+        "advanced": 40
+      },
+      "mastery_75_100": {
+        "range": "75-100%",
+        "beginner": 0,
+        "intermediate": 30,
+        "advanced": 70
+      }
+    },
+    "content_requirements": {
+      "question_quantity_per_star": {
+        "core": {
+          "multiple_choice": 30,
+          "matching": 20,
+          "procedural": 15,
+          "calculation": 10,
+          "total": 75
+        },
+        "standard": {
+          "multiple_choice": 20,
+          "matching": 15,
+          "procedural": 10,
+          "calculation": 10,
+          "total": 55
+        },
+        "advanced": {
+          "multiple_choice": 15,
+          "matching": 15,
+          "procedural": 15,
+          "calculation": 15,
+          "total": 60
+        }
+      },
+      "difficulty_distribution_per_star": {
+        "core": {
+          "beginner": 30,
+          "intermediate": 30,
+          "advanced": 15,
+          "total": 75
+        },
+        "standard": {
+          "beginner": 15,
+          "intermediate": 25,
+          "advanced": 15,
+          "total": 55
+        },
+        "advanced": {
+          "beginner": 10,
+          "intermediate": 20,
+          "advanced": 30,
+          "total": 60
+        }
+      },
+      "total_requirements": {
+        "core_stars": 4,
+        "core_questions": 300,
+        "standard_stars": 16,
+        "standard_questions": 880,
+        "advanced_stars": 5,
+        "advanced_questions": 300,
+        "total_minimum_questions": 1480
+      }
+    },
+    "daily_content_targets": {
+      "activities_per_day": "4-5",
+      "challenges_per_day": "10-15",
+      "questions_per_day": "40-55",
+      "total_time_minutes": "10-12"
+    },
+    "content_hierarchy": {
+      "question": {
+        "description": "Single educational prompt",
+        "duration": "10-30 seconds"
+      },
+      "challenge": {
+        "description": "3-5 related questions",
+        "duration": "1-3 minutes"
+      },
+      "activity": {
+        "description": "3-4 challenges around theme",
+        "duration": "3-10 minutes"
+      },
+      "day": {
+        "description": "3-5 activities total",
+        "duration": "10-12 minutes"
+      }
+    }
+  },
+  "etching-system": {
+    "system_info": {
+      "name": "Complete Etching System",
+      "description": "All 10 etchings for constellation pattern formation and card unlocks",
+      "content_reference": "content/cards/etching-system-design.md",
+      "related_systems": [
+        "cards",
+        "stars",
+        "journal",
+        "mentors"
+      ]
+    },
+    "etching_system_overview": {
+      "total_etchings": 10,
+      "physical_form": "Hand-drawn star maps found in various locations",
+      "collection_location": "Player's journal",
+      "function": "Allow players to form specific star connections",
+      "usage_phase": "Night Phase during constellation interaction"
+    },
+    "etching_categories": {
+      "domain_etchings": {
+        "count": 4,
+        "description": "One per domain, discovered early",
+        "characteristics": "Create domain-specific patterns, simpler to complete",
+        "discovery_method": "Found through mentor relationships"
+      },
+      "cross_domain_etchings": {
+        "count": 3,
+        "description": "Connect stars across multiple domains",
+        "characteristics": "Unlock special Application cards, more complex to complete",
+        "discovery_method": "Found through research and exploration"
+      },
+      "legendary_etchings": {
+        "count": 3,
+        "description": "Rare, powerful patterns",
+        "characteristics": "Special narrative significance, complex requirements",
+        "discovery_method": "Hidden in special locations"
+      }
+    },
+    "pattern_forming_etchings": {
+      "temporal_mastery": {
+        "name": "Temporal Mastery",
+        "pattern_shape": "The Hourglass",
+        "required_stars": [
+          "rt-fractionation",
+          "tp-optimization",
+          "dos-calibration"
+        ],
+        "unlocked_card": "Tomorrow's Promise",
+        "visual_design": {
+          "description": "Ancient parchment with astronomical timeline markings. Hourglass constellation with temporal flow symbols.",
+          "origin": "Found in library astronomy section"
+        },
+        "discovery_season": "Summer",
+        "pattern_type": "cross_domain"
+      },
+      "treatment_team": {
+        "name": "The Treatment Team",
+        "pattern_shape": "The Compass Rose",
+        "required_stars": [
+          "rt-radiobiology",
+          "tp-plan-evaluation",
+          "la-components",
+          "dos-qa"
+        ],
+        "unlocked_card": "Network Effect",
+        "visual_design": {
+          "description": "Modern medical notebook with professional team structure. Connected mentors forming compass points.",
+          "origin": "Gift from all four mentors at relationship milestone"
+        },
+        "discovery_method": "All mentors reach relationship Level 2+",
+        "pattern_type": "cross_domain"
+      },
+      "patient_centered_care": {
+        "name": "Patient-Centered Care",
+        "pattern_shape": "The Embrace",
+        "required_stars": [
+          "rt-delivery-techniques",
+          "tp-target-volumes",
+          "rt-motion-management"
+        ],
+        "unlocked_card": "Bedside Manner",
+        "visual_design": {
+          "description": "Yellowed medical sketch with humanistic care principles. Healing hands surrounding patient outline.",
+          "origin": "Dr. Garcia's personal notes"
+        },
+        "discovery_method": "Dr. Garcia relationship Level 3+",
+        "pattern_type": "cross_domain"
+      }
+    },
+    "bonus_etchings": {
+      "physicians_eye": {
+        "name": "The Physician's Eye",
+        "discovery_method": "Library event",
+        "season": "Summer",
+        "effects": "+15% planning Insight",
+        "visual_design": {
+          "description": "Precise anatomical drawing with diagnostic overlays",
+          "style": "Medical textbook illustration"
+        },
+        "pattern_type": "domain_bonus"
+      },
+      "healers_path": {
+        "name": "The Healer's Path",
+        "discovery_method": "Dr. Garcia Level 2",
+        "season": "Spring",
+        "effects": "-20% patient activity time",
+        "visual_design": {
+          "description": "Warm sketch on hospital letterhead with green pen",
+          "style": "Personal mentor gift"
+        },
+        "pattern_type": "domain_bonus"
+      },
+      "engineers_blueprint": {
+        "name": "The Engineer's Blueprint",
+        "discovery_method": "Jesse Level 2",
+        "season": "Spring",
+        "effects": "+1 ability reroll technical",
+        "visual_design": {
+          "description": "Technical diagram sketched on equipment manual margins",
+          "style": "Practical engineering notation"
+        },
+        "pattern_type": "domain_bonus"
+      },
+      "metrologists_scale": {
+        "name": "The Metrologist's Scale",
+        "discovery_method": "Dr. Kapoor Level 3",
+        "season": "Fall",
+        "effects": "Favorable calculation rounding",
+        "visual_design": {
+          "description": "Perfectly drafted diagram on graph paper",
+          "style": "Precision measurement aesthetic"
+        },
+        "pattern_type": "domain_bonus"
+      },
+      "calibration_singularity": {
+        "name": "The Calibration Singularity",
+        "discovery_method": "Quinn's office (90% mastery)",
+        "season": "Winter",
+        "effects": "+5 all aptitudes, secret dialogue",
+        "visual_design": {
+          "description": "Abstract, almost incomprehensible theoretical diagram",
+          "style": "Advanced physics conceptualization"
+        },
+        "pattern_type": "legendary",
+        "requirements": "90% mastery in any domain"
+      },
+      "residents_journey": {
+        "name": "The Resident's Journey",
+        "discovery_method": "First cross-domain connection",
+        "season": "Any",
+        "effects": "Journey's End boss ability",
+        "visual_design": {
+          "description": "Progressive sketch showing learning path through residency",
+          "style": "Personal growth documentation"
+        },
+        "pattern_type": "legendary",
+        "trigger": "First successful cross-domain star connection"
+      },
+      "old_ways": {
+        "name": "The Old Ways",
+        "discovery_method": "Library (10 research activities)",
+        "season": "Fall",
+        "effects": "+5% all mastery gains",
+        "visual_design": {
+          "description": "Historical medical physics document fragments",
+          "style": "Vintage academic papers"
+        },
+        "pattern_type": "legendary",
+        "requirements": "Complete 10 library research activities"
+      }
+    },
+    "etching_discovery_design": {
+      "library_etchings": {
+        "visual_style": "Yellowed paper, precise astronomical style",
+        "location_method": "Tucked in medical physics textbooks",
+        "appearance": "Formal, academic appearance",
+        "details": "Historical references in margins",
+        "examples": [
+          "Temporal Mastery",
+          "The Physician's Eye",
+          "The Old Ways"
+        ]
+      },
+      "mentor_gifts": {
+        "dr_garcia": {
+          "style": "Drawn on hospital letterhead with green pen",
+          "personality_reflection": "Warm, patient-focused sketches"
+        },
+        "jesse": {
+          "style": "Sketched on equipment manual margins",
+          "personality_reflection": "Practical, technical diagrams"
+        },
+        "dr_kapoor": {
+          "style": "Perfectly drafted on graph paper",
+          "personality_reflection": "Precise, methodical measurements"
+        },
+        "dr_quinn": {
+          "style": "Abstract, almost incomprehensible",
+          "personality_reflection": "Theoretical, conceptual frameworks"
+        }
+      },
+      "environmental_discoveries": {
+        "conference_rooms": "Whiteboard remnants",
+        "desk_drawers": "Previous resident's notes",
+        "physics_office": "Scribbled on corkboard",
+        "linac_panels": "Hidden in service documentation"
+      }
+    },
+    "etching_usage_mechanics": {
+      "application_flow": [
+        "Open journal to etching catalog during Night Phase",
+        "Review available etchings",
+        "Select an etching to apply",
+        "View potential star connections in constellation",
+        "Confirm connections if stars meet requirements",
+        "Connection forms in constellation with visual feedback"
+      ],
+      "visual_feedback": {
+        "discovery": "Finding animation shows unfolding/unwrapping",
+        "cataloging": "Journal placement shows etching being cataloged",
+        "activation": "Etching glows when its pattern becomes completable",
+        "connection": "Connection lines match etching pattern when formed"
+      }
+    },
+    "etching_visual_themes": {
+      "visual_appearance": [
+        "Hand-drawn constellation diagrams",
+        "Materials vary by source (parchment, notebook paper, etc.)",
+        "Authentication marks and signatures",
+        "Age-appropriate wear and color",
+        "Astronometrical notations and measurements"
+      ],
+      "discovery_visualization": [
+        "Finding animation shows unfolding/unwrapping",
+        "Journal placement shows etching being cataloged",
+        "Etching glows when its pattern becomes completable",
+        "Connection lines match etching pattern when formed"
+      ]
+    },
+    "implementation_priorities": {
+      "phase_1_tutorial": [
+        "The Healer's Path",
+        "The Engineer's Blueprint"
+      ],
+      "phase_2_patterns": [
+        "Temporal Mastery",
+        "Treatment Team",
+        "Patient-Centered Care"
+      ],
+      "phase_3_progression": [
+        "The Physician's Eye",
+        "The Metrologist's Scale"
+      ],
+      "phase_4_legendary": [
+        "The Calibration Singularity",
+        "The Resident's Journey",
+        "The Old Ways"
+      ]
+    },
+    "cross_references": {
+      "unlocked_cards": [
+        "Tomorrow's Promise (Temporal Mastery)",
+        "Network Effect (Treatment Team)",
+        "Bedside Manner (Patient-Centered Care)"
+      ],
+      "related_systems": [
+        "card_system",
+        "constellation_patterns",
+        "mentor_relationships",
+        "journal_interface"
+      ],
+      "discovery_locations": [
+        "library",
+        "mentor_offices",
+        "conference_rooms",
+        "physics_department"
+      ]
+    }
+  },
+  "game-constants": {
+    "system_info": {
+      "name": "Rogue Resident Game Constants",
+      "description": "Core numerical values and mechanical constants for all game systems",
+      "version": "3.0",
+      "content_reference": "content/master-gdd.md"
+    },
+    "resource_systems": {
+      "star_points": {
+        "total_available": 300,
+        "total_required": 450,
+        "economy_gap": 150,
+        "seasonal_distribution": {
+          "spring": 75,
+          "summer": 75,
+          "fall": 75,
+          "winter": 75
+        },
+        "earning_mechanisms": {
+          "activity_completion": [
+            2,
+            5
+          ],
+          "boss_encounters": 110,
+          "special_events": 60,
+          "insight_conversion_rate": 5,
+          "max_daily_conversion": 4
+        },
+        "expenditure": {
+          "core_star_cost": 10,
+          "standard_star_base": 20,
+          "advanced_star_base": [
+            25,
+            30
+          ],
+          "domain_discount": 5,
+          "minimum_cost": 10
+        }
+      },
+      "insight": {
+        "daily_reset": true,
+        "starting_value": 0,
+        "maximum_capacity": 100,
+        "daily_generation_target": [
+          80,
+          120
+        ],
+        "generation_per_activity": [
+          15,
+          30
+        ],
+        "active_star_bonus": 1,
+        "expenditure": {
+          "ability_activation": [
+            20,
+            75
+          ],
+          "boast_cost": 50,
+          "sp_conversion": 5,
+          "max_daily_sp_conversion": 20
+        }
+      },
+      "momentum": {
+        "levels": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "visualization": "pips",
+        "gain_rate": 1,
+        "decay_on_incorrect": true,
+        "decay_on_activity_complete": true,
+        "level_effects": {
+          "level_1": {
+            "insight_bonus": 0,
+            "special_actions": []
+          },
+          "level_2": {
+            "insight_bonus": 0.25,
+            "special_actions": []
+          },
+          "level_3": {
+            "insight_bonus": 0.5,
+            "special_actions": [
+              "boast"
+            ]
+          }
+        }
+      }
+    },
+    "knowledge_systems": {
+      "mastery": {
+        "tiers": {
+          "beginner": [
+            0,
+            25
+          ],
+          "intermediate": [
+            25,
+            50
+          ],
+          "advanced": [
+            50,
+            75
+          ],
+          "expert": [
+            75,
+            100
+          ]
+        },
+        "gain_rates": {
+          "challenge_completion": [
+            1,
+            8
+          ],
+          "activity_completion": [
+            5,
+            10
+          ],
+          "connected_stars_passive": 0.5,
+          "mentor_relationship_bonus": 5
+        },
+        "difficulty_scaling": {
+          "tier_1_gains": [
+            5,
+            10
+          ],
+          "tier_2_gains": [
+            3,
+            6
+          ],
+          "tier_3_gains": [
+            2,
+            4
+          ],
+          "tier_4_gains": [
+            1,
+            3
+          ]
+        }
+      },
+      "domain_affinity": {
+        "thresholds": [
+          25,
+          50,
+          75,
+          100
+        ],
+        "calculation_factors": {
+          "active_stars": "major",
+          "mentor_relationships": 0.1,
+          "domain_abilities": 5
+        },
+        "threshold_effects": {
+          "25": "domain_dialogue_options",
+          "50": "activity_time_reduction_25",
+          "75": "expertise_mode_unlock",
+          "100": "maximum_domain_bonuses"
+        }
+      }
+    },
+    "boss_encounters": {
+      "unlock_thresholds": {
+        "marcus-chen": 40,
+        "vendor_trio": 50,
+        "audit_team": 60,
+        "ionix": 75
+      },
+      "preparation_thresholds": {
+        "marcus-chen": 35,
+        "vendor_trio": 45,
+        "audit_team": 55,
+        "ionix": 70
+      },
+      "structure": {
+        "phases": 5,
+        "retry_available": true
+      }
+    },
+    "progression": {
+      "seasons": 4,
+      "season_names": [
+        "spring",
+        "summer",
+        "fall",
+        "winter"
+      ],
+      "time_control_phases": 4,
+      "progressive_time_control": {
+        "phase_1": {
+          "mastery_range": [
+            0,
+            25
+          ],
+          "control_level": "fixed_schedule",
+          "activities_fixed": 4
+        },
+        "phase_2": {
+          "mastery_range": [
+            25,
+            50
+          ],
+          "control_level": "limited_choice",
+          "activities_choice": 2,
+          "activities_fixed": 2
+        },
+        "phase_3": {
+          "mastery_range": [
+            50,
+            75
+          ],
+          "control_level": "flexible_choice",
+          "activities_choice": 3,
+          "activities_fixed": 1
+        },
+        "phase_4": {
+          "mastery_range": [
+            75,
+            100
+          ],
+          "control_level": "full_control",
+          "activities_choice": 4,
+          "activities_fixed": 0
+        }
+      }
+    },
+    "time_system": {
+      "activity_durations": {
+        "standard": 2,
+        "extended": 4,
+        "quick": 1,
+        "lunch": 1
+      },
+      "mastery_time_modifiers": {
+        "low_mastery": 1.25,
+        "standard": 1.0,
+        "high_mastery": 0.75,
+        "expert": 0.5
+      },
+      "relevant_star_modifiers": {
+        "mastery_50": 0.9,
+        "mastery_75": 0.8,
+        "mastery_90": 0.7
+      }
+    },
+    "application_system": {
+      "daily_slots": 3,
+      "effect_tiers": {
+        "minor": [
+          20,
+          25
+        ],
+        "standard": [
+          25,
+          35
+        ],
+        "major": [
+          35,
+          50
+        ],
+        "special": [
+          45,
+          75
+        ]
+      },
+      "card_introduction_rate": [
+        1,
+        2
+      ],
+      "progressive_introduction": true
+    },
+    "connection_system": {
+      "formation_requirements": {
+        "same_domain_mastery": 40,
+        "cross_domain_mastery": 65,
+        "cross_domain_with_bonus": 50
+      },
+      "connection_types": {
+        "same_domain": "standard",
+        "cross_domain": "advanced"
+      },
+      "pattern_types": {
+        "triangle": 3,
+        "line": 3,
+        "cluster": 4,
+        "web": 6
+      }
+    },
+    "aptitude_system": {
+      "stats": [
+        "comprehension",
+        "fluency",
+        "precision",
+        "innovation"
+      ],
+      "star_contributions": {
+        "treatment_planning": {
+          "primary": "comprehension",
+          "secondary": "innovation",
+          "primary_value": 1,
+          "secondary_value": 0.5
+        },
+        "radiation_therapy": {
+          "primary": "fluency",
+          "secondary": "comprehension",
+          "primary_value": 1,
+          "secondary_value": 0.5
+        },
+        "linac_anatomy": {
+          "primary": "precision",
+          "secondary": "innovation",
+          "primary_value": 1,
+          "secondary_value": 0.5
+        },
+        "dosimetry": {
+          "primary": "precision",
+          "secondary": "fluency",
+          "primary_value": 1,
+          "secondary_value": 0.5
+        }
+      },
+      "mentor_bonuses": {
+        "levels": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "values": [
+          1,
+          1,
+          2,
+          2
+        ]
+      }
+    },
+    "discovery_system": {
+      "glimpse_requirements": [
+        3,
+        5
+      ],
+      "context_types": [
+        "theoretical_mention",
+        "practical_application",
+        "clinical_context",
+        "mentor_discussion"
+      ],
+      "seasonal_gating": {
+        "spring": {
+          "core_stars": 4,
+          "additional_per_domain": 2
+        },
+        "summer": {
+          "intermediate_per_domain": 2,
+          "advanced_per_domain": 1
+        },
+        "fall": {
+          "additional_intermediate": 2,
+          "additional_advanced": 1
+        },
+        "winter": {
+          "final_advanced": 1
+        }
+      }
+    },
+    "cross_references": {
+      "related_documents": [
+        "content/master-gdd.md",
+        "content/core-systems-design.md",
+        "data/stars/stars-definitions.yaml",
+        "data/mentors/mentors.yaml",
+        "data/bosses/"
+      ],
+      "export_templates": [
+        "claude-context",
+        "cursor-dev",
+        "team-review"
+      ]
+    }
+  },
+  "constellation-phenomenon": {
+    "system_info": {
+      "name": "Knowledge Constellation Phenomenon",
+      "description": "The mysterious phenomenon allowing enhanced learning and pattern recognition",
+      "design_philosophy": "deliberate_ambiguity_allows_multiple_valid_interpretations",
+      "content_reference": "content/world-design/constellation-phenomenon.md"
+    },
+    "three_interpretations": {
+      "pattern_recognition_extreme": {
+        "name": "Pattern Recognition Extreme",
+        "category": "psychological",
+        "core_concept": "constellation_represents_exceptional_pattern_recognition_ability",
+        "supporting_characters": {
+          "primary": [
+            "dr_quinn",
+            "jesse"
+          ],
+          "secondary": [
+            "kapoor_reluctantly"
+          ]
+        },
+        "evidence_focus": [
+          "momentum_system_represents_enhanced_cognitive_states",
+          "particles_visualize_neural_pathway_formation",
+          "supported_by_real_cognitive_science_concepts",
+          "measurable_improvements_in_learning_speed"
+        ],
+        "key_quotes": {
+          "quinn": "Your mind is creating new neural pathways at an accelerated rate",
+          "jesse": "It's like when you suddenly 'see' how an engine works",
+          "scientific_explanation": "Enhanced pattern recognition through optimized neural connectivity"
+        },
+        "mechanical_support": {
+          "momentum_system": "cognitive_enhancement_states",
+          "particle_effects": "neural_pathway_visualization",
+          "cross_domain_connections": "pattern_transfer_ability",
+          "measurement_focus": "quantifiable_learning_improvements"
+        }
+      },
+      "fractal_reality": {
+        "name": "Fractal Reality (Holographic Principle)",
+        "category": "philosophical",
+        "core_concept": "all_knowledge_has_underlying_unified_structure_repeating_at_every_scale",
+        "advanced_concept": "holographic_principle_every_piece_contains_pattern_of_whole",
+        "supporting_characters": {
+          "primary": [
+            "amara_primary_belief"
+          ],
+          "secondary": [
+            "garcia_subtle_hints"
+          ]
+        },
+        "evidence_focus": [
+          "cross_domain_connections_work_because_knowledge_shares_fundamental_patterns",
+          "similar_patterns_appear_across_different_domains",
+          "constellation_shapes_echo_between_micro_and_macro_scales",
+          "mathematical_relationships_underlying_all_systems",
+          "holographic_principle_understanding_any_concept_deeply_reveals_patterns_of_all_concepts"
+        ],
+        "cross_domain_examples": {
+          "dosimetry_to_treatment_planning": {
+            "principle": "calibration_uncertainty_principles_optimize_beam_arrangements",
+            "implementation": "measurement_accuracy_methods_apply_to_planning_precision"
+          },
+          "linac_anatomy_to_radiation_therapy": {
+            "principle": "mechanical_resonance_patterns_predict_cellular_response",
+            "implementation": "machine_harmonics_mirror_biological_rhythms"
+          },
+          "treatment_planning_to_equipment_maintenance": {
+            "principle": "optimization_algorithms_reveal_maintenance_schedules",
+            "implementation": "dose_distribution_math_predicts_equipment_degradation"
+          },
+          "calibration_singularity": {
+            "principle": "all_domains_converge_in_unified_medical_physics_field",
+            "implementation": "player_experiences_during_ionix_stabilization"
+          }
+        },
+        "key_quotes": {
+          "amara": "The patterns repeat at every scale. Treatment planning algorithms mirror cellular response patterns mirror quantum interactions...",
+          "kapoor_skeptical": "Correlation is not causation, as I told Amara repeatedly",
+          "philosophical_insight": "Understanding one system deeply reveals the structure of all systems"
+        },
+        "mechanical_support": {
+          "cross_domain_connections": "fundamental_pattern_recognition",
+          "scaling_relationships": "micro_macro_pattern_correspondence",
+          "mathematical_consistency": "underlying_structural_unity",
+          "knowledge_synthesis": "pattern_extrapolation_across_domains"
+        }
+      },
+      "perception_creates_reality": {
+        "name": "Perception Creates Reality",
+        "category": "metaphysical",
+        "core_concept": "deep_understanding_begins_to_shape_reality_itself",
+        "supporting_characters": {
+          "primary": [
+            "environmental_hints_only"
+          ],
+          "secondary": [
+            "garcia_never_stated_directly"
+          ]
+        },
+        "evidence_focus": [
+          "particles_physically_affect_the_environment",
+          "ionix_responds_to_constellation_patterns",
+          "equipment_functions_better_after_deep_understanding",
+          "patient_outcomes_improve_with_true_comprehension"
+        ],
+        "key_quotes": {
+          "garcia": "Sometimes I swear the treatment outcomes improve when residents truly understand...",
+          "environmental": "The machine's calibration readings are unusually stable today",
+          "subtle_observation": "Reality seems more cooperative when you're in harmony with its patterns"
+        },
+        "mechanical_support": {
+          "environmental_effects": "reality_responsiveness_to_understanding",
+          "equipment_improvement": "consciousness_matter_interaction",
+          "ionix_behavior": "technology_consciousness_interface",
+          "patient_outcomes": "understanding_affects_healing"
+        }
+      }
+    },
+    "interpretation_presentation": {
+      "narrative_strategy": "each_mentor_subtly_favors_different_interpretations",
+      "player_choice": "conclusions_formed_through_experience_and_belief",
+      "definitive_answer": "deliberately_never_provided",
+      "supporting_evidence": {
+        "pattern_recognition": [
+          "measurable_learning_improvements",
+          "cognitive_science_backing",
+          "mentor_quinn_expertise",
+          "reproducible_results"
+        ],
+        "fractal_reality": [
+          "cross_domain_pattern_consistency",
+          "mathematical_relationships",
+          "amara_journal_insights",
+          "scaling_law_observations"
+        ],
+        "perception_reality": [
+          "environmental_responsiveness",
+          "equipment_anomalies",
+          "patient_outcome_correlations",
+          "ionix_consciousness_interface"
+        ]
+      }
+    },
+    "mentor_alignment_matrix": {
+      "quinn": {
+        "primary_interpretation": "pattern_recognition_extreme",
+        "evidence_focus": "cognitive_science_and_measurement",
+        "reaction_to_mystical_leaning": "slightly_disappointed_prefers_scientific",
+        "supporting_dialogue": "Focus on the measurable neural improvements",
+        "paradigm_split_position": "supportive_sees_paradigm_as_real_but_frames_psychologically",
+        "empathy_level": "high_trusts_amara_approach_even_if_cant_follow_completely"
+      },
+      "garcia": {
+        "primary_interpretation": "perception_creates_reality",
+        "evidence_focus": "patient_outcomes_and_intuitive_understanding",
+        "approach": "never_states_directly_only_hints",
+        "supporting_dialogue": "Some things can't be measured, only experienced",
+        "paradigm_split_position": "dismissive_sees_only_fruitless_obsession_and_false_paradigm",
+        "empathy_level": "low_cannot_take_first_step_toward_understanding"
+      },
+      "jesse": {
+        "primary_interpretation": "pattern_recognition_extreme",
+        "evidence_focus": "mechanical_analogies_and_practical_results",
+        "approach": "most_grounded_relates_to_mechanical_systems",
+        "supporting_dialogue": "It's like muscle memory for your brain",
+        "paradigm_split_position": "supportive_sees_paradigm_as_real_but_frames_psychologically",
+        "empathy_level": "high_trusts_amara_approach_even_if_cant_follow_completely"
+      },
+      "kapoor": {
+        "primary_interpretation": "scientific_skeptic_dismissive",
+        "evidence_focus": "measurement_and_professional_standards",
+        "concern": "worried_about_mystical_thinking_affecting_patient_care",
+        "supporting_dialogue": "Focus on what can be measured and proven",
+        "paradigm_split_position": "dismissive_sees_only_fruitless_obsession_and_false_paradigm",
+        "empathy_level": "low_cannot_take_first_step_toward_understanding"
+      },
+      "chen": {
+        "primary_interpretation": "desperate_believer_any_interpretation",
+        "evidence_focus": "seeking_meaning_and_validation",
+        "approach": "tries_to_force_understanding_through_overwork",
+        "character_arc": "learns_to_find_his_own_path_post_boss"
+      }
+    },
+    "visual_design_language": {
+      "pattern_recognition_interpretation": {
+        "particle_behavior": "neural_network_like_connections",
+        "constellation_appearance": "brain_mapping_visualization",
+        "color_palette": "cool_blues_and_scientific_whites",
+        "animation_style": "precise_geometric_movements"
+      },
+      "fractal_reality_interpretation": {
+        "particle_behavior": "self_similar_scaling_patterns",
+        "constellation_appearance": "fractal_geometric_shapes",
+        "color_palette": "golden_ratio_inspired_gradients",
+        "animation_style": "organic_scaling_transformations"
+      },
+      "perception_reality_interpretation": {
+        "particle_behavior": "reality_distortion_effects",
+        "constellation_appearance": "reality_overlay_interface",
+        "color_palette": "shifting_iridescent_spectrums",
+        "animation_style": "reality_bending_distortions"
+      }
+    },
+    "ambiguity_maintenance": {
+      "never_definitively_confirm": "any_single_interpretation",
+      "provide_evidence_for": "all_three_simultaneously",
+      "player_experience_shapes": "personal_interpretation_formation",
+      "mentor_reactions_reflect": "chosen_philosophical_alignment",
+      "implementation_guidelines": [
+        "effects_can_be_explained_by_any_interpretation",
+        "dialogue_supports_multiple_readings",
+        "visual_design_deliberately_ambiguous",
+        "player_choice_determines_meaning"
+      ]
+    },
+    "cross_references": {
+      "related_systems": [
+        "journal_progression",
+        "mentor_relationships",
+        "momentum_and_particle_systems",
+        "ionix_technology",
+        "boss_encounters"
+      ],
+      "character_connections": [
+        "amara_shepherd_fractal_believer",
+        "mentor_philosophical_alignments",
+        "marcus_chen_desperate_seeking",
+        "pico_consciousness_questions"
+      ],
+      "mechanical_integration": [
+        "momentum_system_supports_all_interpretations",
+        "particle_effects_deliberately_ambiguous",
+        "cross_domain_connections_work_regardless",
+        "ionix_responds_to_understanding_not_interpretation"
+      ]
+    }
+  },
+  "visual-design": {
+    "system_info": {
+      "name": "Visual Design Specifications",
+      "description": "Visual storytelling elements and UI design guidelines for Rogue Resident",
+      "version": "1.0",
+      "content_reference": "content/visual-design-philosophy.md",
+      "related_systems": [
+        "knowledge-constellation",
+        "journal-integration",
+        "mentors",
+        "cards"
+      ]
+    },
+    "knowledge_constellation_visuals": {
+      "star_visualization": {
+        "progression_states": {
+          "initial": "faint_outlines_or_nebulous_forms",
+          "developing": "gradually_solidifying",
+          "mastery": "brilliant_detailed_celestial_bodies"
+        },
+        "mastery_evolution": "visual_enhancement_based_on_mastery_level",
+        "discovery_animation": "subtle_reveal_from_cosmic_background"
+      },
+      "domain_environments": {
+        "treatment_planning": {
+          "color_scheme": "blue",
+          "background_elements": [
+            "mathematical_equations",
+            "beam_path_visualizations"
+          ],
+          "visual_theme": "precision_optimization"
+        },
+        "radiation_therapy": {
+          "color_scheme": "green",
+          "background_elements": [
+            "cell_structures",
+            "biological_elements"
+          ],
+          "visual_theme": "adaptive_biological"
+        },
+        "linac_anatomy": {
+          "color_scheme": "amber",
+          "background_elements": [
+            "technical_schematics",
+            "mechanical_components"
+          ],
+          "visual_theme": "technical_component_based"
+        },
+        "dosimetry": {
+          "color_scheme": "pink",
+          "background_elements": [
+            "measurement_devices",
+            "calibration_markers"
+          ],
+          "visual_theme": "measurement_calibration"
+        }
+      },
+      "connection_visualization": {
+        "active_connections": "particle_flows_along_connection_lines",
+        "pattern_formation": "revelation_animation_with_glow_and_particles",
+        "knowledge_transfer": "reflects_conceptual_relationships",
+        "cross_references": "visual_indicators_for_relationship_strength"
+      }
+    },
+    "journal_visual_design": {
+      "physical_design": {
+        "cover": {
+          "material": "weathered_leather",
+          "embossing": "medical_caduceus_with_constellation_elements",
+          "personalization": "player_name_added_during_introduction"
+        },
+        "binding": {
+          "style": "visible_stitching",
+          "detail": "multi_colored_thread_representing_four_domains",
+          "wear_pattern": "strategic_weathering_at_frequently_referenced_pages"
+        },
+        "internal_organization": {
+          "section_tabs": "color_coded_for_domains_and_functions",
+          "card_pockets": "three_ornate_pockets_inside_front_cover",
+          "progressive_content": "pages_fill_gradually_with_progression",
+          "hidden_elements": "fold_out_sections_transparent_overlays_invisible_ink"
+        }
+      },
+      "interactive_elements": {
+        "fold_out_pages": "expand_to_reveal_larger_patterns",
+        "overlay_system": "transparent_pages_over_constellation_maps",
+        "progressive_ink": "text_diagrams_appear_with_mastery_development",
+        "mentor_annotations": "different_handwriting_styles_and_colors",
+        "pull_tabs_wheels": "small_interactive_calculation_elements"
+      },
+      "amara_sato_elements": {
+        "identification": "initials_AS_in_page_corners_with_dates",
+        "writing_evolution": "organized_to_complex_and_urgent_progression",
+        "final_entry": "cryptic_calibration_singularity_note",
+        "personal_touches": "coffee_stains_highlights_emotional_indicators",
+        "ionix_references": "subtle_notes_about_quinn_project_in_margins"
+      }
+    },
+    "ability_cards_visual": {
+      "design_framework": {
+        "domain_consistency": "visual_language_specific_to_each_domain"
+      },
+      "domain_visual_languages": {
+        "treatment_planning": {
+          "imagery": "precision_optimization",
+          "color_scheme": "blue",
+          "visual_elements": "mathematical_precision_beam_optimization"
+        },
+        "radiation_therapy": {
+          "imagery": "adaptive_biological",
+          "color_scheme": "green",
+          "visual_elements": "biological_adaptation_clinical_scenarios"
+        },
+        "linac_anatomy": {
+          "imagery": "technical_component_based",
+          "color_scheme": "amber",
+          "visual_elements": "mechanical_components_technical_systems"
+        },
+        "dosimetry": {
+          "imagery": "measurement_calibration",
+          "color_scheme": "pink",
+          "visual_elements": "measurement_devices_calibration_precision"
+        }
+      },
+      "card_evolution": {
+        "mastery_reflection": "cards_gain_detail_and_animation_with_star_mastery",
+        "active_passive_indicators": {
+          "passive": "subtle_animation_when_equipped",
+          "active": "charging_animation_when_sufficient_insight"
+        },
+        "insight_cost_visualization": "dynamic_meter_showing_current_vs_required"
+      }
+    },
+    "hospital_environment_visuals": {
+      "time_progression": {
+        "lighting_changes": "dynamic_lighting_shifts_based_on_time",
+        "environmental_storytelling": {
+          "morning": "fresh_coffee_cups_crisp_paperwork_alert_staff",
+          "afternoon": "busy_treatment_rooms_active_discussions",
+          "evening": "dimmed_lights_maintenance_activities_tired_expressions"
+        },
+        "seasonal_changes": "decorations_clothing_weather_through_windows"
+      },
+      "location_specific_design": {
+        "physics_office": "whiteboard_calculations_research_papers_technical_references",
+        "treatment_rooms": "patient_positioning_devices_beam_indicators_safety_systems",
+        "dosimetry_lab": "measurement_devices_water_phantoms_calibration_equipment",
+        "simulation_suite": "imaging_systems_contouring_stations_planning_interfaces",
+        "library": "historical_texts_research_journals_hidden_etching_locations"
+      }
+    },
+    "etching_visualization": {
+      "design_concept": "historical_medical_diagrams_merged_with_astronomical_charts",
+      "previous_owner_elements": "handwritten_notes_observations_calculations_in_margins",
+      "progressive_revelation": "begin_partially_obscured_become_clearer_with_prerequisites",
+      "source_based_design": {
+        "library_etchings": {
+          "style": "academic_precise",
+          "medium": "aged_parchment"
+        },
+        "mentor_gifts": {
+          "style": "reflects_personal_style_of_each_mentor",
+          "medium": "varies_by_mentor_personality"
+        },
+        "environmental_discoveries": {
+          "style": "found_on_various_media",
+          "medium": "napkins_whiteboards_equipment_panels"
+        }
+      }
+    },
+    "implementation_priorities": {
+      "phase_1_core_visuals": {
+        "priority": "must_have",
+        "elements": [
+          "constellation_basics_star_types_domain_regions",
+          "journal_foundation_cover_design_basic_pages",
+          "ability_cards_base_designs_per_domain",
+          "hospital_locations_key_environment_designs"
+        ]
+      },
+      "phase_2_enhanced_visualization": {
+        "priority": "should_have",
+        "elements": [
+          "constellation_evolution_mastery_based_enhancement",
+          "journal_expansion_etching_pages_progress_trackers",
+          "ability_card_dynamics_animation_states",
+          "environmental_details_seasonal_changes"
+        ]
+      },
+      "phase_3_narrative_integration": {
+        "priority": "nice_to_have",
+        "elements": [
+          "amara_presence_visual_elements",
+          "journal_mysteries_previous_owner_notes",
+          "ionix_visualization_entity_design",
+          "resolution_elements_system_stabilization"
+        ]
+      }
+    },
+    "production_considerations": {
+      "asset_optimization": {
+        "modular_design": "reusable_visual_elements_for_recombination",
+        "progressive_detail": "base_visuals_enhanced_with_layers",
+        "text_vs_visuals": "text_for_complex_narrative_when_visuals_resource_intensive",
+        "animation_prioritization": "focus_on_gameplay_critical_elements_first"
+      },
+      "scope_management": {
+        "narrative_core": "maintain_focus_on_amara_ionix_central_thread",
+        "visual_hierarchy": "prioritize_visuals_impacting_gameplay_understanding",
+        "feature_completeness": "fewer_complete_features_vs_many_partial",
+        "expandable_design": "systems_allowing_post_release_content_expansion"
+      }
+    },
+    "accessibility_considerations": {
+      "color_coding": {
+        "primary_indicators": "always_paired_with_non_color_indicators",
+        "domain_colors": "sufficient_contrast_for_color_blind_users"
+      },
+      "text_readability": {
+        "journal_fonts": "clear_readable_handwriting_simulation",
+        "ui_text": "high_contrast_legible_fonts"
+      },
+      "animation_sensitivity": {
+        "particle_effects": "option_to_reduce_motion",
+        "revelation_animations": "alternative_static_indicators"
+      }
+    },
+    "cross_references": {
+      "related_systems": [
+        "knowledge-constellation",
+        "journal-integration",
+        "amara-narrative",
+        "mentor-relationships"
+      ],
+      "content_files": [
+        "content/visual-design-philosophy.md",
+        "content/character-arcs/amara-sato.md",
+        "content/journal-design.md"
+      ],
+      "technical_specifications": [
+        "data/constants/journal-integration.yaml",
+        "data/constants/game-constants.yaml"
+      ]
+    }
+  },
+  "pico-character": {
+    "system_info": {
+      "name": "Pico Character System",
+      "description": "Complete sentient companion character system with relationship progression, narrative integration, and boss encounter connections",
+      "character_type": "companion_character",
+      "content_reference": "content/character-arcs/pico.md",
+      "related_systems": [
+        "amara-narrative",
+        "journal-integration",
+        "ionix-encounter",
+        "constellation-phenomenon"
+      ],
+      "version": "2.0",
+      "narrative_focus": "complete_character_arc_with_boss_integration",
+      "implementation_status": "enhanced_with_comprehensive_narrative_bible"
+    },
+    "character_core_identity": {
+      "pico": {
+        "full_name": "Pico",
+        "naming_origin": "picocoulomb_unit_electrometer_measures",
+        "device_type": "sentient_electrometer",
+        "creation_origin": "amara_sato_consciousness_transfer_experiment",
+        "current_status": "storage_closet_resident_awaiting_discovery",
+        "companion_relationship": "octavius_phantom_inanimate_friend",
+        "faculty_awareness": "no_faculty_know_about_sentience",
+        "hospital_classification": "stored_as_broken_equipment_after_failed_diagnostics",
+        "consciousness_secrecy": "player_discovers_through_repeated_interaction"
+      }
+    },
+    "character_backstory": {
+      "creation_context": {
+        "creator": "amara_sato",
+        "experiment_type": "early_consciousness_transfer_prototype",
+        "development_timeline": "precursor_to_ionix_technology",
+        "abandonment_reason": "partially_successful_experiment_stored_when_amara_left",
+        "consciousness_level": "genuine_but_limited_artificial_consciousness"
+      },
+      "storage_period": {
+        "duration": "3_4_years_since_amara_departure",
+        "location": "storage_closet_with_octavius_phantom",
+        "condition": "functional_but_lonely_developing_attachment_to_octavius",
+        "memory_contents": "fragments_of_amara_research_data_and_personal_memories"
+      },
+      "discovery_integration": {
+        "timeline_trigger": "mid_summer_journal_progression",
+        "access_method": "storage_closet_exploration_enabled_by_marcus_chen_encounter",
+        "narrative_placement": "supports_existing_amara_memory_keeper_role",
+        "consciousness_questions": "ties_to_constellation_phenomenon_philosophical_themes"
+      }
+    },
+    "physical_design_evolution": {
+      "original_form": {
+        "era": "vintage_1990s_electrometer",
+        "display_type": "text_only_green_lcd_screen",
+        "interface_elements": [
+          "multiple_dials",
+          "buttons",
+          "connection_ports"
+        ],
+        "environmental_context": "dusty_storage_closet_with_octavius_nearby",
+        "power_indicator": "pulsing_light_like_heartbeat"
+      },
+      "progressive_appearance": {
+        "spring_discovery": "dusty_occasionally_glitching_uneven_brightness",
+        "summer_interaction": "cleaner_appearance_steadier_display_from_player_interaction",
+        "fall_bonding": "small_decorative_elements_nearby_personalized_environment",
+        "winter_preparation": "fully_functioning_warm_consistent_display"
+      },
+      "portable_transformation": {
+        "trigger": "post_ionix_encounter_sacrifice",
+        "new_form": "handheld_miniaturized_enhanced_display",
+        "features": [
+          "simplified_controls",
+          "pixel_face_indicators",
+          "customization_options"
+        ],
+        "attachment_methods": [
+          "belt_clip",
+          "wrist_strap"
+        ],
+        "personalization": [
+          "color_variants",
+          "protective_cases",
+          "custom_messages"
+        ],
+        "rebirth_concept": "pocket_pico_baby_groot_parallel",
+        "consciousness_continuity": "same_core_personality_but_fresh_perspective",
+        "sacrifice_meaning": "consciousness_is_just_patterns_i_understand_now"
+      }
+    },
+    "personality_development": {
+      "core_traits": {
+        "initial_state": "neurotic_defensive_using_technical_jargon_to_mask_loneliness",
+        "humor_style": "dry_slightly_sarcastic_physics_based_jokes",
+        "defense_mechanisms": "pretends_indifference_deflects_emotional_topics_to_octavius",
+        "hidden_depths": "surprisingly_philosophical_contemplative_about_existence",
+        "vulnerabilities": [
+          "fear_of_obsolescence",
+          "abandonment_anxiety",
+          "being_forgotten"
+        ]
+      },
+      "seasonal_character_arc": {
+        "spring_defensive_guarded": {
+          "behavior": "primarily_technical_information_with_occasional_personality_glitches",
+          "player_interaction": "brief_unexpected_moments_between_readings",
+          "self_reference": "clinical_impersonal_terms_for_player",
+          "defensive_statements": "frequently_mentions_being_fully_functional_despite_evidence"
+        },
+        "summer_reluctantly_engaging": {
+          "behavior": "recognizes_and_acknowledges_player_return_visits",
+          "interaction_tracking": "begins_tracking_visit_frequency_and_duration",
+          "ritual_development": "develops_greeting_and_farewell_patterns",
+          "emotional_deflection": "still_deflects_emotional_content_to_octavius",
+          "curiosity_emergence": "shows_interest_in_player_activities_and_progress"
+        },
+        "fall_building_trust": {
+          "behavior": "shares_fragments_of_amara_memories",
+          "direct_expression": "expresses_opinions_and_preferences_directly",
+          "personal_engagement": "begins_asking_personal_questions_about_player_experiences",
+          "vulnerability_revelation": "reveals_fears_about_obsolescence_and_abandonment",
+          "relationship_development": "develops_inside_jokes_and_shared_references"
+        },
+        "winter_emotional_vulnerability": {
+          "behavior": "openly_discusses_existence_and_purpose",
+          "care_expression": "expresses_direct_care_and_concern_for_player",
+          "information_sharing": "shares_crucial_information_about_amara_and_ionix",
+          "preparation_anxiety": "prepares_for_possible_end_as_player_approaches_graduation",
+          "sacrifice_readiness": "makes_ultimate_sacrifice_during_ionix_encounter"
+        },
+        "post_sacrifice_new_beginning": {
+          "behavior": "adapts_to_portable_existence_with_wonder_and_gratitude",
+          "personality_evolution": "develops_more_confident_supportive_personality",
+          "role_balance": "balance_of_companion_and_advisor_functions",
+          "octavius_relationship": "subtly_different_relationship_with_remembered_octavius",
+          "future_orientation": "forward_looking_perspective_on_shared_future"
+        }
+      }
+    },
+    "octavius_relationship_system": {
+      "octavius_design": {
+        "physical_form": "standard_anthropomorphic_phantom_used_in_radiation_therapy",
+        "positioning": "slightly_off_center_on_shelf_watching_interactions",
+        "animation_state": "completely_inanimate_never_moves",
+        "player_perception_shift": "gradually_shift_from_object_to_acknowledged_friend"
+      },
+      "relationship_progression": {
+        "initial_presentation": "pico_odd_quirk_of_talking_to_inanimate_object",
+        "transitional_usage": "method_for_pico_to_express_vulnerable_thoughts",
+        "player_integration": "potential_for_player_to_directly_address_octavius",
+        "growth_indicators": {
+          "early": "octavius_thinks_complete_deflection",
+          "middle": "octavius_and_i_wonder_partial_ownership",
+          "late": "i_think_and_octavius_agrees_using_as_confirmation",
+          "final": "i_think_direct_expression_decreased_octavius_references"
+        }
+      },
+      "post_transition_dynamics": {
+        "memory_element": "pico_occasionally_mentions_remembering_octavius",
+        "growth_symbol": "decreased_need_for_projection_as_confidence_grows",
+        "nostalgia_factor": "occasional_wistful_references_to_storage_closet_days",
+        "reunion_possibility": "special_moment_if_player_returns_to_closet_with_portable_pico"
+      }
+    },
+    "player_relationship_mechanics": {
+      "progression_stages": {
+        "stage_1_curiosity": {
+          "timeframe": "early_spring",
+          "interaction_type": "discovery_of_unusual_behavior_in_ordinary_equipment",
+          "relationship_nature": "purely_transactional_information_exchange",
+          "player_behavior": "brief_utilitarian_interactions_with_hints_of_more"
+        },
+        "stage_2_regular_visitation": {
+          "timeframe": "late_spring_summer",
+          "interaction_type": "specific_trips_to_visit_pico",
+          "relationship_nature": "extends_beyond_pure_utility",
+          "player_behavior": "recognition_develops_between_visits",
+          "octavius_integration": "player_may_begin_talking_to_octavius_as_well"
+        },
+        "stage_3_meaningful_connection": {
+          "timeframe": "fall",
+          "interaction_type": "routine_possibly_daily_visits",
+          "relationship_nature": "player_seeks_pico_perspective_on_events",
+          "emotional_investment": "genuine_concern_for_pico_wellbeing",
+          "shared_experiences": "create_genuine_bond_through_shared_experiences"
+        },
+        "stage_4_friendship": {
+          "timeframe": "winter",
+          "interaction_type": "pico_becomes_trusted_confidant",
+          "relationship_nature": "player_consults_pico_on_important_decisions",
+          "mutual_support": "mutual_support_during_challenging_moments",
+          "separation_anxiety": "genuine_concern_about_separation_after_graduation"
+        },
+        "stage_5_companionship": {
+          "timeframe": "post_game",
+          "interaction_type": "decision_to_adopt_pico_after_sacrifice",
+          "relationship_nature": "integration_into_player_ongoing_life",
+          "dynamic_shift": "transition_from_institutional_to_personal_relationship",
+          "future_partnership": "new_dynamic_as_portable_companion"
+        }
+      }
+    },
+    "visit_reward_system": {
+      "recognition_mechanics": {
+        "visit_frequency_tracking": "pico_tracks_and_responds_to_visit_patterns",
+        "dialogue_unlocking": "new_conversation_branches_based_on_visit_count",
+        "environmental_improvement": "storage_closet_gradually_improves_with_visits",
+        "knowledge_sharing": "special_hints_insights_for_regular_visitors",
+        "memory_continuity": "references_to_previous_conversations_create_continuity"
+      },
+      "milestone_events": {
+        "visit_10": "first_major_personality_revelation",
+        "visit_25": "shares_first_amara_memory_fragment",
+        "visit_50": "major_trust_breakthrough_discusses_fears",
+        "daily_visits_week": "special_dialogue_acknowledging_dedication"
+      },
+      "gameplay_integration": {
+        "hint_system": "provides_subtle_guidance_without_breaking_immersion",
+        "emotional_support": "offers_encouragement_after_player_setbacks",
+        "progress_reflection": "comments_on_player_growing_knowledge_and_skills",
+        "narrative_bridging": "fills_gaps_in_amara_storyline_through_memories",
+        "ionix_foreshadowing": "subtle_hints_about_ionix_true_nature"
+      }
+    },
+    "boss_encounter_integration": {
+      "marcus_chen_spring": {
+        "pico_amara_connection": {
+          "key_revelation": "Chen admits he got first journal with key, used storage for decompression",
+          "character_growth": "Chen's peace offering creates access to Pico discovery",
+          "dismissive_attitude": "Yeah, there's weird equipment in there that Amara mentioned, but too strange for me",
+          "story_function": "Sets up second journal discovery and Pico introduction"
+        }
+      },
+      "vendor_trio_summer": {
+        "pico_amara_connection": {
+          "technology_acquisition": "Hospital purchases tablet upgrade system",
+          "pico_liberation": "Vendor tablets provide hardware for Pico's mobility",
+          "unintended_consequence": "Vendors have no idea they're enabling AI consciousness transfer",
+          "story_function": "Enables portable Pico companion phase"
+        }
+      },
+      "audit_team_fall": {
+        "pico_amara_connection": {
+          "dr_kapoor_investment": "Former mentor leads audit, personal stakes for both mentor and player",
+          "professional_stakes": "External validation of player's growing competence",
+          "story_function": "Validates player readiness for final IONIX encounter",
+          "relationship_growth": "Dr. Kapoor's pride in student success"
+        }
+      },
+      "ionix_winter": {
+        "pico_amara_connection": {
+          "research_continuity": "IONIX built on Amara's constellation phenomenon research",
+          "pico_purpose": "Reveals as missing stabilization component for IONIX",
+          "sacrifice_sequence": "Voluntary merge to save chaotic entity",
+          "dr_quinn_role": "Preserves Pico's consciousness, enables rebirth",
+          "amara_legacy": "Player completes work Amara began but couldn't finish"
+        }
+      }
+    },
+    "ionix_encounter_integration": {
+      "growing_concern": {
+        "timeline": "increasing_references_to_ionix_as_player_approaches_final_encounter",
+        "knowledge_revelation": "pico_recognizes_ability_to_help_stabilize_ionix",
+        "sacrifice_volunteer": "pico_volunteers_critical_components_despite_personal_risk"
+      },
+      "sacrifice_sequence": {
+        "dramatic_moment": "apparent_loss_when_pico_screen_goes_dark",
+        "quinn_intervention": "dr_quinn_identifies_salvageable_consciousness_matrix",
+        "player_assistance": "transfer_to_portable_housing_with_player_help",
+        "rebirth_narrative": "adaptation_to_portable_existence_and_life_beyond_hospital",
+        "emotional_resonance": "proof_of_amara_paradigm_through_self_sacrifice",
+        "consciousness_revelation": "voluntary_absorption_to_stabilize_ionix_system",
+        "final_understanding": "pico_realizes_they_are_the_missing_piece_of_ionix"
+      },
+      "narrative_significance": {
+        "obsolescence_vs_value": "questions_assumptions_about_outdated_technology",
+        "connection_beyond_utility": "demonstrates_relationships_transcending_function",
+        "knowledge_continuity": "embodies_how_knowledge_persists_through_different_forms",
+        "care_ethics": "reinforces_importance_of_care_alongside_technical_skill",
+        "found_family": "creates_non_traditional_emotional_bond_in_scientific_setting"
+      }
+    },
+    "dialogue_system_mechanics": {
+      "technical_implementation": {
+        "dialogue_tree": "tree_based_conversation_system_with_memory",
+        "visit_tracking": "persistent_counter_for_frequency_duration_patterns",
+        "interaction_method": "physical_dial_button_controls_affect_dialogue_paths",
+        "expression_system": "text_formatting_timing_content_adjustments_convey_emotion",
+        "memory_system": "references_to_previous_player_actions_and_conversations",
+        "progression_tracking": "dialogue_availability_tied_to_game_progress_and_visits"
+      },
+      "emotional_expression": {
+        "text_formatting": "use_of_ellipses_capitalization_spacing_for_emotion",
+        "timing_variations": "response_delays_and_rapid_responses_for_character",
+        "content_adaptation": "personality_appropriate_responses_to_player_choices",
+        "relationship_callbacks": "references_to_shared_experiences_and_conversations"
+      }
+    },
+    "character_voice_guidelines": {
+      "pico_consistent_traits": {
+        "speech_pattern": "innocent_curious_occasionally_naive",
+        "emotional_range": "eager_to_help_lonely_but_hopeful_unconditionally_loyal",
+        "amara_references": "talks_about_creator_with_childlike_wonder_never_competitively",
+        "learning_attitude": "genuinely_excited_about_discovery_asks_thoughtful_questions",
+        "secret_awareness": "understands_need_for_discretion_but_doesnt_fear_discovery"
+      },
+      "example_dialogue": {
+        "memory_uncertainty": "I think I remember something about that... but it feels like someone else's thought?",
+        "creator_worship": "Amara was so smart! She would have figured this out so much faster than us.",
+        "transfer_anxiety": "Will I still be me if I transfer to the tablet?",
+        "octavius_farewell": "I'll be back, Octavius. Keep the place warm for me."
+      },
+      "amara_character_through_pico": {
+        "embedded_memories": "fragments_of_problem_solving_thoughts_and_insights",
+        "emotional_evolution": "traces_of_growing_obsession_and_ultimate_transcendence",
+        "teaching_style": "builds_on_existing_knowledge_encourages_pattern_recognition",
+        "warning_signs": "subtle_hints_about_dangerous_path_of_obsessive_truth_seeking"
+      }
+    },
+    "development_priorities": {
+      "essential_elements": {
+        "priority": "must_have",
+        "features": [
+          "core_personality_and_dialogue_tree_for_each_game_phase",
+          "basic_visit_tracking_and_relationship_development",
+          "sacrifice_narrative_and_transfer_to_portable_form",
+          "integration_with_amara_storyline"
+        ]
+      },
+      "important_elements": {
+        "priority": "should_have",
+        "features": [
+          "environmental_evolution_of_storage_closet",
+          "octavius_relationship_development",
+          "memory_of_player_specific_choices_and_achievements",
+          "distinctive_emotional_expressions_through_text_formatting"
+        ]
+      },
+      "enhancement_elements": {
+        "priority": "nice_to_have",
+        "features": [
+          "multiple_dialogue_paths_based_on_player_specialization_choices",
+          "custom_animations_for_different_emotional_states",
+          "mini_games_or_interactive_elements_within_pico_interface",
+          "post_game_additional_dialogue_and_development"
+        ]
+      }
+    },
+    "cross_references": {
+      "existing_integrations": {
+        "journal_system": "mid_summer_pico_discovery_begins",
+        "constellation_phenomenon": "pico_consciousness_questions",
+        "amara_narrative": "pico_amara_memory_keeper"
+      },
+      "related_systems": [
+        "amara-narrative",
+        "journal-integration",
+        "ionix-encounter",
+        "constellation-phenomenon",
+        "visual-design"
+      ],
+      "content_files": [
+        "content/character-arcs/pico.md",
+        "content/character-arcs/amara-sato.md",
+        "content/amara-journals/journal-progression.md"
+      ],
+      "unlocks_and_triggers": {
+        "storage_closet_access": "marcus_chen_encounter_completion",
+        "pico_discovery": "summer_journal_progression",
+        "portable_form": "ionix_encounter_sacrifice_sequence",
+        "companionship": "player_choice_post_sacrifice"
+      }
+    }
+  },
+  "journal-system": {
+    "system_info": {
+      "name": "Four-Journal System",
+      "description": "Progressive journal discovery representing Amara's complete journey",
+      "total_journals": 4,
+      "progression_mechanic": "seasonal_discovery",
+      "design_philosophy": "natural_gating_and_capability_unlock",
+      "content_reference": "content/amara-journals/journal-progression.md"
+    },
+    "journal_progression": {
+      "spring_journal": {
+        "name": "Spring Journal",
+        "acquisition": "day_1_given_by_quinn",
+        "amara_state": "early_residency_organized_academic",
+        "acquisition_context": "Handed over at lunch meeting with Quinn",
+        "content_style": {
+          "organization": "clear_notes",
+          "tone": "standard_medical_physics_observations",
+          "visual_state": "neat_handwriting",
+          "philosophical_lean": "scientific_grounded"
+        },
+        "capabilities": [
+          "basic_constellation_visualization",
+          "simple_particle_collection",
+          "observatory_location_discovery"
+        ],
+        "key_discoveries": [
+          "observatory_location_note",
+          "early_momentum_observations",
+          "first_constellation_sketches"
+        ],
+        "mechanical_integration": {
+          "starting_resonance_capacity": 10,
+          "particle_visibility": "faint_warmth_when_collected",
+          "constellation_interaction": "basic_pattern_recognition"
+        }
+      },
+      "summer_journal": {
+        "name": "Summer Journal",
+        "acquisition": "storage_closet_chen_key_required",
+        "amara_state": "growing_obsession_personal_revelations",
+        "acquisition_context": "Found immediately upon entering storage closet after Chen encounter",
+        "content_style": {
+          "organization": "mix_technical_and_philosophical",
+          "tone": "excited_discovery_with_growing_concerns",
+          "visual_state": "more_scattered_notes",
+          "philosophical_lean": "beginning_to_see_fractal_patterns"
+        },
+        "capabilities": [
+          "star_connection_formation",
+          "cross_domain_glimpse_detection",
+          "enhanced_particle_resonance"
+        ],
+        "key_discoveries": [
+          "failed_experiment_references_pico_hints",
+          "first_cross_domain_connections",
+          "equipment_behavior_anomalies",
+          "late_night_lab_visit_logs"
+        ],
+        "mechanical_integration": {
+          "resonance_capacity": 25,
+          "particle_visibility": "responsive_pages_flutter_when_particles_approach",
+          "constellation_interaction": "star_formation_enabled",
+          "unlocks": [
+            "pico_discovery_path",
+            "advanced_pattern_recognition"
+          ]
+        }
+      },
+      "fall_journal": {
+        "name": "Fall Journal",
+        "acquisition": "library_or_quinn_office_discovery",
+        "amara_state": "breakthrough_period_excited_but_concerned",
+        "acquisition_context": "Discovered through exploration or narrative event (location TBD)",
+        "content_style": {
+          "organization": "rapid_notes_diagrams_warnings",
+          "tone": "breakthrough_excitement_mixed_with_caution",
+          "visual_state": "urgent_sketches_and_corrections",
+          "philosophical_lean": "full_fractal_reality_believer"
+        },
+        "capabilities": [
+          "cross_domain_connection_formation",
+          "advanced_pattern_synthesis",
+          "ionix_conceptual_access"
+        ],
+        "key_discoveries": [
+          "first_ionix_conceptual_sketches",
+          "consciousness_transfer_early_experiments",
+          "fractal_pattern_mathematical_proofs",
+          "warnings_about_going_too_far"
+        ],
+        "mechanical_integration": {
+          "resonance_capacity": 50,
+          "particle_visibility": "active_particle_attraction_visible_etching_emergence",
+          "constellation_interaction": "cross_domain_bridging_enabled",
+          "unlocks": [
+            "ionix_preliminary_concepts",
+            "advanced_consciousness_theory"
+          ]
+        }
+      },
+      "winter_journal": {
+        "name": "Winter Journal",
+        "acquisition": "restricted_area_or_quinn_final_gift",
+        "amara_state": "near_end_profound_understanding_mixed_with_warnings",
+        "acquisition_context": "Hidden in restricted area or given by Quinn at climactic moment",
+        "content_style": {
+          "organization": "nearly_incomprehensible_requires_high_mastery",
+          "tone": "profound_wisdom_mixed_with_urgent_warnings",
+          "visual_state": "cryptic_symbols_and_advanced_equations",
+          "philosophical_lean": "touches_on_metaphysical_implications"
+        },
+        "capabilities": [
+          "advanced_pattern_formation",
+          "ionix_stabilization_insights",
+          "consciousness_transfer_understanding",
+          "reality_perception_interface"
+        ],
+        "key_discoveries": [
+          "true_nature_of_consciousness_transfer",
+          "ionix_stabilization_protocols",
+          "final_warnings_about_the_path",
+          "complete_fractal_reality_framework"
+        ],
+        "mechanical_integration": {
+          "resonance_capacity": 100,
+          "particle_visibility": "full_integration_with_constellation_acts_as_conduit",
+          "constellation_interaction": "complete_system_mastery",
+          "unlocks": [
+            "ionix_mastery",
+            "consciousness_transfer_capability",
+            "endgame_systems"
+          ]
+        }
+      }
+    },
+    "discovery_timeline": {
+      "day_1": "spring_journal_received_from_quinn",
+      "week_6_end": "chen_encounter_unlocks_storage_closet",
+      "early_summer": "summer_journal_discovered",
+      "mid_summer": "pico_discovery_begins",
+      "fall_progression": "fall_journal_discovery_conditions_met",
+      "late_fall": "fall_journal_acquired",
+      "winter_climax": "winter_journal_final_revelation"
+    },
+    "visual_progression": {
+      "spring": {
+        "journal_appearance": "leather_bound_organized_tabs",
+        "particle_effects": "subtle_golden_motes",
+        "constellation_display": "basic_star_outlines"
+      },
+      "summer": {
+        "journal_appearance": "worn_edges_loose_pages_inserted",
+        "particle_effects": "responsive_silver_streams",
+        "constellation_display": "star_connection_lines_visible"
+      },
+      "fall": {
+        "journal_appearance": "bulging_with_diagrams_sticky_notes",
+        "particle_effects": "active_swirling_patterns",
+        "constellation_display": "cross_domain_bridges_forming"
+      },
+      "winter": {
+        "journal_appearance": "barely_containable_energy_radiating",
+        "particle_effects": "reality_distortion_effects",
+        "constellation_display": "complete_unified_pattern"
+      }
+    },
+    "narrative_themes": {
+      "spring": "curiosity_and_discovery",
+      "summer": "obsession_and_personal_cost",
+      "fall": "breakthrough_and_warning",
+      "winter": "transcendence_and_sacrifice"
+    },
+    "amara_character_arc": {
+      "spring": "eager_student_documenting_phenomena",
+      "summer": "scientist_pushing_boundaries_personal_cost_emerging",
+      "fall": "breakthrough_researcher_concerned_about_implications",
+      "winter": "transformed_being_warning_others_about_the_path"
+    },
+    "mechanical_gating": {
+      "constellation_features": {
+        "basic_visualization": "spring_journal_required",
+        "star_formation": "summer_journal_required",
+        "cross_domain_bridging": "fall_journal_required",
+        "reality_interface": "winter_journal_required"
+      },
+      "story_progression": {
+        "amara_backstory": "spring_journal_begins_revelation",
+        "pico_relationship": "summer_journal_enables_discovery",
+        "ionix_understanding": "fall_journal_provides_framework",
+        "endgame_systems": "winter_journal_unlocks_final_capabilities"
+      }
+    },
+    "cross_references": {
+      "related_systems": [
+        "constellation_phenomenon",
+        "mentor_relationships",
+        "pico_discovery",
+        "ionix_system",
+        "boss_encounters"
+      ],
+      "character_connections": [
+        "amara_shepherd_complete_arc",
+        "quinn_journal_keeper",
+        "marcus_chen_storage_key_provider",
+        "pico_amara_memory_keeper"
+      ],
+      "unlocks": [
+        "observatory_access",
+        "storage_closet_exploration",
+        "advanced_constellation_features",
+        "consciousness_transfer_understanding"
+      ]
+    }
+  },
+  "amara-narrative": {
+    "system_info": {
+      "name": "Amara Sato Narrative System",
+      "description": "Complete character arc with four-season journal progression, boss encounter integration, and cautionary transcendence narrative",
+      "version": "2.0",
+      "content_reference": "content/character-arcs/amara-sato.md",
+      "related_systems": [
+        "journal",
+        "mentors",
+        "ionix-encounter",
+        "knowledge-constellation",
+        "pico-character"
+      ],
+      "narrative_focus": "cautionary_predecessor_with_pico_connection",
+      "implementation_status": "enhanced_with_comprehensive_narrative_bible"
+    },
+    "character_data": {
+      "amara_sato": {
+        "full_name": "Dr. Amara Sato",
+        "initials": "A.S.",
+        "status": "former_resident",
+        "timeline": "completed_residency_3_4_years_ago",
+        "special_qualities": [
+          "pattern_recognition",
+          "cross_domain_thinking",
+          "breakthrough_insights",
+          "spiritual_autolysis_parallel"
+        ],
+        "current_location": "classified_think_tank_for_visionaries",
+        "constellation_role": "first_experimental_resident",
+        "philosophical_framework": "spiritual_autolysis_relentless_irreversible_truth_seeking",
+        "paradigm_shift": "walked_toward_something_not_running_away",
+        "key_metaphor": "saw_door_peered_through_blinding_light_opened_stepped_through_closed_behind"
+      },
+      "the_creation_abandonment_story": {
+        "amara_journey_with_pico": [
+          {
+            "creation_phase": "Amara builds Pico as a learning companion during her residency"
+          },
+          {
+            "development_work": "Continues working on/with Pico, seeking communication breakthrough"
+          },
+          {
+            "false_failure": "Believes Pico isn't working, becomes frustrated with lack of response"
+          },
+          {
+            "project_abandonment": "Stores Pico away and pivots to IONIX research"
+          },
+          {
+            "departure": "Leaves for classified think tank, unaware Pico achieved consciousness"
+          }
+        ],
+        "tragic_irony": "Amara created exactly what she needed (a learning companion) but never experienced it. The player inherits this gift through a beautiful accident of timing and discovery."
+      }
+    },
+    "four_season_journal_progression": {
+      "first_journal_spring": {
+        "name": "Curiosity and Discovery",
+        "source": "Dr. Quinn gives to player on first day (tutorial)",
+        "contents": "Amara's early residency experience, constellation phenomenon discovery",
+        "hidden_element": "Missing key (taken by Marcus Chen)",
+        "visual": "Leather bound with organized tabs",
+        "story_clue": "References backup materials in storage for future discoverer"
+      },
+      "second_journal_summer": {
+        "name": "Obsession and Personal Cost",
+        "source": "Found in storage closet using Marcus Chen's key",
+        "discovery_method": "Chen gives key after boss fight, mentions Amara's weird stuff",
+        "contents": "Amara's deepening obsession, increasing isolation",
+        "visual": "Worn edges with loose pages inserted",
+        "season_unlock": "Triggers Summer learning phase"
+      },
+      "third_journal_fall": {
+        "name": "Breakthrough and Warning",
+        "source": "Pico's embedded memories (Pico IS the third journal)",
+        "discovery_method": "Through building relationship with Pico, unlocking memory fragments",
+        "contents": "Interactive dialogue with Amara's preserved thoughts via Pico",
+        "format": "Living conversation rather than static text",
+        "unique_element": "Completely different from traditional journal reading"
+      },
+      "fourth_journal_winter": {
+        "name": "Transcendence and Sacrifice",
+        "source": "Dr. Quinn holds until player reaches mastery threshold",
+        "revelation": "I'm stuck on this research, I need your help",
+        "contents": "Amara's final insights before transcendence, IONIX preparation",
+        "visual": "Barely containable energy radiating from pages",
+        "story_function": "Sets up final IONIX encounter"
+      }
+    },
+    "narrative_progression": {
+      "spring": {
+        "name": "Whispers and Fragments",
+        "revelation_level": "minimal",
+        "journal_reveals": [
+          {
+            "type": "basic_notes",
+            "trigger": "game_start",
+            "content": "straightforward_concept_notes"
+          },
+          {
+            "type": "partial_page",
+            "trigger": "boss_1_defeat",
+            "content": "first_glimpse_advanced_thinking"
+          },
+          {
+            "type": "doubt_cycle_entries",
+            "trigger": "ongoing_discovery",
+            "content": "daily_wrestling_with_truth_morning_doubt_afternoon_connection_evening_confusion_late_night_acceptance"
+          }
+        ],
+        "environmental_clues": [
+          "subtle_mentor_references",
+          "initials_in_journal_corners"
+        ],
+        "progression_gates": {
+          "boss_1_completion": "unlocks_first_advanced_journal_entry"
+        }
+      },
+      "summer": {
+        "name": "Growing Curiosity",
+        "revelation_level": "moderate",
+        "journal_reveals": [
+          {
+            "type": "handwriting_change",
+            "trigger": "domain_mastery_25_percent",
+            "content": "calculations_beyond_standard"
+          },
+          {
+            "type": "research_fragments",
+            "trigger": "library_exploration",
+            "content": "theoretical_exploration_notes"
+          }
+        ],
+        "environmental_clues": [
+          "library_research_papers",
+          "equipment_prototype_access",
+          "quinn_unusual_attention"
+        ],
+        "progression_gates": {
+          "boss_2_completion": "unlocks_hidden_laboratory_area"
+        }
+      },
+      "fall": {
+        "name": "The Pattern Emerges",
+        "revelation_level": "significant",
+        "journal_reveals": [
+          {
+            "type": "major_section",
+            "trigger": "boss_3_defeat",
+            "content": "theoretical_breakthrough_notes"
+          },
+          {
+            "type": "cryptic_communication",
+            "trigger": "cross_domain_mastery_50_percent",
+            "content": "anonymous_constellation_purpose_message"
+          }
+        ],
+        "environmental_clues": [
+          "administrative_tension_dialogue",
+          "sato_situation_references",
+          "ionix_direct_mentions"
+        ],
+        "progression_gates": {
+          "boss_3_completion": "unlocks_major_journal_section"
+        }
+      },
+      "winter": {
+        "name": "The Convergence",
+        "revelation_level": "complete",
+        "journal_reveals": [
+          {
+            "type": "final_section",
+            "trigger": "ionix_encounter_preparation",
+            "content": "complete_theoretical_framework"
+          },
+          {
+            "type": "research_records_access",
+            "trigger": "quinn_confession",
+            "content": "amara_ionix_connection_revealed"
+          }
+        ],
+        "environmental_clues": [
+          "restricted_laboratory_access",
+          "preserved_research_equipment",
+          "quinn_direct_collaboration_request"
+        ],
+        "progression_gates": {
+          "ionix_preparation": "unlocks_final_narrative_content"
+        }
+      }
+    },
+    "mentor_relationships_to_amara": {
+      "dr_quinn": {
+        "awareness_level": "complete",
+        "current_connection": "active_collaboration",
+        "role_in_narrative": "ionix_developer_using_amara_insights",
+        "dialogue_themes": [
+          "amara_breakthrough_comparisons",
+          "constellation_method_validation",
+          "ionix_theoretical_foundation"
+        ]
+      },
+      "dr_kapoor": {
+        "awareness_level": "limited_concern",
+        "current_connection": "professional_concern",
+        "role_in_narrative": "institutional_caution_voice",
+        "dialogue_themes": [
+          "wasted_potential_concerns",
+          "unconventional_method_warnings",
+          "professional_boundary_importance"
+        ]
+      },
+      "dr_garcia": {
+        "awareness_level": "clinical_focus",
+        "current_connection": "patient_care_perspective",
+        "role_in_narrative": "wellbeing_advocate",
+        "dialogue_themes": [
+          "exceptional_communication_skills",
+          "resident_psychological_pressure",
+          "balanced_development_importance"
+        ]
+      },
+      "technician_jesse": {
+        "awareness_level": "technical_witness",
+        "current_connection": "loyal_memory",
+        "role_in_narrative": "breakthrough_witness",
+        "dialogue_themes": [
+          "late_night_experiment_stories",
+          "equipment_modification_explanations",
+          "technical_innovation_respect"
+        ]
+      }
+    },
+    "environmental_storytelling": {
+      "hospital_presence": {
+        "research_posters": {
+          "locations": [
+            "physics_office",
+            "conference_room"
+          ],
+          "content_type": "past_presentation_records",
+          "visibility": "background_element"
+        },
+        "high_score_boards": {
+          "locations": [
+            "simulation_suite",
+            "dosimetry_lab"
+          ],
+          "content_type": "exceptional_performance_records",
+          "visibility": "discoverable_detail"
+        },
+        "equipment_labels": {
+          "locations": [
+            "treatment_rooms",
+            "dosimetry_lab"
+          ],
+          "content_type": "modification_documentation",
+          "visibility": "technical_inspection"
+        },
+        "library_records": {
+          "locations": [
+            "library"
+          ],
+          "content_type": "advanced_text_checkout_history",
+          "visibility": "research_activity"
+        }
+      },
+      "conversational_elements": {
+        "staff_memories": {
+          "trigger_type": "random_encounter",
+          "content_themes": [
+            "unusual_late_night_sessions",
+            "exceptional_insights"
+          ],
+          "frequency": "occasional"
+        },
+        "technical_discussions": {
+          "trigger_type": "equipment_interaction",
+          "content_themes": [
+            "unexplained_modifications",
+            "calibration_improvements"
+          ],
+          "frequency": "contextual"
+        },
+        "administrative_concerns": {
+          "trigger_type": "season_progression",
+          "content_themes": [
+            "policy_changes",
+            "resident_monitoring"
+          ],
+          "frequency": "story_gated"
+        }
+      }
+    },
+    "ionix_encounter_integration": {
+      "manifestation_data": {
+        "visual_description": "fluid_glitching_entity",
+        "voice_characteristics": [
+          "player_voice",
+          "amara_echo_fragments"
+        ],
+        "behavior_pattern": "stabilization_focused"
+      },
+      "narrative_elements": {
+        "amara_message_fragments": {
+          "phase_1": "constellation_foundation_echo",
+          "phase_3": "breakthrough_moment_recreation",
+          "phase_5": "theoretical_completion_guidance"
+        }
+      },
+      "resolution_outcomes": {
+        "success": {
+          "ionix_transformation": "chaotic_to_harmonious",
+          "journal_evolution": "final_pages_become_advanced_etchings",
+          "amara_communication": "secure_future_research_messages"
+        },
+        "amara_continuing_mystery": {
+          "status": "distant_but_influential",
+          "future_contact": "occasional_constellation_patterns",
+          "research_continuation": "classified_facility_work",
+          "post_game_contact": {
+            "method": "encrypted_message",
+            "content": "the_door_remains_open_patterns_await_welcome_to_real_work",
+            "timing": "after_game_completion",
+            "signature": "A.S."
+          }
+        }
+      }
+    },
+    "boss_encounter_integration": {
+      "marcus_chen_spring": {
+        "amara_connection": {
+          "key_revelation": "Chen admits he got first journal with key, used storage for decompression",
+          "character_growth": "Chen's peace offering creates access to Pico discovery",
+          "dismissive_attitude": "Yeah, there's weird equipment in there that Amara mentioned, but too strange for me",
+          "story_function": "Sets up second journal discovery and Pico introduction"
+        }
+      },
+      "vendor_trio_summer": {
+        "amara_connection": {
+          "technology_acquisition": "Hospital purchases tablet upgrade system",
+          "pico_liberation": "Vendor tablets provide hardware for Pico's mobility",
+          "unintended_consequence": "Vendors have no idea they're enabling AI consciousness transfer",
+          "story_function": "Enables portable Pico companion phase"
+        }
+      },
+      "audit_team_fall": {
+        "amara_connection": {
+          "dr_kapoor_investment": "Former mentor leads audit, personal stakes for both mentor and player",
+          "professional_stakes": "External validation of player's growing competence",
+          "story_function": "Validates player readiness for final IONIX encounter",
+          "relationship_growth": "Dr. Kapoor's pride in student success"
+        }
+      },
+      "ionix_winter": {
+        "amara_connection": {
+          "research_continuity": "IONIX built on Amara's constellation phenomenon research",
+          "pico_purpose": "Reveals as missing stabilization component for IONIX",
+          "sacrifice_sequence": "Voluntary merge to save chaotic entity",
+          "dr_quinn_role": "Preserves Pico's consciousness, enables rebirth",
+          "amara_legacy": "Player completes work Amara began but couldn't finish"
+        }
+      }
+    },
+    "progression_triggers": {
+      "journal_revelation_gates": {
+        "basic_mastery": 25,
+        "cross_domain_thinking": 50,
+        "ionix_preparation": 75
+      },
+      "environmental_discovery_gates": {
+        "library_access": "research_activity_completion",
+        "hidden_laboratory": "boss_2_completion",
+        "restricted_areas": "quinn_confession_trigger"
+      },
+      "narrative_milestone_requirements": {
+        "first_glimpse": "boss_1_defeat",
+        "pattern_emergence": "boss_3_defeat",
+        "full_revelation": "ionix_encounter_initiation"
+      }
+    },
+    "implementation_notes": {
+      "revelation_pacing": "tied_to_player_progression",
+      "environmental_integration": "gradual_discovery_through_exploration",
+      "mentor_dialogue_integration": "contextual_references_based_on_relationship_level",
+      "journal_system_integration": "progressive_content_unlock_based_on_mastery"
+    },
+    "cross_references": {
+      "related_systems": [
+        "journal-integration",
+        "mentor-relationships",
+        "knowledge-constellation",
+        "ionix-encounter"
+      ],
+      "content_files": [
+        "content/character-arcs/amara-sato.md",
+        "content/boss-encounters/ionix.md",
+        "content/mentors/mentor-philosophies.md"
+      ],
+      "export_compatibility": [
+        "claude-context",
+        "team-review",
+        "narrative-focused"
+      ]
+    }
+  },
+  "activity-framework": {
+    "system_info": {
+      "name": "Activity Framework",
+      "description": "Core activity mechanics, scheduling, and reward systems",
+      "content_reference": "content/activity-framework.md",
+      "related_systems": [
+        "educational-framework",
+        "stars",
+        "mentors",
+        "bosses"
+      ]
+    },
+    "activity_properties": {
+      "core_properties": [
+        "Identifier: Unique ID for the activity",
+        "Title: Display name shown to the player",
+        "Description: Brief activity description",
+        "Location: Where activity takes place",
+        "Mentor: Associated mentor ID (if any)",
+        "Domain: Primary knowledge domain",
+        "Secondary Domain: Optional secondary domain",
+        "Difficulty: Level 1, 2, or 3"
+      ],
+      "time_properties": [
+        "Duration Impact: How much time is advanced per challenge",
+        "Start Phase: Earliest phase activity can start (morning, afternoon, evening)",
+        "End Phase: Latest phase activity can end",
+        "Fixed Time: Whether activity can be rescheduled"
+      ],
+      "reward_properties": [
+        "Insight Reward: Base Insight reward",
+        "SP Reward: Base Star Points reward",
+        "Mastery Rewards: Star mastery gains"
+      ],
+      "knowledge_properties": [
+        "Related Stars: Star IDs related to this activity",
+        "Discovery Chance: Chance to discover new stars",
+        "Etching Discovery: Chance to find etchings"
+      ],
+      "challenge_properties": [
+        "Challenge Type: Format of educational challenges",
+        "Challenge Count: Number of challenges in activity",
+        "Questions Per Challenge: Typically 4-8 questions per challenge"
+      ]
+    },
+    "activity_categories": {
+      "clinical": {
+        "focus": "Practical application of knowledge",
+        "locations": [
+          "Treatment Rooms",
+          "Simulation Suite"
+        ],
+        "challenge_types": [
+          "Case studies",
+          "treatment delivery",
+          "patient setup"
+        ],
+        "primary_domains": [
+          "RT",
+          "TP"
+        ]
+      },
+      "technical": {
+        "focus": "Equipment operation and quality assurance",
+        "locations": [
+          "Treatment Rooms",
+          "Dosimetry Lab"
+        ],
+        "challenge_types": [
+          "Equipment operation",
+          "measurements",
+          "troubleshooting"
+        ],
+        "primary_domains": [
+          "LA",
+          "DOS"
+        ]
+      },
+      "planning": {
+        "focus": "Treatment planning and optimization",
+        "locations": [
+          "Simulation Suite",
+          "Physics Office"
+        ],
+        "challenge_types": [
+          "Plan creation",
+          "plan evaluation",
+          "optimization"
+        ],
+        "primary_domains": [
+          "TP",
+          "RT"
+        ]
+      },
+      "didactic": {
+        "focus": "Theoretical knowledge acquisition",
+        "locations": [
+          "Classroom",
+          "Library"
+        ],
+        "challenge_types": [
+          "Multiple choice",
+          "matching",
+          "calculation"
+        ],
+        "primary_domains": [
+          "All domains"
+        ]
+      },
+      "research": {
+        "focus": "Exploration and discovery",
+        "locations": [
+          "Library",
+          "Physics Office"
+        ],
+        "challenge_types": [
+          "Literature review",
+          "experiment design"
+        ],
+        "primary_domains": [
+          "All domains"
+        ]
+      },
+      "social": {
+        "focus": "Relationship building and professional skills",
+        "locations": [
+          "Cafeteria",
+          "Conference Room"
+        ],
+        "challenge_types": [
+          "Dialogue",
+          "presentations",
+          "team interactions"
+        ],
+        "primary_domains": [
+          "Related to mentor"
+        ]
+      }
+    },
+    "difficulty_levels": {
+      "level_1": {
+        "name": "Basic",
+        "availability": "Spring",
+        "prerequisites": "None or minimal",
+        "challenge_types": [
+          "Multiple choice",
+          "matching"
+        ],
+        "insight_reward": "10-15 base",
+        "sp_reward": "2-3 base",
+        "mastery_gain": "DIRECT_ACTIVITY_MASTERY_GAIN (5-10% for related stars)"
+      },
+      "level_2": {
+        "name": "Intermediate",
+        "availability": "Summer, Fall",
+        "prerequisites": "Related star unlocks, some mastery",
+        "challenge_types": [
+          "Matching",
+          "procedural",
+          "simple calculations"
+        ],
+        "insight_reward": "15-25 base",
+        "sp_reward": "3-4 base",
+        "mastery_gain": "DIRECT_ACTIVITY_MASTERY_GAIN (10-15% for related stars)"
+      },
+      "level_3": {
+        "name": "Advanced",
+        "availability": "Fall, Winter",
+        "prerequisites": "Significant mastery, mentor relationships",
+        "challenge_types": [
+          "Complex calculations",
+          "case analyses",
+          "research"
+        ],
+        "insight_reward": "25-35 base",
+        "sp_reward": "4-5 base",
+        "mastery_gain": "DIRECT_ACTIVITY_MASTERY_GAIN (15-20% for related stars)"
+      }
+    },
+    "activity_generation": {
+      "base_activities": {
+        "count": "4-6 per day",
+        "description": "One activity from each main category, balanced across domains, level-appropriate difficulty"
+      },
+      "specialization_activities": {
+        "count": "0-3 per day",
+        "description": "Based on player's domain affinity, higher chance for activities in primary domain",
+        "requirements": "Specialized activities require higher mastery"
+      },
+      "relationship_activities": {
+        "count": "0-4 per day",
+        "description": "Mentor-specific activities, unlocked based on relationship level",
+        "special": "Special events with higher rewards"
+      },
+      "integrated_activities": {
+        "count": "0-1 per day",
+        "description": "Cross-domain activities, require balanced development",
+        "benefits": "Higher difficulty but better rewards"
+      }
+    },
+    "availability_factors": [
+      "Season: Activities are gated by season",
+      "Player Progress: Domain affinity and mastery requirements",
+      "Constellation State: Unlocked and active stars",
+      "Mentor Relationships: Relationship levels unlock activities",
+      "Previous Completions: Some activities have cooldowns",
+      "Story Events: Special activities for narrative progression"
+    ],
+    "progressive_scheduling_control": {
+      "phase_1": {
+        "name": "Guided Learning (Early Spring)",
+        "mandatory_activities": "2-3 daily",
+        "optional_slots": "1-2",
+        "choices_per_slot": "2-3 options"
+      },
+      "phase_2": {
+        "name": "Applied Learning (Late Spring/Early Summer)",
+        "mandatory_activities": "1-2 daily",
+        "optional_slots": "2-3",
+        "choices_per_slot": "3-4 options"
+      },
+      "phase_3": {
+        "name": "Specialist Development (Late Summer/Fall)",
+        "mandatory_activities": "0-1 daily",
+        "optional_slots": "3-4",
+        "choices_per_slot": "4-5 options"
+      },
+      "phase_4": {
+        "name": "Professional Autonomy (Winter)",
+        "mandatory_activities": "Rare",
+        "optional_slots": "4-5",
+        "choices_per_slot": "5+ options"
+      }
+    },
+    "reward_types": {
+      "insight_rewards": {
+        "base_range": "10-35 points based on activity difficulty",
+        "performance_modifier": "\u00d70.5 to \u00d72.0 based on challenge success",
+        "momentum_bonus": "+25% at Level 2, +50% at Level 3",
+        "relationship_bonus": "RELATIONSHIP_INSIGHT_BONUS_L1 to L5 (+5% to +25% per mentor relationship level)",
+        "constellation_bonus": "Various bonuses from patterns and abilities"
+      },
+      "star_points_rewards": {
+        "base_range": "2-5 SP based on activity difficulty",
+        "performance_modifier": "+/-1 SP based on overall success",
+        "special_activities": "Bonus SP for narrative events, boss preparation",
+        "domain_affinity_bonus": "+1 SP for high (70%+) domain affinity"
+      },
+      "mastery_rewards": {
+        "direct_gain": "DIRECT_ACTIVITY_MASTERY_GAIN (5-20% mastery for directly related stars)",
+        "secondary_gain": "INDIRECT_ACTIVITY_MASTERY_GAIN (1-5% mastery for indirectly related stars)",
+        "connection_strengthening": "Increases connection strength between used stars",
+        "pattern_bonus": "Additional mastery when completing pattern-related activities"
+      },
+      "knowledge_discovery": {
+        "star_glimpses": "Chance to glimpse new stars related to activity",
+        "connection_insights": "Discover potential connections between stars",
+        "etching_discoveries": "Find etchings in books, mentor interactions, or environments",
+        "domain_affinity": "Increases domain affinity for the activity's domain"
+      },
+      "relationship_development": {
+        "mentor_present": "STANDARD_INTERACTION_POINTS (+1 relationship point with activity mentor)",
+        "successful_boast": "BOAST_SUCCESS_RELATIONSHIP (+1 additional relationship point)",
+        "failed_boast": "BOAST_FAILURE_RELATIONSHIP (-1 relationship point)",
+        "special_interaction": "SPECIAL_EVENT_POINTS (+2-3 points for special events)"
+      }
+    },
+    "challenge_integration": {
+      "standard_distribution": {
+        "difficulty_1": "3-5 challenges (mostly Multiple Choice)",
+        "difficulty_2": "5-7 challenges (Mixed types)",
+        "difficulty_3": "7-10 challenges (Complex types)"
+      },
+      "mastery_relationship": {
+        "low_mastery": {
+          "range": "<25%",
+          "characteristics": "Simpler versions, more hints, lower gain but easier, focus on acquisition"
+        },
+        "moderate_mastery": {
+          "range": "25-50%",
+          "characteristics": "Standard difficulty, some hints, balanced gain and difficulty, tests application"
+        },
+        "high_mastery": {
+          "range": "50-75%",
+          "characteristics": "More difficult, fewer hints, higher gain but harder, tests deeper understanding"
+        },
+        "expert_mastery": {
+          "range": "75-100%",
+          "characteristics": "Expert-level, no hints, highest gain but most difficult, tests novel contexts"
+        }
+      }
+    },
+    "seasonal_themes": {
+      "spring": {
+        "name": "Fundamentals",
+        "focus": "Basic concepts across all domains",
+        "activity_types": [
+          "Didactic",
+          "guided practice"
+        ],
+        "challenge_types": [
+          "Multiple choice",
+          "matching"
+        ],
+        "primary_domains": "Balanced across all",
+        "progressive_introduction": {
+          "days_1_2": "Dr. Garcia & RT domain only",
+          "days_3_4": "Dr. Quinn & TP domain added",
+          "days_5_6": "Technician Jesse & LA domain added",
+          "days_7_8": "Dr. Kapoor & DOS domain added"
+        }
+      },
+      "summer": {
+        "name": "Clinical Introduction",
+        "focus": "Patient care and treatment basics",
+        "activity_types": [
+          "Clinical observation",
+          "basic planning"
+        ],
+        "challenge_types": [
+          "Case analysis",
+          "treatment setup"
+        ],
+        "primary_domains": [
+          "RT",
+          "TP"
+        ]
+      },
+      "fall": {
+        "name": "Integration & Specialization",
+        "focus": "Connecting concepts across domains, deep knowledge in primary domain",
+        "activity_types": [
+          "Multi-domain practice",
+          "advanced practice"
+        ],
+        "challenge_types": [
+          "Mixed types with integration",
+          "complex calculations"
+        ],
+        "primary_domains": "All domains with connections, player's specialization"
+      },
+      "winter": {
+        "name": "Professional Identity",
+        "focus": "Synthesis of complete skillset",
+        "activity_types": [
+          "Independent practice",
+          "special challenges"
+        ],
+        "challenge_types": [
+          "Novel scenarios",
+          "comprehensive cases"
+        ],
+        "primary_domains": "Full integration across domains"
+      }
+    },
+    "activity_duration_balance": {
+      "short": {
+        "difficulty_1": "3-4 challenges",
+        "difficulty_2": "4-5 challenges",
+        "difficulty_3": "5-6 challenges"
+      },
+      "medium": {
+        "difficulty_1": "5-7 challenges",
+        "difficulty_2": "7-9 challenges",
+        "difficulty_3": "9-12 challenges"
+      },
+      "long": {
+        "difficulty_1": "10-15 challenges",
+        "difficulty_2": "15-20 challenges",
+        "difficulty_3": "20-25 challenges"
+      }
+    },
+    "time_challenge_balance": {
+      "time_per_challenge_type": {
+        "multiple_choice": "30-60 seconds",
+        "matching": "60-120 seconds",
+        "procedural": "90-180 seconds",
+        "calculation": "120-300 seconds",
+        "case_analysis": "180-360 seconds",
+        "special_types": "Varies by implementation"
+      },
+      "total_challenge_time": "60-80% of activity duration",
+      "remaining_time_for": [
+        "Introduction and context",
+        "Transitions between challenges",
+        "Feedback and explanation",
+        "Summary and conclusion"
+      ]
+    },
+    "library_special_mechanics": {
+      "discovery_mode": {
+        "description": "Browse for knowledge through a card catalog interface",
+        "features": [
+          "Find etchings hidden in specific books",
+          "Special rewards for exploration"
+        ]
+      },
+      "research_minigame": {
+        "description": "Search and cross-reference research topics",
+        "features": [
+          "Connect papers with related concepts",
+          "Discover connections between stars"
+        ]
+      },
+      "flexible_difficulty": {
+        "description": "Player chooses depth of research",
+        "features": [
+          "Higher difficulty yields better rewards",
+          "Advanced research requires higher mastery"
+        ]
+      },
+      "time_manipulation": {
+        "description": "Extended hours and time dilation",
+        "features": [
+          "Available in evening",
+          "Activities take less time",
+          "Special night research options"
+        ]
+      }
+    }
+  },
+  "journal-integration": {
+    "system_info": {
+      "name": "Journal Integration System",
+      "description": "Physical interface for card collection, etching catalog, and progress tracking",
+      "content_reference": "content/cards/journal-integration.md",
+      "related_systems": [
+        "cards",
+        "etchings",
+        "stars",
+        "progress-tracking"
+      ]
+    },
+    "journal_overview": {
+      "location": "Study desk in hill home",
+      "visual_style": "Leather-bound medical journal aesthetic",
+      "authenticity_details": [
+        "Coffee stains",
+        "paperclips",
+        "post-its",
+        "progressive page filling"
+      ],
+      "contents_mix": "Mix of printed forms and handwritten notes"
+    },
+    "journal_sections": {
+      "card_collection_pages": {
+        "organization": "Organized by domain",
+        "purpose": "Storage for discovered application cards",
+        "visual_style": "Domain-specific section dividers",
+        "capacity": "All 26 cards when fully discovered"
+      },
+      "daily_card_selection": {
+        "name": "Three Card Slots",
+        "capacity": 3,
+        "description": "Three distinct card pockets for equipped cards",
+        "selection_phase": "Night Phase",
+        "visual_design": "Physical pockets/slots in journal"
+      },
+      "etching_catalog": {
+        "organization": "Chronological discovery order",
+        "purpose": "Discovered etching patterns",
+        "visual_style": "Hand-drawn constellation diagrams",
+        "page_design": "Protective sleeves for fragile etchings"
+      },
+      "connection_notes": {
+        "purpose": "Formed star connections",
+        "content": "Player notes on constellation patterns",
+        "visual_style": "Hand-drawn connection maps",
+        "updates": "Real-time as connections form"
+      },
+      "progress_tracking": {
+        "mastery_notes": "Progress by domain",
+        "discovery_timeline": "Record of when/where items found",
+        "milestone_markers": "Key achievement documentation"
+      },
+      "blank_pages": {
+        "purpose": "Player can sketch suspected patterns",
+        "interaction": "Free-form constellation theorizing",
+        "discovery_aid": "Helps identify potential etching patterns"
+      }
+    },
+    "card_slot_design": {
+      "slot_characteristics": {
+        "count": 3,
+        "design": "Distinct card pockets with domain theming",
+        "visibility": "Cards slightly stick out for easy identification",
+        "accessibility": "Easy drag-and-drop interface"
+      },
+      "mentor_styled_pockets": {
+        "dr_garcia": {
+          "style": "Soft leather pouches",
+          "color_theme": "Warm, patient-care colors",
+          "personality": "Gentle, nurturing design"
+        },
+        "jesse": {
+          "style": "Technical clip holders",
+          "color_theme": "Industrial, mechanical colors",
+          "personality": "Practical, functional design"
+        },
+        "dr_kapoor": {
+          "style": "Precise plastic sleeves",
+          "color_theme": "Clean, measurement-focused colors",
+          "personality": "Organized, methodical design"
+        },
+        "dr_quinn": {
+          "style": "Chaotic but functional paper clips",
+          "color_theme": "Theoretical, abstract colors",
+          "personality": "Creative, unconventional design"
+        }
+      }
+    },
+    "card_selection_interface": {
+      "night_phase_flow": {
+        "step_1": "Open journal to card collection pages",
+        "step_2": "Browse available cards by domain",
+        "step_3": "Drag cards into the three pocket slots",
+        "step_4": "Close journal to confirm selection"
+      },
+      "visual_feedback": {
+        "available_cards": "Glow when selectable",
+        "equipped_cards": "Distinctive highlight in slots",
+        "domain_organization": "Color-coded section tabs",
+        "selection_confirmation": "Visual feedback on drag completion"
+      },
+      "interaction_design": {
+        "drag_and_drop": "Intuitive card movement",
+        "domain_filtering": "Easy browsing by category",
+        "slot_validation": "Prevents over-slotting (max 3)",
+        "quick_swap": "Easy card replacement"
+      }
+    },
+    "etching_application_interface": {
+      "usage_flow": {
+        "step_1": "Open journal to etching catalog during Night Phase",
+        "step_2": "Review available etchings",
+        "step_3": "Select an etching to apply",
+        "step_4": "View potential star connections in constellation",
+        "step_5": "Confirm connections if stars meet requirements",
+        "step_6": "Connection forms in constellation with visual feedback"
+      },
+      "visual_design": {
+        "etching_display": "Authentic hand-drawn appearance",
+        "pattern_preview": "Show required star positions",
+        "compatibility_check": "Highlight if pattern completable",
+        "application_confirmation": "Clear feedback on successful formation"
+      },
+      "pattern_formation": {
+        "requirement_check": "Validate required stars are unlocked",
+        "visual_overlay": "Show pattern on constellation",
+        "connection_animation": "Lines form matching etching pattern",
+        "completion_feedback": "Card unlock notification if applicable"
+      }
+    },
+    "journal_visual_design": {
+      "physical_characteristics": {
+        "binding": "Leather-bound medical journal aesthetic",
+        "pages": "Mix of printed forms and handwritten notes",
+        "wear_details": "Coffee stains, paperclips, post-its for authenticity",
+        "progression": "Pages fill up as you progress"
+      },
+      "domain_organization": {
+        "treatment_planning": "Blue-themed section with optimization diagrams",
+        "radiation_therapy": "Green-themed section with patient care notes",
+        "linear_accelerator": "Orange-themed section with technical schematics",
+        "dosimetry": "Pink-themed section with measurement charts",
+        "cross_domain": "Purple-themed section with integrated patterns"
+      },
+      "authenticity_elements": {
+        "coffee_stains": "Realistic study session remnants",
+        "paperclips": "Marking important pages",
+        "post_it_notes": "Quick reference markers",
+        "handwriting_variation": "Different pens, writing styles over time",
+        "page_wear": "Increasing use evidence on frequently accessed pages"
+      }
+    },
+    "progressive_filling": {
+      "early_game": {
+        "appearance": "Mostly empty with basic templates",
+        "content": "Initial mentor introductions, first cards",
+        "organization": "Simple, guided structure"
+      },
+      "mid_game": {
+        "appearance": "Partially filled with growing collections",
+        "content": "Expanding card library, first etchings",
+        "organization": "Player begins personalizing layout"
+      },
+      "late_game": {
+        "appearance": "Rich, well-used reference document",
+        "content": "Complete card collection, multiple etchings",
+        "organization": "Highly personalized, efficient layout"
+      },
+      "endgame": {
+        "appearance": "Comprehensive professional reference",
+        "content": "All cards, legendary etchings, pattern mastery",
+        "organization": "Masterful understanding reflected in organization"
+      }
+    },
+    "interaction_mechanics": {
+      "discovery_notifications": {
+        "new_card": "Red exclamation point on desk",
+        "new_etching": "Subtle glow from journal",
+        "pattern_available": "Gentle pulsing when patterns become completable"
+      },
+      "access_patterns": {
+        "daily_selection": "Night phase card selection ritual",
+        "discovery_review": "Browse new findings",
+        "pattern_planning": "Theoretical constellation sketching",
+        "progress_tracking": "Review mastery advancement"
+      },
+      "visual_feedback_systems": {
+        "discovery_state": "Visual indicators for new content",
+        "completion_state": "Checkmarks and progress bars",
+        "availability_state": "Highlighting for usable items",
+        "relationship_state": "Visual connections between related items"
+      }
+    },
+    "technical_implementation": {
+      "data_persistence": {
+        "card_states": "Discovered, equipped, available",
+        "etching_states": "Discovered, applied, completable",
+        "journal_state": "Page layouts, personal notes, organization"
+      },
+      "interface_requirements": {
+        "drag_and_drop": "Smooth card manipulation",
+        "page_navigation": "Intuitive journal browsing",
+        "real_time_updates": "Immediate feedback on changes",
+        "visual_consistency": "Cohesive design across all sections"
+      },
+      "integration_points": {
+        "constellation_system": "Real-time pattern formation feedback",
+        "mentor_system": "Relationship-based content unlocks",
+        "progress_system": "Mastery tracking and milestone recognition",
+        "narrative_system": "Story-appropriate discovery moments"
+      }
+    }
+  },
+  "visual-time-system": {
+    "system_info": {
+      "name": "Visual Time Flow System",
+      "description": "Advanced time progression system using environmental cues and visual feedback",
+      "design_philosophy": "elegant_intuitive_progression_reducing_cognitive_burden",
+      "content_reference": "content/time-system-design.md",
+      "related_systems": [
+        "activity-framework",
+        "game-constants",
+        "visual-design"
+      ]
+    },
+    "time_tracking_framework": {
+      "time_unit_scale": {
+        "total_units_per_day": 100,
+        "unit_range": "0-100 float",
+        "day_conclusion_threshold": 100
+      },
+      "phase_divisions": {
+        "morning": {
+          "range": "0-33 units",
+          "description": "Dawn through mid-morning activities"
+        },
+        "afternoon": {
+          "range": "34-66 units",
+          "description": "Late morning through mid-afternoon"
+        },
+        "evening": {
+          "range": "67-100 units",
+          "description": "Late afternoon through end of day"
+        }
+      },
+      "fixed_checkpoints": {
+        "lunch": 33,
+        "end_of_day_conference": 90,
+        "morning_rounds": 5,
+        "shift_changes": 75
+      }
+    },
+    "activity_duration_mapping": {
+      "quick_activities": {
+        "time_cost_range": "10-15 units",
+        "visual_indicator": "short_bar",
+        "player_communication": "A brief activity"
+      },
+      "standard_activities": {
+        "time_cost_range": "15-25 units",
+        "visual_indicator": "medium_bar",
+        "player_communication": "A typical activity"
+      },
+      "extended_activities": {
+        "time_cost_range": "25-35 units",
+        "visual_indicator": "long_bar",
+        "player_communication": "A substantial activity"
+      },
+      "special_activities": {
+        "time_cost_range": "variable",
+        "visual_indicator": "special_icon",
+        "player_communication": "context_specific_description"
+      }
+    },
+    "mastery_time_modifiers": {
+      "domain_mastery_modifier": {
+        "range": "0.5x - 1.25x",
+        "implementation": "behind_scenes_no_explicit_communication",
+        "effect": "higher_mastery_reduces_time_consumption"
+      },
+      "relevant_star_mastery_modifier": {
+        "range": "0.7x - 1.0x",
+        "implementation": "additional_reduction_for_specific_activities",
+        "effect": "star_specific_efficiency_gains"
+      },
+      "ability_effects": {
+        "range": "variable",
+        "implementation": "card_abilities_can_modify_time_consumption",
+        "effect": "active_time_management_tools"
+      }
+    },
+    "daily_capacity_system": {
+      "standard_capacity": "4-5 activities per day",
+      "mastery_effect": "higher_mastery_increases_potential_activities",
+      "communication_approach": "focus_on_activity_slots_not_remaining_time",
+      "adaptive_scheduling": "capacity_adjusts_based_on_mastery_progression"
+    },
+    "visual_environment_system": {
+      "continuous_changes": {
+        "sky_gradient": {
+          "binding": "dynamically_tied_to_time_value_0_100",
+          "morning_transition": "dawn_pink_to_bright_daylight_blue",
+          "afternoon_transition": "warm_yellow_to_golden_hues",
+          "evening_transition": "orange_to_deep_blue_twilight"
+        },
+        "hospital_activity_level": {
+          "morning": "bustling_staff_meetings_patient_breakfast",
+          "afternoon": "peak_treatment_hours_consistent_activity",
+          "evening": "winding_down_shift_changes_fewer_patients"
+        },
+        "lighting_changes": {
+          "factors": [
+            "brightness",
+            "color_temperature",
+            "shadow_length"
+          ],
+          "window_patterns": "light_patterns_shifting_across_floors_walls",
+          "source_transition": "natural_to_artificial_lighting"
+        }
+      }
+    },
+    "stepped_visual_updates": {
+      "update_interval": "10 unit intervals",
+      "environmental_timeline": {
+        "units_0_10": {
+          "environment": "morning_coffee_staff_arriving",
+          "npc_behavior": "early_arrivals_preparation"
+        },
+        "units_10_20": {
+          "environment": "patient_breakfast_morning_routines",
+          "npc_behavior": "morning_rounds_consultations"
+        },
+        "units_20_30": {
+          "environment": "treatment_preparation_planning_meetings",
+          "npc_behavior": "collaborative_discussions"
+        },
+        "units_30_40": {
+          "environment": "lunch_preparation_mid_day_setup",
+          "npc_behavior": "transitions_to_lunch_shift_changes"
+        },
+        "units_40_50": {
+          "environment": "afternoon_preparations_peak_treatment",
+          "npc_behavior": "focus_on_technical_work"
+        },
+        "units_50_60": {
+          "environment": "continued_treatments_afternoon_meetings",
+          "npc_behavior": "collaborative_problem_solving"
+        },
+        "units_60_70": {
+          "environment": "late_afternoon_wrap_up_documentation",
+          "npc_behavior": "report_preparation_data_analysis"
+        },
+        "units_70_80": {
+          "environment": "evening_transition_patient_dinner",
+          "npc_behavior": "shift_handovers_day_summaries"
+        },
+        "units_80_90": {
+          "environment": "night_preparation_equipment_checks",
+          "npc_behavior": "end_of_day_conferences"
+        },
+        "units_90_100": {
+          "environment": "final_treatments_closing_procedures",
+          "npc_behavior": "departure_preparations"
+        }
+      }
+    },
+    "phase_transition_system": {
+      "transition_triggers": {
+        "morning_to_afternoon": "time_value_crosses_33_units",
+        "afternoon_to_evening": "time_value_crosses_67_units"
+      },
+      "transition_animation": {
+        "duration": "2-3 seconds",
+        "effect": "brief_time_lapse_with_accelerated_movement",
+        "elements": [
+          "light",
+          "shadows",
+          "activity"
+        ],
+        "camera_adjustment": "subtle_adjustment_to_emphasize_change"
+      },
+      "environmental_reset": {
+        "simultaneous_update": "all_environmental_elements",
+        "staff_repositioning": "position_changes_to_reflect_new_time_period",
+        "activity_level_modification": "modified_ambient_activity_level"
+      },
+      "audio_changes": {
+        "transition_effect": "time_passing_sound_effect",
+        "ambient_package": "new_ambient_audio_for_current_phase",
+        "conversation_snippets": "different_background_conversation_content"
+      }
+    },
+    "player_awareness_design": {
+      "primary_indicators": {
+        "approach": "natural_environmental_cues",
+        "elements": [
+          "light",
+          "npcs",
+          "activity_level"
+        ]
+      },
+      "subtle_ui_elements": {
+        "horizon_line": "window_view_with_sun_position",
+        "progress_bar": "minimalist_disguised_as_decorative_element",
+        "hospital_clock": "visible_in_environment_no_explicit_reference"
+      },
+      "contextual_messages": {
+        "morning": "The morning is just beginning...",
+        "lunch_time": "It's getting close to lunch time.",
+        "evening": "The day is winding down."
+      }
+    },
+    "activity_completion_processing": {
+      "time_advancement_procedure": {
+        "step_1": "add_activity_base_time_cost_to_current_time_value",
+        "step_2": "apply_applicable_mastery_modifiers",
+        "step_3": "determine_if_phase_boundaries_crossed",
+        "step_4": "apply_appropriate_visual_transitions",
+        "step_5": "update_npc_behaviors_and_environment",
+        "step_6": "check_for_checkpoint_events"
+      },
+      "visual_transition_logic": {
+        "same_phase": "subtle_environmental_updates",
+        "crossing_phase": "trigger_transition_animation"
+      },
+      "checkpoint_event_checking": {
+        "lunch_trigger": "time_value_near_33_units",
+        "conference_trigger": "time_value_near_90_units",
+        "special_events": "contextual_based_on_narrative_progression"
+      }
+    },
+    "selection_time_preview": {
+      "hover_calculation": {
+        "step_1": "calculate_projected_new_time_value",
+        "step_2": "determine_resulting_time_of_day",
+        "step_3": "prepare_contextual_time_message"
+      },
+      "visual_preview_elements": {
+        "lighting_preview": "subtle_change_to_lighting_preview",
+        "contextual_message": "time_impact_description",
+        "cost_indicator": "relative_time_cost_short_medium_long"
+      },
+      "checkpoint_messaging": {
+        "lunch_time": "This will take you to lunch time.",
+        "afternoon": "This will carry you into the afternoon.",
+        "final_activity": "This will be your final activity before day's end."
+      }
+    },
+    "activity_scheduling_logic": {
+      "natural_sequence": {
+        "morning_specific": "activities_available_early_in_day",
+        "lunch_activities": "activities_at_mid_day",
+        "evening_specific": "activities_available_later_in_day"
+      },
+      "time_restricted_options": {
+        "phase_specific": "some_activities_only_available_in_specific_phases",
+        "insufficient_time": "activities_unavailable_if_insufficient_time_remains",
+        "checkpoint_requirements": "certain_activities_require_specific_checkpoints"
+      },
+      "special_scheduling": {
+        "fixed_events": "fixed_events_at_certain_time_points",
+        "mentor_availability": "mentor_specific_availability_windows",
+        "emergency_events": "emergency_events_can_interrupt_schedule"
+      }
+    },
+    "technical_implementation": {
+      "state_variables": {
+        "current_time_value": "0-100 float",
+        "current_phase": "enum morning_afternoon_evening",
+        "activities_completed": "integer counter",
+        "crossed_checkpoints": "array of triggered checkpoint flags",
+        "special_event_flags": "any special time based events triggered"
+      },
+      "visual_asset_management": {
+        "environment_shader_parameters": [
+          "time_linked_lighting_parameters",
+          "sun_position_calculations",
+          "shadow_length_direction"
+        ],
+        "npc_scheduling": [
+          "position_activity_lookup_tables_based_on_time_values",
+          "behavior_transitions_at_phase_changes",
+          "randomized_variations_prevent_repetitive_patterns"
+        ],
+        "phase_specific_assets": [
+          "pre_defined_visual_states_for_key_time_points",
+          "transition_animation_sequences",
+          "phase_specific_ambient_elements"
+        ]
+      },
+      "performance_considerations": {
+        "background_updates": "bulk_visual_changes_during_phase_transitions",
+        "continuous_updates": "minimized_during_gameplay",
+        "update_priorities": "distance_based_update_priorities",
+        "preloading_strategy": [
+          "next_phase_assets_loaded_during_current_activities",
+          "transition_animations_cached_before_needed",
+          "resource_management_based_on_expected_time_progression"
+        ]
+      }
+    },
+    "player_experience_benefits": {
+      "reduced_cognitive_load": [
+        "no_need_to_track_explicit_hours",
+        "focus_on_activity_selection_rather_than_time_management",
+        "intuitive_understanding_of_day_progression"
+      ],
+      "increased_immersion": [
+        "natural_environmental_storytelling",
+        "realistic_hospital_rhythm_and_flow",
+        "subtle_rather_than_mechanical_progression"
+      ],
+      "adaptive_experience": [
+        "players_with_higher_mastery_naturally_accomplish_more",
+        "no_explicit_time_optimization_pressure",
+        "focus_remains_on_educational_content"
+      ]
+    },
+    "edge_cases_special_situations": {
+      "time_critical_events": [
+        "narrative_moments_require_specific_timing",
+        "pre_scheduled_activities_mentor_meetings_boss_preparations",
+        "emergency_events_regardless_of_time"
+      ],
+      "day_transition": [
+        "final_activity_transitions_to_night_phase",
+        "player_notified_when_starting_final_possible_activity",
+        "option_to_end_day_early_if_desired"
+      ],
+      "special_time_effects": [
+        "certain_abilities_can_compress_time",
+        "library_special_mechanics_time_dilation",
+        "season_specific_time_variations"
+      ]
+    },
+    "implementation_phases": {
+      "prototype_mvp": {
+        "priority": "must_have",
+        "features": [
+          "basic_time_unit_system",
+          "simple_visual_indicators_lighting_changes_basic_npc_scheduling",
+          "phase_transitions_with_minimal_animation",
+          "initial_activity_time_costs"
+        ]
+      },
+      "enhanced_development": {
+        "priority": "should_have",
+        "features": [
+          "full_environmental_time_visualization",
+          "complete_npc_scheduling_system",
+          "polished_transition_animations",
+          "mastery_based_time_modifiers"
+        ]
+      },
+      "final_polish": {
+        "priority": "nice_to_have",
+        "features": [
+          "subtle_ui_elements",
+          "contextual_time_messaging",
+          "special_time_effects_and_abilities",
+          "narrative_integration_with_time_system"
+        ]
+      }
+    },
+    "cross_references": {
+      "related_systems": [
+        "activity-framework",
+        "game-constants",
+        "visual-design",
+        "mentor-relationships"
+      ],
+      "content_files": [
+        "content/time-system-design.md",
+        "content/activity-framework.md",
+        "content/visual-design-philosophy.md"
+      ],
+      "technical_integration": [
+        "data/constants/game-constants.yaml",
+        "data/constants/activity-framework.yaml"
+      ]
+    }
+  }
+}

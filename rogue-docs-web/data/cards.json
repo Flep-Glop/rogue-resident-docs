@@ -1,0 +1,413 @@
+{
+  "complete-card-system": {
+    "system_info": {
+      "name": "Complete Application Card System",
+      "description": "All 26 application cards across domains with effects and visual designs",
+      "content_reference": "content/cards/card-system-design.md",
+      "related_systems": [
+        "stars",
+        "mentors",
+        "etchings",
+        "journal"
+      ]
+    },
+    "card_system_overview": {
+      "total_cards": 26,
+      "card_distribution": {
+        "direct_star_unlocks": 21,
+        "etching_pattern_unlocks": 3,
+        "core_star_cards": 0,
+        "missing_incomplete": 6
+      },
+      "card_slot_limit": 3,
+      "selection_phase": "Night Phase",
+      "storage_location": "Study desk journal in hill home"
+    },
+    "card_acquisition_flow": [
+      "Player unlocks a star using SP",
+      "Card travels to hill home (animation)",
+      "Red exclamation point appears on desk",
+      "Player opens journal to discover new card",
+      "Card can be equipped in one of three slots"
+    ],
+    "progressive_introduction": {
+      "days_1_2": "Dr. Garcia & RT domain only",
+      "days_3_4": "Dr. Quinn & TP domain added",
+      "days_5_6": "Technician Jesse & LA domain added",
+      "days_7_8": "Dr. Kapoor & DOS domain added",
+      "tutorial_rate": "1-2 cards per week"
+    },
+    "treatment_planning_cards": {
+      "perfect_path": {
+        "name": "Perfect Path",
+        "associated_star": "tp-optimization",
+        "domain": "TP",
+        "passive_effect": "Convert 5 Insight into 1 SP",
+        "active_effect": "Gain 1 level of Momentum",
+        "insight_cost": 20,
+        "visual_design": {
+          "description": "A glowing optimal beam path threading through stylized anatomical structures, with constellation points marking critical waypoints. The path pulses with mathematical equations that transform into accelerating particles.",
+          "border": "Electric blue circuitry patterns with optimization nodes",
+          "icon": "An infinity symbol made of converging beam paths"
+        },
+        "implementation_priority": "high"
+      },
+      "adaptive_flux": {
+        "name": "Adaptive Flux",
+        "associated_star": "tp-heterogeneity",
+        "domain": "TP",
+        "passive_effect": "Maintain Momentum when lost",
+        "active_effect": "Questions harder but rewards increase",
+        "insight_cost": 30,
+        "visual_design": {
+          "description": "A fluid, shapeshifting dose distribution that morphs to accommodate different tissue densities. Heterogeneous materials float like cosmic debris, each with their own gravitational pull on the dose cloud.",
+          "border": "Gradient waves representing changing densities",
+          "icon": "A dynamic flux symbol that shifts between states"
+        },
+        "implementation_priority": "high"
+      },
+      "foresight": {
+        "name": "Foresight",
+        "associated_star": "tp-target-volumes",
+        "domain": "TP",
+        "passive_effect": "See all questions, Momentum slower",
+        "active_effect": "Fit two 1-hour activities in one",
+        "insight_cost": 50,
+        "visual_design": {
+          "description": "Multiple transparent timelines spiraling around a central eye made of stars. Future possibilities branch out like probability trees, with glimpses of activities visible in each branch.",
+          "border": "Temporal fractals with clock constellations",
+          "icon": "An eye with an hourglass pupil"
+        },
+        "implementation_priority": "medium"
+      },
+      "quantum_leap": {
+        "name": "Quantum Leap",
+        "associated_star": "tp-treatment-techniques",
+        "domain": "TP",
+        "passive_effect": "Access unique activity",
+        "active_effect": "50/50 coin flip max/min rewards",
+        "insight_cost": 35,
+        "visual_design": {
+          "description": "Schr\u00f6dinger's cat silhouette made of particle trails, simultaneously existing and not existing. Dice made of pure energy float in quantum superposition.",
+          "border": "Probability wave functions",
+          "icon": "A quantum die showing all faces at once"
+        },
+        "implementation_priority": "medium"
+      },
+      "double_down": {
+        "name": "Double Down",
+        "associated_star": "tp-plan-evaluation",
+        "domain": "TP",
+        "passive_effect": "Generate +5 Insight",
+        "active_effect": "Next challenge double or zero",
+        "insight_cost": 30,
+        "visual_design": {
+          "description": "Twin mirror dose distributions facing each other, one solid and bright, the other hollow and dark. Between them, a balance scale tips dramatically one way or the other.",
+          "border": "Mirrored geometric patterns",
+          "icon": "Two overlapping circles, one filled, one empty"
+        },
+        "implementation_priority": "medium"
+      }
+    },
+    "radiation_therapy_cards": {
+      "expert_hand": {
+        "name": "Expert Hand",
+        "associated_star": "rt-delivery-techniques",
+        "domain": "RT",
+        "passive_effect": "[NEEDS IMPLEMENTATION]",
+        "active_effect": "Mentor completes perfectly, no mastery",
+        "insight_cost": 40,
+        "visual_design": {
+          "description": "A ghostly mentor's hand overlaid on the player's, guiding treatment delivery with perfect precision. Green energy flows from fingertips like controlled radiation.",
+          "border": "Anatomical diagram overlays",
+          "icon": "Interlocked hands with energy transfer"
+        },
+        "implementation_priority": "medium",
+        "missing_component": "passive_effect"
+      },
+      "crystal_clear": {
+        "name": "Crystal Clear",
+        "associated_star": "rt-igrt",
+        "domain": "RT",
+        "passive_effect": "Reveal one wrong answer",
+        "active_effect": "All activities at location +3 Insight",
+        "insight_cost": 25,
+        "visual_design": {
+          "description": "A treatment field becoming transparent like glass, revealing hidden tumor boundaries and critical structures beneath. Wrong pathways dissolve into mist.",
+          "border": "Crystalline lattice structures",
+          "icon": "A magnifying glass with revealing light"
+        },
+        "implementation_priority": "high"
+      },
+      "under_pressure": {
+        "name": "Under Pressure",
+        "associated_star": "rt-fractionation",
+        "domain": "RT",
+        "passive_effect": "[NEEDS IMPLEMENTATION]",
+        "active_effect": "30s timer, double Insight rewards",
+        "insight_cost": 35,
+        "visual_design": {
+          "description": "A stopwatch face where each second is a patient breathing cycle. Time pressure creates visible waves of green energy that intensify treatment effects.",
+          "border": "Ticking clock mechanisms with radiation symbols",
+          "icon": "A stopwatch emitting radiation beams"
+        },
+        "implementation_priority": "medium",
+        "missing_component": "passive_effect"
+      },
+      "moving_target": {
+        "name": "Moving Target",
+        "associated_star": "rt-motion-management",
+        "domain": "RT",
+        "passive_effect": "+2 Insight on moving questions",
+        "active_effect": "[NEEDS IMPLEMENTATION]",
+        "insight_cost": "TBD",
+        "visual_design": {
+          "description": "A tumor in motion tracked by adaptive crosshairs. Breathing patterns create rhythmic waves that the treatment beam follows like a dance.",
+          "border": "Sinusoidal breathing curves",
+          "icon": "Crosshairs following a wave pattern"
+        },
+        "implementation_priority": "medium",
+        "missing_component": "active_effect"
+      },
+      "safety_net": {
+        "name": "Safety Net",
+        "associated_star": "rt-radiation-protection",
+        "domain": "RT",
+        "passive_effect": "First wrong doesn't reset Momentum",
+        "active_effect": "[NEEDS IMPLEMENTATION]",
+        "insight_cost": "TBD",
+        "visual_design": {
+          "description": "A protective energy barrier that catches falling momentum stars before they shatter. The net glows with reassuring green light.",
+          "border": "Interwoven safety chains",
+          "icon": "A shield with a cushioning aura"
+        },
+        "implementation_priority": "medium",
+        "missing_component": "active_effect"
+      },
+      "overdrive": {
+        "name": "Overdrive",
+        "associated_star": "rt-adaptive-response",
+        "domain": "RT",
+        "passive_effect": "Momentum L3 in 4 hits not 5",
+        "active_effect": "Break cap to L4 for triple, auto-reset",
+        "insight_cost": 40,
+        "visual_design": {
+          "description": "Momentum lightning breaking through its normal constraints, crackling with unstable power. A fourth momentum star forms but glows dangerously bright.",
+          "border": "Overloaded circuit patterns",
+          "icon": "Four lightning bolts in critical state"
+        },
+        "implementation_priority": "high"
+      }
+    },
+    "linear_accelerator_cards": {
+      "priority_access": {
+        "name": "Priority Access",
+        "associated_star": "la-beam-generation",
+        "domain": "LA",
+        "passive_effect": "[NEEDS IMPLEMENTATION]",
+        "active_effect": "Reserve high-value timeslot",
+        "insight_cost": 30,
+        "visual_design": {
+          "description": "A golden key card inserting into a timeline, reserving a premium treatment slot. Calendar blocks rearrange themselves to accommodate.",
+          "border": "Scheduling grid with highlighted slots",
+          "icon": "A key overlaid on a calendar"
+        },
+        "implementation_priority": "medium",
+        "missing_component": "passive_effect"
+      },
+      "emergency_protocol": {
+        "name": "Emergency Protocol",
+        "associated_star": "la-safety",
+        "domain": "LA",
+        "passive_effect": "[NEEDS IMPLEMENTATION]",
+        "active_effect": "End activity, keep rewards",
+        "insight_cost": 35,
+        "visual_design": {
+          "description": "A red emergency stop button surrounded by amber warning lights. Particle beams freeze mid-flight as systems safely power down.",
+          "border": "Hazard stripes and safety warnings",
+          "icon": "An emergency stop symbol with particle trails"
+        },
+        "implementation_priority": "medium",
+        "missing_component": "passive_effect"
+      },
+      "fast_learner": {
+        "name": "Fast Learner",
+        "associated_star": "la-beam-modification",
+        "domain": "LA",
+        "passive_effect": "Double mastery in lowest domain",
+        "active_effect": "[NEEDS IMPLEMENTATION]",
+        "insight_cost": "TBD",
+        "visual_design": {
+          "description": "Knowledge flowing like liquid metal from strong domains into weaker ones. Neural pathways light up showing accelerated learning connections.",
+          "border": "Synaptic patterns and data streams",
+          "icon": "An upward arrow with branching paths"
+        },
+        "implementation_priority": "medium",
+        "missing_component": "active_effect"
+      },
+      "second_chance": {
+        "name": "Second Chance",
+        "associated_star": "la-quality-assurance",
+        "domain": "LA",
+        "passive_effect": "20% chance retry failed challenges",
+        "active_effect": "Reveal mastery gains before start",
+        "insight_cost": 25,
+        "visual_design": {
+          "description": "A time loop effect where a failed attempt rewinds itself. Ghost images of previous tries fade as a new opportunity crystallizes.",
+          "border": "Recursive loop patterns",
+          "icon": "A refresh symbol with probability percentage"
+        },
+        "implementation_priority": "medium"
+      }
+    },
+    "dosimetry_cards": {
+      "laser_focus": {
+        "name": "Laser Focus",
+        "associated_star": "dos-small-field",
+        "domain": "DOS",
+        "passive_effect": "+3 Insight solo activities",
+        "active_effect": "Reverse day schedule",
+        "insight_cost": 50,
+        "visual_design": {
+          "description": "A lone figure surrounded by a perfect circle of concentration. All distractions fade to black while the central work area glows with intense pink focus.",
+          "border": "Focusing lens rings",
+          "icon": "A target with converging rays"
+        },
+        "implementation_priority": "medium"
+      },
+      "perfect_precision": {
+        "name": "Perfect Precision",
+        "associated_star": "dos-absolute-dosimetry",
+        "domain": "DOS",
+        "passive_effect": "Percentage calcs round up",
+        "active_effect": "Set max Momentum, no increase",
+        "insight_cost": 25,
+        "visual_design": {
+          "description": "Numbers and calculations floating in space, each decimal rounding upward like ascending stars. Mathematical perfection achieved through precise measurement.",
+          "border": "Calibration marks and measurement scales",
+          "icon": "An upward rounding arrow"
+        },
+        "implementation_priority": "medium"
+      },
+      "relative_measure": {
+        "name": "Relative Measure",
+        "associated_star": "dos-relative-dosimetry",
+        "domain": "DOS",
+        "passive_effect": "+2 Insight per challenge type",
+        "active_effect": "Convert absolute to relative",
+        "insight_cost": 30,
+        "visual_design": {
+          "description": "Multiple measurement devices arranged in a comparison array. Values shift from absolute to relative as reference points align.",
+          "border": "Comparative scale gradients",
+          "icon": "Two balanced measurement symbols"
+        },
+        "implementation_priority": "medium"
+      },
+      "detector_array": {
+        "name": "Detector Array",
+        "associated_star": "dos-detector-response",
+        "domain": "DOS",
+        "passive_effect": "Reveal challenge difficulties",
+        "active_effect": "+1 SP per 3 perfect in row",
+        "insight_cost": 35,
+        "visual_design": {
+          "description": "A grid of sensors lighting up to reveal hidden challenge difficulties. Each detector glows with intensity matching the challenge level it's reading.",
+          "border": "Sensor grid patterns",
+          "icon": "Multiple detection points in formation"
+        },
+        "implementation_priority": "medium"
+      }
+    },
+    "cross_domain_cards": {
+      "tomorrows_promise": {
+        "name": "Tomorrow's Promise",
+        "source_type": "etching",
+        "etching_source": "Temporal Mastery",
+        "domain": "CROSS",
+        "passive_effect": "Bank up to 20 Insight for tomorrow",
+        "active_effect": "Wager Insight, double or lose",
+        "insight_cost": "varies",
+        "visual_design": {
+          "description": "An hourglass where the bottom chamber opens into tomorrow's timeline. Stored insight crystallizes like temporal sand, ready to flow forward.",
+          "border": "Time spiral with day/night cycles",
+          "icon": "An hourglass with a forward arrow"
+        },
+        "implementation_priority": "high"
+      },
+      "network_effect": {
+        "name": "Network Effect",
+        "source_type": "etching",
+        "etching_source": "Treatment Team",
+        "domain": "CROSS",
+        "passive_effect": "Mentor L3+ grants +5% all rewards",
+        "active_effect": "[NEEDS IMPLEMENTATION]",
+        "insight_cost": "TBD",
+        "visual_design": {
+          "description": "Mentor portraits connected by glowing relationship threads. As connections strengthen, energy multiplies exponentially across the network.",
+          "border": "Network nodes and connection paths",
+          "icon": "Interconnected figure symbols"
+        },
+        "implementation_priority": "medium",
+        "missing_component": "active_effect"
+      },
+      "bedside_manner": {
+        "name": "Bedside Manner",
+        "source_type": "etching",
+        "etching_source": "Patient Care",
+        "domain": "CROSS",
+        "passive_effect": "Double relationship during patient activities",
+        "active_effect": "[NEEDS IMPLEMENTATION]",
+        "insight_cost": "TBD",
+        "visual_design": {
+          "description": "A warm aura emanating from caring hands, creating a healing space around a patient. Relationship bonds visualized as gentle light streams.",
+          "border": "Soft, organic flowing patterns",
+          "icon": "A heart with radiating care lines"
+        },
+        "implementation_priority": "medium",
+        "missing_component": "active_effect"
+      }
+    },
+    "implementation_status": {
+      "complete_cards": 20,
+      "missing_passive_effects": "4 - \"Expert Hand (rt-delivery-techniques)\" - \"Under Pressure (rt-fractionation)\" - \"Priority Access (la-beam-generation)\" - \"Emergency Protocol (la-safety)\"",
+      "missing_active_effects": "5 - \"Moving Target (rt-motion-management)\" - \"Safety Net (rt-radiation-protection)\" - \"Fast Learner (la-beam-modification)\" - \"Network Effect (Treatment Team)\" - \"Bedside Manner (Patient Care)\""
+    },
+    "implementation_priorities": {
+      "phase_1_core": [
+        "Perfect Path",
+        "Adaptive Flux",
+        "Overdrive"
+      ],
+      "phase_2_tutorial": [
+        "Crystal Clear",
+        "Second Chance",
+        "Perfect Precision"
+      ],
+      "phase_3_balance": [
+        "Tomorrow's Promise",
+        "Foresight",
+        "Quantum Leap"
+      ],
+      "phase_4_completion": [
+        "Complete missing effects"
+      ]
+    },
+    "visual_design_standards": {
+      "card_frame_components": [
+        "Domain color coding in corner gems",
+        "Mastery requirement indicators",
+        "Passive/Active effect separators",
+        "Insight cost display for active abilities",
+        "Constellation connection points showing origin star",
+        "Subtle medical physics equations as background texture"
+      ],
+      "visual_style_guidelines": [
+        "Professional yet visually striking aesthetic",
+        "Clear iconography for quick recognition",
+        "Holographic/ethereal quality suggesting knowledge made manifest",
+        "Domain-specific color schemes and motifs",
+        "Animated effects when cards are activated"
+      ]
+    }
+  }
+}

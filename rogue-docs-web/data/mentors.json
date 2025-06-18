@@ -1,0 +1,766 @@
+{
+  "mentors": {
+    "system_info": {
+      "name": "Mentor System Definitions",
+      "description": "Complete specifications for all mentor characters and relationship systems",
+      "version": "3.0",
+      "total_mentors": 4,
+      "content_reference": "content/mentors/mentor-philosophies.md"
+    },
+    "relationship_framework": {
+      "levels": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "level_names": [
+        "unknown",
+        "acquaintance",
+        "colleague",
+        "trusted_colleague",
+        "mentor",
+        "close_mentor"
+      ],
+      "progression_mechanism": "activity_participation_and_dialogue",
+      "relationship_benefits": "aptitude_bonuses_and_special_opportunities",
+      "level_requirements": {
+        "level_1": 10,
+        "level_2": 20,
+        "level_3": 30,
+        "level_4": 40,
+        "level_5": 50
+      },
+      "relationship_effects": {
+        "level_2": "unlock_mentor_specific_activities",
+        "level_3": "aptitude_bonuses_begin",
+        "level_4": "special_dialogue_options_and_advanced_activities",
+        "level_5": "maximum_bonuses_and_exclusive_opportunities"
+      }
+    },
+    "mentors": {
+      "dr_garcia": {
+        "full_name": "Dr. Maria Garcia",
+        "title": "Dr. Garcia",
+        "role": "Staff Radiation Therapist",
+        "domain_expertise": "radiation_therapy",
+        "personality_archetype": "warm_patient_focused_guide",
+        "character_traits": {
+          "primary": "warm",
+          "secondary": "patient_focused",
+          "tertiary": "encouraging",
+          "teaching_style": "supportive_hands_on",
+          "communication_style": "empathetic_clinical"
+        },
+        "domain_focus": {
+          "primary_domain": "radiation_therapy",
+          "primary_stars": [
+            "rt-radiobiology",
+            "rt-delivery",
+            "rt-safety"
+          ],
+          "secondary_domain": "treatment_planning",
+          "secondary_stars": [
+            "tp-dose-calculation",
+            "tp-evaluation"
+          ]
+        },
+        "relationship_progression": {
+          "introduction": "first_day_hospital_introduction",
+          "early_activities": [
+            "clinical_rounds",
+            "patient_consultations",
+            "rt_protocols"
+          ],
+          "advanced_activities": [
+            "complex_case_reviews",
+            "mentorship_discussions"
+          ]
+        },
+        "aptitude_bonuses": {
+          "level_2": {
+            "fluency": 1
+          },
+          "level_3": {
+            "comprehension": 1
+          },
+          "level_4": {
+            "fluency": 2
+          },
+          "level_5": {
+            "comprehension": 2
+          }
+        },
+        "special_abilities": {
+          "level_3": "clinical_insight_bonus",
+          "level_4": "patient_communication_expertise",
+          "level_5": "advanced_rt_techniques"
+        },
+        "narrative_role": {
+          "game_introduction": "primary_introduction_mentor",
+          "character_development": "emotional_support_and_clinical_wisdom",
+          "boss_encounters": "supportive_guidance_for_marcus_chen"
+        },
+        "dialogue_themes": [
+          "patient_care_philosophy",
+          "clinical_experience_stories",
+          "radiation_therapy_best_practices",
+          "work_life_balance",
+          "professional_development_encouragement"
+        ]
+      },
+      "dr_quinn": {
+        "full_name": "Dr. Alexandra Quinn",
+        "title": "Dr. Quinn",
+        "role": "Senior Medical Physicist - Treatment Planning",
+        "domain_expertise": "treatment_planning",
+        "personality_archetype": "creative_innovative_conceptual",
+        "character_traits": {
+          "primary": "creative",
+          "secondary": "innovative",
+          "tertiary": "conceptual",
+          "teaching_style": "challenging_theoretical",
+          "communication_style": "analytical_inspiring"
+        },
+        "domain_focus": {
+          "primary_domain": "treatment_planning",
+          "primary_stars": [
+            "tp-dose-calculation",
+            "tp-optimization",
+            "tp-evaluation"
+          ],
+          "secondary_domain": "cross_domain_integration",
+          "secondary_stars": [
+            "cross_domain_connections",
+            "advanced_patterns"
+          ]
+        },
+        "special_significance": {
+          "ionix_creator": true,
+          "ionix_relationship": "personal_project_and_ultimate_challenge",
+          "cross_domain_expertise": "treatment_planning_integration_specialist"
+        },
+        "relationship_progression": {
+          "introduction": "treatment_planning_system_introduction",
+          "early_activities": [
+            "optimization_studies",
+            "plan_evaluation",
+            "algorithm_discussions"
+          ],
+          "advanced_activities": [
+            "research_collaboration",
+            "ionix_preparation",
+            "innovation_projects"
+          ]
+        },
+        "aptitude_bonuses": {
+          "level_2": {
+            "comprehension": 1
+          },
+          "level_3": {
+            "innovation": 1
+          },
+          "level_4": {
+            "comprehension": 2
+          },
+          "level_5": {
+            "innovation": 2
+          }
+        },
+        "special_abilities": {
+          "level_3": "optimization_insight",
+          "level_4": "cross_domain_synthesis",
+          "level_5": "ionix_preparation_access"
+        },
+        "narrative_role": {
+          "game_progression": "intellectual_challenge_and_growth",
+          "character_development": "pushing_boundaries_and_innovation",
+          "boss_encounters": "strategic_guidance_for_marcus_chen_and_ionix",
+          "final_challenge": "ionix_creator_and_final_test"
+        },
+        "dialogue_themes": [
+          "treatment_planning_philosophy",
+          "optimization_theory_and_practice",
+          "innovation_in_medical_physics",
+          "cross_domain_thinking",
+          "ionix_development_stories",
+          "pushing_professional_boundaries"
+        ]
+      },
+      "technician_jesse": {
+        "full_name": "Jesse Martinez",
+        "title": "Technician Jesse",
+        "role": "Senior Linear Accelerator Technician",
+        "domain_expertise": "linac_anatomy",
+        "personality_archetype": "practical_hands_on_equipment_focused",
+        "character_traits": {
+          "primary": "practical",
+          "secondary": "hands_on",
+          "tertiary": "equipment_focused",
+          "teaching_style": "demonstration_based",
+          "communication_style": "direct_technical"
+        },
+        "domain_focus": {
+          "primary_domain": "linac_anatomy",
+          "primary_stars": [
+            "la-components",
+            "la-beam-generation",
+            "la-beam-control"
+          ],
+          "secondary_domain": "dosimetry",
+          "secondary_stars": [
+            "dos-calibration",
+            "dos-measurement",
+            "dos-beam-data"
+          ]
+        },
+        "relationship_progression": {
+          "introduction": "equipment_tour_and_safety_orientation",
+          "early_activities": [
+            "equipment_inspections",
+            "maintenance_procedures",
+            "safety_protocols"
+          ],
+          "advanced_activities": [
+            "advanced_troubleshooting",
+            "commissioning_assistance",
+            "technical_innovation"
+          ]
+        },
+        "aptitude_bonuses": {
+          "level_2": {
+            "precision": 1
+          },
+          "level_3": {
+            "innovation": 1
+          },
+          "level_4": {
+            "precision": 2
+          },
+          "level_5": {
+            "innovation": 2
+          }
+        },
+        "special_abilities": {
+          "level_3": "equipment_efficiency_bonus",
+          "level_4": "advanced_technical_access",
+          "level_5": "equipment_mastery"
+        },
+        "narrative_role": {
+          "game_foundation": "technical_skills_and_practical_knowledge",
+          "character_development": "hands_on_expertise_and_problem_solving",
+          "boss_encounters": "technical_support_for_vendor_trio"
+        },
+        "dialogue_themes": [
+          "equipment_functionality_and_maintenance",
+          "practical_problem_solving",
+          "safety_first_philosophy",
+          "technical_innovation_stories",
+          "hands_on_learning_approaches"
+        ]
+      },
+      "dr_kapoor": {
+        "full_name": "Dr. Raj Kapoor",
+        "title": "Dr. Kapoor",
+        "role": "Chief Medical Physicist - Quality Assurance",
+        "domain_expertise": "dosimetry",
+        "personality_archetype": "precise_methodical_protocol_focused",
+        "character_traits": {
+          "primary": "precise",
+          "secondary": "methodical",
+          "tertiary": "protocol_focused",
+          "teaching_style": "systematic_rigorous",
+          "communication_style": "formal_detailed"
+        },
+        "domain_focus": {
+          "primary_domain": "dosimetry",
+          "primary_stars": [
+            "dos-calibration",
+            "dos-measurement",
+            "dos-qa"
+          ],
+          "secondary_domain": "quality_assurance_cross_domain",
+          "secondary_stars": [
+            "qa_protocols",
+            "measurement_precision",
+            "regulatory_compliance"
+          ]
+        },
+        "special_significance": {
+          "audit_team_connection": "former_mentor_leads_audit_team",
+          "professional_stakes": "reputation_and_standards",
+          "qa_expertise": "comprehensive_quality_assurance_authority"
+        },
+        "relationship_progression": {
+          "introduction": "qa_protocols_and_standards_introduction",
+          "early_activities": [
+            "calibration_procedures",
+            "measurement_training",
+            "protocol_review"
+          ],
+          "advanced_activities": [
+            "advanced_qa_development",
+            "audit_preparation",
+            "precision_mastery"
+          ]
+        },
+        "aptitude_bonuses": {
+          "level_2": {
+            "precision": 1
+          },
+          "level_3": {
+            "fluency": 1
+          },
+          "level_4": {
+            "precision": 2
+          },
+          "level_5": {
+            "fluency": 2
+          }
+        },
+        "special_abilities": {
+          "level_3": "qa_protocol_mastery",
+          "level_4": "measurement_precision_bonus",
+          "level_5": "audit_team_preparation"
+        },
+        "narrative_role": {
+          "game_structure": "standards_and_precision_foundation",
+          "character_development": "professional_excellence_and_rigor",
+          "boss_encounters": "critical_support_for_audit_team_encounter",
+          "personal_stakes": "professional_reputation_through_former_mentor"
+        },
+        "dialogue_themes": [
+          "quality_assurance_philosophy",
+          "measurement_precision_and_accuracy",
+          "regulatory_compliance_importance",
+          "professional_standards_maintenance",
+          "systematic_approach_to_problem_solving"
+        ]
+      }
+    },
+    "mentor_activities": {
+      "domain_specific_activities": {
+        "radiation_therapy": {
+          "mentor": "dr_garcia",
+          "activities": [
+            "clinical_rounds",
+            "patient_consultations",
+            "rt_protocol_review"
+          ]
+        },
+        "treatment_planning": {
+          "mentor": "dr_quinn",
+          "activities": [
+            "optimization_studies",
+            "plan_evaluation",
+            "algorithm_research"
+          ]
+        },
+        "linac_anatomy": {
+          "mentor": "technician_jesse",
+          "activities": [
+            "equipment_inspections",
+            "maintenance_procedures",
+            "technical_troubleshooting"
+          ]
+        },
+        "dosimetry": {
+          "mentor": "dr_kapoor",
+          "activities": [
+            "calibration_procedures",
+            "qa_protocols",
+            "measurement_training"
+          ]
+        }
+      },
+      "cross_mentor_activities": {
+        "multidisciplinary_rounds": [
+          "dr_garcia",
+          "dr_quinn"
+        ],
+        "equipment_commissioning": [
+          "technician_jesse",
+          "dr_kapoor"
+        ],
+        "case_conferences": [
+          "all_mentors"
+        ],
+        "research_collaborations": [
+          "dr_quinn",
+          "dr_kapoor"
+        ]
+      }
+    },
+    "relationship_targets": {
+      "spring": {
+        "primary_mentor": {
+          "level": 2,
+          "points": 20
+        },
+        "secondary_mentor": {
+          "level": 1,
+          "points": 10
+        },
+        "other_mentors": "initial_progress"
+      },
+      "summer": {
+        "primary_mentor": {
+          "level": 3,
+          "points": 30
+        },
+        "secondary_mentor": {
+          "level": 2,
+          "points": 20
+        },
+        "other_mentors": {
+          "level": 1,
+          "points": 10
+        }
+      },
+      "fall": {
+        "primary_mentor": {
+          "level": 4,
+          "points": 40
+        },
+        "secondary_mentor": {
+          "level": 3,
+          "points": 30
+        },
+        "other_mentors": {
+          "level": 2,
+          "points": 20
+        }
+      },
+      "winter": {
+        "primary_mentor": {
+          "level": 5,
+          "points": 50
+        },
+        "secondary_mentor": {
+          "level": 4,
+          "points": 40
+        },
+        "other_mentors": {
+          "level": "2_to_3",
+          "points": 25
+        }
+      }
+    },
+    "boss_mentor_connections": {
+      "marcus-chen": {
+        "primary_mentors": [
+          "dr_garcia",
+          "dr_quinn"
+        ],
+        "relationship_bonuses": [
+          "garcia_+5",
+          "quinn_+3"
+        ],
+        "preparation_support": "clinical_communication_and_technical_depth"
+      },
+      "vendor_trio": {
+        "primary_mentors": [
+          "technician_jesse",
+          "dr_kapoor"
+        ],
+        "relationship_bonuses": [
+          "jesse_+5",
+          "kapoor_+3"
+        ],
+        "preparation_support": "technical_evaluation_and_qa_protocols"
+      },
+      "audit_team": {
+        "primary_mentor": "dr_kapoor",
+        "special_connection": "former_mentor_leads_audit",
+        "relationship_bonus": "kapoor_+7",
+        "preparation_support": "intensive_qa_and_protocol_mastery",
+        "secondary_bonus": "all_mentors_+2"
+      },
+      "ionix": {
+        "creator_mentor": "dr_quinn",
+        "special_connection": "ionix_creator_and_personal_project",
+        "relationship_bonus": "quinn_+10",
+        "preparation_support": "comprehensive_cross_domain_synthesis",
+        "secondary_bonus": "all_mentors_+5"
+      }
+    },
+    "dialogue_system": {
+      "conversation_types": [
+        "activity_debriefing",
+        "knowledge_discussion",
+        "career_guidance",
+        "personal_philosophy",
+        "technical_consultation"
+      ],
+      "relationship_gated_content": {
+        "level_2": "professional_conversations",
+        "level_3": "personal_insights_and_philosophy",
+        "level_4": "advanced_technical_discussions",
+        "level_5": "mentorship_and_career_guidance"
+      },
+      "special_conversations": {
+        "boss_preparation": "mentor_specific_preparation_dialogue",
+        "post_boss_success": "celebration_and_next_steps",
+        "post_boss_failure": "support_and_guidance",
+        "season_transitions": "reflection_and_planning"
+      }
+    },
+    "mentor_voice_system": {
+      "framework": {
+        "description": "Template system for mentor-specific language patterns in questions",
+        "approach": "hybrid_fixed_and_templated_questions",
+        "benefits": [
+          "content_scalability",
+          "mentor_distinctiveness",
+          "domain_coverage",
+          "maintenance_efficiency"
+        ]
+      },
+      "voice_patterns": {
+        "dr_garcia": {
+          "greeting_patterns": [
+            "What do you think about",
+            "How would you approach",
+            "In your experience with"
+          ],
+          "emphasis_patterns": [
+            "This is critical to patient care!",
+            "Remember, our patients depend on this.",
+            "Think about the clinical impact here."
+          ],
+          "encouragement_patterns": [
+            "You're getting the hang of this!",
+            "That's exactly the right thinking.",
+            "I knew you'd understand this concept."
+          ],
+          "domain_phrases": {
+            "radiation_therapy": [
+              "when treating patients",
+              "in the clinic",
+              "for patient safety",
+              "considering the radiobiology"
+            ],
+            "treatment_planning": [
+              "when planning treatments",
+              "from a clinical perspective",
+              "thinking about delivery"
+            ]
+          },
+          "catchphrases": [
+            "Patient care comes first.",
+            "The human element matters.",
+            "Clinical experience teaches us..."
+          ],
+          "question_style": {
+            "approach": "warm_supportive",
+            "complexity": "practical_application",
+            "context": "patient_centered"
+          }
+        },
+        "dr_quinn": {
+          "greeting_patterns": [
+            "Let's explore",
+            "Consider this scenario",
+            "What happens when"
+          ],
+          "emphasis_patterns": [
+            "The physics behind it are fascinating!",
+            "This is where the magic happens!",
+            "Think about the underlying principles."
+          ],
+          "encouragement_patterns": [
+            "Brilliant insight!",
+            "You're making great connections!",
+            "That's exactly what I was hoping you'd see."
+          ],
+          "domain_phrases": {
+            "treatment_planning": [
+              "in optimization theory",
+              "from an algorithmic perspective",
+              "considering the mathematics",
+              "in the planning system"
+            ],
+            "cross_domain": [
+              "connecting the concepts",
+              "seeing the bigger picture",
+              "integrating knowledge"
+            ]
+          },
+          "catchphrases": [
+            "Everything connects!",
+            "The beauty is in the physics.",
+            "Let's think outside the box."
+          ],
+          "question_style": {
+            "approach": "creative_challenging",
+            "complexity": "conceptual_theoretical",
+            "context": "physics_focused"
+          }
+        },
+        "technician_jesse": {
+          "greeting_patterns": [
+            "Let's look at",
+            "How does",
+            "When working with"
+          ],
+          "emphasis_patterns": [
+            "This is crucial for equipment function!",
+            "Hands-on experience shows us...",
+            "In practice, you'll find..."
+          ],
+          "encouragement_patterns": [
+            "Good hands-on thinking!",
+            "That's practical knowledge!",
+            "You're learning like a technician should."
+          ],
+          "domain_phrases": {
+            "linac_anatomy": [
+              "in the equipment room",
+              "during maintenance",
+              "with the actual hardware",
+              "from operational experience"
+            ],
+            "dosimetry": [
+              "when taking measurements",
+              "with the detectors",
+              "during commissioning"
+            ]
+          },
+          "catchphrases": [
+            "Let's get our hands dirty.",
+            "Experience is the best teacher.",
+            "The equipment doesn't lie."
+          ],
+          "question_style": {
+            "approach": "practical_hands_on",
+            "complexity": "application_focused",
+            "context": "equipment_centered"
+          }
+        },
+        "dr_kapoor": {
+          "greeting_patterns": [
+            "According to protocol",
+            "The standard approach",
+            "Following guidelines"
+          ],
+          "emphasis_patterns": [
+            "Precision is paramount!",
+            "The data speaks for itself.",
+            "Accuracy cannot be compromised."
+          ],
+          "encouragement_patterns": [
+            "Methodical thinking!",
+            "Precisely correct!",
+            "Your attention to detail is excellent."
+          ],
+          "domain_phrases": {
+            "dosimetry": [
+              "in quality assurance",
+              "following TG-51 protocol",
+              "for measurement accuracy",
+              "per calibration standards"
+            ],
+            "cross_domain": [
+              "maintaining standards",
+              "ensuring compliance",
+              "validating accuracy"
+            ]
+          },
+          "catchphrases": [
+            "Measure twice, cut once.",
+            "Precision in all things.",
+            "The protocol exists for a reason."
+          ],
+          "question_style": {
+            "approach": "systematic_rigorous",
+            "complexity": "detail_oriented",
+            "context": "protocol_focused"
+          }
+        }
+      }
+    },
+    "question_template_system": {
+      "template_structure": {
+        "placeholder_syntax": "{variable_name}",
+        "supported_variables": [
+          "greeting",
+          "emphasis",
+          "encouragement",
+          "domain_phrase",
+          "catchphrase",
+          "mentor_specific_context"
+        ]
+      },
+      "template_examples": {
+        "basic_template": "What do {greeting} think about {topic}? {emphasis} {catchphrase}",
+        "mentor_applications": {
+          "dr_garcia": "What do you think about radiation safety? This is critical to patient care! Patient care comes first.",
+          "dr_quinn": "What do Let's explore think about radiation safety? The physics behind it are fascinating! Everything connects!",
+          "technician_jesse": "What do Let's look at think about radiation safety? This is crucial for equipment function! Let's get our hands dirty.",
+          "dr_kapoor": "What do According to protocol think about radiation safety? Precision is paramount! Measure twice, cut once."
+        }
+      },
+      "content_requirements": {
+        "question_quantity_per_star": {
+          "core_stars": 75,
+          "standard_stars": 55,
+          "advanced_stars": 60
+        },
+        "difficulty_distribution": {
+          "core_stars": {
+            "beginner": 30,
+            "intermediate": 30,
+            "advanced": 15
+          },
+          "standard_stars": {
+            "beginner": 15,
+            "intermediate": 25,
+            "advanced": 15
+          },
+          "advanced_stars": {
+            "beginner": 10,
+            "intermediate": 20,
+            "advanced": 30
+          }
+        }
+      },
+      "question_types": {
+        "multiple_choice": {
+          "format": "standard_question_with_options",
+          "mentor_voice_application": "question_text_and_feedback"
+        },
+        "matching": {
+          "format": "items_to_relationships",
+          "mentor_voice_application": "instructions_and_explanations"
+        },
+        "procedural": {
+          "format": "sequential_steps",
+          "mentor_voice_application": "setup_and_step_explanations"
+        },
+        "calculation": {
+          "format": "problem_with_variables",
+          "mentor_voice_application": "problem_statement_and_guidance"
+        },
+        "boast": {
+          "format": "advanced_challenge_variant",
+          "mentor_voice_application": "challenge_presentation_and_risk_explanation"
+        }
+      }
+    },
+    "cross_references": {
+      "related_documents": [
+        "content/mentors/mentor-philosophies.md",
+        "content/mentor-relationships.md",
+        "data/constants/game-constants.yaml",
+        "data/stars/stars-definitions.yaml"
+      ],
+      "export_templates": [
+        "claude-context",
+        "cursor-dev",
+        "mentor-reference"
+      ]
+    }
+  }
+}

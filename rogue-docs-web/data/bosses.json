@@ -1,0 +1,908 @@
+{
+  "audit-team": {
+    "system_info": {
+      "name": "The Audit Team",
+      "type": "boss_encounter",
+      "subtitle": "Protocol Incarnate",
+      "mastery_threshold": 60,
+      "primary_domain": "DOS",
+      "secondary_domain": "LA",
+      "season_availability": "End of Fall",
+      "difficulty": "advanced",
+      "estimated_duration": "25-35_minutes",
+      "content_reference": "content/boss-encounters/audit-team.md"
+    },
+    "character_data": {
+      "name": "Quality Assurance Audit Team",
+      "composition": "Trio of clipboard-wielding figures led by Dr. Kapoor's former mentor",
+      "leader": "Dr. Kapoor's former mentor",
+      "special_traits": [
+        "strict_but_fair",
+        "procedurally_rigorous",
+        "technically_exacting"
+      ],
+      "challenge_type": "quality_assurance_procedures"
+    },
+    "encounter_concept": {
+      "metaphorical_role": "Technical standards and quality assurance principles",
+      "educational_purpose": "Tests mastery of quality assurance procedures and protocol knowledge",
+      "narrative_placement": "End of Fall (available at 60% mastery)"
+    },
+    "boss_encounter": {
+      "name": "Comprehensive QA Audit",
+      "setting": "dosimetry_lab_inspection",
+      "special_mechanic": "procedural_precision_system",
+      "phases": {
+        "phase_1": {
+          "name": "Documentation Review",
+          "duration": "6_minutes",
+          "format": "Protocol analysis challenges",
+          "primary_challenge": "Apply knowledge of calibration protocols and standards",
+          "special_mechanic": "Technical Verification - Validate technical procedures against standards",
+          "secondary_challenge": "Complete missing technical information in protocols",
+          "difficulty_modifier": 1.0
+        },
+        "phase_2": {
+          "name": "Measurement Verification",
+          "duration": "8_minutes",
+          "format": "Dosimetric calculation verification",
+          "primary_challenge": "Perform complex dosimetric calculations following protocols",
+          "special_mechanic": "Precision Requirement - Calculations require high accuracy",
+          "secondary_challenge": "Identify sources of measurement uncertainty",
+          "difficulty_modifier": 1.3
+        },
+        "phase_3": {
+          "name": "Practical Demonstration",
+          "duration": "10_minutes",
+          "format": "QA procedure simulation",
+          "primary_challenge": "Execute quality assurance procedures in correct technical sequence",
+          "special_mechanic": "Procedural Accuracy - Technical steps must be performed correctly",
+          "secondary_challenge": "Troubleshoot equipment issues using technical knowledge",
+          "difficulty_modifier": 1.6
+        },
+        "phase_4": {
+          "name": "Technical Compliance",
+          "duration": "7_minutes",
+          "format": "Case-based technical challenges",
+          "primary_challenge": "Apply technical regulations to complex scenarios",
+          "special_mechanic": "Standards Integration - Reconcile multiple technical standards",
+          "secondary_challenge": "Prioritize technical quality and safety considerations",
+          "difficulty_modifier": 1.8
+        },
+        "phase_5": {
+          "name": "Quality System Evaluation",
+          "duration": "4_minutes",
+          "format": "Comprehensive quality assessment",
+          "primary_challenge": "Create a technically sound quality management framework",
+          "special_mechanic": "Technical Integration - Combine QA, measurement, and safety knowledge",
+          "resolution_condition": "System must address all technical requirements while maintaining compliance",
+          "difficulty_modifier": 1.2
+        }
+      }
+    },
+    "strategic_counter_knowledge": {
+      "effective_stars": [
+        {
+          "id": "dos-calibration",
+          "importance": "Critical for understanding measurement protocols"
+        },
+        {
+          "id": "dos-qa",
+          "importance": "Fundamental knowledge of QA procedures"
+        },
+        {
+          "id": "la-safety",
+          "importance": "Understanding of safety systems and interlocks"
+        },
+        {
+          "id": "dos-small-field",
+          "importance": "Knowledge of specialized measurement conditions"
+        }
+      ],
+      "effective_patterns": [
+        {
+          "name": "Measurement Triangle",
+          "description": "Connection between dosimetry stars"
+        },
+        {
+          "name": "QA Path",
+          "description": "Linear connection of quality-related stars"
+        },
+        {
+          "name": "Safety Cluster",
+          "description": "Multiple safety and quality-related stars"
+        }
+      ]
+    },
+    "preparation_activities": [
+      {
+        "name": "QA Protocol Review with Dr. Kapoor",
+        "effect": "+20% effectiveness in protocol challenges"
+      },
+      {
+        "name": "Calibration Workshop",
+        "effect": "Improves ability to perform accurate calculations"
+      },
+      {
+        "name": "Mock Audit Run",
+        "effect": "Practice for practical QA demonstration"
+      },
+      {
+        "name": "Regulatory Study Session",
+        "effect": "Helps understand complex technical standards"
+      }
+    ],
+    "recommended_configuration": {
+      "active_stars": "Dosimetry and quality assurance-related stars",
+      "application_cards": [
+        "Perfect Precision",
+        "Detector Array",
+        "Relative Measure"
+      ],
+      "mentor_boon": "Dr. Kapoor's Precision Focus (reduces error margin requirements)"
+    },
+    "rewards": {
+      "sp_reward": 28,
+      "insight_reward": "100-125 based on performance",
+      "mastery_boost": "BOSS_MASTERY_BOOST (+15% to stars used during encounter)",
+      "relationship_reward": "+5 relationship points with Dr. Kapoor",
+      "special_rewards": [
+        "Advanced QA certification",
+        "Regulatory compliance expertise",
+        "Technical standards mastery"
+      ]
+    },
+    "resolution_paths": {
+      "victory_perfect_compliance": {
+        "condition": "95%+ procedural accuracy",
+        "outcome": "Exemplary QA competence",
+        "rewards": [
+          "full_sp_reward",
+          "bonus_insight",
+          "qa_mastery_certification"
+        ]
+      },
+      "victory_standard_compliance": {
+        "condition": "80-94% procedural accuracy",
+        "outcome": "Solid QA understanding",
+        "rewards": [
+          "standard_sp_reward",
+          "qa_competency"
+        ]
+      },
+      "victory_minimal_compliance": {
+        "condition": "65-79% procedural accuracy",
+        "outcome": "Basic compliance achieved",
+        "rewards": [
+          "reduced_sp_reward",
+          "remedial_training_access"
+        ]
+      },
+      "defeat": {
+        "condition": "<65% procedural accuracy",
+        "outcome": "Failed audit standards",
+        "consequences": [
+          "retry_required",
+          "intensive_remediation_needed"
+        ]
+      }
+    },
+    "cross_references": {
+      "unlocks": [
+        "advanced_qa_procedures",
+        "winter_synthesis_preparation",
+        "regulatory_expertise_path"
+      ],
+      "related_systems": [
+        "dosimetry_systems",
+        "calibration_protocols",
+        "safety_procedures"
+      ],
+      "related_characters": [
+        "dr_kapoor",
+        "audit_team_leader",
+        "qa_specialists"
+      ]
+    },
+    "implementation_notes": {
+      "priority": "high",
+      "dependencies": [
+        "qa_procedure_system",
+        "calibration_calculation_engine",
+        "protocol_verification_interface",
+        "audit_team_ai_behavior"
+      ],
+      "technical_requirements": [
+        "precision_calculation_system",
+        "protocol_compliance_tracker",
+        "procedure_sequence_validator",
+        "regulatory_standards_database"
+      ]
+    }
+  },
+  "vendor-trio": {
+    "system_info": {
+      "name": "The Vendor Trio",
+      "type": "boss_encounter",
+      "subtitle": "Triskelion Solutions",
+      "mastery_threshold": 50,
+      "primary_domain": "LA",
+      "secondary_domain": "DOS",
+      "season_availability": "End of Summer",
+      "difficulty": "intermediate_advanced",
+      "estimated_duration": "25-30_minutes",
+      "content_reference": "content/boss-encounters/vendor-trio.md"
+    },
+    "character_data": {
+      "name": "Triskelion Solutions Sales Team",
+      "composition": "Three synchronized sales representatives",
+      "special_traits": [
+        "uncanny_coordination",
+        "polished_presentations",
+        "technical_claims"
+      ],
+      "challenge_type": "technology_evaluation"
+    },
+    "encounter_concept": {
+      "metaphorical_role": "Critical evaluation of technology claims",
+      "educational_purpose": "Tests ability to evaluate technology claims and specifications",
+      "narrative_placement": "End of Summer (available at 50% mastery)"
+    },
+    "boss_encounter": {
+      "name": "Technology Acquisition Evaluation",
+      "setting": "conference_room_presentation",
+      "special_mechanic": "critical_assessment_system",
+      "phases": {
+        "phase_1": {
+          "name": "Presentation Analysis",
+          "duration": "5_minutes",
+          "format": "Technical specification review",
+          "primary_challenge": "Identify key technical specifications and their implications",
+          "special_mechanic": "Critical Assessment - Evaluate claims against technical knowledge",
+          "secondary_challenge": "Formulate technically precise questions",
+          "difficulty_modifier": 1.0
+        },
+        "phase_2": {
+          "name": "Equipment Evaluation",
+          "duration": "6_minutes",
+          "format": "Performance verification testing",
+          "primary_challenge": "Design tests to verify vendor performance claims",
+          "special_mechanic": "Test Design - Create technically sound verification protocols",
+          "secondary_challenge": "Interpret measurement results accurately",
+          "difficulty_modifier": 1.2
+        },
+        "phase_3": {
+          "name": "Specification Comparison",
+          "duration": "7_minutes",
+          "format": "Technical document analysis",
+          "primary_challenge": "Compare competing technical specifications quantitatively",
+          "special_mechanic": "Technical Discrepancy - Identify contradictions in specifications",
+          "secondary_challenge": "Assess real-world implications of technical differences",
+          "difficulty_modifier": 1.4
+        },
+        "phase_4": {
+          "name": "Technical Interrogation",
+          "duration": "5_minutes",
+          "format": "In-depth technical questioning",
+          "primary_challenge": "Probe technical limitations using domain knowledge",
+          "special_mechanic": "Knowledge Application - Apply specific technical concepts to reveal issues",
+          "secondary_challenge": "Identify optimal configuration based on physics principles",
+          "difficulty_modifier": 1.6
+        },
+        "phase_5": {
+          "name": "Final Recommendation",
+          "duration": "2_minutes",
+          "format": "Technical evaluation synthesis",
+          "primary_challenge": "Produce evidence-based technical assessment",
+          "special_mechanic": "Physics-Based Evaluation - Apply fundamental physics to evaluation",
+          "resolution_condition": "Recommendation based on sound technical principles",
+          "difficulty_modifier": 1.0
+        }
+      }
+    },
+    "strategic_counter_knowledge": {
+      "effective_stars": [
+        {
+          "id": "la-components",
+          "importance": "Critical for understanding equipment fundamentals"
+        },
+        {
+          "id": "la-beam-generation",
+          "importance": "Understanding core technology principles"
+        },
+        {
+          "id": "dos-qa",
+          "importance": "Testing methodologies for verification"
+        },
+        {
+          "id": "la-beam-modification",
+          "importance": "Knowledge of beam-shaping technologies"
+        }
+      ],
+      "effective_patterns": [
+        {
+          "name": "Technical Assessment Triangle",
+          "description": "Connection between evaluation stars"
+        },
+        {
+          "name": "Machine Mastery Path",
+          "description": "Linear connection of equipment-related stars"
+        },
+        {
+          "name": "Verification Cluster",
+          "description": "QA and testing-related stars"
+        }
+      ]
+    },
+    "preparation_activities": [
+      {
+        "name": "Technology Evaluation Seminar with Technician Jesse",
+        "effect": "+20% effectiveness in specification analysis"
+      },
+      {
+        "name": "Measurement Protocol Review",
+        "effect": "Improves ability to design verification tests"
+      },
+      {
+        "name": "Technical Specification Workshop",
+        "effect": "Better understanding of technical documentation"
+      },
+      {
+        "name": "Component Analysis Training",
+        "effect": "Enhanced ability to evaluate technical claims"
+      }
+    ],
+    "recommended_configuration": {
+      "active_stars": "Linac anatomy and equipment-related stars",
+      "application_cards": [
+        "Fast Learner",
+        "Second Chance",
+        "Emergency Protocol"
+      ],
+      "mentor_boon": "Technician Jesse's Technical Insight (reveals hidden specifications)"
+    },
+    "rewards": {
+      "sp_reward": 26,
+      "insight_reward": "75-100 based on performance",
+      "mastery_boost": "BOSS_MASTERY_BOOST (+15% to stars used during encounter)",
+      "relationship_reward": "+5 relationship points with Technician Jesse",
+      "special_rewards": [
+        "Advanced equipment access",
+        "Technical evaluation expertise",
+        "Vendor relationship insights"
+      ]
+    },
+    "resolution_paths": {
+      "victory_high_performance": {
+        "condition": "90%+ technical accuracy",
+        "outcome": "Comprehensive vendor understanding",
+        "rewards": [
+          "full_sp_reward",
+          "bonus_insight",
+          "equipment_mastery"
+        ]
+      },
+      "victory_standard": {
+        "condition": "70-89% technical accuracy",
+        "outcome": "Solid technical evaluation",
+        "rewards": [
+          "standard_sp_reward",
+          "equipment_knowledge"
+        ]
+      },
+      "victory_minimal": {
+        "condition": "50-69% technical accuracy",
+        "outcome": "Basic evaluation competence",
+        "rewards": [
+          "reduced_sp_reward",
+          "retry_opportunity"
+        ]
+      },
+      "defeat": {
+        "condition": "<50% technical accuracy",
+        "outcome": "Overwhelmed by technical claims",
+        "consequences": [
+          "retry_required",
+          "additional_preparation_needed"
+        ]
+      }
+    },
+    "cross_references": {
+      "unlocks": [
+        "advanced_equipment_access",
+        "fall_specialization_options",
+        "technical_mentor_relationships"
+      ],
+      "related_systems": [
+        "equipment_systems",
+        "qa_procedures",
+        "technical_specifications"
+      ],
+      "related_characters": [
+        "technician_jesse",
+        "vendor_representatives",
+        "department_technical_staff"
+      ]
+    },
+    "implementation_notes": {
+      "priority": "high",
+      "dependencies": [
+        "technical_specification_system",
+        "equipment_evaluation_interface",
+        "performance_testing_mechanics",
+        "vendor_ai_behavior"
+      ],
+      "technical_requirements": [
+        "multi_vendor_presentation_system",
+        "specification_comparison_tools",
+        "testing_protocol_designer",
+        "technical_accuracy_tracker"
+      ]
+    }
+  },
+  "ionix": {
+    "system_info": {
+      "name": "Ionix",
+      "type": "boss_encounter",
+      "subtitle": "The Calibration Singularity",
+      "mastery_threshold": 75,
+      "primary_domain": "ALL",
+      "secondary_domain": "ALL",
+      "season_availability": "End of Winter",
+      "difficulty": "expert",
+      "estimated_duration": "30-40_minutes",
+      "content_reference": "content/boss-encounters/ionix.md"
+    },
+    "character_data": {
+      "name": "Ionix",
+      "nature": "Fluid, glitching entity",
+      "special_traits": [
+        "speaks_in_player_voice",
+        "domain_fusion",
+        "knowledge_synthesis"
+      ],
+      "challenge_type": "comprehensive_integration",
+      "appearance": "Sometimes speaks in the player's voice, challenging them with complex, multi-domain problems"
+    },
+    "encounter_concept": {
+      "metaphorical_role": "Ultimate integration of all medical physics knowledge domains",
+      "educational_purpose": "Tests comprehensive understanding across all domains",
+      "narrative_placement": "End of Winter (available at 75% mastery)"
+    },
+    "boss_encounter": {
+      "name": "Knowledge Integration Synthesis",
+      "setting": "constellation_nexus_space",
+      "special_mechanic": "dynamic_domain_fusion",
+      "phases": {
+        "phase_1": {
+          "name": "Domain Integration",
+          "duration": "8_minutes",
+          "format": "Multi-domain knowledge challenges",
+          "primary_challenge": "Apply concepts across traditional domain boundaries",
+          "special_mechanic": "Concept Fusion - Concepts from different domains combine in novel ways",
+          "secondary_challenge": "Identify shared physics principles across domains",
+          "difficulty_modifier": 1.0
+        },
+        "phase_2": {
+          "name": "Technical Adaptation",
+          "duration": "9_minutes",
+          "format": "Adaptive problem sequence",
+          "primary_challenge": "Solve technical problems with shifting parameters",
+          "special_mechanic": "Dynamic Difficulty - Challenge difficulty adjusts based on performance",
+          "secondary_challenge": "Identify optimal technical solutions as conditions change",
+          "difficulty_modifier": 1.3
+        },
+        "phase_3": {
+          "name": "Knowledge Synthesis",
+          "duration": "10_minutes",
+          "format": "Pattern-based challenges",
+          "primary_challenge": "Apply knowledge patterns to complex technical problems",
+          "special_mechanic": "Pattern Recognition - Identify and apply knowledge patterns",
+          "secondary_challenge": "Create new connections between technical concepts",
+          "difficulty_modifier": 1.7
+        },
+        "phase_4": {
+          "name": "System Cascade",
+          "duration": "8_minutes",
+          "format": "Chain reaction technical challenges",
+          "primary_challenge": "Predict technical consequences in interconnected systems",
+          "special_mechanic": "Technical Propagation - Changes affect multiple technical systems",
+          "secondary_challenge": "Stabilize systems using fundamental physics principles",
+          "difficulty_modifier": 2.0
+        },
+        "phase_5": {
+          "name": "Complete Integration",
+          "duration": "5_minutes",
+          "format": "Comprehensive technical synthesis",
+          "primary_challenge": "Create integrated solution to multi-domain technical problem",
+          "special_mechanic": "Holistic Knowledge - Solution must incorporate knowledge from all domains",
+          "resolution_condition": "Demonstrate mastery of interconnected medical physics principles",
+          "difficulty_modifier": 1.5
+        }
+      }
+    },
+    "strategic_counter_knowledge": {
+      "effective_stars": [
+        {
+          "criteria": "Stars with high mastery (75%+ mastery)",
+          "description": "Any stars with comprehensive understanding"
+        },
+        {
+          "criteria": "Cross-domain connection stars",
+          "description": "Stars connected across multiple domains"
+        },
+        {
+          "criteria": "Pattern-forming stars",
+          "description": "Stars that create complete patterns"
+        },
+        {
+          "criteria": "Core stars",
+          "description": "The fundamental stars of each domain"
+        }
+      ],
+      "effective_patterns": [
+        {
+          "name": "Cross-Domain Triangle",
+          "description": "Connection between stars from different domains"
+        },
+        {
+          "name": "Knowledge Web",
+          "description": "Complex interconnected pattern"
+        },
+        {
+          "name": "Domain Mastery Cluster",
+          "description": "Complete domain coverage"
+        }
+      ]
+    },
+    "preparation_activities": [
+      {
+        "name": "Cross-Domain Integration Workshop",
+        "effect": "+20% effectiveness in concept fusion challenges"
+      },
+      {
+        "name": "Advanced Problem Solving Seminar",
+        "effect": "Improves ability to handle dynamic challenges"
+      },
+      {
+        "name": "Comprehensive Review Session",
+        "effect": "Refreshes knowledge across all domains"
+      },
+      {
+        "name": "Pattern Recognition Exercise",
+        "effect": "Better understanding of knowledge patterns"
+      }
+    ],
+    "recommended_configuration": {
+      "active_stars": "Balanced selection across all domains with emphasis on connections",
+      "application_cards": [
+        "Tomorrow's Promise",
+        "Network Effect",
+        "Quantum Leap"
+      ],
+      "mentor_boon": "Combined Mentor Insight (provides hints during critical moments)"
+    },
+    "rewards": {
+      "sp_reward": 30,
+      "insight_reward": "150-200 based on performance",
+      "mastery_boost": "BOSS_MASTERY_BOOST (+15% to stars used during encounter)",
+      "relationship_reward": "+5 relationship points with all mentors",
+      "special_rewards": [
+        "Complete domain mastery",
+        "Cross-domain expertise",
+        "Professional synthesis achievement",
+        "Ultimate knowledge integration"
+      ]
+    },
+    "resolution_paths": {
+      "victory_complete_mastery": {
+        "condition": "95%+ cross-domain integration",
+        "outcome": "Transcendent understanding achieved",
+        "rewards": [
+          "full_sp_reward",
+          "maximum_insight",
+          "mastery_transcendence"
+        ]
+      },
+      "victory_comprehensive": {
+        "condition": "85-94% cross-domain integration",
+        "outcome": "Excellent knowledge synthesis",
+        "rewards": [
+          "high_sp_reward",
+          "substantial_insight",
+          "domain_expertise"
+        ]
+      },
+      "victory_competent": {
+        "condition": "70-84% cross-domain integration",
+        "outcome": "Solid integrated understanding",
+        "rewards": [
+          "standard_sp_reward",
+          "good_insight",
+          "competency_achieved"
+        ]
+      },
+      "victory_minimal": {
+        "condition": "55-69% cross-domain integration",
+        "outcome": "Basic integration demonstrated",
+        "rewards": [
+          "reduced_sp_reward",
+          "basic_insight",
+          "foundation_established"
+        ]
+      },
+      "defeat": {
+        "condition": "<55% cross-domain integration",
+        "outcome": "Knowledge fragmentation revealed",
+        "consequences": [
+          "retry_available",
+          "comprehensive_review_needed"
+        ]
+      }
+    },
+    "boss_availability": {
+      "mastery_requirements": {
+        "rt_domain": "75% minimum",
+        "tp_domain": "75% minimum",
+        "la_domain": "75% minimum",
+        "dos_domain": "75% minimum"
+      },
+      "alternative_unlock": {
+        "high_mastery_two_domains": "90% in any two domains",
+        "exceptional_single_domain": "95% in any single domain with 60% in others"
+      }
+    },
+    "cross_references": {
+      "unlocks": [
+        "professional_certification_path",
+        "advanced_specialization_options",
+        "mentor_collaboration_opportunities",
+        "research_project_access"
+      ],
+      "related_systems": [
+        "all_knowledge_domains",
+        "constellation_patterns",
+        "mentor_relationships",
+        "professional_development"
+      ],
+      "related_characters": [
+        "all_mentors",
+        "professional_community",
+        "future_colleagues"
+      ]
+    },
+    "implementation_notes": {
+      "priority": "highest",
+      "dependencies": [
+        "complete_knowledge_constellation",
+        "cross_domain_challenge_system",
+        "pattern_recognition_engine",
+        "dynamic_difficulty_system",
+        "ionix_ai_behavior_complex"
+      ],
+      "technical_requirements": [
+        "multi_domain_fusion_system",
+        "adaptive_challenge_generator",
+        "pattern_synthesis_analyzer",
+        "knowledge_integration_tracker",
+        "comprehensive_feedback_system"
+      ]
+    }
+  },
+  "marcus-chen": {
+    "system_info": {
+      "name": "Marcus Chen",
+      "type": "boss_encounter",
+      "system_id": "marcus-chen",
+      "mastery_threshold": 40,
+      "primary_domain": "TP",
+      "secondary_domain": "RT",
+      "season_availability": "End of Spring",
+      "energy_system": "emotional_energy",
+      "difficulty": "intermediate",
+      "estimated_duration": "20-25_minutes",
+      "content_reference": "content/character-arcs/marcus-chen.md"
+    },
+    "character_data": {
+      "name": "Marcus Chen",
+      "title": "Second-Year Resident",
+      "year_in_program": 2,
+      "player_relationship": "senior_resident",
+      "personality_traits": [
+        "perfectionist",
+        "competitive",
+        "insecure",
+        "helpful_initially"
+      ],
+      "core_fear": "inadequacy_after_witnessing_failure",
+      "backstory_reference": "content/character-arcs/marcus-chen.md"
+    },
+    "timeline": {
+      "year_0": "Amara completes residency",
+      "year_1": "Failed resident(s) who couldn't adapt",
+      "year_2": "Marcus Chen starts residency",
+      "year_3": "Player starts (Chen is 2nd year)"
+    },
+    "progression_arc": {
+      "days_1_3": "helpful_senior_resident",
+      "week_2": "subtle_undermining_begins",
+      "week_4": "openly_competitive",
+      "week_6": "breaking_point_meltdown",
+      "week_7": "boss_encounter_triggered"
+    },
+    "boss_encounter": {
+      "name": "The Morrison Case Competition",
+      "setting": "split_screen_planning_stations",
+      "audience": "department_staff",
+      "trigger_event": "morrison_case_assignment_to_player",
+      "energy_system": {
+        "name": "Emotional Energy",
+        "abbreviation": "EE",
+        "description": "Player's composure and focus under pressure",
+        "starting_value": 100,
+        "thresholds": {
+          "normal": 75,
+          "harder_questions": 50,
+          "both_parties_reactive": 25,
+          "crisis_mode": 0
+        },
+        "drain_sources": {
+          "interruptions": 15,
+          "wrong_answers": 10,
+          "time_pressure": 5,
+          "chen_outperformance": 20
+        },
+        "recovery_sources": {
+          "correct_answers": 10,
+          "empathy_responses": 15,
+          "card_abilities": 20,
+          "combo_streaks": 25
+        }
+      },
+      "phases": {
+        "phase_1": {
+          "duration": "3_minutes",
+          "chen_behavior": "professional_competitive",
+          "interruption_triggers": [
+            "wrong_answer"
+          ],
+          "interruption_chance": 0.8,
+          "key_dialogue": "Actually, the optimization approach would be...",
+          "difficulty_modifier": 1.0
+        },
+        "phase_2": {
+          "duration": "3_minutes",
+          "chen_behavior": "increasing_pressure",
+          "interruption_triggers": [
+            "wrong_answer",
+            "slow_response"
+          ],
+          "interruption_chance": 0.9,
+          "key_dialogue": "No no no, it has to be PERFECT, like Amara would do!",
+          "difficulty_modifier": 1.2
+        },
+        "phase_3": {
+          "duration": "4_minutes",
+          "chen_behavior": "desperate_interruption",
+          "interruption_triggers": [
+            "wrong_answer",
+            "rt_domain",
+            "dos_domain"
+          ],
+          "interruption_chance": 0.7,
+          "key_dialogue": "I can't be another failure. Not after watching David wash out...",
+          "difficulty_modifier": 1.4
+        },
+        "phase_4": {
+          "duration": "3_minutes",
+          "chen_behavior": "emotional_breakdown",
+          "interruption_triggers": [
+            "random"
+          ],
+          "interruption_chance": 0.3,
+          "key_dialogue": "Every night I dream about the mistakes... what if I hurt someone?",
+          "difficulty_modifier": 1.6
+        },
+        "phase_5": {
+          "duration": "2_minutes",
+          "chen_behavior": "clarity_or_complete_breakdown",
+          "interruption_triggers": [
+            "conditional"
+          ],
+          "interruption_chance": 0.1,
+          "key_dialogue": "Maybe... maybe there's more than one way to be excellent",
+          "difficulty_modifier": 1.0
+        }
+      },
+      "resolution_paths": {
+        "victory_with_high_ee": {
+          "ee_threshold": 50,
+          "outcome": "chen_finds_clarity",
+          "rewards": [
+            "storage_closet_key",
+            "relationship_repair",
+            "mentor_respect"
+          ]
+        },
+        "victory_with_low_ee": {
+          "ee_threshold": 25,
+          "outcome": "mutual_exhaustion",
+          "rewards": [
+            "storage_closet_key",
+            "partial_reconciliation"
+          ]
+        },
+        "defeat": {
+          "outcome": "chen_breakdown",
+          "consequences": [
+            "retry_required",
+            "chen_emotional_damage"
+          ],
+          "retry_modifications": [
+            "lower_starting_ee",
+            "hint_system_activated"
+          ]
+        }
+      },
+      "rewards": {
+        "immediate": [
+          "storage_closet_key",
+          "relationship_progress",
+          "emotional_energy_mastery"
+        ],
+        "narrative": [
+          "summer_journal_access",
+          "chen_occasional_ally_status",
+          "department_recognition"
+        ]
+      }
+    },
+    "mechanics": {
+      "retry_system": {
+        "unlimited_retries": true,
+        "retry_modifications": {
+          "attempt_2": "starting_ee_reduced_to_85",
+          "attempt_3": "hint_system_activated",
+          "attempt_4_plus": "chen_dialogue_acknowledges_previous_encounters"
+        }
+      },
+      "special_abilities": {
+        "emotional_intelligence_moments": false,
+        "card_interruption_defense": true,
+        "momentum_ee_conversion": true
+      }
+    },
+    "cross_references": {
+      "unlocks": [
+        "storage_closet_access",
+        "summer_journal_discovery",
+        "pico_discovery_path"
+      ],
+      "related_systems": [
+        "emotional_energy_system",
+        "mentor_relationships",
+        "journal_progression"
+      ],
+      "related_characters": [
+        "amara_shepherd",
+        "david_previous_resident",
+        "morrison_patient"
+      ]
+    },
+    "implementation_notes": {
+      "priority": "high",
+      "dependencies": [
+        "emotional_energy_system",
+        "split_screen_interface",
+        "interruption_mechanics",
+        "storage_closet_system"
+      ],
+      "technical_requirements": [
+        "real_time_energy_tracking",
+        "dynamic_difficulty_scaling",
+        "audience_reaction_system",
+        "chen_ai_behavior_tree"
+      ]
+    }
+  }
+}
