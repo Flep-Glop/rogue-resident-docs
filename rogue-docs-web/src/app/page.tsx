@@ -170,158 +170,53 @@ export default function ThreeAudienceWorkflow() {
     }
   };
 
-  const generateWorkflowDocuments = async () => {
+  // Load pre-generated documents
+  const loadGeneratedDocuments = async () => {
     setIsGenerating(true);
     try {
-      let response, result;
+      const response = await fetch('/api/generated-docs');
+      const result = await response.json();
       
-      if (workflowMode === 'narrative') {
-        // Generate narrative workflow documentation
-        const narrativeRequestBody = {
-          focusArea: selectedNarrativeFocus,
-          includeArchives,
-          exportReferences: narrativeExportReferences
-        };
+      if (result.documents && result.documents.length > 0) {
+        // Find documents for the selected system
+        const systemDocs = result.documents.filter((doc: any) => 
+          doc.name.includes(selectedSystem) && doc.category === 'workflow'
+        );
         
-        response = await fetch('/api/narrative-workflow', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(narrativeRequestBody)
-        });
-        
-        result = await response.json();
-        
-        if (result.success && result.files) {
-          // Convert narrative results to audience document format
-          const focusLabel = NARRATIVE_FOCUS_AREAS.find(f => f.id === selectedNarrativeFocus)?.name || selectedNarrativeFocus;
-          const enhancedLabel = result.includeArchives ? ' (Enhanced)' : '';
+        if (systemDocs.length > 0) {
+          const updatedDocs: AudienceDocument[] = [];
           
-          const updatedDocs: AudienceDocument[] = [
-            {
-              type: 'conversational',
-              title: `🎭 Narrative Context${enhancedLabel}`,
-              description: `Story development guide for ${focusLabel.toLowerCase()}`,
-              size: `${Math.round(result.files.narrative_context.length / 1024 * 10) / 10}KB`,
-              lastGenerated: 'Just now',
-              content: result.files.narrative_context
-            },
-            {
-              type: 'planning',
-              title: `🛠️ Lore Implementation${enhancedLabel}`, 
-              description: `Technical integration guide for ${focusLabel.toLowerCase()}`,
-              size: `${Math.round(result.files.lore_implementation.length / 1024 * 10) / 10}KB`,
-              lastGenerated: 'Just now',
-              content: result.files.lore_implementation
-            },
-            {
-              type: 'implementation',
-              title: `🧠 Story Continuity${enhancedLabel}`,
-              description: `Complete story bible for ${focusLabel.toLowerCase()}`,
-              size: `${Math.round(result.files.story_continuity.length / 1024 * 10) / 10}KB`,
-              lastGenerated: 'Just now',
-              content: result.files.story_continuity
+          // Load each document type
+          for (const docType of ['conversational', 'development-plan', 'implementation-context']) {
+            const doc = systemDocs.find((d: any) => d.name.includes(docType));
+            if (doc) {
+              const contentResponse = await fetch(`/api/generated-docs?path=${encodeURIComponent(doc.path)}`);
+              const contentResult = await contentResponse.json();
+              
+              updatedDocs.push({
+                type: docType.includes('conversational') ? 'conversational' : 
+                      docType.includes('development') ? 'planning' : 'implementation',
+                title: doc.displayName,
+                description: docType.includes('conversational') ? 'Design discussions' :
+                           docType.includes('development') ? 'Implementation planning' : 'LLM collaboration',
+                size: `${Math.round(doc.size / 1024 * 10) / 10}KB`,
+                lastGenerated: new Date(doc.lastModified).toLocaleString(),
+                content: contentResult.content || 'Content not available'
+              });
             }
-          ];
-          setAudienceDocuments(updatedDocs);
+          }
           
-          let successMessage = `🎭 Narrative workflow generated successfully for ${focusLabel}!`;
-          if (result.includeArchives) {
-            successMessage += ` Enhanced mode included comprehensive narrative content.`;
-          }
-          if (result.referencesInfo?.length > 0) {
-            successMessage += ` ${result.referencesInfo.length} reference files exported.`;
-          }
-          showToast(successMessage, 'success');
+          setAudienceDocuments(updatedDocs);
+          showToast(`📄 Loaded ${updatedDocs.length} pre-generated documents for ${selectedSystem}`, 'success');
         } else {
-          throw new Error(result.error || 'Failed to generate narrative workflow');
+          showToast(`📄 No pre-generated documents found for ${selectedSystem}. Documents are created during build.`, 'error');
         }
       } else {
-        // Generate technical workflow documentation (existing functionality)
-        const requestBody: { 
-        system: string; 
-        includeArchives?: boolean; 
-        copyTo?: string; 
-      } = { system: selectedSystem };
-        
-        if (includeArchives) {
-          requestBody.includeArchives = true;
-        }
-        
-        if (copyToPath.trim()) {
-          requestBody.copyTo = copyToPath.trim();
-        }
-        
-        response = await fetch('/api/workflow-export', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(requestBody)
-        });
-        
-        result = await response.json();
-      
-      if (result.success && result.documents) {
-        // Update documents with actual content
-        const enhancedLabel = result.enhanced ? ' (Enhanced)' : '';
-        const updatedDocs: AudienceDocument[] = [
-          {
-            type: 'conversational',
-            title: `Design Discussion Context${enhancedLabel}`,
-            description: 'Perfect for Luke + Zach design discussions',
-            size: `${Math.round(result.documents.conversational.length / 1024 * 10) / 10}KB`,
-            lastGenerated: 'Just now',
-            content: result.documents.conversational
-          },
-          {
-            type: 'planning',
-            title: `Development Plan${enhancedLabel}`, 
-            description: 'Triage-style implementation roadmap for Luke',
-            size: `${Math.round(result.documents.planning.length / 1024 * 10) / 10}KB`,
-            lastGenerated: 'Just now',
-            content: result.documents.planning
-          },
-          {
-            type: 'implementation',
-            title: `LLM Implementation Context${enhancedLabel}`,
-            description: result.enhanced 
-              ? 'Comprehensive context with all archives & game systems'
-              : 'Focused technical context for Claude collaboration',
-            size: `${Math.round(result.documents.implementation.length / 1024 * 10) / 10}KB`,
-            lastGenerated: 'Just now',
-            content: result.documents.implementation
-          }
-        ];
-        setAudienceDocuments(updatedDocs);
-        
-        // Show success toast with enhanced features
-        let successMessage = '🎉 Workflow documentation generated successfully!';
-        if (result.enhanced) {
-          successMessage += ` Enhanced mode included ${result.documents.implementation.length > 15000 ? '19+ archived documents' : 'comprehensive context'}.`;
-        }
-        if (result.copiedTo) {
-          successMessage += ` Files copied to ${result.copiedTo}.`;
-        }
-        showToast(successMessage, 'success');
-        } else {
-          // Handle error case
-          const errorMessage = `❌ Error generating workflow documentation:\n\n${result.error}\n\nThis usually means the system YAML file doesn't exist yet. Available systems: activity-interface, mentors-interface, tutorial-flows\n\nTo fix this, either:\n1. Select one of the available systems (which work)\n2. Create the missing YAML file in data/interfaces/`;
-          
-          const errorDocs: AudienceDocument[] = audienceDocuments.map(doc => ({
-            ...doc,
-            content: errorMessage,
-            lastGenerated: 'Error - just now'
-          }));
-          setAudienceDocuments(errorDocs);
-        }
+        showToast('📄 No generated documents found. Documents are created during build process.', 'error');
       }
     } catch (error) {
-      console.error('Error generating workflow documents:', error);
-      const errorMessage = `❌ Network error generating workflow documentation:\n\n${error}\n\nPlease check that the development server is running properly.`;
-      const errorDocs: AudienceDocument[] = audienceDocuments.map(doc => ({
-        ...doc,
-        content: errorMessage,
-        lastGenerated: 'Error - just now'
-      }));
-      setAudienceDocuments(errorDocs);
+      console.error('Error loading generated documents:', error);
+      showToast('❌ Failed to load generated documents', 'error');
     } finally {
       setIsGenerating(false);
     }
@@ -644,39 +539,10 @@ export default function ThreeAudienceWorkflow() {
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-xl font-semibold text-gray-900">
-                  📂 {workflowMode === 'narrative' ? 'Select Narrative Focus' : 'Select System for Workflow Generation'}
+                  📂 Select System for Document Viewing
                 </h3>
-                <div className="flex items-center space-x-3">
-                  {/* Workflow Mode Toggle */}
-                  <div className="flex bg-gray-100 rounded-lg p-1">
-                    <button
-                      onClick={() => setWorkflowMode('technical')}
-                      className={`px-3 py-1 rounded-md text-sm font-medium transition-all ${
-                        workflowMode === 'technical'
-                          ? 'bg-white text-blue-700 shadow-sm'
-                          : 'text-gray-600 hover:text-gray-900'
-                      }`}
-                    >
-                      🔧 Technical
-                    </button>
-                    <button
-                      onClick={() => setWorkflowMode('narrative')}
-                      className={`px-3 py-1 rounded-md text-sm font-medium transition-all ${
-                        workflowMode === 'narrative'
-                          ? 'bg-white text-purple-700 shadow-sm'
-                          : 'text-gray-600 hover:text-gray-900'
-                      }`}
-                    >
-                      🎭 Narrative
-                    </button>
-                  </div>
-                  
-                  <div className="text-sm text-gray-500 bg-blue-50 px-3 py-1 rounded-lg">
-                    {workflowMode === 'narrative' 
-                      ? `${NARRATIVE_FOCUS_AREAS.length} focus areas` 
-                      : `${WORKFLOW_SYSTEMS.length} system${WORKFLOW_SYSTEMS.length !== 1 ? 's' : ''} available`
-                    }
-                  </div>
+                <div className="text-sm text-gray-500 bg-blue-50 px-3 py-1 rounded-lg">
+                  {WORKFLOW_SYSTEMS.length} system{WORKFLOW_SYSTEMS.length !== 1 ? 's' : ''} available
                 </div>
               </div>
               
@@ -691,60 +557,30 @@ export default function ThreeAudienceWorkflow() {
               )}
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {workflowMode === 'narrative' ? (
-                  // Narrative Focus Areas
-                  NARRATIVE_FOCUS_AREAS.map((focus) => (
-                    <button
-                      key={focus.id}
-                      onClick={() => setSelectedNarrativeFocus(focus.id)}
-                      className={`p-4 rounded-lg border-2 transition-all duration-200 text-left ${
-                        selectedNarrativeFocus === focus.id
-                          ? 'border-purple-500 bg-purple-50'
-                          : 'border-gray-200 hover:border-gray-300 bg-white'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <div className="flex items-center space-x-2">
-                          <span className="text-xl">{focus.icon}</span>
-                          <h4 className="font-semibold text-gray-900">{focus.name}</h4>
-                        </div>
+                {WORKFLOW_SYSTEMS.map((system) => (
+                  <button
+                    key={system.id}
+                    onClick={() => setSelectedSystem(system.id)}
+                    className={`p-4 rounded-lg border-2 transition-all duration-200 text-left ${
+                      selectedSystem === system.id
+                        ? 'border-blue-500 bg-blue-50'
+                        : 'border-gray-200 hover:border-gray-300 bg-white'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="font-semibold text-gray-900">{system.name}</h4>
+                      <div className="flex items-center space-x-2">
+                        <div className={`w-2 h-2 bg-${getStatusColor(system.status)}-400 rounded-full`}></div>
+                        <div className={`w-2 h-2 bg-${getPriorityColor(system.priority)}-400 rounded-full`}></div>
                       </div>
-                      <p className="text-sm text-gray-600 mb-3">{focus.description}</p>
-                      {focus.systems.length > 0 && (
-                        <div className="text-xs text-gray-500">
-                          Systems: {focus.systems.slice(0, 2).join(', ')}
-                          {focus.systems.length > 2 && ` +${focus.systems.length - 2} more`}
-                        </div>
-                      )}
-                    </button>
-                  ))
-                ) : (
-                  // Technical Workflow Systems
-                  WORKFLOW_SYSTEMS.map((system) => (
-                    <button
-                      key={system.id}
-                      onClick={() => setSelectedSystem(system.id)}
-                      className={`p-4 rounded-lg border-2 transition-all duration-200 text-left ${
-                        selectedSystem === system.id
-                          ? 'border-purple-500 bg-purple-50'
-                          : 'border-gray-200 hover:border-gray-300 bg-white'
-                      }`}
-                    >
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-semibold text-gray-900">{system.name}</h4>
-                        <div className="flex items-center space-x-2">
-                          <div className={`w-2 h-2 bg-${getStatusColor(system.status)}-400 rounded-full`}></div>
-                          <div className={`w-2 h-2 bg-${getPriorityColor(system.priority)}-400 rounded-full`}></div>
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-600 mb-3">{system.description}</p>
-                      <div className="flex items-center justify-between text-xs text-gray-500">
-                        <span>{system.components} components</span>
-                        <span>{system.lastUpdated}</span>
-                      </div>
-                    </button>
-                  ))
-                )}
+                    </div>
+                    <p className="text-sm text-gray-600 mb-3">{system.description}</p>
+                    <div className="flex items-center justify-between text-xs text-gray-500">
+                      <span>{system.components} components</span>
+                      <span>{system.lastUpdated}</span>
+                    </div>
+                  </button>
+                ))}
               </div>
             </div>
 
@@ -754,155 +590,39 @@ export default function ThreeAudienceWorkflow() {
                 <div className="flex items-center justify-between mb-4">
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900">
-                      ⚡ Generate {workflowMode === 'narrative' ? 'Narrative' : 'Three-Audience'} Documentation
+                      📄 Pre-Generated Documentation Viewer
                     </h3>
                     <p className="text-gray-600 mt-1">
-                      {workflowMode === 'narrative' 
-                        ? `Current focus: ${NARRATIVE_FOCUS_AREAS.find(f => f.id === selectedNarrativeFocus)?.name || selectedNarrativeFocus}`
-                        : `Current system: ${WORKFLOW_SYSTEMS.find(s => s.id === selectedSystem)?.name}`
-                      }
+                      View three-audience workflow documents generated during build. Current system: {WORKFLOW_SYSTEMS.find(s => s.id === selectedSystem)?.name}
                     </p>
                   </div>
                 </div>
                 
-                {/* Enhanced Options */}
-                <div className="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-200">
-                  <h4 className="text-sm font-semibold text-gray-900 mb-3">📚 Enhanced Options</h4>
-                  
-                  <div className="space-y-4">
-                    {/* Include Archives Toggle */}
-                    <div className="flex items-center justify-between">
-                      <div className="flex-1">
-                        <label className="flex items-center space-x-3 cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={includeArchives}
-                            onChange={(e) => setIncludeArchives(e.target.checked)}
-                            className="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 focus:ring-2"
-                          />
-                          <div>
-                            <span className="text-sm font-medium text-gray-900">Include Archives</span>
-                            <p className="text-xs text-gray-600">
-                              {workflowMode === 'narrative' 
-                                ? 'Add comprehensive character content and world-building documentation'
-                                : 'Add all design docs, character content, and game constants to LLM context'
-                              }
-                            </p>
-                          </div>
-                        </label>
-                      </div>
-                      {includeArchives && (
-                        <div className="ml-4 px-2 py-1 bg-amber-100 text-amber-800 text-xs rounded-full font-medium">
-                          +19 files, ~16KB context
-                        </div>
-                      )}
-                    </div>
-                    
-                    {workflowMode === 'narrative' ? (
-                      /* Export References Toggle for Narrative Mode */
-                      <div className="flex items-center justify-between">
-                        <div className="flex-1">
-                          <label className="flex items-center space-x-3 cursor-pointer">
-                            <input
-                              type="checkbox"
-                              checked={narrativeExportReferences}
-                              onChange={(e) => setNarrativeExportReferences(e.target.checked)}
-                              className="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 rounded focus:ring-purple-500 focus:ring-2"
-                            />
-                            <div>
-                              <span className="text-sm font-medium text-gray-900">Export References</span>
-                              <p className="text-xs text-gray-600">Export referenced files to references/ directory instead of embedding inline</p>
-                            </div>
-                          </label>
-                        </div>
-                      </div>
-                    ) : (
-                      /* Copy to Directory for Technical Mode */
-                      <div className="space-y-2">
-                        <label className="block text-sm font-medium text-gray-900">
-                          Copy to Directory (Optional)
-                        </label>
-                        <div className="flex space-x-2">
-                          <input
-                            type="text"
-                            value={copyToPath}
-                            onChange={(e) => setCopyToPath(e.target.value)}
-                            placeholder="../rogue-resident-local/docs/workflow/"
-                            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
-                          />
-                          <button
-                            onClick={() => setCopyToPath('../rogue-resident-local/docs/workflow/')}
-                            className="px-3 py-2 text-sm bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
-                          >
-                            Use Default
-                          </button>
-                        </div>
-                        <p className="text-xs text-gray-500">
-                          Automatically copy generated files to your game repository for immediate use
-                        </p>
-                      </div>
-                    )}
-                  </div>
+                {/* How Documents Are Generated */}
+                <div className="bg-blue-50 rounded-lg p-4 mb-4 border border-blue-200">
+                  <h4 className="text-sm font-semibold text-blue-900 mb-2">ℹ️ How Documents Are Generated</h4>
+                  <p className="text-sm text-blue-800">
+                    Documents are automatically generated during deployment using the same Python system. 
+                    To update docs, modify YAML/Markdown files and redeploy. This ensures consistency and uses the proven template system.
+                  </p>
                 </div>
                 
-                {/* Action Buttons */}
-                <div className="flex justify-end space-x-3">
-                  {/* Cleanup Button */}
+                {/* Action Button */}
+                <div className="flex justify-end">
                   <button
-                    onClick={cleanupWorkflowDirectory}
-                    disabled={isCleaningUp || isGenerating}
-                    className="px-4 py-3 rounded-lg font-medium flex items-center space-x-2 transition-all duration-200 shadow-lg hover:shadow-xl bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white disabled:opacity-50"
-                    title={`Clean up workflow directory: ${copyToPath || '../rogue-resident-local/docs/workflow/'}`}
-                  >
-                    {isCleaningUp ? (
-                      <>
-                        <div className="animate-spin rounded-full h-4 w-4 border-2 border-white border-t-transparent"></div>
-                        <span className="hidden sm:inline">Cleaning...</span>
-                      </>
-                    ) : (
-                      <>
-                        <span>🧹</span>
-                        <span className="hidden sm:inline">Cleanup</span>
-                      </>
-                    )}
-                  </button>
-
-                  {/* Generate Button */}
-                  <button
-                    onClick={generateWorkflowDocuments}
-                    disabled={isGenerating || isCleaningUp}
-                    className={`px-6 py-3 rounded-lg font-medium flex items-center space-x-2 transition-all duration-200 shadow-lg hover:shadow-xl ${
-                      includeArchives 
-                        ? 'bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700' 
-                        : workflowMode === 'narrative'
-                        ? 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700'
-                        : 'bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800'
-                    } text-white disabled:opacity-50`}
+                    onClick={loadGeneratedDocuments}
+                    disabled={isGenerating}
+                    className="px-6 py-3 rounded-lg font-medium flex items-center space-x-2 transition-all duration-200 shadow-lg hover:shadow-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white disabled:opacity-50"
                   >
                     {isGenerating ? (
                       <>
                         <div className="animate-spin rounded-full h-5 w-5 border-2 border-white border-t-transparent"></div>
-                        <span>
-                          {includeArchives 
-                            ? 'Generating Enhanced...' 
-                            : workflowMode === 'narrative' 
-                            ? 'Generating Narrative...' 
-                            : 'Generating...'
-                          }
-                        </span>
+                        <span>Loading Documents...</span>
                       </>
                     ) : (
                       <>
-                        <span>{includeArchives ? '📚' : workflowMode === 'narrative' ? '🎭' : '🎭'}</span>
-                        <span>
-                          {includeArchives 
-                            ? 'Generate Enhanced Docs' 
-                            : workflowMode === 'narrative' 
-                            ? 'Generate Narrative Workflow' 
-                            : 'Generate Workflow Docs'
-                          }
-                        </span>
-                        {copyToPath && workflowMode !== 'narrative' && <span className="text-xs opacity-75">+ Copy</span>}
+                        <span>📄</span>
+                        <span>Load Pre-Generated Docs</span>
                       </>
                     )}
                   </button>

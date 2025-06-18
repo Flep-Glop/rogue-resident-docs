@@ -1,0 +1,1001 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 Rogue Resident Interactive System Constellation 🌟</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        h1 {
+            color: white;
+            font-size: 2em;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .search-box {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 16px;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .metrics-toggle {
+            background: linear-gradient(45deg, #6c5ce7, #fd79a8);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .metrics-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .main-content {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .diagram-container {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .side-panel {
+            width: 350px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            height: fit-content;
+            position: sticky;
+            top: 120px;
+            transition: all 0.3s ease;
+        }
+        
+        .side-panel.hidden {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        
+        .tab-container {
+            display: flex;
+            margin-bottom: 20px;
+            background: rgba(116, 185, 255, 0.1);
+            border-radius: 12px;
+            padding: 5px;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .tab.active {
+            background: linear-gradient(45deg, #6c5ce7, #fd79a8);
+            color: white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .diagram-section {
+            margin-bottom: 40px;
+            transition: all 0.3s ease;
+        }
+        
+        .diagram-section.hidden {
+            display: none;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(116, 185, 255, 0.3);
+        }
+        
+        .diagram-title {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #2d3436;
+        }
+        
+        .diagram-description {
+            color: #636e72;
+            margin-bottom: 20px;
+            font-style: italic;
+            font-size: 1.1em;
+        }
+        
+        .mermaid {
+            text-align: center;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            position: relative;
+            min-height: 400px;
+        }
+        
+        .system-info {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .system-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .system-description {
+            opacity: 0.9;
+            line-height: 1.4;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .metric-card {
+            background: rgba(116, 185, 255, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #2d3436;
+        }
+        
+        .metric-label {
+            font-size: 0.9em;
+            color: #636e72;
+            margin-top: 5px;
+        }
+        
+        .progress-bar {
+            background: rgba(0,0,0,0.1);
+            border-radius: 10px;
+            height: 8px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.8s ease;
+        }
+        
+        .status-critical { background: linear-gradient(45deg, #ff6b6b, #ff5252); }
+        .status-high { background: linear-gradient(45deg, #ffa726, #ff9800); }
+        .status-medium { background: linear-gradient(45deg, #42a5f5, #2196f3); }
+        .status-low { background: linear-gradient(45deg, #66bb6a, #4caf50); }
+        
+        .connections-list {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .connection-item {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 4px solid #74b9ff;
+        }
+        
+        .connection-item:hover {
+            background: rgba(116, 185, 255, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .stats-overview {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stats-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-text {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+        
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 400px;
+            font-size: 1.2em;
+            color: #636e72;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(116, 185, 255, 0.3);
+            border-left: 4px solid #74b9ff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin-right: 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .highlight {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .side-panel {
+                width: 100%;
+                position: static;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .search-box {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>🌟 Rogue Resident Interactive Constellation 🌟</h1>
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="🔍 Search systems..." id="searchBox">
+                <button class="metrics-toggle" id="metricsToggle">📊 Toggle Metrics</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="diagram-container">
+            <div class="tab-container">
+                <div class="tab active" data-tab="constellation">🌟 Constellation</div>
+                <div class="tab" data-tab="hierarchy">🚀 Hierarchy</div>
+                <div class="tab" data-tab="focused">🎯 Focused</div>
+            </div>
+            
+            <div class="diagram-section" id="constellation-section">
+                <div class="section-header">
+                    <div>
+                        <div class="diagram-title">🌟 Complete System Constellation</div>
+                        <div class="diagram-description">Click any system to explore its connections! ✨</div>
+                    </div>
+                </div>
+                <div class="mermaid" id="constellation-diagram">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        Loading constellation map...
+                    </div>
+                </div>
+            </div>
+            
+            <div class="diagram-section hidden" id="hierarchy-section">
+                <div class="section-header">
+                    <div>
+                        <div class="diagram-title">🚀 System Hierarchy</div>
+                        <div class="diagram-description">Organized by priority and category! 🏗️</div>
+                    </div>
+                </div>
+                <div class="mermaid" id="hierarchy-diagram">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        Loading hierarchy map...
+                    </div>
+                </div>
+            </div>
+            
+            <div class="diagram-section hidden" id="focused-section">
+                <div class="section-header">
+                    <div>
+                        <div class="diagram-title">🎯 Focused System View</div>
+                        <div class="diagram-description">Deep dive into system connections! 🔍</div>
+                    </div>
+                </div>
+                <div class="mermaid" id="focused-diagram">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                        Select a system to see its focused view...
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="side-panel" id="sidePanel">
+            <div class="stats-overview">
+                <div class="stats-title">📊 Project Overview</div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalSystems">0</span>
+                        <span class="stat-text">Total Systems</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="completeSystems">0</span>
+                        <span class="stat-text">Design Complete</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="avgProgress">0%</span>
+                        <span class="stat-text">Avg Progress</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="criticalSystems">0</span>
+                        <span class="stat-text">Critical Priority</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="system-info" id="systemInfo" style="display: none;">
+                <div class="system-name" id="systemName">Select a System</div>
+                <div class="system-description" id="systemDescription">Click on any system in the diagram to see detailed information here!</div>
+            </div>
+            
+            <div class="metrics-grid" id="metricsGrid" style="display: none;">
+                <div class="metric-card">
+                    <div class="metric-value" id="systemProgress">0%</div>
+                    <div class="metric-label">Progress</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar"></div>
+                    </div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="systemPriority">-</div>
+                    <div class="metric-label">Priority</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="systemDependencies">0</div>
+                    <div class="metric-label">Dependencies</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="systemComplexity">-</div>
+                    <div class="metric-label">Complexity</div>
+                </div>
+            </div>
+            
+            <div id="connectionsSection" style="display: none;">
+                <h3 style="margin: 20px 0 10px 0; color: #2d3436;">🔗 Connected Systems</h3>
+                <div class="connections-list" id="connectionsList"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+                 // System data and metrics
+         const systemMetrics = {
+        "educational-framework": {
+                "status": "design_complete",
+                "progress": 85,
+                "priority": "medium",
+                "description": "Core educational mechanic",
+                "name": "Educational Content Frame",
+                "type": "system",
+                "dependencies": 0,
+                "complexity": "medium"
+        },
+        "etching-system": {
+                "status": "design_complete",
+                "progress": 85,
+                "priority": "medium",
+                "description": "All 10 etchings for const",
+                "name": "Complete Etching System",
+                "type": "system",
+                "dependencies": 4,
+                "complexity": "high"
+        },
+        "game-constants": {
+                "status": "in_progress",
+                "progress": 50,
+                "priority": "low",
+                "description": "Core numerical values and",
+                "name": "Rogue Resident Game Const",
+                "type": "system",
+                "dependencies": 0,
+                "complexity": "medium"
+        },
+        "constellation-phenomenon": {
+                "status": "design_complete",
+                "progress": 95,
+                "priority": "critical",
+                "description": "The mysterious phenomenon",
+                "name": "Knowledge Constellation P",
+                "type": "system",
+                "dependencies": 5,
+                "complexity": "high"
+        },
+        "visual-design": {
+                "status": "design_complete",
+                "progress": 85,
+                "priority": "low",
+                "description": "Visual storytelling eleme",
+                "name": "Visual Design Specificati",
+                "type": "system",
+                "dependencies": 4,
+                "complexity": "medium"
+        },
+        "pico-character": {
+                "status": "design_complete",
+                "progress": 95,
+                "priority": "critical",
+                "description": "Complete sentient compani",
+                "name": "Pico Character System",
+                "type": "system",
+                "dependencies": 5,
+                "complexity": "high"
+        },
+        "journal-system": {
+                "status": "design_complete",
+                "progress": 85,
+                "priority": "high",
+                "description": "Progressive journal disco",
+                "name": "Four-Journal System",
+                "type": "system",
+                "dependencies": 5,
+                "complexity": "medium"
+        },
+        "amara-narrative": {
+                "status": "design_complete",
+                "progress": 95,
+                "priority": "high",
+                "description": "Complete character arc wi",
+                "name": "Amara Sato Narrative Syst",
+                "type": "system",
+                "dependencies": 4,
+                "complexity": "high"
+        },
+        "activity-framework": {
+                "status": "design_complete",
+                "progress": 85,
+                "priority": "medium",
+                "description": "Core activity mechanics s",
+                "name": "Activity Framework",
+                "type": "system",
+                "dependencies": 0,
+                "complexity": "high"
+        },
+        "journal-integration": {
+                "status": "design_complete",
+                "progress": 85,
+                "priority": "low",
+                "description": "Physical interface for ca",
+                "name": "Journal Integration Syste",
+                "type": "system",
+                "dependencies": 0,
+                "complexity": "medium"
+        },
+        "visual-time-system": {
+                "status": "design_complete",
+                "progress": 85,
+                "priority": "medium",
+                "description": "Advanced time progression",
+                "name": "Visual Time Flow System",
+                "type": "system",
+                "dependencies": 4,
+                "complexity": "high"
+        },
+        "audit-team": {
+                "status": "design_complete",
+                "progress": 80,
+                "priority": "high",
+                "description": "No description available",
+                "name": "The Audit Team",
+                "type": "boss_encounter",
+                "dependencies": 3,
+                "complexity": "medium"
+        },
+        "vendor-trio": {
+                "status": "design_complete",
+                "progress": 80,
+                "priority": "high",
+                "description": "No description available",
+                "name": "The Vendor Trio",
+                "type": "boss_encounter",
+                "dependencies": 3,
+                "complexity": "medium"
+        },
+        "ionix": {
+                "status": "design_complete",
+                "progress": 80,
+                "priority": "high",
+                "description": "No description available",
+                "name": "Ionix",
+                "type": "boss_encounter",
+                "dependencies": 4,
+                "complexity": "medium"
+        },
+        "marcus-chen": {
+                "status": "design_complete",
+                "progress": 80,
+                "priority": "high",
+                "description": "No description available",
+                "name": "Marcus Chen",
+                "type": "boss_encounter",
+                "dependencies": 3,
+                "complexity": "medium"
+        },
+        "mentors": {
+                "status": "in_progress",
+                "progress": 60,
+                "priority": "low",
+                "description": "Complete specifications f",
+                "name": "Mentor System Definitions",
+                "type": "system",
+                "dependencies": 0,
+                "complexity": "high"
+        },
+        "complete-card-system": {
+                "status": "design_complete",
+                "progress": 85,
+                "priority": "medium",
+                "description": "All 26 application cards ",
+                "name": "Complete Application Card",
+                "type": "system",
+                "dependencies": 0,
+                "complexity": "high"
+        }
+};
+         const constellationMap = "graph TD\n\n    educational-framework(SYS Educational Fra)\n    class educational-framework system\n    etching-system(SYS Etching System)\n    class etching-system system\n    game-constants(SYS Game Constants)\n    class game-constants system\n    constellation-phenomenon(CORE Constellation P)\n    class constellation-phenomenon core\n    visual-design(SYS Visual Design)\n    class visual-design system\n    pico-character(STORY Pico Character)\n    class pico-character narrative\n    journal-system(STORY Journal System)\n    class journal-system narrative\n    amara-narrative(STORY Amara Narrative)\n    class amara-narrative narrative\n    activity-framework(SYS Activity Framew)\n    class activity-framework system\n    journal-integration(STORY Journal Integra)\n    class journal-integration narrative\n    visual-time-system(SYS Visual Time Sys)\n    class visual-time-system system\n    audit-team(BOSS Audit Team)\n    class audit-team boss\n    vendor-trio(BOSS Vendor Trio)\n    class vendor-trio boss\n    ionix(BOSS Ionix)\n    class ionix boss\n    marcus-chen(BOSS Marcus Chen)\n    class marcus-chen boss\n    mentors(MENTOR Mentors)\n    class mentors mentor\n    complete-card-system(SYS Complete Card S)\n    class complete-card-system system\n\n    pico-character --> amara-narrative\n    journal-system --> amara-narrative\n    marcus-chen --> mentors\n\n    classDef boss fill:#ff6b6b,stroke:#d63447,color:#fff\n    classDef mentor fill:#20bf6b,stroke:#0fb9b1,color:#fff\n    classDef core fill:#4834d4,stroke:#3742fa,color:#fff\n    classDef narrative fill:#fd79a8,stroke:#e84393,color:#fff\n    classDef system fill:#74b9ff,stroke:#0984e3,color:#fff";
+         const hierarchyMap = "graph TD\n    %% \ud83d\ude80 Rogue Resident System Hierarchy \ud83d\ude80\n    %% Beautiful priority-based organization! \u2728\n\n    core_header[\"\ud83c\udf1f Core Systems<br/><small>The heart of the constellation phenomenon</small>\"]\n    class core_header core-header\n    constellation-phenomenon[\"Constellation Phenomenon\"]\n    core_header --> constellation-phenomenon\n    class constellation-phenomenon core-item\n\n    bosses_header[\"\u26a1 Boss Encounters<br/><small>Challenge systems and character confrontations</small>\"]\n    class bosses_header bosses-header\n    audit-team[\"Audit Team\"]\n    bosses_header --> audit-team\n    class audit-team bosses-item\n    vendor-trio[\"Vendor Trio\"]\n    bosses_header --> vendor-trio\n    class vendor-trio bosses-item\n    ionix[\"Ionix\"]\n    bosses_header --> ionix\n    class ionix bosses-item\n    marcus-chen[\"Marcus Chen\"]\n    bosses_header --> marcus-chen\n    class marcus-chen bosses-item\n\n    mentors_header[\"\ud83c\udf93 Mentor Network<br/><small>Guidance systems and philosophical frameworks</small>\"]\n    class mentors_header mentors-header\n    mentors[\"Mentors\"]\n    mentors_header --> mentors\n    class mentors mentors-item\n\n    narrative_header[\"\ud83d\udcd6 Narrative Arc<br/><small>Story progression and character development</small>\"]\n    class narrative_header narrative-header\n    pico-character[\"Pico Character\"]\n    narrative_header --> pico-character\n    class pico-character narrative-item\n    journal-system[\"Journal System\"]\n    narrative_header --> journal-system\n    class journal-system narrative-item\n    amara-narrative[\"Amara Narrative\"]\n    narrative_header --> amara-narrative\n    class amara-narrative narrative-item\n    journal-integration[\"Journal Integration\"]\n    narrative_header --> journal-integration\n    class journal-integration narrative-item\n\n    systems_header[\"\u2699\ufe0f Support Systems<br/><small>Mechanical frameworks and utilities</small>\"]\n    class systems_header systems-header\n    educational-framework[\"Educational Framework\"]\n    systems_header --> educational-framework\n    class educational-framework systems-item\n    etching-system[\"Etching System\"]\n    systems_header --> etching-system\n    class etching-system systems-item\n    game-constants[\"Game Constants\"]\n    systems_header --> game-constants\n    class game-constants systems-item\n    visual-design[\"Visual Design\"]\n    systems_header --> visual-design\n    class visual-design systems-item\n    activity-framework[\"Activity Framework\"]\n    systems_header --> activity-framework\n    class activity-framework systems-item\n    visual-time-system[\"Visual Time System\"]\n    systems_header --> visual-time-system\n    class visual-time-system systems-item\n    complete-card-system[\"Complete Card System\"]\n    systems_header --> complete-card-system\n    class complete-card-system systems-item\n\n    %% \ud83c\udfa8 Hierarchy Styling Magic \ud83c\udfa8\n    classDef core-header fill:#6c5ce7,stroke:#5f3dc4,stroke-width:4px,color:#fff,font-weight:bold,font-size:16px\n    classDef core-item fill:#a29bfe,stroke:#6c5ce7,stroke-width:2px,color:#fff\n    classDef bosses-header fill:#e17055,stroke:#d63031,stroke-width:4px,color:#fff,font-weight:bold,font-size:16px\n    classDef bosses-item fill:#fab1a0,stroke:#e17055,stroke-width:2px,color:#fff\n    classDef mentors-header fill:#00b894,stroke:#00a085,stroke-width:4px,color:#fff,font-weight:bold,font-size:16px\n    classDef mentors-item fill:#55efc4,stroke:#00b894,stroke-width:2px,color:#fff\n    classDef narrative-header fill:#fd79a8,stroke:#e84393,stroke-width:4px,color:#fff,font-weight:bold,font-size:16px\n    classDef narrative-item fill:#fdcb6e,stroke:#fd79a8,stroke-width:2px,color:#fff\n    classDef systems-header fill:#74b9ff,stroke:#0984e3,stroke-width:4px,color:#fff,font-weight:bold,font-size:16px\n    classDef systems-item fill:#81ecec,stroke:#74b9ff,stroke-width:2px,color:#fff\n    classDef default font-size:12px";
+        
+        let currentTab = 'constellation';
+        let metricsVisible = true;
+        let selectedSystem = null;
+        
+                 // Initialize the application
+         document.addEventListener('DOMContentLoaded', function() {
+             // Wait for Mermaid to be fully loaded
+             if (typeof mermaid !== 'undefined') {
+                 initializeMermaid();
+                 setupEventListeners();
+                 loadOverviewStats();
+                 
+                 // Small delay to ensure everything is ready
+                 setTimeout(() => {
+                     renderDiagram();
+                 }, 100);
+             } else {
+                 console.error('Mermaid library not loaded');
+                 document.getElementById('constellation-diagram').innerHTML = '<div class="loading">❌ Mermaid library failed to load. Please refresh the page.</div>';
+             }
+         });
+         
+         function initializeMermaid() {
+             try {
+                 mermaid.initialize({
+                     startOnLoad: false,
+                     theme: 'base',
+                     themeVariables: {
+                         primaryColor: '#74b9ff',
+                         primaryTextColor: '#2d3436',
+                         fontFamily: 'Segoe UI, sans-serif'
+                     },
+                     securityLevel: 'loose',
+                     logLevel: 'error'
+                 });
+                 console.log('✅ Mermaid initialized successfully');
+             } catch (error) {
+                 console.error('❌ Failed to initialize Mermaid:', error);
+             }
+         }
+        
+        function setupEventListeners() {
+            // Tab switching
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    switchTab(this.dataset.tab);
+                });
+            });
+            
+            // Search functionality
+            document.getElementById('searchBox').addEventListener('input', function() {
+                handleSearch(this.value);
+            });
+            
+            // Metrics toggle
+            document.getElementById('metricsToggle').addEventListener('click', function() {
+                toggleMetrics();
+            });
+        }
+        
+        function switchTab(tabName) {
+            // Update tab appearance
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+            
+            // Update diagram sections
+            document.querySelectorAll('.diagram-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(`${tabName}-section`).classList.remove('hidden');
+            
+            currentTab = tabName;
+            renderDiagram();
+        }
+        
+                 function renderDiagram() {
+             const diagramContainer = document.getElementById(`${currentTab}-diagram`);
+             let diagramContent = '';
+             
+             switch(currentTab) {
+                 case 'constellation':
+                     diagramContent = constellationMap;
+                     break;
+                 case 'hierarchy':
+                     diagramContent = hierarchyMap;
+                     break;
+                 case 'focused':
+                     if (selectedSystem) {
+                         diagramContent = generateFocusedView(selectedSystem);
+                     } else {
+                         diagramContainer.innerHTML = '<div class="loading">Select a system from the constellation view to see its focused connections!</div>';
+                         return;
+                     }
+                     break;
+             }
+             
+             if (diagramContent && typeof diagramContent === 'string' && diagramContent.trim() !== '') {
+                 try {
+                     // Clear the container first
+                     diagramContainer.innerHTML = '<div class="loading"><div class="spinner"></div>Rendering diagram...</div>';
+                     
+                     // Validate diagram content
+                     if (!diagramContent.includes('graph ') && !diagramContent.includes('flowchart ')) {
+                         throw new Error('Invalid diagram format - missing graph declaration');
+                     }
+                     
+                     // Generate unique ID for this render
+                     const diagramId = `diagram-${currentTab}-${Date.now()}`;
+                     
+                     // Use the correct Mermaid API with proper parameters
+                     mermaid.render(diagramId, diagramContent).then(result => {
+                         if (result && result.svg) {
+                             diagramContainer.innerHTML = result.svg;
+                             addInteractivity();
+                         } else {
+                             throw new Error('Invalid render result from Mermaid');
+                         }
+                     }).catch(error => {
+                         console.error('Mermaid rendering error:', error);
+                         diagramContainer.innerHTML = `<div class="loading">❌ Error rendering diagram: ${error.message || 'Unknown error'}<br/><small>Please check the console for details.</small></div>`;
+                     });
+                 } catch (error) {
+                     console.error('Diagram rendering error:', error);
+                     diagramContainer.innerHTML = `<div class="loading">❌ Error preparing diagram: ${error.message || 'Unknown error'}<br/><small>Please refresh and try again.</small></div>`;
+                 }
+             } else {
+                 diagramContainer.innerHTML = '<div class="loading">❌ No diagram content available</div>';
+             }
+         }
+        
+        function addInteractivity() {
+            // Add click handlers to diagram nodes
+            setTimeout(() => {
+                const nodes = document.querySelectorAll('.mermaid g.node');
+                nodes.forEach(node => {
+                    node.style.cursor = 'pointer';
+                    node.addEventListener('click', function() {
+                        const nodeId = this.id || extractNodeId(this);
+                        if (nodeId && systemMetrics[nodeId]) {
+                            selectSystem(nodeId);
+                        }
+                    });
+                });
+            }, 100);
+        }
+        
+        function extractNodeId(element) {
+            // Extract system ID from various possible sources
+            const text = element.textContent || element.innerText || '';
+            return Object.keys(systemMetrics).find(key => 
+                text.toLowerCase().includes(key.replace('-', ' ').toLowerCase()) ||
+                text.toLowerCase().includes(systemMetrics[key].name.toLowerCase())
+            );
+        }
+        
+        function selectSystem(systemId) {
+            selectedSystem = systemId;
+            const system = systemMetrics[systemId];
+            
+            if (!system) return;
+            
+            // Update system info panel
+            document.getElementById('systemName').textContent = system.name;
+            document.getElementById('systemDescription').textContent = system.description;
+            document.getElementById('systemInfo').style.display = 'block';
+            
+            // Update metrics
+            document.getElementById('systemProgress').textContent = system.progress + '%';
+            document.getElementById('systemPriority').textContent = system.priority.toUpperCase();
+            document.getElementById('systemDependencies').textContent = system.dependencies;
+            document.getElementById('systemComplexity').textContent = system.complexity.toUpperCase();
+            
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = system.progress + '%';
+            progressBar.className = `progress-fill status-${system.priority}`;
+            
+            document.getElementById('metricsGrid').style.display = metricsVisible ? 'grid' : 'none';
+            
+            // Show connections (mock data for now)
+            const connections = getSystemConnections(systemId);
+            const connectionsList = document.getElementById('connectionsList');
+            connectionsList.innerHTML = connections.map(conn => 
+                `<div class="connection-item" onclick="selectSystem('${conn.id}')">${conn.name}</div>`
+            ).join('');
+            document.getElementById('connectionsSection').style.display = 'block';
+            
+            // Highlight the selected system
+            highlightSystem(systemId);
+        }
+        
+        function getSystemConnections(systemId) {
+            // Return mock connections - in a real implementation, this would use actual relationship data
+            const connections = [];
+            Object.keys(systemMetrics).forEach(id => {
+                if (id !== systemId && Math.random() > 0.7) { // Mock random connections
+                    connections.push({
+                        id: id,
+                        name: systemMetrics[id].name
+                    });
+                }
+            });
+            return connections.slice(0, 5); // Limit to 5 connections
+        }
+        
+        function highlightSystem(systemId) {
+            // Remove existing highlights
+            document.querySelectorAll('.highlight').forEach(el => {
+                el.classList.remove('highlight');
+            });
+            
+            // Add highlight to selected system
+            setTimeout(() => {
+                const nodes = document.querySelectorAll('.mermaid g.node');
+                nodes.forEach(node => {
+                    const nodeId = extractNodeId(node);
+                    if (nodeId === systemId) {
+                        node.classList.add('highlight');
+                    }
+                });
+            }, 100);
+        }
+        
+        function handleSearch(query) {
+            if (!query.trim()) {
+                // Clear search highlights
+                document.querySelectorAll('.search-highlight').forEach(el => {
+                    el.classList.remove('search-highlight');
+                });
+                return;
+            }
+            
+            // Find matching systems
+            const matches = Object.keys(systemMetrics).filter(id => 
+                systemMetrics[id].name.toLowerCase().includes(query.toLowerCase()) ||
+                id.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            if (matches.length > 0) {
+                selectSystem(matches[0]); // Select first match
+            }
+        }
+        
+        function toggleMetrics() {
+            metricsVisible = !metricsVisible;
+            document.getElementById('metricsGrid').style.display = metricsVisible ? 'grid' : 'none';
+            document.getElementById('metricsToggle').textContent = metricsVisible ? '📊 Hide Metrics' : '📊 Show Metrics';
+        }
+        
+        function loadOverviewStats() {
+            const systems = Object.values(systemMetrics);
+            const total = systems.length;
+            const complete = systems.filter(s => s.status === 'design_complete').length;
+            const avgProgress = Math.round(systems.reduce((acc, s) => acc + s.progress, 0) / total);
+            const critical = systems.filter(s => s.priority === 'critical').length;
+            
+            document.getElementById('totalSystems').textContent = total;
+            document.getElementById('completeSystems').textContent = complete;
+            document.getElementById('avgProgress').textContent = avgProgress + '%';
+            document.getElementById('criticalSystems').textContent = critical;
+        }
+        
+                 function validateDiagramContent(content) {
+             if (!content || typeof content !== 'string') {
+                 return false;
+             }
+             
+             // Check for basic Mermaid structure
+             if (!content.includes('graph') && !content.includes('flowchart')) {
+                 return false;
+             }
+             
+             return true;
+         }
+         
+         function cleanString(str) {
+             if (!str) return '';
+             // Clean string for Mermaid compatibility - avoid regex issues
+             let cleaned = str.replace(/"/g, "'");
+             cleaned = cleaned.split('\n').join(' ');
+             cleaned = cleaned.split('\r').join(' ');
+             cleaned = cleaned.split('\t').join(' ');
+             return cleaned.substring(0, 60);
+         }
+         
+         function generateFocusedView(systemId) {
+             // Generate a focused view for the selected system
+             const system = systemMetrics[systemId];
+             if (!system) {
+                 console.warn(`System ${systemId} not found in metrics`);
+                 return 'graph TB\n    error["❌ System not found"]\n    class error error-node\n    classDef error-node fill:#ff6b6b,color:#fff';
+             }
+             
+             const connections = getSystemConnections(systemId);
+             const systemName = cleanString(system.name);
+             const systemDesc = cleanString(system.description);
+             
+             let focusedMap = `graph TB
+    ${systemId}["🌟 ${systemName}\n${systemDesc}"]
+    class ${systemId} focus-node
+`;
+             
+             if (connections.length === 0) {
+                 focusedMap += `
+    no_connections["📝 No connections found"]
+    ${systemId} --> no_connections
+    class no_connections info-node
+`;
+             } else {
+                 connections.forEach(conn => {
+                     if (systemMetrics[conn.id]) {
+                         const connName = cleanString(systemMetrics[conn.id].name);
+                         const connDesc = cleanString(systemMetrics[conn.id].description);
+                         focusedMap += `
+    ${conn.id}["⚡ ${connName}\n${connDesc}"]
+    ${systemId} --> ${conn.id}
+    class ${conn.id} connected-node
+`;
+                     }
+                 });
+             }
+             
+             focusedMap += `
+    classDef focus-node fill:#ff6348,stroke:#ff3838,stroke-width:5px,color:#fff,font-weight:bold
+    classDef connected-node fill:#7bed9f,stroke:#5f27cd,stroke-width:3px,color:#fff,font-weight:bold
+    classDef info-node fill:#74b9ff,stroke:#0984e3,stroke-width:2px,color:#fff
+    classDef error-node fill:#ff6b6b,stroke:#d63447,stroke-width:3px,color:#fff
+    classDef default font-size:12px
+`;
+             
+             return focusedMap;
+         }
+    </script>
+</body>
+</html>

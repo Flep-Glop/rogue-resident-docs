@@ -1,6 +1,6 @@
-# Narrative  Systems - Story Continuity Reference
+# Narrative & Character Systems - Story Continuity Reference
 
-> **🧠 AI Assistant Context**: Story, character, and world-building elements for Rogue Resident  
+> **🧠 AI Assistant Context**: Story, character, and world-building elementsfocused on character for Rogue Resident  
 > **📚 Narrative Consistency**: Authentic medical physics storytelling through character-driven discovery  
 > **🎭 Story Integration**: Create meaningful educational experience through compelling character relationships and authentic professional development
 
@@ -10,7 +10,7 @@
 ## 📍 SOURCE CONTEXT
 
 **Source Repository**: rogue-resident-docs  
-**Generated At**: 2025-06-18 11:47:03  
+**Generated At**: 2025-06-18 09:26:05  
 **AI Context**: Complete story bible for narrative consistency maintenance
 
 
@@ -244,68 +244,6 @@ Marcus Chen represents one of the most complex boss encounters in Rogue Resident
 ---
 
 
-
-
-
-#### Audit Team (Boss Character)
-
-**Character Type**: Character conflict
-**Story Function**: Character encounter
-
-**Character Development Arc**:
-
-
-**Consistency Requirements**:
-- Boss encounter personality must align with established character traits
-- Character growth during encounter affects all future interactions
-- Emotional journey must feel authentic to medical physics training environment
-
----
-
-#### Vendor Trio (Boss Character)
-
-**Character Type**: Character conflict
-**Story Function**: Character encounter
-
-**Character Development Arc**:
-
-
-**Consistency Requirements**:
-- Boss encounter personality must align with established character traits
-- Character growth during encounter affects all future interactions
-- Emotional journey must feel authentic to medical physics training environment
-
----
-
-#### Ionix (Boss Character)
-
-**Character Type**: Character conflict
-**Story Function**: Character encounter
-
-**Character Development Arc**:
-
-
-**Consistency Requirements**:
-- Boss encounter personality must align with established character traits
-- Character growth during encounter affects all future interactions
-- Emotional journey must feel authentic to medical physics training environment
-
----
-
-#### Marcus Chen (Boss Character)
-
-**Character Type**: Character conflict
-**Story Function**: Character encounter
-
-**Character Development Arc**:
-
-
-**Consistency Requirements**:
-- Boss encounter personality must align with established character traits
-- Character growth during encounter affects all future interactions
-- Emotional journey must feel authentic to medical physics training environment
-
----
 
 
 
@@ -674,85 +612,57 @@ Marcus Chen represents one of the most complex boss encounters in Rogue Resident
 
 **Character Continuity Across Systems**:
 
-- **Educational Framework**: 
-  - Mentor personalities established in Narrative  Systems carry forward unchanged
-  - Relationship progression states must be maintained across system boundaries
-  - Character voice and dialogue patterns remain consistent
-  - Professional development arc continues logically from previous interactions
-
-
 - **Etching System**: 
-  - Mentor personalities established in Narrative  Systems carry forward unchanged
-  - Relationship progression states must be maintained across system boundaries
-  - Character voice and dialogue patterns remain consistent
-  - Professional development arc continues logically from previous interactions
-
-
-- **Game Constants**: 
-  - Mentor personalities established in Narrative  Systems carry forward unchanged
+  - Mentor personalities established in Narrative & Character Systems carry forward unchanged
   - Relationship progression states must be maintained across system boundaries
   - Character voice and dialogue patterns remain consistent
   - Professional development arc continues logically from previous interactions
 
 
 - **Constellation Phenomenon**: 
-  - Mentor personalities established in Narrative  Systems carry forward unchanged
+  - Mentor personalities established in Narrative & Character Systems carry forward unchanged
   - Relationship progression states must be maintained across system boundaries
   - Character voice and dialogue patterns remain consistent
   - Professional development arc continues logically from previous interactions
 
 
 - **Visual Design**: 
-  - Mentor personalities established in Narrative  Systems carry forward unchanged
+  - Mentor personalities established in Narrative & Character Systems carry forward unchanged
   - Relationship progression states must be maintained across system boundaries
   - Character voice and dialogue patterns remain consistent
   - Professional development arc continues logically from previous interactions
 
 
 - **Pico Character**: 
-  - Mentor personalities established in Narrative  Systems carry forward unchanged
+  - Mentor personalities established in Narrative & Character Systems carry forward unchanged
   - Relationship progression states must be maintained across system boundaries
   - Character voice and dialogue patterns remain consistent
   - Professional development arc continues logically from previous interactions
 
 
 - **Journal System**: 
-  - Mentor personalities established in Narrative  Systems carry forward unchanged
+  - Mentor personalities established in Narrative & Character Systems carry forward unchanged
   - Relationship progression states must be maintained across system boundaries
   - Character voice and dialogue patterns remain consistent
   - Professional development arc continues logically from previous interactions
 
 
 - **Amara Narrative**: 
-  - Mentor personalities established in Narrative  Systems carry forward unchanged
+  - Mentor personalities established in Narrative & Character Systems carry forward unchanged
   - Relationship progression states must be maintained across system boundaries
   - Character voice and dialogue patterns remain consistent
   - Professional development arc continues logically from previous interactions
 
 
 - **Activity Framework**: 
-  - Mentor personalities established in Narrative  Systems carry forward unchanged
-  - Relationship progression states must be maintained across system boundaries
-  - Character voice and dialogue patterns remain consistent
-  - Professional development arc continues logically from previous interactions
-
-
-- **Journal Integration**: 
-  - Mentor personalities established in Narrative  Systems carry forward unchanged
-  - Relationship progression states must be maintained across system boundaries
-  - Character voice and dialogue patterns remain consistent
-  - Professional development arc continues logically from previous interactions
-
-
-- **Visual Time System**: 
-  - Mentor personalities established in Narrative  Systems carry forward unchanged
+  - Mentor personalities established in Narrative & Character Systems carry forward unchanged
   - Relationship progression states must be maintained across system boundaries
   - Character voice and dialogue patterns remain consistent
   - Professional development arc continues logically from previous interactions
 
 
 - **Mentors**: 
-  - Mentor personalities established in Narrative  Systems carry forward unchanged
+  - Mentor personalities established in Narrative & Character Systems carry forward unchanged
   - Relationship progression states must be maintained across system boundaries
   - Character voice and dialogue patterns remain consistent
   - Professional development arc continues logically from previous interactions

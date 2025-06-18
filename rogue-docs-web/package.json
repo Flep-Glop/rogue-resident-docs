@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "prebuild": "npm run generate-docs",
     "build": "next build",
-    "vercel-build": "next build",
+    "vercel-build": "npm run generate-docs && next build",
+    "generate-docs": "cd .. && python3 docs.py export all && python3 docs.py workflow activity-interface --export-references && python3 docs.py workflow mentors-interface --export-references && python3 docs.py workflow tutorial-flows --export-references && python3 docs.py narrative all --export-references && cp -r exports rogue-docs-web/public/",
     "start": "next start",
     "lint": "next lint"
   },

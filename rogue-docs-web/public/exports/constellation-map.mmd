@@ -1,0 +1,46 @@
+graph TD
+
+    educational-framework(SYS Educational Fra)
+    class educational-framework system
+    etching-system(SYS Etching System)
+    class etching-system system
+    game-constants(SYS Game Constants)
+    class game-constants system
+    constellation-phenomenon(CORE Constellation P)
+    class constellation-phenomenon core
+    visual-design(SYS Visual Design)
+    class visual-design system
+    pico-character(STORY Pico Character)
+    class pico-character narrative
+    journal-system(STORY Journal System)
+    class journal-system narrative
+    amara-narrative(STORY Amara Narrative)
+    class amara-narrative narrative
+    activity-framework(SYS Activity Framew)
+    class activity-framework system
+    journal-integration(STORY Journal Integra)
+    class journal-integration narrative
+    visual-time-system(SYS Visual Time Sys)
+    class visual-time-system system
+    audit-team(BOSS Audit Team)
+    class audit-team boss
+    vendor-trio(BOSS Vendor Trio)
+    class vendor-trio boss
+    ionix(BOSS Ionix)
+    class ionix boss
+    marcus-chen(BOSS Marcus Chen)
+    class marcus-chen boss
+    mentors(MENTOR Mentors)
+    class mentors mentor
+    complete-card-system(SYS Complete Card S)
+    class complete-card-system system
+
+    pico-character --> amara-narrative
+    journal-system --> amara-narrative
+    marcus-chen --> mentors
+
+    classDef boss fill:#ff6b6b,stroke:#d63447,color:#fff
+    classDef mentor fill:#20bf6b,stroke:#0fb9b1,color:#fff
+    classDef core fill:#4834d4,stroke:#3742fa,color:#fff
+    classDef narrative fill:#fd79a8,stroke:#e84393,color:#fff
+    classDef system fill:#74b9ff,stroke:#0984e3,color:#fff

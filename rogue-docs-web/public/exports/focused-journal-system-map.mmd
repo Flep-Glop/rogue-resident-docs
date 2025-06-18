@@ -1,0 +1,17 @@
+graph TD
+
+    journal-system(FOCUS Journal System)
+    class journal-system focus
+
+    mentors(CONN Mentors)
+    journal-system --> mentors
+    class mentors connected
+    amara-narrative(CONN Amara Narrat)
+    journal-system --> amara-narrative
+    class amara-narrative connected
+    pico-character(CONN Pico Charact)
+    journal-system --> pico-character
+    class pico-character connected
+
+    classDef focus fill:#ff6348,stroke:#ff3838,color:#fff
+    classDef connected fill:#7bed9f,stroke:#5f27cd,color:#fff

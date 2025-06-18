@@ -1,6 +1,6 @@
-# Narrative  Systems - Narrative & Lore Context
+# Narrative & Plot Systems - Narrative & Lore Context
 
-> **🎭 Story Element**: Story, character, and world-building elements for Rogue Resident  
+> **🎭 Story Element**: Story, character, and world-building elementsfocused on plot for Rogue Resident  
 > **📖 Narrative Role**: Authentic medical physics storytelling through character-driven discovery  
 > **✨ Story Impact**: Create meaningful educational experience through compelling character relationships and authentic professional development
 
@@ -10,7 +10,7 @@
 ## 📍 SOURCE CONTEXT
 
 **Source Repository**: rogue-resident-docs  
-**Generated At**: 2025-06-18 11:47:03  
+**Generated At**: 2025-06-17 16:55:37  
 **Self-Contained**: Yes - all referenced content embedded below
 
 
@@ -23,19 +23,20 @@
 
 
 #### Amara Sato
-**Character Arc**: # Dr. Amara Sato Character Arc: The Cautionary Predecessor
+**Character Arc**: # Dr. Amara Sato Character Arc
 
-**Document Version:** 2.0  
-**Status:** Complete Narrative Bible  
-**Last Updated:** June 17, 2025  
-**Technical Reference:** `data/constants/amara-narrative.yaml`
+**Document Version:** 1.0  
+**Status:** Narrative Framework  
+**Last Updated:** May 16, 2025  
+**Technical Reference:** `data/constants/amara-narrative.yaml` (planned)
 
-> **Document Purpose**: Complete narrative guide for Amara's character arc, philosophy, and integration with Pico's story and journal progression system  
-> **Source**: Consolidated from comprehensive narrative development sessions  
+> This document outlines the background mystery that provides narrative depth to the Knowledge Constellation approach and connects to the final Ionix encounter.
 
-## 🎭 **CHARACTER OVERVIEW**
+## Character Background
 
-### **Dr. A...
+### Dr. Amara Sato (A.S.)
+- **Identity:** Brilliant former resident who previously used the player's journal
+- *...
 
 **Story Role**: Key character in the narrative development system with rich background and relationship dynamics
 
@@ -44,17 +45,18 @@
 #### Pico
 **Character Arc**: # Pico Character Arc: The Sentient Companion
 
-**Document Version:** 2.0  
-**Status:** Complete Narrative Bible  
-**Last Updated:** June 17, 2025  
+**Document Version:** 1.0  
+**Status:** Character Design  
+**Last Updated:** May 19, 2025  
 **Technical Reference:** `data/constants/pico-character.yaml`
 
-> **Document Purpose**: Complete narrative guide for Pico's character arc, relationship progression, and integration with boss encounters and journal discovery system  
-> **Source**: Consolidated from comprehensive narrative development sessions  
+> This document provides the narrative context and emotional journey for Pico - for mechanical specifications and system integration, see `pico-character.yaml`.
 
-## 🎭 **CHARACTER OVERVIEW**
+## Character Concept & Emotional Core
 
-### **Pico -...
+### The Heart of the Story
+
+Pico represents more than comic relief or technological novelty - this...
 
 **Story Role**: Key character in the narrative development system with rich background and relationship dynamics
 
@@ -77,80 +79,6 @@ Marcus Chen represents one of the most complex boss encounters in Rogue Resident
 
 
 
-#### Audit Team
-**Character Type**: Character conflict
-**Story Function**: Character encounter
-
-
-
-**Encounter Details**:
-- **Difficulty**: Intermediate (40% mastery required)
-- **Season**: Varies
-- **Duration**: 20-30 minutes
-- **Special Mechanic**: Procedural Precision System
-
-
-
-**Narrative Significance**: 20 SP reward reflects major character growth milestone
-
----
-
-#### Vendor Trio
-**Character Type**: Character conflict
-**Story Function**: Character encounter
-
-
-
-**Encounter Details**:
-- **Difficulty**: Intermediate (40% mastery required)
-- **Season**: Varies
-- **Duration**: 20-30 minutes
-- **Special Mechanic**: Critical Assessment System
-
-
-
-**Narrative Significance**: 20 SP reward reflects major character growth milestone
-
----
-
-#### Ionix
-**Character Type**: Character conflict
-**Story Function**: Character encounter
-
-
-
-**Encounter Details**:
-- **Difficulty**: Intermediate (40% mastery required)
-- **Season**: Varies
-- **Duration**: 20-30 minutes
-- **Special Mechanic**: Dynamic Domain Fusion
-
-
-
-**Narrative Significance**: 20 SP reward reflects major character growth milestone
-
----
-
-#### Marcus Chen
-**Character Type**: Character conflict
-**Story Function**: Character encounter
-
-
-
-**Encounter Details**:
-- **Difficulty**: Intermediate (40% mastery required)
-- **Season**: Varies
-- **Duration**: 20-30 minutes
-- **Special Mechanic**: Standard
-
-
-
-**Narrative Significance**: 20 SP reward reflects major character growth milestone
-
----
-
-
-
 ### Mentor Personalities & Voices
 
 
@@ -158,7 +86,7 @@ Marcus Chen represents one of the most complex boss encounters in Rogue Resident
 **Dr. Maria Garcia**
 - **Teaching Style**: Supportive Hands On
 - **Dialogue Voice**: Empathetic Clinical
-- **Story Function**: Guides player through narrative  systems with authentic medical physics mentorship
+- **Story Function**: Guides player through narrative & plot systems with authentic medical physics mentorship
 - **Domain Expertise**: Radiation Therapy
 
 
@@ -186,7 +114,7 @@ Marcus Chen represents one of the most complex boss encounters in Rogue Resident
 **Dr. Alexandra Quinn**
 - **Teaching Style**: Challenging Theoretical
 - **Dialogue Voice**: Analytical Inspiring
-- **Story Function**: Guides player through narrative  systems with authentic medical physics mentorship
+- **Story Function**: Guides player through narrative & plot systems with authentic medical physics mentorship
 - **Domain Expertise**: Treatment Planning
 
 
@@ -216,7 +144,7 @@ Marcus Chen represents one of the most complex boss encounters in Rogue Resident
 **Jesse Martinez**
 - **Teaching Style**: Demonstration Based
 - **Dialogue Voice**: Direct Technical
-- **Story Function**: Guides player through narrative  systems with authentic medical physics mentorship
+- **Story Function**: Guides player through narrative & plot systems with authentic medical physics mentorship
 - **Domain Expertise**: Linac Anatomy
 
 
@@ -244,7 +172,7 @@ Marcus Chen represents one of the most complex boss encounters in Rogue Resident
 **Dr. Raj Kapoor**
 - **Teaching Style**: Systematic Rigorous
 - **Dialogue Voice**: Formal Detailed
-- **Story Function**: Guides player through narrative  systems with authentic medical physics mentorship
+- **Story Function**: Guides player through narrative & plot systems with authentic medical physics mentorship
 - **Domain Expertise**: Dosimetry
 
 
@@ -559,7 +487,7 @@ Players meet mentors and begin forming professional relationships
 - Establish trust *(builds sense of accomplishment)*
 
 
-**Narrative Significance**: This moment represents the player's growing relationship with narrative  systems and deepening understanding of medical physics professional identity.
+**Narrative Significance**: This moment represents the player's growing relationship with narrative & plot systems and deepening understanding of medical physics professional identity.
 
 ---
 
@@ -575,7 +503,7 @@ Narrative advances through authentic mentor interactions and learning scenarios
 - Build relationships *(builds sense of accomplishment)*
 
 
-**Narrative Significance**: This moment represents the player's growing relationship with narrative  systems and deepening understanding of medical physics professional identity.
+**Narrative Significance**: This moment represents the player's growing relationship with narrative & plot systems and deepening understanding of medical physics professional identity.
 
 ---
 
@@ -591,7 +519,7 @@ Both player and mentors evolve through continued professional interaction
 - Develop competence *(builds sense of accomplishment)*
 
 
-**Narrative Significance**: This moment represents the player's growing relationship with narrative  systems and deepening understanding of medical physics professional identity.
+**Narrative Significance**: This moment represents the player's growing relationship with narrative & plot systems and deepening understanding of medical physics professional identity.
 
 ---
 
@@ -710,19 +638,7 @@ Both player and mentors evolve through continued professional interaction
 
 
 
-**Educational Framework**:
-
-- Contributes to overall narrative coherence and world consistency
-
-
-
 **Etching System**:
-
-- Contributes to overall narrative coherence and world consistency
-
-
-
-**Game Constants**:
 
 - Contributes to overall narrative coherence and world consistency
 
@@ -763,18 +679,6 @@ Both player and mentors evolve through continued professional interaction
 
 - Provides the actual learning challenges that drive character growth
 - Creates meaningful stakes for player's professional development
-
-
-
-**Journal Integration**:
-
-- Contributes to overall narrative coherence and world consistency
-
-
-
-**Visual Time System**:
-
-- Contributes to overall narrative coherence and world consistency
 
 
 
