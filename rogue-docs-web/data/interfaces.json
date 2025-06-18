@@ -1,0 +1,2186 @@
+{
+  "tutorial-flows": {
+    "system_info": {
+      "name": "Tutorial Flow and Dialogue System",
+      "description": "Structured tutorial sequences, dialogue examples, and narrative transitions",
+      "type": "interface_system",
+      "version": "3.0",
+      "development_focus": "Player onboarding and tutorial experience",
+      "user_experience_philosophy": "Seamless introduction to complex systems through narrative integration",
+      "content_reference": "content/tutorial-design.md"
+    },
+    "development_context": {
+      "current_status": "Tutorial system fully implemented with Phase 1 & 2 complete, validated through user testing as 'HUGE step forward'",
+      "decision_points": "Phase 2.1 refinements identified - popup timing optimization and show vs tell balance",
+      "inspiration": "Seamless learning through narrative-driven discovery",
+      "constraints": "Must introduce complex systems without overwhelming new players",
+      "success_metrics": "Players understand core mechanics within first 30 minutes of gameplay - ACHIEVED through testing"
+    },
+    "components": {
+      "first_day_tutorial": {
+        "name": "First Day Tutorial Sequence",
+        "user_experience_role": "Initial game introduction and mentor meetings",
+        "implementation_priority": "complete",
+        "implementation_status": "implemented_and_working",
+        "technical_requirements": {
+          "dialogue_system": "Mentor introduction sequences and choice handling",
+          "tutorial_overlays": "Contextual help and progress indicators",
+          "narrative_flow": "Seamless transitions between tutorial phases"
+        },
+        "integration_points": {
+          "incoming": "Player starting new game",
+          "outgoing": "Transition to main game loop",
+          "data_dependencies": "Mentor data and initial activity content"
+        },
+        "asset_requirements": {
+          "visual_assets": [
+            "tutorial_overlay_designs",
+            "progress_indicator_graphics",
+            "first_day_location_backgrounds"
+          ],
+          "audio_assets": [
+            "tutorial_guidance_sounds",
+            "progression_achievement_audio"
+          ]
+        }
+      },
+      "night_phase_tutorial": {
+        "name": "Night Phase Introduction",
+        "user_experience_role": "Knowledge constellation and journal system introduction",
+        "implementation_priority": "complete",
+        "implementation_status": "implemented_and_working",
+        "technical_requirements": {
+          "constellation_interface": "Star selection and unlock mechanics",
+          "journal_system": "Card placement and ability management",
+          "phone_call_system": "Mentor communication during night phase"
+        },
+        "integration_points": {
+          "incoming": "Day phase completion",
+          "outgoing": "Sleep transition to next day",
+          "data_dependencies": "Day's learning progress and mentor relationships"
+        },
+        "asset_requirements": {
+          "visual_assets": [
+            "constellation_tutorial_overlays",
+            "journal_interface_tutorials",
+            "phone_call_ui_elements"
+          ],
+          "audio_assets": [
+            "mentor_phone_call_audio",
+            "constellation_interaction_sounds"
+          ]
+        }
+      }
+    },
+    "tutorial_framework": {
+      "introduction_approach": "narrative_integration",
+      "complexity_progression": "single_concept_introduction",
+      "transition_style": "character_driven",
+      "feedback_integration": "immediate_contextual",
+      "core_principles": [
+        "mechanics_through_narrative",
+        "progressive_complexity",
+        "natural_transitions",
+        "contextual_learning",
+        "clear_visual_feedback"
+      ]
+    },
+    "first_day_tutorial": {
+      "morning_arrival": {
+        "location": "hospital_entrance",
+        "time": "08:00",
+        "primary_mentor": "dr_garcia",
+        "objectives": [
+          "establish_setting",
+          "introduce_first_mentor",
+          "provide_initial_agency"
+        ],
+        "dialogue_flow": {
+          "opening": {
+            "speaker": "dr_garcia",
+            "text": "You must be our new resident! I'm Dr. Garcia, lead radiation oncologist. Welcome to Westview!",
+            "choices": [
+              {
+                "option": "Thank you, I'm excited to be here.",
+                "effect": "enthusiastic_response"
+              },
+              {
+                "option": "Nice to meet you. This place is impressive.",
+                "effect": "observational_response"
+              }
+            ]
+          },
+          "tour_offer": {
+            "speaker": "dr_garcia",
+            "text": "We have orientation starting in a bit. I can show you around, or if you prefer, you can explore a little on your own first. What would you like to do?",
+            "choices": [
+              {
+                "option": "I'd love a tour.",
+                "next_scene": "guided_tour"
+              },
+              {
+                "option": "I'll explore a bit first.",
+                "next_scene": "lobby_exploration"
+              }
+            ]
+          }
+        }
+      },
+      "first_educational_activity": {
+        "location": "orientation_room",
+        "time": "10:30",
+        "mentor": "dr_garcia",
+        "tutorial_elements": [
+          "introduce_insight_mechanic",
+          "first_question_example",
+          "show_progress_feedback"
+        ],
+        "activity_structure": {
+          "setup": {
+            "speaker": "dr_garcia",
+            "text": "Let's cover some basics of radiation therapy. This will help you get your bearings in the department.",
+            "tutorial_popup": "Your first educational activity! Answer questions to gain Insight and discover new knowledge."
+          },
+          "sample_question": {
+            "type": "multiple_choice",
+            "question": "What's the primary purpose of a multileaf collimator in a linear accelerator?",
+            "options": [
+              {
+                "text": "To shape the treatment beam",
+                "correct": true
+              },
+              {
+                "text": "To filter the beam energy",
+                "correct": false
+              },
+              {
+                "text": "To measure radiation output",
+                "correct": false
+              }
+            ],
+            "correct_feedback": {
+              "speaker": "dr_garcia",
+              "text": "Exactly right! The MLCs allow us to conform the radiation beam to the shape of the target volume.",
+              "tutorial_popup": "You gained 15 Insight! [Icon shows Insight meter filling]",
+              "explanation": "You've just gained some Insight - think of it as your growing understanding that you can apply during your daily activities."
+            }
+          }
+        }
+      },
+      "lunch_break_dialogue": {
+        "location": "hospital_cafeteria",
+        "time": "12:15",
+        "mentor": "dr_quinn",
+        "objectives": [
+          "introduce_second_mentor",
+          "foreshadow_constellation_system",
+          "build_anticipation"
+        ],
+        "dialogue_flow": {
+          "introduction": {
+            "speaker": "dr_quinn",
+            "text": "Mind if I join? You must be the new resident! I'm Dr. Quinn, head of Treatment Planning.",
+            "energy": "enthusiastic",
+            "choices": [
+              {
+                "option": "Nice to meet you, Dr. Quinn.",
+                "effect": "polite_response"
+              },
+              {
+                "option": "I've heard about your work in planning optimization.",
+                "effect": "informed_response"
+              }
+            ]
+          },
+          "constellation_preview": {
+            "speaker": "dr_quinn",
+            "text": "Garcia's probably shown you the clinical side this morning. Planning is where the physics really shines! Have you heard about our Knowledge Constellation approach?",
+            "choices": [
+              {
+                "option": "No, what's that?",
+                "response": "It's a way of visualizing how medical physics concepts connect. Rather than isolated facts, we see knowledge as stars forming constellations. You'll see what I mean tonight when you have time to reflect on what you've learned today."
+              },
+              {
+                "option": "Just briefly. I'd like to know more.",
+                "response": "Perfect! It's really about seeing the connections between concepts. Tonight when you get home, you'll have a chance to explore how today's learning fits into the bigger picture."
+              }
+            ]
+          }
+        }
+      },
+      "first_ability_introduction": {
+        "location": "treatment_planning_lab",
+        "time": "14:30",
+        "mentor": "dr_quinn",
+        "tutorial_elements": [
+          "introduce_ability_system",
+          "show_card_mechanics",
+          "connect_day_night_phases"
+        ],
+        "ability_grant": {
+          "setup": {
+            "speaker": "dr_quinn",
+            "text": "Before you go today, I want to give you something for your journal.",
+            "action": "hands_over_notes"
+          },
+          "explanation": {
+            "speaker": "dr_quinn",
+            "text": "I've written down a technique called 'Conceptual Mapping' that might help you in your daily work. When you get home tonight, add it to your journal, and you can use it tomorrow.",
+            "tutorial_popup": "You received your first Ability Card! You'll be able to place this in your journal tonight."
+          },
+          "ability_details": {
+            "name": "Conceptual Mapping",
+            "domain": "treatment_planning",
+            "passive_effect": "Highlight connections between questions and concepts",
+            "active_effect": "Spend 20 Insight to reveal a related concept during activities",
+            "usage_explanation": "Tomorrow, when you're in an activity, you can activate this technique by spending some of your accumulated Insight. It's a way to apply what you've learned."
+          }
+        }
+      },
+      "night_phase_transition": {
+        "location": "hospital_exit",
+        "time": "17:15",
+        "mentor": "dr_kapoor",
+        "objectives": [
+          "introduce_third_mentor",
+          "explain_night_phase_purpose",
+          "create_smooth_transition"
+        ],
+        "transition_dialogue": {
+          "introduction": {
+            "speaker": "dr_kapoor",
+            "text": "First day complete! I'm Dr. Kapoor, head of Dosimetry. We'll be working together on measurements and quality assurance."
+          },
+          "reflection_emphasis": {
+            "speaker": "dr_kapoor",
+            "text": "The most important part of learning is reflection. When you get home tonight, take some time to think about what you've discovered today. It helps solidify the concepts.",
+            "tutorial_popup": "You're about to transition to your home at Hill House for the Night Phase, where you'll reflect on knowledge gained and prepare for tomorrow."
+          }
+        }
+      }
+    },
+    "night_phase_tutorial": {
+      "observatory_introduction": {
+        "location": "hill_home_observatory",
+        "time": "19:30",
+        "day": 1,
+        "guide": "dr_quinn",
+        "delivery_method": "phone_call",
+        "sequence": {
+          "phone_call_opening": {
+            "speaker": "dr_quinn",
+            "text": "Hope I'm not calling too late! Just wanted to check how your first day went. Have you had a chance to look at the Knowledge Constellation yet?",
+            "choices": [
+              {
+                "option": "I was just about to.",
+                "response": "perfect_timing"
+              },
+              {
+                "option": "Not yet, could you remind me how it works?",
+                "response": "explanation_needed"
+              }
+            ]
+          },
+          "constellation_explanation": {
+            "speaker": "dr_quinn",
+            "text": "The constellation map should be right in front of you. Those glowing points? Each represents something you learned today.",
+            "tutorial_popup": "This is your Knowledge Constellation. Stars represent medical physics concepts you've discovered.",
+            "visual_cue": "highlight_three_glowing_points"
+          },
+          "first_interaction": {
+            "speaker": "dr_quinn",
+            "text": "Try selecting one of those stars. That's knowledge you discovered today.",
+            "tutorial_popup": "Use Star Points (SP) to unlock stars you've discovered. You earned 3 SP today.",
+            "guided_action": "select_star_unlock"
+          }
+        }
+      },
+      "journal_system_introduction": {
+        "location": "hill_home_study",
+        "time": "20:15",
+        "day": 1,
+        "guide": "dr_garcia",
+        "delivery_method": "text_message",
+        "sequence": {
+          "text_reminder": {
+            "speaker": "dr_garcia",
+            "message": "Don't forget to check your journal before tomorrow! The technique I mentioned should help with your morning activities."
+          },
+          "journal_tutorial": {
+            "tutorial_popup": "This is your Journal. It holds the Abilities you can use during daily activities.",
+            "visual_display": "empty_slots_with_available_card",
+            "guided_action": "drag_card_to_slot"
+          },
+          "card_placement": {
+            "tutorial_popup": "This ability is now equipped for tomorrow. You can have up to 3 abilities equipped at once as you progress.",
+            "card_details": {
+              "name": "Conceptual Mapping",
+              "passive_effect": "Highlights connections between related questions",
+              "active_effect": "Spend 20 Insight to reveal a related concept (once per day)",
+              "domain": "treatment_planning"
+            }
+          }
+        }
+      },
+      "sleep_transition": {
+        "location": "hill_home_bedroom",
+        "time": "21:30",
+        "day": 1,
+        "sequence": {
+          "reflection_moment": {
+            "text": "Your first day at Westview Medical has introduced you to the fundamentals of radiation therapy and treatment planning. Tomorrow will bring new challenges and opportunities to expand your knowledge."
+          },
+          "preparation_summary": {
+            "knowledge": "1 star unlocked (Radiation Beam Properties)",
+            "journal": "1 ability equipped (Conceptual Mapping)",
+            "tomorrow": "Morning session with Dr. Kapoor scheduled"
+          },
+          "final_choices": [
+            {
+              "option": "Get some rest",
+              "action": "advance_to_next_day"
+            },
+            {
+              "option": "Review constellation one more time",
+              "action": "return_to_observatory"
+            }
+          ]
+        }
+      }
+    },
+    "day_structure_examples": {
+      "modified_day_structure": {
+        "morning_brief": {
+          "location": "player_office",
+          "time": "08:05",
+          "day": 4,
+          "sequence": {
+            "calendar_notification": {
+              "display": "Linac QA session with Technician Jesse at 10:00. TPS review with Dr. Quinn at 14:00. Open slot remaining."
+            },
+            "mentor_interaction": {
+              "speaker": "dr_garcia",
+              "context": "pokes_head_in_door",
+              "text": "Morning! We've got a challenging case today - breast treatment with regional nodes. Perfect chance to use that dosimetric evaluation technique you've been studying.",
+              "ability_reminder": "Your journal contains 'Dose Distribution Analysis' which can help evaluate complex treatment plans."
+            },
+            "schedule_display": {
+              "block_1": {
+                "time": "8:30-11:30",
+                "status": "select_activity"
+              },
+              "block_2": {
+                "time": "12:00-15:00",
+                "activity": "TPS Review with Dr. Quinn",
+                "status": "scheduled"
+              },
+              "block_3": {
+                "time": "15:30-17:00",
+                "activity": "Linac QA with Technician Jesse",
+                "status": "scheduled"
+              }
+            }
+          }
+        },
+        "activity_transition": {
+          "location": "treatment_planning_lab",
+          "time": "14:55",
+          "completion_summary": {
+            "insight_gained": 45,
+            "momentum_level": 3,
+            "new_concepts": [
+              "Dose Volume Constraints"
+            ],
+            "relationship_change": "Dr. Quinn (+1)"
+          },
+          "transition_dialogue": {
+            "speaker": "dr_quinn",
+            "text": "Great work on optimizing that plan. Jesse mentioned needing your help with the monthly QA checks. You should head over to the Linac room."
+          },
+          "player_choices": [
+            {
+              "option": "Head to Linac Room now",
+              "action": "begin_next_scheduled_activity"
+            },
+            {
+              "option": "Take a short break first",
+              "action": "short_dialogue_scene_before_next_activity"
+            }
+          ]
+        },
+        "day_conclusion": {
+          "location": "player_office",
+          "time": "17:10",
+          "mentor_debrief": {
+            "speaker": "dr_kapoor",
+            "text": "Heard you helped with the Linac QA. Finding your way around the equipment is crucial. How are you feeling about the dosimetry concepts so far?",
+            "choices": [
+              {
+                "option": "I'm starting to connect the principles to practical applications.",
+                "mentor_response": "guided_learning_response"
+              },
+              {
+                "option": "Still working on understanding some of the detector responses.",
+                "mentor_response": "supportive_encouragement"
+              },
+              {
+                "option": "The calibration protocols make a lot of sense to me.",
+                "mentor_response": "positive_reinforcement"
+              }
+            ]
+          },
+          "day_summary": {
+            "activities_completed": 3,
+            "total_insight_gained": 105,
+            "new_knowledge": "2 concepts discovered",
+            "sp_earned": 4
+          }
+        }
+      }
+    },
+    "tutorial_design_principles": {
+      "narrative_continuity": {
+        "description": "All mechanics introduced through character interactions",
+        "implementation": "mentor_guided_discovery"
+      },
+      "progressive_complexity": {
+        "description": "Systems introduced one at a time with clear tutorials",
+        "implementation": "single_concept_focus_per_interaction"
+      },
+      "natural_transitions": {
+        "description": "Day and night phases flow together through narrative bridges",
+        "implementation": "character_driven_scene_transitions"
+      },
+      "contextual_learning": {
+        "description": "Educational content framed within meaningful narrative",
+        "implementation": "mentor_expertise_alignment"
+      },
+      "visual_feedback": {
+        "description": "Clear UI elements show progress and accomplishments",
+        "implementation": "immediate_progress_indicators"
+      },
+      "flexible_structure": {
+        "description": "Activity blocks provide structure while maintaining player agency",
+        "implementation": "scheduled_and_flexible_activity_mix"
+      }
+    },
+    "user_experience_flow": {
+      "tutorial_introduction": {
+        "name": "Game Introduction",
+        "description": "Player starts first day and meets mentors",
+        "user_actions": [
+          "Listen to mentor introductions",
+          "Make dialogue choices",
+          "Observe hospital environment"
+        ],
+        "system_requirements": [
+          "Dialogue rendering",
+          "Choice tracking",
+          "Mentor personality display"
+        ]
+      },
+      "learning_activities": {
+        "name": "First Activities",
+        "description": "Player participates in guided learning activities",
+        "user_actions": [
+          "Answer tutorial questions",
+          "Gain insight points",
+          "Unlock first ability"
+        ],
+        "system_requirements": [
+          "Question system",
+          "Progress tracking",
+          "Ability card introduction"
+        ]
+      },
+      "night_phase_transition": {
+        "name": "Evening Reflection",
+        "description": "Player explores constellation and journal systems",
+        "user_actions": [
+          "Unlock first star",
+          "Place ability in journal",
+          "Prepare for next day"
+        ],
+        "system_requirements": [
+          "Constellation interface",
+          "Journal management",
+          "Save progression"
+        ]
+      }
+    },
+    "development_priorities": {
+      "completed_implementations": [
+        {
+          "component": "first_day_tutorial",
+          "status": "Implemented - Phase 1 & 2 tutorial system complete",
+          "achievement": "Seamless narrative-driven onboarding with mentor conversations and tutorial progression",
+          "technical_files": [
+            "app/data/day1Dialogues.ts",
+            "app/components/hospital/HospitalBackdrop.tsx",
+            "tutorialDialogues.ts"
+          ],
+          "user_validation": "User testing confirmed 'HUGE step forward' in player onboarding experience"
+        },
+        {
+          "component": "night_phase_tutorial",
+          "status": "Implemented - Constellation and journal tutorials operational",
+          "achievement": "Tutorial-specific dialogue system with smart room routing and step progression",
+          "technical_files": [
+            "Tutorial infrastructure with overlays, state management, debug controls"
+          ],
+          "user_validation": "Console logs confirm all major systems working correctly"
+        }
+      ],
+      "ready_to_implement": [
+        {
+          "component": "phase_2_1_refinements",
+          "reason": "User testing identified specific UX improvements for tutorial flow",
+          "priority": "medium",
+          "specific_needs": [
+            "Popup timing optimization - better contextual timing",
+            "Show vs tell balance - reduce explicit instruction overlays",
+            "Pacing improvements - better spacing of tutorial guidance"
+          ],
+          "technical_context": "Core tutorial system working, ready for polish and refinement"
+        }
+      ]
+    },
+    "integration_points": {
+      "data_flow": [
+        "game_start -> first_day_tutorial: new_player_state, initial_mentors",
+        "tutorial_completion -> main_game: unlocked_abilities, mentor_relationships",
+        "day_completion -> night_tutorial: learning_progress, available_stars",
+        "night_completion -> next_day: equipped_abilities, progression_state"
+      ],
+      "shared_dependencies": [
+        "Mentor character data and dialogue content",
+        "Activity framework for tutorial questions",
+        "Knowledge constellation for star unlock tutorials",
+        "Journal system for ability management tutorials"
+      ],
+      "failure_modes_to_prevent": [
+        "Tutorial sequences that overwhelm new players",
+        "Incomplete tutorial state causing confusion",
+        "Tutorial progression blocking main game access",
+        "Inconsistent mentor personality in tutorial vs main game"
+      ]
+    },
+    "asset_pipeline": {
+      "asset_creation_order": {
+        "week_1": "Tutorial overlay UI elements and progress indicators",
+        "week_2": "First day hospital locations and mentor introduction visuals",
+        "week_3": "Night phase tutorial elements (constellation, journal)",
+        "week_4": "Polish, accessibility, and tutorial completion celebrations"
+      },
+      "immediate_needs": {
+        "ui_elements": [
+          "Tutorial overlay designs with clear visual hierarchy",
+          "Progress indicators showing tutorial completion",
+          "Interactive hotspots for clickable tutorial elements",
+          "Phone call UI for mentor guidance during night phase"
+        ],
+        "visual_assets": [
+          "Hospital orientation tour backgrounds",
+          "Mentor introduction portrait variations",
+          "Knowledge constellation tutorial overlays",
+          "Journal card placement visual guides"
+        ],
+        "audio": [
+          "Tutorial progression success sounds",
+          "Mentor guidance audio cues",
+          "First day completion celebration audio"
+        ]
+      }
+    },
+    "cross_references": {
+      "related_documents": [
+        "data/mentors/mentors.yaml",
+        "data/stars/stars-definitions.yaml",
+        "data/constants/game-constants.yaml"
+      ],
+      "export_templates": [
+        "claude-context",
+        "cursor-dev",
+        "tutorial-reference"
+      ]
+    }
+  },
+  "activity-interface": {
+    "system_info": {
+      "name": "Activity Interface System",
+      "type": "interface_system",
+      "description": "Multi-component interface system for hospital exploration and activity interactions",
+      "development_focus": "Luke's current priority - hospital backdrop to dialogue systems",
+      "user_experience_philosophy": "Clear distinction between narrative vs challenge interactions",
+      "content_reference": "content/interfaces/activity-interface.md",
+      "related_systems": [
+        "activity-framework",
+        "visual-design",
+        "mentors",
+        "challenges"
+      ]
+    },
+    "user_experience_flow": {
+      "step_1": {
+        "name": "Hospital Exploration",
+        "description": "Player navigates isometric hospital view",
+        "user_actions": [
+          "Navigate view",
+          "observe available activities",
+          "read room descriptions"
+        ],
+        "system_requirements": [
+          "Isometric rendering",
+          "clickable detection",
+          "visual feedback"
+        ]
+      },
+      "step_2": {
+        "name": "Room Selection",
+        "description": "Player clicks on available activity rooms",
+        "user_actions": [
+          "Click room",
+          "view activity preview",
+          "confirm selection"
+        ],
+        "system_requirements": [
+          "Click event handling",
+          "preview generation",
+          "confirmation UI"
+        ]
+      },
+      "step_3": {
+        "name": "Activity Type Detection",
+        "description": "System determines narrative vs challenge content",
+        "user_actions": [
+          "Wait for transition",
+          "observe interface change"
+        ],
+        "system_requirements": [
+          "Content type analysis",
+          "interface mode switching"
+        ]
+      },
+      "step_4": {
+        "name": "Activity Experience",
+        "description": "Player engages with appropriate dialogue system",
+        "user_actions": [
+          "Read dialogue",
+          "make choices",
+          "respond to challenges"
+        ],
+        "system_requirements": [
+          "Portrait display",
+          "text rendering",
+          "interaction handling"
+        ]
+      }
+    },
+    "components": {
+      "hospital_backdrop": {
+        "name": "Hospital Backdrop System",
+        "user_experience_role": "Primary exploration interface",
+        "implementation_status": "implemented_and_working",
+        "development_priority": "complete",
+        "implementation_details": [
+          "Interactive hospital map with clickable room areas (percentage-based coordinates)",
+          "Room-specific hover effects and contextual tooltips",
+          "Enhanced 300% zoom system for maximum detail visibility",
+          "Custom pixel art sprite integration (time-symbols.png)",
+          "Debug click-through system for testing all weather/time states",
+          "Clean gradient background replacing time-based color effects",
+          "Optimized positioning system with pixel-perfect control",
+          "Activity badges showing completion counts per room",
+          "Golden highlights for interactive areas with smooth hover transitions"
+        ],
+        "technical_files": [
+          "app/components/scenes/HospitalBackdrop.tsx",
+          "app/components/ui/SystemToggle.tsx (dual-system architecture)",
+          "app/components/ui/RoomUIOverlays.tsx (room specialization)"
+        ],
+        "asset_requirements": {
+          "visual_assets": [
+            "isometric_hospital_building_exterior",
+            "interior_room_layouts_visible_through_windows",
+            "clickable_room_highlight_overlays",
+            "time_of_day_lighting_variations"
+          ],
+          "audio_assets": [
+            "ambient_hospital_sounds",
+            "room_click_feedback_sound"
+          ]
+        },
+        "technical_requirements": {
+          "rendering": "Isometric view with parallax scrolling",
+          "interaction": "Mouse click detection on room areas",
+          "visual_feedback": "Hover states and click confirmation",
+          "performance": "Smooth 60fps with multiple rooms visible"
+        },
+        "technical_unknowns": [],
+        "integration_points": {
+          "outgoing": "Passes room_id and activity_type to room_transition",
+          "data_dependencies": "Requires activity availability from activity-framework"
+        }
+      },
+      "room_transition": {
+        "name": "Room Transition System",
+        "user_experience_role": "Seamless mode switching",
+        "implementation_status": "implemented_and_working",
+        "development_priority": "complete",
+        "implementation_details": [
+          "Complete dual-system architecture with seamless toggle between classic and scene modes",
+          "Scene-based navigation with history stack (useSceneStore with Zustand + immer)",
+          "Smooth 300ms transitions with easing functions and progress tracking",
+          "Context preservation across navigation with proper state management",
+          "Bridge adapters connecting scene system to existing dialogue components"
+        ],
+        "technical_files": [
+          "app/components/ui/GameContainer.tsx (main orchestrator)",
+          "app/store/sceneStore.ts (centralized scene state management)",
+          "app/components/ui/TransitionScreen.tsx (animated transitions)",
+          "app/components/ui/SceneDialogueAdapters.tsx (bridge integration)"
+        ],
+        "asset_requirements": {
+          "visual_assets": [
+            "transition_animation_assets",
+            "loading_indicator_designs"
+          ],
+          "audio_assets": [
+            "scene_transition_audio_cues"
+          ]
+        },
+        "technical_requirements": {
+          "scene_management": "Load/unload interface components",
+          "state_preservation": "Maintain game state during transitions",
+          "animation_system": "Smooth visual transitions",
+          "error_handling": "Graceful failure if content unavailable"
+        },
+        "technical_unknowns": [],
+        "integration_points": {
+          "incoming": "Receives room_id and activity_type from hospital_backdrop",
+          "outgoing": "Activates appropriate dialogue system",
+          "data_dependencies": "Interfaces with save/load system for state"
+        }
+      },
+      "narrative_dialogue": {
+        "name": "Narrative Dialogue System",
+        "user_experience_role": "Story and character development",
+        "implementation_status": "implemented_and_working",
+        "development_priority": "content_expansion",
+        "asset_requirements": {
+          "visual_assets": [
+            "high_definition_npc_portraits",
+            "room_backdrop_images",
+            "text_box_frame_designs",
+            "dialogue_choice_button_designs",
+            "text_layering_fade_animations"
+          ],
+          "audio_assets": [
+            "character_voice_samples_or_text_sounds",
+            "page_turn_sounds_for_text_progression"
+          ]
+        },
+        "technical_requirements": {
+          "portrait_system": "High-res character display with emotion states",
+          "text_rendering": "Rich text with formatting and animations",
+          "choice_handling": "Multiple choice selection with consequences",
+          "history_system": "Previous dialogue viewing (retroactive click)",
+          "layering_effect": "Text boxes translate up and fade for history",
+          "background_integration": "Room backgrounds display automatically based on roomId"
+        },
+        "technical_unknowns": [],
+        "special_features": {
+          "retroactive_viewing": "Click previous dialogue to view with fade effect",
+          "emotional_portraits": "Portrait changes based on conversation context",
+          "choice_consequences": "Dialogue choices affect mentor relationships"
+        },
+        "integration_points": {
+          "incoming": "Activated by room_transition for narrative activities",
+          "outgoing": "Returns to hospital_backdrop or progresses to next scene",
+          "data_dependencies": "Mentor relationship data, dialogue content trees"
+        }
+      },
+      "room_background_system": {
+        "name": "Room Background Integration System",
+        "user_experience_role": "Immersive environmental context for dialogue",
+        "implementation_status": "implemented_and_working",
+        "development_priority": "complete",
+        "implementation_details": [
+          "Dynamic background/foreground layer system with depth effects",
+          "Room-specific atmosphere overlays and fallback gradients",
+          "Integration with dialogue scenes for immersive environments",
+          "Physics office showcase implementation with full layering",
+          "Z-index architecture supporting layered depth rendering"
+        ],
+        "technical_files": [
+          "app/utils/roomBackgrounds.ts",
+          "app/components/dialogue/NarrativeDialogue.tsx (background integration)",
+          "app/components/dialogue/ChallengeDialogue.tsx (parallel integration)"
+        ],
+        "asset_requirements": {
+          "visual_assets": [
+            "physics-office.png (completed by Luke)",
+            "physics-office-foreground.png (completed by Luke)",
+            "treatment-room.png (ready for creation)",
+            "dosimetry-lab.png (ready for creation)",
+            "simulation-suite.png (ready for creation)"
+          ]
+        },
+        "technical_requirements": {
+          "rendering": "Layered background/foreground with z-index management",
+          "fallback": "Room-specific gradient fallbacks for unreleased rooms",
+          "integration": "Seamless dialogue scene background loading"
+        },
+        "technical_unknowns": [],
+        "integration_points": {
+          "incoming": "Receives room_id from dialogue systems",
+          "outgoing": "Provides immersive visual context for conversations"
+        }
+      },
+      "reaction_animation_system": {
+        "name": "Complete Reaction Animation System",
+        "user_experience_role": "Dynamic mentor reactions and feedback",
+        "implementation_status": "implemented_and_working",
+        "development_priority": "complete",
+        "implementation_details": [
+          "Portrait animations with CSS keyframe definitions (shake, bounce, nod, pulse)",
+          "Floating reaction symbols with sprite-based rendering",
+          "Auto-triggering reactions based on dialogue choice effects",
+          "Conflict-free animation system preserving character positioning",
+          "Memory-efficient reaction symbol cleanup system"
+        ],
+        "technical_files": [
+          "app/components/ui/ReactionSystem.tsx"
+        ],
+        "asset_requirements": {
+          "visual_assets": [
+            "reaction-symbols.png (completed sprite sheet by Luke)"
+          ]
+        },
+        "technical_requirements": {
+          "animation": "CSS keyframe animation system with transform separation",
+          "sprites": "Sprite sheet positioning for reaction symbols",
+          "triggers": "Automatic reaction spawning based on dialogue effects",
+          "cleanup": "Memory management for animation lifecycle"
+        },
+        "technical_unknowns": [],
+        "special_features": {
+          "auto_triggering": "Insight gains (+) \u2192 \ud83d\udca1 + bounce, losses (-) \u2192 ? + shake",
+          "symbol_types": "!, ?, ..., \ud83d\udca1, \u2b50 with unique animations",
+          "animation_separation": "Positioning transforms separate from animation transforms"
+        },
+        "integration_points": {
+          "incoming": "Triggered by dialogue choice effects",
+          "outgoing": "Visual feedback enhancing user experience"
+        }
+      },
+      "challenge_dialogue": {
+        "name": "Challenge Dialogue System",
+        "user_experience_role": "Educational activities with social context",
+        "implementation_status": "implemented_and_working",
+        "development_priority": "content_expansion",
+        "asset_requirements": {
+          "visual_assets": [
+            "smaller_npc_portrait_variants",
+            "reaction_animation_sprites",
+            "challenge_progress_indicators",
+            "text_feed_display_components",
+            "challenge_result_celebration_effects"
+          ],
+          "audio_assets": [
+            "reaction_audio_cues",
+            "challenge_progression_audio"
+          ]
+        },
+        "technical_requirements": {
+          "compact_portraits": "Smaller, animated character displays",
+          "text_feed": "Twitter-like challenge progression display",
+          "reaction_system": "Real-time mentor reactions to player performance",
+          "progress_tracking": "Visual indication of challenge completion",
+          "result_integration": "Seamless flow to reward/progression systems"
+        },
+        "technical_unknowns": [],
+        "special_features": {
+          "mentor_reactions": "Different mentors react differently to player choices",
+          "dynamic_encouragement": "Adaptive support based on performance",
+          "clear_mode_distinction": "Visually distinct from narrative dialogue"
+        },
+        "integration_points": {
+          "incoming": "Activated by room_transition for challenge activities",
+          "outgoing": "Returns results to activity-framework for rewards",
+          "data_dependencies": "Challenge content, mentor personalities, player stats"
+        }
+      }
+    },
+    "development_priorities": {
+      "completed_implementations": [
+        {
+          "component": "room_transition",
+          "status": "Implemented - dual-system architecture with scene management",
+          "achievement": "Scene-based navigation with smooth transitions and state preservation",
+          "technical_files": [
+            "app/store/sceneStore.ts",
+            "app/components/ui/GameContainer.tsx"
+          ]
+        },
+        {
+          "component": "hospital_backdrop",
+          "status": "Implemented - enhanced interactive hospital map with pixel art integration",
+          "achievement": "Professional isometric hospital with 300% zoom and custom sprite integration",
+          "technical_files": [
+            "app/components/scenes/HospitalBackdrop.tsx",
+            "app/components/ui/RoomUIOverlays.tsx"
+          ]
+        },
+        {
+          "component": "room_background_system",
+          "status": "Implemented - dynamic background/foreground layer system",
+          "achievement": "Immersive room environments with depth effects and physics office showcase",
+          "technical_files": [
+            "app/utils/roomBackgrounds.ts",
+            "app/components/dialogue/NarrativeDialogue.tsx"
+          ]
+        },
+        {
+          "component": "reaction_animation_system",
+          "status": "Implemented - complete mentor reaction framework",
+          "achievement": "Auto-triggered portrait animations and floating symbol system",
+          "technical_files": [
+            "app/components/ui/ReactionSystem.tsx"
+          ]
+        },
+        {
+          "component": "dialogue_systems",
+          "status": "Implemented - both narrative and challenge dialogue working",
+          "achievement": "Physics office with 15+ interactions, room-specific routing operational",
+          "technical_files": [
+            "app/components/dialogue/NarrativeDialogue.tsx",
+            "app/components/dialogue/ChallengeDialogue.tsx"
+          ]
+        },
+        {
+          "component": "legacy_system_removal",
+          "status": "Implemented - complete dual system migration",
+          "achievement": "99% code reduction in DayPhase, single system architecture",
+          "technical_files": [
+            "app/components/phase/DayPhase.tsx (simplified to 14 lines)"
+          ]
+        }
+      ],
+      "ready_to_implement": [
+        {
+          "component": "additional_room_backgrounds",
+          "reason": "Room background system proven with physics office, ready for expansion",
+          "priority": "high",
+          "specific_needs": [
+            "Treatment room background (linear accelerator, patient couch, control monitors)",
+            "Dosimetry lab background (measurement equipment, detection devices)",
+            "Simulation suite background (CT scanner, planning workstations)"
+          ],
+          "technical_context": "app/utils/roomBackgrounds.ts ready for additional room definitions"
+        },
+        {
+          "component": "dialogue_content_expansion",
+          "reason": "Physics office has 15+ interactions, other rooms ready for similar content",
+          "priority": "high",
+          "specific_needs": [
+            "Treatment room mentor conversations (clinical procedures, safety protocols)",
+            "Dosimetry lab technical discussions (measurement theory, quality assurance)",
+            "Simulation suite planning dialogues (imaging, treatment optimization)"
+          ],
+          "technical_context": "Dialogue routing system operational, content framework established"
+        },
+        {
+          "component": "contextual_enhancements",
+          "reason": "Pokemon-style establishing animations framework ready for specific implementations",
+          "priority": "medium",
+          "specific_needs": [
+            "Patient case animations (medical info card fades, photo/diagnosis reveals)",
+            "Equipment animations (LINAC schematic reveals, 3D model rotations)",
+            "Treatment planning animations (CT scan workspace setup)"
+          ],
+          "technical_context": "TransitionScreen.tsx supports contextual messaging, needs animation assets"
+        },
+        {
+          "component": "polish_and_refinement",
+          "reason": "Core systems working, ready for professional-grade polish and user experience improvements",
+          "priority": "medium",
+          "specific_needs": [
+            "Enhanced mentor reaction system with more sophisticated animations",
+            "Advanced portrait emotion states based on conversation context",
+            "Audio integration for character voices and ambient hospital sounds",
+            "Accessibility features and mobile optimization"
+          ],
+          "technical_context": "Professional foundation in place, ready for enhancement layers"
+        }
+      ],
+      "future_enhancements": [
+        "Real-time collaboration features for team development",
+        "Advanced transition animations with particle effects",
+        "Voice acting integration and audio mixing system",
+        "Analytics and learning progression tracking"
+      ]
+    },
+    "asset_pipeline": {
+      "technical_readiness": {
+        "portraits": "PortraitImage.tsx component implemented with pixel-perfect rendering support",
+        "backgrounds": "Room backdrop system ready for image integration",
+        "ui_elements": "Text box and dialogue interfaces implemented, need design assets",
+        "animations": "TransitionScreen.tsx supports contextual animations, needs specific sequences"
+      },
+      "immediate_needs": {
+        "portraits": [
+          "Dr. Garcia high-def portrait (warm, encouraging expression)",
+          "Dr. Quinn high-def portrait (analytical, inspiring expression)",
+          "Jesse Martinez high-def portrait (practical, direct expression)",
+          "Dr. Kapoor high-def portrait (precise, methodical expression)"
+        ],
+        "backgrounds": [
+          "Physics office interior (whiteboard with equations)",
+          "Treatment room (with linear accelerator visible)",
+          "Dosimetry lab (measurement equipment)",
+          "Simulation suite (CT scanner, planning stations)"
+        ],
+        "ui_elements": [
+          "Text box frame (journal-style design)",
+          "Dialogue choice button designs",
+          "Challenge progress indicators",
+          "Mentor reaction animation sprites"
+        ]
+      },
+      "current_status": {
+        "implemented": [
+          "Hospital backdrop system with 300% zoom and pixel art integration",
+          "Room background system with physics office showcase complete",
+          "Complete reaction animation framework with auto-triggering",
+          "Character portrait rendering with layered depth effects",
+          "Scene transition system with contextual messaging",
+          "Dual dialogue modes with 15+ interaction conversations",
+          "Legacy system removal with single architecture"
+        ],
+        "ready_for_expansion": [
+          "Additional room backgrounds using proven integration system",
+          "Extended dialogue content for treatment room, dosimetry lab, simulation suite",
+          "Additional reaction symbols and animation effects",
+          "Tutorial system implementation using working dialogue foundation"
+        ],
+        "content_pipeline": [
+          "Physics office content complete with 15+ meaningful interactions",
+          "Room-specific dialogue routing operational",
+          "Mentor reaction system functional with sprite-based symbols",
+          "Background integration system ready for more environments"
+        ]
+      },
+      "asset_creation_order": {
+        "week_1": "High-def mentor portraits and basic text box design",
+        "week_2": "Room background images and contextual UI elements",
+        "week_3": "Animation assets and mentor reaction sprites",
+        "week_4": "Polish effects and accessibility elements"
+      },
+      "integration_ready": [
+        "Portrait system: Drop images into /public/images/characters/portraits/",
+        "Backgrounds: Room backdrop system ready for image swapping",
+        "Content: JSON dialogue files ready for mentor and activity content",
+        "Animations: TransitionScreen component ready for context-specific sequences"
+      ]
+    },
+    "integration_points": {
+      "data_flow": [
+        "hospital_backdrop -> room_transition: room_id, activity_type, player_state",
+        "room_transition -> dialogue_systems: activity_content, mentor_context",
+        "dialogue_systems -> activity_framework: completion_data, choices_made",
+        "activity_framework -> game_state: rewards, relationship_changes, progress"
+      ],
+      "shared_dependencies": [
+        "Game state management (save/load)",
+        "Audio system (music, sound effects)",
+        "Input handling (mouse, keyboard)",
+        "Performance monitoring (FPS, memory)"
+      ],
+      "failure_modes_to_prevent": [
+        "Inconsistent state between components",
+        "Asset loading blocking user interaction",
+        "Memory leaks from frequent transitions",
+        "Broken integration when one component changes"
+      ],
+      "testing_requirements": [
+        "Component isolation testing",
+        "Integration flow testing",
+        "Performance testing with multiple transitions",
+        "Error recovery testing"
+      ]
+    },
+    "cross_references": {
+      "related_systems": [
+        "activity-framework",
+        "visual-design",
+        "mentors",
+        "game-constants"
+      ],
+      "content_files": [
+        "content/interfaces/activity-interface.md",
+        "content/visual-design-philosophy.md",
+        "content/mentors/mentor-philosophies.md"
+      ],
+      "implementation_dependencies": [
+        "Game engine scene management system",
+        "Asset loading and caching system",
+        "Input handling framework",
+        "UI rendering and animation system"
+      ]
+    },
+    "development_context": {
+      "current_status": "Single system architecture - HospitalBackdrop is primary system, legacy code removed",
+      "current_focus_areas": [
+        "Content expansion - physics office showcase complete, other rooms ready for backgrounds",
+        "Animation polish - reaction system operational, ready for additional effects",
+        "Educational content - dialogue framework ready for tutorial implementation"
+      ],
+      "decision_points": "Content expansion using working system foundation",
+      "immediate_blockers": [],
+      "ready_to_work_on": [
+        "Additional room backgrounds (treatment room, dosimetry lab, simulation suite)",
+        "Extended dialogue content for existing rooms",
+        "Tutorial system implementation using dialogue foundation",
+        "Additional reaction symbols and animation effects"
+      ],
+      "inspiration": "Professional medical simulation through authentic workplace interfaces",
+      "constraints": "First-time game development, learning as we go",
+      "success_metrics": "Professional simulation quality, seamless transitions, production-ready polish",
+      "technical_achievements": [
+        "Complete legacy system removal with 99% code reduction in DayPhase",
+        "Room background integration system with layered depth effects",
+        "Complete reaction animation framework with auto-triggering",
+        "Custom pixel art integration pipeline operational",
+        "Scene-based navigation with state preservation and smooth transitions",
+        "Interactive hospital backdrop with professional-grade visual polish",
+        "Bridge adapters connecting new and existing systems without breaking changes",
+        "Pixel-perfect character portrait rendering system ready for asset integration"
+      ]
+    }
+  },
+  "mentors-interface": {
+    "system_info": {
+      "name": "Mentor Relationship System",
+      "description": "Complete mentor character system with relationship progression, dialogue, and aptitude bonuses",
+      "type": "interface_system",
+      "development_focus": "Core character interactions and progression mechanics",
+      "user_experience_philosophy": "Authentic mentorship relationships that enhance learning through personal connection",
+      "content_reference": "data/mentors/mentors.yaml"
+    },
+    "development_context": {
+      "current_status": "Comprehensive mentor definitions complete, integration with activity system needed",
+      "decision_points": "Relationship progression mechanics and dialogue system implementation",
+      "inspiration": "Authentic mentorship relationships drive educational engagement",
+      "constraints": "Four distinct mentor personalities with different teaching styles",
+      "success_metrics": "Players form meaningful connections that enhance their learning experience"
+    },
+    "components": {
+      "mentor_character_system": {
+        "name": "Mentor Character Definitions",
+        "user_experience_role": "Individual mentor personalities and teaching styles",
+        "implementation_priority": "foundation",
+        "implementation_status": "design_complete",
+        "technical_requirements": {
+          "character_data": "Complete personality profiles and dialogue patterns",
+          "voice_systems": "Mentor-specific language and communication styles",
+          "specialization_areas": "Domain expertise and star connections",
+          "progression_tracking": "Relationship level advancement"
+        },
+        "integration_points": {
+          "incoming": "Player actions and activity participation",
+          "outgoing": "Relationship bonuses and special opportunities",
+          "data_dependencies": "Activity completion data and dialogue choices"
+        },
+        "special_features": {
+          "personality_archetypes": "Four distinct teaching and communication styles",
+          "domain_specialization": "Each mentor covers different knowledge domains",
+          "relationship_progression": "Five-level advancement system with benefits"
+        },
+        "asset_requirements": {
+          "visual_assets": [
+            "mentor_portrait_sets_multiple_emotions",
+            "relationship_level_indicators",
+            "domain_expertise_visual_cues",
+            "aptitude_bonus_display_elements"
+          ],
+          "audio_assets": [
+            "mentor_voice_patterns_or_text_sounds",
+            "relationship_advancement_audio"
+          ]
+        }
+      },
+      "relationship_progression_system": {
+        "name": "Relationship Level Management",
+        "user_experience_role": "Advancement through mentor relationships",
+        "implementation_priority": "high",
+        "implementation_status": "clear_requirements",
+        "technical_requirements": {
+          "point_tracking": "Relationship points accumulation system",
+          "level_advancement": "Five-tier progression with thresholds",
+          "bonus_application": "Aptitude bonuses based on relationship level",
+          "activity_unlocking": "Relationship-gated content access"
+        },
+        "integration_points": {
+          "incoming": "Activity participation and dialogue engagement",
+          "outgoing": "Aptitude bonuses and special activity access",
+          "data_dependencies": "Player activity history and mentor interactions"
+        },
+        "special_features": {
+          "progressive_benefits": "Increasing bonuses as relationships deepen",
+          "mentor_specific_bonuses": "Different aptitude improvements per mentor",
+          "special_opportunities": "Advanced activities unlocked through relationships"
+        },
+        "asset_requirements": {
+          "visual_assets": [
+            "relationship_progress_bars",
+            "level_advancement_celebrations",
+            "bonus_indicator_icons"
+          ],
+          "audio_assets": [
+            "relationship_level_up_sounds"
+          ]
+        }
+      },
+      "dialogue_interaction_system": {
+        "name": "Mentor Dialogue and Voice",
+        "user_experience_role": "Authentic mentor communication and guidance",
+        "implementation_priority": "high",
+        "implementation_status": "clear_requirements",
+        "technical_requirements": {
+          "voice_patterns": "Mentor-specific language and phrase templates",
+          "dialogue_trees": "Conversation branches based on relationship level",
+          "contextual_responses": "Activity-specific guidance and feedback",
+          "personality_consistency": "Maintaining character voice across interactions"
+        },
+        "integration_points": {
+          "incoming": "Activity contexts and player choices",
+          "outgoing": "Guidance, encouragement, and relationship progression",
+          "data_dependencies": "Activity outcomes and relationship status"
+        },
+        "special_features": {
+          "voice_system_templates": "Scalable mentor-specific language patterns",
+          "relationship_gated_content": "Deeper conversations as relationships grow",
+          "boss_encounter_support": "Mentor-specific preparation and guidance"
+        },
+        "asset_requirements": {
+          "visual_assets": [
+            "dialogue_interface_components",
+            "mentor_expression_variations",
+            "conversation_flow_indicators"
+          ],
+          "audio_assets": [
+            "mentor_voice_cues",
+            "dialogue_interaction_sounds"
+          ]
+        }
+      },
+      "aptitude_bonus_system": {
+        "name": "Mentor-Derived Learning Bonuses",
+        "user_experience_role": "Relationship benefits that enhance gameplay",
+        "implementation_priority": "medium",
+        "implementation_status": "clear_requirements",
+        "technical_requirements": {
+          "bonus_calculation": "Relationship level to aptitude bonus mapping",
+          "effect_application": "Integration with activity performance",
+          "visual_feedback": "Clear indication of active bonuses",
+          "progression_display": "Show advancement toward next level"
+        },
+        "integration_points": {
+          "incoming": "Relationship level progression",
+          "outgoing": "Enhanced performance in mentor's domain",
+          "data_dependencies": "Current relationship levels and activity contexts"
+        },
+        "special_features": {
+          "mentor_specialization": "Bonuses aligned with mentor expertise",
+          "stacking_benefits": "Multiple mentor bonuses can be active",
+          "visual_progression": "Clear advancement feedback"
+        },
+        "asset_requirements": {
+          "visual_assets": [
+            "bonus_effect_indicators",
+            "aptitude_improvement_displays",
+            "mentor_domain_connection_visuals"
+          ],
+          "audio_assets": [
+            "bonus_activation_sounds",
+            "achievement_celebration_audio"
+          ]
+        }
+      }
+    },
+    "integration_points": {
+      "data_flow": [
+        "player_actions -> relationship_progression: activity_participation, dialogue_choices",
+        "relationship_progression -> aptitude_system: bonus_calculations, special_access",
+        "mentor_system -> activity_framework: guidance_content, preparation_support",
+        "dialogue_system -> narrative_framework: character_development, story_progression"
+      ],
+      "shared_dependencies": [
+        "Activity completion tracking",
+        "Player progress and performance data",
+        "Narrative state and story progression",
+        "UI systems for relationship display"
+      ],
+      "failure_modes_to_prevent": [
+        "Inconsistent mentor personality across interactions",
+        "Relationship progression that feels grindy rather than meaningful",
+        "Unclear benefits from mentor relationships",
+        "Mentor dialogue that breaks character voice"
+      ],
+      "testing_requirements": [
+        "Mentor personality consistency testing",
+        "Relationship progression balance testing",
+        "Dialogue system integration testing",
+        "Aptitude bonus effectiveness testing"
+      ]
+    },
+    "asset_pipeline": {
+      "asset_creation_order": {
+        "week_1": "Core mentor portraits and relationship UI elements",
+        "week_2": "Mentor-specific visual elements and domain indicators",
+        "week_3": "Dialogue interface elements and progression feedback",
+        "week_4": "Polish, relationship celebration effects, and accessibility"
+      },
+      "immediate_needs": {
+        "portraits": [
+          "Dr. Garcia warm, encouraging portrait set",
+          "Dr. Quinn creative, analytical portrait set",
+          "Jesse Martinez practical, hands-on portrait set",
+          "Dr. Kapoor precise, methodical portrait set"
+        ],
+        "ui_elements": [
+          "Relationship level progress bars",
+          "Domain expertise indicators",
+          "Aptitude bonus display components",
+          "Mentor availability status indicators"
+        ],
+        "audio": [
+          "Relationship advancement celebration sounds",
+          "Mentor-specific notification audio"
+        ]
+      }
+    },
+    "development_priorities": {
+      "ready_to_implement": [
+        {
+          "component": "mentor_character_system",
+          "reason": "Complete character definitions available with full personality profiles",
+          "asset_dependencies": "Medium - needs mentor portraits and basic UI"
+        },
+        {
+          "component": "relationship_progression_system",
+          "reason": "Clear progression mechanics defined with level thresholds",
+          "asset_dependencies": "Low - can use placeholder UI initially"
+        }
+      ],
+      "blocking_items": [
+        {
+          "component": "dialogue_interaction_system",
+          "reason": "Requires integration with main dialogue framework",
+          "collaborative_exploration_needed": true
+        }
+      ]
+    },
+    "user_experience_flow": {
+      "mentor_introduction": {
+        "name": "First Mentor Meeting",
+        "description": "Player meets mentor in their domain context",
+        "user_actions": [
+          "Participate in mentor-guided activity",
+          "Engage in introductory dialogue",
+          "Observe mentor's teaching style"
+        ],
+        "system_requirements": [
+          "Mentor personality display",
+          "Domain context establishment",
+          "Initial relationship tracking"
+        ]
+      },
+      "relationship_building": {
+        "name": "Ongoing Mentor Interaction",
+        "description": "Regular activity participation and dialogue",
+        "user_actions": [
+          "Choose activities with preferred mentors",
+          "Engage in relationship-building dialogue",
+          "Receive mentor-specific guidance"
+        ],
+        "system_requirements": [
+          "Activity mentor tracking",
+          "Relationship progression feedback",
+          "Mentor-specific bonus application"
+        ]
+      },
+      "advanced_mentorship": {
+        "name": "Deep Mentor Relationships",
+        "description": "High-level relationships unlock special content",
+        "user_actions": [
+          "Access mentor-specific advanced activities",
+          "Receive personalized career guidance",
+          "Prepare for boss encounters with mentor support"
+        ],
+        "system_requirements": [
+          "Relationship-gated content access",
+          "Advanced dialogue trees",
+          "Boss encounter preparation systems"
+        ]
+      }
+    },
+    "cross_references": {
+      "related_systems": [
+        "activity-framework",
+        "visual-design",
+        "game-constants"
+      ],
+      "content_files": [
+        "content/mentors/mentor-philosophies.md",
+        "content/character-arcs/mentor-development.md"
+      ],
+      "implementation_dependencies": [
+        "Character dialogue system framework",
+        "Relationship progression UI components",
+        "Activity integration API",
+        "Aptitude bonus calculation system"
+      ]
+    }
+  },
+  "boss-interface": {
+    "system_info": {
+      "name": "Boss Encounter Interface System",
+      "type": "interface_system",
+      "description": "Comprehensive boss encounter mechanics, character development, and narrative integration",
+      "development_focus": "Boss encounter implementation with authentic character conflict resolution",
+      "user_experience_philosophy": "Educational challenges that feel like meaningful character interactions rather than combat",
+      "content_reference": "content/character-arcs/",
+      "related_systems": [
+        "emotional-energy",
+        "mentor-relationships",
+        "activity-framework",
+        "constellation-phenomenon"
+      ]
+    },
+    "user_experience_flow": {
+      "step_1": {
+        "name": "Encounter Preparation",
+        "description": "Player discovers boss availability and prepares through mentor guidance",
+        "user_actions": [
+          "Check mastery requirements",
+          "engage with relevant mentors",
+          "participate in preparation activities"
+        ],
+        "system_requirements": [
+          "Mastery threshold checking",
+          "mentor relationship integration",
+          "preparation activity tracking"
+        ]
+      },
+      "step_2": {
+        "name": "Encounter Initiation",
+        "description": "Boss encounter triggers based on narrative progression and player readiness",
+        "user_actions": [
+          "Trigger encounter event",
+          "enter specialized encounter interface",
+          "begin phase 1"
+        ],
+        "system_requirements": [
+          "Trigger event detection",
+          "specialized UI loading",
+          "energy system initialization"
+        ]
+      },
+      "step_3": {
+        "name": "Multi-Phase Challenge",
+        "description": "Player navigates 5-phase encounter with escalating complexity and character development",
+        "user_actions": [
+          "Respond to questions",
+          "manage energy/momentum",
+          "adapt to character behavior changes"
+        ],
+        "system_requirements": [
+          "Phase progression logic",
+          "energy system management",
+          "dynamic difficulty scaling"
+        ]
+      },
+      "step_4": {
+        "name": "Resolution & Growth",
+        "description": "Encounter concludes with character development and narrative progression",
+        "user_actions": [
+          "Experience resolution",
+          "receive rewards",
+          "unlock new content"
+        ],
+        "system_requirements": [
+          "Resolution path determination",
+          "reward distribution",
+          "content unlock system"
+        ]
+      }
+    },
+    "components": {
+      "boss_encounter_engine": {
+        "name": "Boss Encounter Management System",
+        "user_experience_role": "Core encounter orchestration and character behavior",
+        "implementation_status": "planning",
+        "development_priority": "blocking",
+        "technical_requirements": {
+          "encounter_state_management": "Track current phase, energy levels, and character behavior states",
+          "character_ai_behavior": "Dynamic personality-based response systems for each boss",
+          "phase_progression_logic": "Automated phase transitions based on time and performance",
+          "energy_system_integration": "Real-time energy tracking with mentor bonus application"
+        },
+        "implementation_details": [
+          "Boss-specific AI behavior trees for authentic character responses",
+          "Energy system variants (Emotional Energy for Marcus Chen, others as defined)",
+          "Phase-based difficulty scaling with character development integration",
+          "Mentor relationship bonus application during encounters"
+        ],
+        "technical_files": [
+          "app/systems/BossEncounterEngine.tsx (core encounter logic)",
+          "app/systems/CharacterBehaviorAI.tsx (boss-specific AI patterns)",
+          "app/systems/EnergySystemManager.tsx (energy/momentum tracking)",
+          "app/data/BossEncounterData.ts (encounter configuration loading)"
+        ],
+        "asset_requirements": {
+          "visual_assets": [
+            "boss_character_portraits_with_emotional_states",
+            "encounter_specific_backgrounds",
+            "energy_system_visual_indicators"
+          ],
+          "audio_assets": [
+            "boss_specific_ambient_music",
+            "character_voice_acting_or_text_audio_cues"
+          ]
+        },
+        "technical_unknowns": [
+          "Optimal AI behavior tree structure for authentic character responses",
+          "Energy system UI design that doesn't overwhelm the dialogue experience",
+          "Performance optimization for real-time character behavior calculations"
+        ],
+        "integration_points": {
+          "incoming": "Receives trigger from activity system and mentor relationship data",
+          "outgoing": "Updates character relationships, unlocks content, provides rewards",
+          "data_dependencies": "Boss YAML configurations, mentor relationship levels, player mastery data"
+        }
+      },
+      "character_development_system": {
+        "name": "Boss Character Arc Integration",
+        "user_experience_role": "Authentic character growth through conflict resolution",
+        "implementation_status": "planning",
+        "development_priority": "high",
+        "technical_requirements": {
+          "character_progression_tracking": "Multi-week character development leading to encounter",
+          "dialogue_system_integration": "Character voice consistency across all interactions",
+          "resolution_path_management": "Multiple ending paths based on player approach and performance",
+          "post_encounter_relationship_changes": "Lasting effects on character relationships"
+        },
+        "implementation_details": [
+          "Character progression systems showing gradual behavioral changes",
+          "Boss-specific dialogue trees with personality-consistent responses",
+          "Resolution paths that affect ongoing narrative relationships",
+          "Integration with mentor system for preparation and post-encounter support"
+        ],
+        "asset_requirements": {
+          "narrative_assets": [
+            "character_progression_dialogue_trees",
+            "boss_specific_preparation_content",
+            "resolution_outcome_narrative_content"
+          ],
+          "visual_assets": [
+            "character_emotional_state_indicators",
+            "relationship_status_change_animations"
+          ]
+        },
+        "integration_points": {
+          "incoming": "Character development data from narrative progression",
+          "outgoing": "Updated character relationship states and narrative flags",
+          "data_dependencies": "Boss character YAML files, mentor relationship data"
+        }
+      },
+      "encounter_preparation_system": {
+        "name": "Mentor-Guided Boss Preparation",
+        "user_experience_role": "Meaningful preparation that enhances encounter success",
+        "implementation_status": "planning",
+        "development_priority": "high",
+        "technical_requirements": {
+          "mentor_specific_guidance": "Each mentor provides unique preparation based on expertise",
+          "preparation_activity_tracking": "Track completion of boss-relevant activities",
+          "bonus_calculation_system": "Mentor relationship bonuses applied to encounter performance",
+          "preparation_feedback": "Clear indication of readiness level and potential bonuses"
+        },
+        "implementation_details": [
+          "Boss-mentor connection system showing which mentors can help with each boss",
+          "Preparation activities that provide specific encounter advantages",
+          "Mentor dialogue specifically focused on boss encounter preparation",
+          "Visual preparation tracking with mentor-specific guidance themes"
+        ],
+        "special_features": {
+          "marcus_chen_preparation": "Dr. Garcia clinical communication + Dr. Quinn technical depth",
+          "vendor_trio_preparation": "Jesse technical evaluation + Dr. Kapoor QA protocols",
+          "audit_team_preparation": "Dr. Kapoor intensive QA (special connection bonus)",
+          "ionix_preparation": "Dr. Quinn comprehensive synthesis (creator connection bonus)"
+        },
+        "asset_requirements": {
+          "dialogue_assets": [
+            "mentor_boss_preparation_dialogue_trees",
+            "boss_specific_advice_and_strategy_content"
+          ],
+          "ui_assets": [
+            "preparation_progress_tracking_interface",
+            "mentor_bonus_indicator_system"
+          ]
+        },
+        "integration_points": {
+          "incoming": "Mentor relationship data and boss encounter requirements",
+          "outgoing": "Preparation bonuses and readiness indicators to encounter engine",
+          "data_dependencies": "Mentor system data, boss YAML configurations, activity completion tracking"
+        }
+      },
+      "specialized_encounter_mechanics": {
+        "name": "Boss-Specific Mechanical Systems",
+        "user_experience_role": "Unique mechanics that match character themes",
+        "implementation_status": "planning",
+        "development_priority": "high",
+        "technical_requirements": {
+          "emotional_energy_system": "Marcus Chen's emotional pressure mechanics",
+          "procedural_precision_system": "Audit Team's quality assurance focus",
+          "critical_assessment_system": "Vendor Trio's technical evaluation theme",
+          "dynamic_domain_fusion": "Ionix's cross-domain integration challenge"
+        },
+        "implementation_details": [
+          "Marcus Chen: Emotional Energy with interruption mechanics and composure tracking",
+          "Audit Team: Procedural compliance tracking with precision requirements",
+          "Vendor Trio: Technical specification comparison and evaluation mechanics",
+          "Ionix: Dynamic cross-domain challenge generation with fusion requirements"
+        ],
+        "technical_files": [
+          "app/systems/EmotionalEnergySystem.tsx (Marcus Chen specific)",
+          "app/systems/ProceduralPrecisionSystem.tsx (Audit Team specific)",
+          "app/systems/CriticalAssessmentSystem.tsx (Vendor Trio specific)",
+          "app/systems/DynamicDomainFusion.tsx (Ionix specific)"
+        ],
+        "asset_requirements": {
+          "ui_assets": [
+            "energy_tracking_visualizations",
+            "precision_requirement_indicators",
+            "assessment_criteria_displays",
+            "domain_fusion_progress_visualizations"
+          ]
+        },
+        "integration_points": {
+          "incoming": "Boss encounter triggers and player performance data",
+          "outgoing": "Mechanical state updates and performance feedback to encounter engine",
+          "data_dependencies": "Boss-specific mechanics configurations, energy system frameworks"
+        }
+      }
+    },
+    "development_priorities": {
+      "ready_to_implement": [
+        {
+          "component": "encounter_preparation_system",
+          "reason": "Rich mentor-boss connection data already exists in mentors.yaml",
+          "priority": "high",
+          "specific_needs": [
+            "Mentor dialogue trees for boss preparation",
+            "Preparation activity tracking integration",
+            "Boss-mentor connection UI display"
+          ],
+          "technical_context": "Mentor system already implemented, needs boss-specific preparation content"
+        },
+        {
+          "component": "character_development_system",
+          "reason": "Complete character arc data exists in character-arcs/ and boss YAML files",
+          "priority": "high",
+          "specific_needs": [
+            "Character progression dialogue integration",
+            "Resolution path narrative content",
+            "Post-encounter relationship state changes"
+          ],
+          "technical_context": "Dialogue system exists, needs boss-specific character development integration"
+        }
+      ],
+      "blocking_items": [
+        {
+          "component": "boss_encounter_engine",
+          "reason": "Core encounter orchestration system needs architectural design",
+          "collaborative_exploration_needed": true,
+          "specific_unknowns": [
+            "AI behavior tree architecture for authentic character responses",
+            "Energy system integration with existing dialogue framework",
+            "Phase progression logic and performance optimization"
+          ]
+        },
+        {
+          "component": "specialized_encounter_mechanics",
+          "reason": "Each boss needs unique mechanical system implementation",
+          "collaborative_exploration_needed": true,
+          "specific_unknowns": [
+            "Emotional Energy system UI design and integration",
+            "Procedural precision tracking implementation",
+            "Technical assessment comparison mechanics"
+          ]
+        }
+      ]
+    },
+    "asset_pipeline": {
+      "immediate_needs": {
+        "character_portraits": "Boss character emotional state portraits for all 4 bosses",
+        "encounter_backgrounds": "Specialized backgrounds for encounter settings",
+        "energy_system_ui": "Visual indicators for energy/momentum tracking systems"
+      },
+      "asset_creation_order": {
+        "week_1": "Marcus Chen emotional state portrait set and Emotional Energy UI components",
+        "week_2": "Audit Team assessment background and procedural precision tracking UI",
+        "week_3": "Vendor Trio technical evaluation setup and Ionix domain fusion visualizations",
+        "week_4": "Boss preparation mentor dialogue portraits and polish effects"
+      }
+    },
+    "cross_references": {
+      "data_sources": [
+        "data/bosses/marcus-chen.yaml",
+        "data/bosses/audit-team.yaml",
+        "data/bosses/vendor-trio.yaml",
+        "data/bosses/ionix.yaml",
+        "data/mentors/mentors.yaml (boss_mentor_connections)"
+      ],
+      "content_files": [
+        "content/character-arcs/marcus-chen.md",
+        "content/character-arcs/amara-sato.md"
+      ],
+      "related_systems": [
+        "mentors-interface",
+        "activity-interface",
+        "tutorial-flows",
+        "emotional-energy-system"
+      ],
+      "unlocks_and_integrations": {
+        "marcus_chen_completion": "storage_closet_access, summer_journal_discovery, pico_discovery_path",
+        "audit_team_completion": "advanced_qa_procedures, winter_synthesis_preparation",
+        "vendor_trio_completion": "advanced_equipment_access, fall_specialization_options",
+        "ionix_completion": "complete_domain_mastery, cross_domain_expertise, knowledge_integration"
+      }
+    },
+    "integration_points": {
+      "data_flow": [
+        "mentor_system -> boss_preparation: relationship_bonuses, guidance_content",
+        "boss_encounter_engine -> character_development: encounter_results, resolution_paths",
+        "energy_systems -> encounter_performance: energy_tracking, mentor_bonuses",
+        "boss_completion -> narrative_progression: unlocks, relationship_changes"
+      ],
+      "shared_dependencies": [
+        "Mentor relationship tracking system",
+        "Energy/momentum management system",
+        "Character dialogue and voice consistency",
+        "Narrative progression and unlock system"
+      ],
+      "failure_modes_to_prevent": [
+        "Boss encounters feeling disconnected from character development",
+        "Preparation activities that don't meaningfully impact encounters",
+        "Energy systems that feel mechanical rather than emotional",
+        "Resolution paths that don't affect ongoing relationships"
+      ]
+    },
+    "development_context": {
+      "current_status": "Boss encounter system design phase - leveraging rich existing boss data",
+      "current_focus_areas": [
+        "Boss encounter engine architecture and character AI behavior patterns",
+        "Mentor preparation system integration with existing relationship mechanics",
+        "Energy system UI design that enhances rather than overwhelms dialogue",
+        "Character development integration ensuring authentic personality consistency"
+      ],
+      "decision_points": "Balancing educational challenge with authentic character interaction",
+      "immediate_blockers": [
+        "AI behavior tree architecture needs collaborative exploration",
+        "Energy system UI design requires user experience testing"
+      ],
+      "ready_to_work_on": [
+        "Mentor-boss preparation dialogue content using existing mentor system",
+        "Character development integration with existing dialogue framework",
+        "Boss encounter data loading and configuration system"
+      ],
+      "inspiration": "Transform educational challenges into meaningful character interactions that teach through authentic conflict resolution",
+      "constraints": "Must feel like character interactions, not combat mechanics",
+      "success_metrics": "Boss encounters that advance both education and character relationships",
+      "technical_achievements": [],
+      "next_steps": "Implement boss encounter engine with mentor preparation integration",
+      "vision": "Boss encounters that feel like real professional conflicts with educational depth and emotional resonance"
+    }
+  },
+  "tps-minigame": {
+    "system_info": {
+      "name": "Treatment Planning System (TPS) Mini-Game",
+      "description": "Simplified TPS educational mini-game specifications and design",
+      "version": "3.0",
+      "content_reference": "content/tps-design.md"
+    },
+    "tps_goals": {
+      "educational_objectives": {
+        "conceptual_understanding": "Demonstrate fundamental treatment planning principles without overwhelming technical complexity",
+        "visual_learning": "Provide intuitive visualization of dose distribution concepts",
+        "interactive_exploration": "Allow hands-on experimentation with beam placement and parameters",
+        "knowledge_application": "Connect theoretical knowledge to practical planning scenarios"
+      },
+      "gameplay_integration": {
+        "challenge_mode": "Create planning puzzles with specific dose objectives",
+        "skill_progression": "Tie planning proficiency to Knowledge Constellation development",
+        "time_management": "Balance accuracy with efficiency in clinical scenarios",
+        "decision_making": "Present trade-offs between competing planning goals"
+      },
+      "technical_feasibility": {
+        "performance": "Maintain smooth gameplay with real-time dose calculations",
+        "simplicity": "Use simplified physics models that capture essential behaviors",
+        "modularity": "Design system to easily add features as needed",
+        "accessibility": "Ensure intuitive controls and clear visual feedback"
+      }
+    },
+    "core_components": {
+      "ct_simulation_layer": {
+        "goals": [
+          "Represent anatomical structures using grayscale pixel values",
+          "Provide density information for dose calculation",
+          "Support multiple preset patient scenarios"
+        ],
+        "design_decisions": [
+          "Use 2D slices instead of full 3D volumes for simplicity",
+          "Map pixel intensity (0-255) directly to relative density",
+          "Pre-generate patient scenarios with clear anatomical features"
+        ]
+      },
+      "beam_placement_system": {
+        "goals": [
+          "Allow intuitive beam positioning and angling",
+          "Support up to 3 beams per plan",
+          "Provide immediate visual feedback on beam paths"
+        ],
+        "design_decisions": [
+          "Click-and-drag interface for beam placement",
+          "Rotation wheel or angle slider for beam orientation",
+          "Visual beam path overlay showing entry/exit points",
+          "Beam parameter adjustments (width, intensity)"
+        ]
+      },
+      "dose_calculation_engine": {
+        "goals": [
+          "Calculate dose distribution in real-time",
+          "Model basic tissue interactions and attenuation",
+          "Demonstrate dose buildup and falloff concepts"
+        ],
+        "design_decisions": [
+          "Ray-casting algorithm for computational efficiency",
+          "Exponential attenuation model based on pixel density",
+          "Simple scatter approximation for realism",
+          "Grid-based dose accumulation"
+        ]
+      },
+      "visualization_system": {
+        "goals": [
+          "Display dose distribution clearly and intuitively",
+          "Show isodose lines at clinically relevant levels",
+          "Highlight hot spots and cold regions"
+        ],
+        "design_decisions": [
+          "Color wash overlay (blue\u2192green\u2192yellow\u2192red)",
+          "Toggleable isodose lines (20%, 50%, 80%, 95%, 100%)",
+          "Dose profile tools for analysis",
+          "DVH display for plan evaluation"
+        ]
+      }
+    },
+    "educational_integration": {
+      "concept_reinforcement": {
+        "inverse_square_law": "Demonstrate dose falloff with distance",
+        "tissue_heterogeneity": "Show effects of different densities",
+        "beam_overlap": "Illustrate dose summation principles",
+        "critical_structures": "Highlight OAR sparing techniques"
+      },
+      "knowledge_star_connections": {
+        "tp_dose_calculation": "Core calculation algorithms",
+        "tp_optimization": "Plan quality improvement",
+        "tp_heterogeneity": "Tissue density effects",
+        "tp_target_volumes": "PTV/OAR delineation",
+        "rt_fractionation": "Dose prescription concepts"
+      },
+      "clinical_application_ties": {
+        "dose_calculation": "Improved calculation speed/accuracy",
+        "optimization_algorithm": "Better automated planning",
+        "target_volumes": "Enhanced contouring tools",
+        "plan_evaluation": "Advanced analysis metrics"
+      }
+    },
+    "gameplay_scenarios": {
+      "tutorial_missions": [
+        {
+          "name": "Basic Beam Placement",
+          "objective": "Learn to position and orient treatment beams",
+          "difficulty": "beginner"
+        },
+        {
+          "name": "Understanding Dose Distribution",
+          "objective": "Visualize how beams create dose patterns",
+          "difficulty": "beginner"
+        },
+        {
+          "name": "Achieving Target Coverage",
+          "objective": "Cover the target volume with prescription dose",
+          "difficulty": "intermediate"
+        },
+        {
+          "name": "Avoiding Critical Structures",
+          "objective": "Minimize dose to organs at risk",
+          "difficulty": "intermediate"
+        }
+      ],
+      "clinical_challenges": [
+        {
+          "name": "Prostate Treatment Planning",
+          "anatomy": "prostate_with_bladder_rectum",
+          "challenge_type": "standard_case",
+          "difficulty": "intermediate"
+        },
+        {
+          "name": "Lung Tumor with Motion",
+          "anatomy": "lung_tumor_mobile",
+          "challenge_type": "motion_management",
+          "difficulty": "advanced"
+        },
+        {
+          "name": "Brain Lesion Near Critical Structures",
+          "anatomy": "brain_lesion_near_brainstem",
+          "challenge_type": "critical_sparing",
+          "difficulty": "advanced"
+        },
+        {
+          "name": "Palliative Spine Treatment",
+          "anatomy": "spine_with_cord",
+          "challenge_type": "palliative_care",
+          "difficulty": "intermediate"
+        }
+      ],
+      "time_pressure_scenarios": [
+        {
+          "name": "Emergency Planning Situations",
+          "time_limit": "10_minutes",
+          "objective": "Create acceptable plan under time pressure"
+        },
+        {
+          "name": "Multiple Patient Queue Management",
+          "scenario": "sequential_planning_challenges",
+          "objective": "Balance efficiency across multiple cases"
+        },
+        {
+          "name": "Balancing Quality vs. Efficiency",
+          "scenario": "optimization_time_tradeoffs",
+          "objective": "Find optimal balance for clinical workflow"
+        }
+      ],
+      "optimization_puzzles": [
+        {
+          "name": "Achieve Specific Dose Constraints",
+          "constraints": "precise_numerical_targets",
+          "objective": "Meet exact dose-volume requirements"
+        },
+        {
+          "name": "Minimize Dose to Specific OARs",
+          "focus": "organ_sparing_optimization",
+          "objective": "Reduce critical organ doses"
+        },
+        {
+          "name": "Maximize Target Conformity",
+          "metric": "conformity_index_optimization",
+          "objective": "Achieve best possible dose conformity"
+        },
+        {
+          "name": "Meet Multiple Competing Objectives",
+          "complexity": "multi_criteria_optimization",
+          "objective": "Balance conflicting planning goals"
+        }
+      ]
+    },
+    "progression_framework": {
+      "difficulty_scaling": {
+        "beginner": {
+          "characteristics": [
+            "Simple geometries",
+            "Single target volumes",
+            "Basic constraints",
+            "Generous time limits"
+          ]
+        },
+        "intermediate": {
+          "characteristics": [
+            "Complex anatomy",
+            "Multiple targets",
+            "Strict OAR limits",
+            "Moderate time pressure"
+          ]
+        },
+        "advanced": {
+          "characteristics": [
+            "Challenging cases",
+            "Competing objectives",
+            "Tight constraints",
+            "Significant time pressure"
+          ]
+        }
+      },
+      "feature_unlocking": {
+        "progression_rewards": [
+          "Additional beam slots",
+          "Advanced visualization tools",
+          "Automated optimization hints",
+          "Special beam modifiers"
+        ]
+      },
+      "scoring_system": {
+        "evaluation_criteria": {
+          "target_coverage": "percentage_of_target_receiving_prescription",
+          "oar_sparing": "dose_to_organs_at_risk",
+          "conformity_index": "dose_conformity_measurement",
+          "time_efficiency": "planning_time_score",
+          "overall_plan_quality": "composite_clinical_score"
+        }
+      }
+    },
+    "technical_implementation": {
+      "performance_considerations": [
+        "Use efficient ray-casting algorithms",
+        "Implement level-of-detail for calculations",
+        "Cache frequently used computations",
+        "Optimize visualization rendering"
+      ],
+      "user_interface_design": [
+        "Intuitive drag-and-drop beam placement",
+        "Clear visual feedback for all actions",
+        "Responsive controls for parameter adjustment",
+        "Informative tooltips and help system"
+      ],
+      "data_structures": [
+        "Efficient grid representation for dose",
+        "Optimized beam path calculations",
+        "Fast lookup tables for attenuation",
+        "Compressed storage for patient data"
+      ]
+    },
+    "success_metrics": {
+      "educational_effectiveness": [
+        "Player understanding of dose distribution concepts",
+        "Ability to create clinically reasonable plans",
+        "Knowledge retention of planning principles",
+        "Transfer of skills to real-world understanding"
+      ],
+      "gameplay_engagement": [
+        "Time spent in planning activities",
+        "Completion rate of challenges",
+        "Player satisfaction scores",
+        "Replay value of scenarios"
+      ],
+      "system_performance": {
+        "calculation_speed": "< 100ms for updates",
+        "visual_refresh_rate": "60 FPS",
+        "memory_usage": "< 100MB",
+        "load_times": "< 2 seconds"
+      }
+    },
+    "future_enhancements": {
+      "advanced_features": [
+        "3D visualization options",
+        "IMRT/VMAT simulation",
+        "Biological dose modeling",
+        "Multi-criteria optimization"
+      ],
+      "extended_scenarios": [
+        "Adaptive planning challenges",
+        "Special technique simulations",
+        "Historical case studies",
+        "Competitive planning modes"
+      ],
+      "integration_expansions": [
+        "Connection to QA mini-games",
+        "Link to dosimetry calculations",
+        "Treatment delivery simulation",
+        "Plan verification activities"
+      ]
+    },
+    "activity_integration": {
+      "star_relationships": {
+        "tp_dose_calculation": {
+          "relevance": "primary",
+          "unlocks": "basic_dose_calculation_scenarios"
+        },
+        "tp_optimization": {
+          "relevance": "primary",
+          "unlocks": "optimization_challenge_modes"
+        },
+        "tp_heterogeneity": {
+          "relevance": "secondary",
+          "unlocks": "tissue_heterogeneity_scenarios"
+        },
+        "tp_evaluation": {
+          "relevance": "primary",
+          "unlocks": "plan_evaluation_tools"
+        }
+      },
+      "mentor_connections": {
+        "dr_quinn": {
+          "role": "primary_guide",
+          "specializations": [
+            "optimization",
+            "evaluation",
+            "advanced_techniques"
+          ]
+        },
+        "dr_garcia": {
+          "role": "clinical_context",
+          "specializations": [
+            "patient_cases",
+            "clinical_priorities"
+          ]
+        },
+        "dr_kapoor": {
+          "role": "quality_assurance",
+          "specializations": [
+            "dose_accuracy",
+            "measurement_validation"
+          ]
+        }
+      }
+    },
+    "minigame_flow_examples": {
+      "basic_tutorial": {
+        "steps": {
+          "1": "Introduction to interface and anatomy",
+          "2": "Place first beam",
+          "3": "Observe dose distribution",
+          "4": "Adjust beam parameters",
+          "5": "Add second beam",
+          "6": "Evaluate combined dose",
+          "7": "Submit plan for scoring"
+        }
+      },
+      "advanced_challenge": {
+        "steps": {
+          "1": "Review case presentation and objectives",
+          "2": "Analyze anatomy and identify challenges",
+          "3": "Plan beam arrangement strategy",
+          "4": "Place and optimize beams iteratively",
+          "5": "Check dose-volume histogram",
+          "6": "Refine plan based on constraints",
+          "7": "Final evaluation and submission"
+        }
+      }
+    },
+    "cross_references": {
+      "related_documents": [
+        "data/stars/stars-definitions.yaml",
+        "data/mentors/mentors.yaml",
+        "data/constants/game-constants.yaml",
+        "data/interfaces/tutorial-flows.yaml"
+      ],
+      "export_templates": [
+        "claude-context",
+        "cursor-dev",
+        "tps-reference"
+      ]
+    }
+  }
+}

@@ -1355,6 +1355,7 @@ class DocumentationExporter:
             "bosses": self.load_all_bosses(),
             "mentors": self.load_all_mentors(),
             "constants": self.load_all_constants(),
+            "interfaces": self.load_all_interfaces(),
             "content": self.load_markdown_content()
         }
         

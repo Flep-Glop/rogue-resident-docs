@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import yaml from 'js-yaml';
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 
@@ -13,18 +12,21 @@ export interface SystemData {
   [key: string]: any;
 }
 
+// Read from consolidated JSON files instead of individual YAML files
 export async function readDataFile(category: string, filename: string): Promise<SystemData | null> {
   try {
-    const filePath = path.join(DATA_DIR, category, `${filename}.yaml`);
+    // Read from the consolidated JSON file for this category
+    const jsonFilePath = path.join(DATA_DIR, `${category}.json`);
     
-    if (!fs.existsSync(filePath)) {
+    if (!fs.existsSync(jsonFilePath)) {
       return null;
     }
     
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const data = yaml.load(fileContent) as SystemData;
+    const fileContent = fs.readFileSync(jsonFilePath, 'utf8');
+    const allData = JSON.parse(fileContent);
     
-    return data;
+    // Return the specific file data from the consolidated structure
+    return allData[filename] || null;
   } catch (error) {
     console.error(`Error reading ${category}/${filename}:`, error);
     return null;
@@ -33,22 +35,10 @@ export async function readDataFile(category: string, filename: string): Promise<
 
 export async function writeDataFile(category: string, filename: string, data: SystemData): Promise<boolean> {
   try {
-    const categoryDir = path.join(DATA_DIR, category);
-    
-    // Ensure directory exists
-    if (!fs.existsSync(categoryDir)) {
-      fs.mkdirSync(categoryDir, { recursive: true });
-    }
-    
-    const filePath = path.join(categoryDir, `${filename}.yaml`);
-    const yamlContent = yaml.dump(data, { 
-      indent: 2,
-      lineWidth: 100,
-      noRefs: true 
-    });
-    
-    fs.writeFileSync(filePath, yamlContent, 'utf8');
-    return true;
+    // Note: Writing back to JSON files is not supported in this architecture
+    // Data should be edited in YAML files and re-exported using: python3 docs.py export nextjs
+    console.warn('Writing to JSON files is not supported. Edit YAML files and run: python3 docs.py export nextjs');
+    return false;
   } catch (error) {
     console.error(`Error writing ${category}/${filename}:`, error);
     return false;
@@ -57,17 +47,18 @@ export async function writeDataFile(category: string, filename: string, data: Sy
 
 export async function listDataFiles(category: string): Promise<string[]> {
   try {
-    const categoryDir = path.join(DATA_DIR, category);
+    // Read from the consolidated JSON file for this category
+    const jsonFilePath = path.join(DATA_DIR, `${category}.json`);
     
-    if (!fs.existsSync(categoryDir)) {
+    if (!fs.existsSync(jsonFilePath)) {
       return [];
     }
     
-    const files = fs.readdirSync(categoryDir)
-      .filter(file => file.endsWith('.yaml'))
-      .map(file => path.basename(file, '.yaml'));
+    const fileContent = fs.readFileSync(jsonFilePath, 'utf8');
+    const allData = JSON.parse(fileContent);
     
-    return files;
+    // Return the keys (filenames) from the consolidated data
+    return Object.keys(allData);
   } catch (error) {
     console.error(`Error listing files in ${category}:`, error);
     return [];
@@ -75,17 +66,22 @@ export async function listDataFiles(category: string): Promise<string[]> {
 }
 
 export async function getAllData(category: string): Promise<Record<string, SystemData>> {
-  const files = await listDataFiles(category);
-  const allData: Record<string, SystemData> = {};
-  
-  for (const filename of files) {
-    const data = await readDataFile(category, filename);
-    if (data) {
-      allData[filename] = data;
+  try {
+    // Read the entire consolidated JSON file for this category
+    const jsonFilePath = path.join(DATA_DIR, `${category}.json`);
+    
+    if (!fs.existsSync(jsonFilePath)) {
+      return {};
     }
+    
+    const fileContent = fs.readFileSync(jsonFilePath, 'utf8');
+    const allData = JSON.parse(fileContent);
+    
+    return allData;
+  } catch (error) {
+    console.error(`Error reading all data for ${category}:`, error);
+    return {};
   }
-  
-  return allData;
 }
 
 export async function validateCrossReferences(data: SystemData, category: string): Promise<string[]> {
@@ -124,4 +120,36 @@ export async function validateCrossReferences(data: SystemData, category: string
   }
   
   return errors;
+}
+
+export async function getAvailableSystems(): Promise<string[]> {
+  try {
+    // Check what interface systems are available
+    const jsonFilePath = path.join(DATA_DIR, 'interfaces.json');
+    
+    if (!fs.existsSync(jsonFilePath)) {
+      // Fallback to checking individual category files
+      const availableSystems = [];
+      const categories = ['interfaces', 'bosses', 'mentors', 'cards', 'constants'];
+      
+      for (const category of categories) {
+        const categoryPath = path.join(DATA_DIR, `${category}.json`);
+        if (fs.existsSync(categoryPath)) {
+          const content = fs.readFileSync(categoryPath, 'utf8');
+          const data = JSON.parse(content);
+          availableSystems.push(...Object.keys(data));
+        }
+      }
+      
+      return [...new Set(availableSystems)]; // Remove duplicates
+    }
+    
+    const fileContent = fs.readFileSync(jsonFilePath, 'utf8');
+    const interfacesData = JSON.parse(fileContent);
+    
+    return Object.keys(interfacesData);
+  } catch (error) {
+    console.error('Error getting available systems:', error);
+    return ['activity-interface', 'mentors-interface', 'tutorial-flows']; // Fallback
+  }
 } 
