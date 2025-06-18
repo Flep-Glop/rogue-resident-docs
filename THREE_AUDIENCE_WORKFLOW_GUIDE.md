@@ -621,6 +621,32 @@ def export_for_nextjs(self):
 - **Data Availability**: All YAML data accessible in deployed app via JSON
 - **Performance**: Fast JSON parsing vs slower YAML runtime processing
 - **Developer Experience**: Simple export command syncs all data formats
+- **API Route Safety**: Python-spawning routes disabled in production with helpful error messages
+
+### **Final Deployment Resolution** 🎯
+
+#### **Issue**: Python API Routes in Production
+- ❌ `spawn python3 ENOENT` errors from API routes trying to execute Python scripts
+- ❌ `/api/narrative-workflow`, `/api/workflow-export`, `/api/python-export` routes failing
+
+#### **Solution**: Graceful Degradation with Clear Guidance
+```typescript
+// ✅ CORRECT: API routes return helpful guidance instead of trying to spawn Python
+return NextResponse.json({
+  success: false,
+  error: 'Document generation not available in deployed environment',
+  solution: {
+    title: 'Use Offline Workflow Instead',
+    steps: ['Run locally: python3 docs.py narrative ...', 'Files generated in exports/'],
+    explanation: 'Deployed app uses pre-exported JSON for performance and reliability'
+  }
+}, { status: 501 }) // 501 Not Implemented
+```
+
+#### **Architecture Clarity**:
+- **🌐 Deployed Web App**: Data browsing, visualization, JSON consumption only
+- **💻 Local Development**: Full document generation, Python pipeline, template rendering
+- **📄 Export Pipeline**: `python3 docs.py export nextjs` syncs YAML → JSON before deploy
 
 ---
 
