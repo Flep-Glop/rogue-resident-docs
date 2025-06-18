@@ -1,13 +1,6 @@
 {
-  "version": 2,
-  "public": true,
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/$1"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+  "buildCommand": "cd rogue-docs-web && npm run build",
+  "devCommand": "cd rogue-docs-web && npm run dev",
+  "installCommand": "cd rogue-docs-web && npm install",
+  "framework": "nextjs"
 } 
