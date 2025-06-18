@@ -1,0 +1,623 @@
+# {{ system_info.name }} - Narrative & Lore Context
+
+> **🎭 Story Element**: {{ system_info.description }}  
+> **📖 Narrative Role**: {{ system_info.user_experience_philosophy }}  
+> **✨ Story Impact**: {{ development_context.inspiration }}
+
+{% if repository_info %}
+---
+
+## 📍 SOURCE CONTEXT
+
+**Source Repository**: {{ repository_info.source_repository }}  
+**Generated At**: {{ repository_info.generated_at }}  
+**Self-Contained**: Yes - all referenced content embedded below
+
+{% endif %}
+---
+
+## 🎭 Character & Story Integration
+
+### Main Characters Involved
+
+{% if character_arcs %}
+{% for char_name, char_info in character_arcs.items() %}
+#### {{ char_name | title | replace("-", " ") }}
+**Character Arc**: {{ char_info.content_preview }}
+
+**Story Role**: Key character in the narrative development system with rich background and relationship dynamics
+
+---
+{% endfor %}
+{% endif %}
+
+{% if boss_characters %}
+{% for boss_name, boss_info in boss_characters.items() %}
+#### {{ boss_info.name }}
+**Character Type**: {{ boss_info.type | title | replace("_", " ") }}
+**Story Function**: {{ boss_info.description }}
+
+{% if boss_info.character_arc %}
+**Character Development**: Complex progression through multiple phases of character growth and conflict resolution
+{% endif %}
+
+**Encounter Details**:
+- **Difficulty**: {{ boss_info.difficulty | title }} ({{ boss_info.mastery_required }} mastery required)
+- **Season**: {{ boss_info.season | title }}
+- **Duration**: {{ boss_info.duration }}
+- **Special Mechanic**: {{ boss_info.special_mechanic | replace("_", " ") | title }}
+
+{% if boss_info.preparation_activities %}
+**Preparation Activities Available**:
+{% for activity in boss_info.preparation_activities %}
+- {{ activity.name if activity.name else activity }}
+{% endfor %}
+{% endif %}
+
+**Narrative Significance**: {{ boss_info.sp_reward }} SP reward reflects major character growth milestone
+
+---
+{% endfor %}
+{% endif %}
+
+### Mentor Personalities & Voices
+
+{% if mentors_data and mentors_data.structured_mentors %}
+{% for mentor_id, mentor_info in mentors_data.structured_mentors.items() %}
+**{{ mentor_info.name }}**
+- **Teaching Style**: {{ mentor_info.teaching_style | replace("_", " ") | title }}
+- **Dialogue Voice**: {{ mentor_info.personality.dialogue_style | replace("_", " ") | title }}
+- **Story Function**: Guides player through {{ system_info.name.lower() }} with authentic medical physics mentorship
+- **Domain Expertise**: {{ mentor_info.personality.domain_expertise | replace("_", " ") | title }}
+
+{% if mentor_info.dialogue_themes %}
+**Key Dialogue Themes**:
+{% for theme in mentor_info.dialogue_themes %}
+- {{ theme | replace("_", " ") | title }}
+{% endfor %}
+{% endif %}
+
+{% if embedded_related_systems['constellation-phenomenon'] and embedded_related_systems['constellation-phenomenon'].rich_data.mentor_alignment_matrix %}
+{% set mentor_key = mentor_id | replace("_", "") | lower %}
+{% if embedded_related_systems['constellation-phenomenon'].rich_data.mentor_alignment_matrix[mentor_key] %}
+{% set alignment = embedded_related_systems['constellation-phenomenon'].rich_data.mentor_alignment_matrix[mentor_key] %}
+**Paradigm Perspective**:
+- **Interpretation**: {{ alignment.primary_interpretation | replace("_", " ") | title }}
+{% if alignment.paradigm_split_position %}
+- **Position on Amara's Work**: {{ alignment.paradigm_split_position | replace("_", " ") | title }}
+- **Empathy Level**: {{ alignment.empathy_level | replace("_", " ") | title }}
+{% endif %}
+{% endif %}
+{% endif %}
+
+---
+{% endfor %}
+{% else %}
+**mentors**
+- **Teaching Style**: Patient and supportive
+- **Dialogue Voice**: Professional yet warm
+- **Story Function**: Guides player through {{ system_info.name.lower() }} with authentic medical physics mentorship
+
+{% endif %}
+
+---
+
+## 📖 World Building & Lore
+
+### Medical Physics Setting
+
+**Hospital Environment**:
+- **Authentic Context**: Real medical physics residency experience
+- **Learning Culture**: Mentor-guided discovery in professional setting  
+- **Technology Integration**: Modern medical physics equipment and workflows
+- **Emotional Tone**: Supportive learning environment with meaningful stakes
+
+### Constellation Phenomenon Integration
+
+{% if embedded_related_systems['constellation-phenomenon'] %}
+**The Core Mystery**: {{ embedded_related_systems['constellation-phenomenon'].system_info.description if embedded_related_systems['constellation-phenomenon'].system_info else 'The mysterious phenomenon allowing enhanced learning and pattern recognition' }}
+
+**Three Philosophical Interpretations**:
+{% if embedded_related_systems['constellation-phenomenon'] and embedded_related_systems['constellation-phenomenon'].rich_data and embedded_related_systems['constellation-phenomenon'].rich_data.three_interpretations %}
+{% for interpretation, details in embedded_related_systems['constellation-phenomenon'].rich_data.three_interpretations.items() %}
+- **{{ interpretation | replace("_", " ") | title }}{% if details.advanced_concept %} ({{ details.advanced_concept | replace("_", " ") | title }}){% endif %}**: {{ details.core_concept | replace("_", " ") }}
+  - **Category**: {{ details.category | title }}
+  - **Supporting Characters**: {{ details.supporting_characters.primary | join(", ") | title }}
+  - **Evidence Focus**: {{ details.evidence_focus[0] | replace("_", " ") if details.evidence_focus else 'Supporting evidence available' }}
+  {% if details.cross_domain_examples %}
+  - **Cross-Domain Examples**:
+    {% for example_name, example_details in details.cross_domain_examples.items() %}
+    - **{{ example_name | replace("_", " ") | title }}**: {{ example_details.principle | replace("_", " ") }}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+{% endif %}
+
+**Visual Design Language**:
+{% if embedded_related_systems['constellation-phenomenon'] and embedded_related_systems['constellation-phenomenon'].rich_data and embedded_related_systems['constellation-phenomenon'].rich_data.visual_design_language %}
+{% for interpretation, visual_details in embedded_related_systems['constellation-phenomenon'].rich_data.visual_design_language.items() %}
+- **{{ interpretation | replace("_", " ") | title }}**: 
+  - **Particle Behavior**: {{ visual_details.particle_behavior | replace("_", " ") }}
+  - **Color Palette**: {{ visual_details.color_palette | replace("_", " ") }}
+  - **Animation Style**: {{ visual_details.animation_style | replace("_", " ") }}
+{% endfor %}
+{% endif %}
+
+**How This System Connects**:
+- Knowledge visualization through star constellation metaphors
+- Learning becomes literal "illumination" of understanding
+- Each mastered concept adds to personal knowledge constellation
+- Creates sense of building toward greater understanding
+- **Deliberate Ambiguity**: Multiple valid interpretations enhance personal meaning-making
+{% else %}
+**Core Learning Metaphor**: Knowledge visualization through constellation and star formation
+- Learning progress becomes visible through illuminated star patterns
+- Cross-domain connections create meaningful constellation relationships
+- Personal knowledge constellation grows throughout the learning journey
+{% endif %}
+
+### Journal & Reflection System
+
+{% if embedded_related_systems['journal-system'] %}
+**Four-Season Narrative Progression**:
+{% if embedded_related_systems['journal-system'].rich_data.visual_progression %}
+{% for season, progression in embedded_related_systems['journal-system'].rich_data.visual_progression.items() %}
+- **{{ season | title }}**: {{ embedded_related_systems['journal-system'].rich_data.narrative_themes[season] | replace("_", " ") | title if embedded_related_systems['journal-system'].rich_data.narrative_themes else 'Personal growth and discovery' }}
+  - **Journal Appearance**: {{ progression.journal_appearance | replace("_", " ") }}
+  - **Particle Effects**: {{ progression.particle_effects | replace("_", " ") }}
+  - **Constellation Display**: {{ progression.constellation_display | replace("_", " ") }}
+{% endfor %}
+{% endif %}
+
+**Amara Character Arc Integration**:
+{% if embedded_related_systems['amara-narrative'] and embedded_related_systems['amara-narrative'].rich_data.character_data.amara_sato %}
+{% set amara = embedded_related_systems['amara-narrative'].rich_data.character_data.amara_sato %}
+**Core Philosophy**: {{ amara.philosophical_framework | replace("_", " ") | title if amara.philosophical_framework else 'Pattern recognition and truth-seeking' }}
+- **Paradigm Approach**: {{ amara.paradigm_shift | replace("_", " ") if amara.paradigm_shift else 'Progressive understanding development' }}
+- **Key Metaphor**: {{ amara.key_metaphor | replace("_", " ") if amara.key_metaphor else 'Breakthrough discovery journey' }}
+- **Current Status**: {{ amara.current_location | replace("_", " ") | title if amara.current_location else 'Remote research institute' }}
+
+**Seasonal Progression**:
+{% endif %}
+{% if embedded_related_systems['journal-system'].rich_data.amara_character_arc %}
+{% for season, character_state in embedded_related_systems['journal-system'].rich_data.amara_character_arc.items() %}
+- **{{ season | title }}**: {{ character_state | replace("_", " ") }}
+{% endfor %}
+{% endif %}
+
+{% if embedded_related_systems['amara-narrative'] and embedded_related_systems['amara-narrative'].rich_data.narrative_progression %}
+**Doubt Cycle Integration**:
+{% for season, progression in embedded_related_systems['amara-narrative'].rich_data.narrative_progression.items() %}
+{% if progression.journal_reveals %}
+{% for reveal in progression.journal_reveals %}
+{% if reveal.type == "doubt_cycle_entries" %}
+- **{{ season | title }}**: {{ reveal.content | replace("_", " ") | title }}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+**Story Integration**:
+- Personal reflection mirrors real resident experience
+- Journal evolution reflects growing mastery and understanding
+- Four journals tell complete story of professional development
+- Creates authentic sense of discovery and personal growth
+{% else %}
+**Narrative Function**: Personal reflection and professional development tracking
+- Journal entries reflect authentic resident learning experience
+- Ability cards represent growing professional competence
+- Progress tracking mirrors real medical physics training
+- Creates authentic sense of professional development
+{% endif %}
+
+### Pico Character Integration
+
+{% if embedded_related_systems['pico-character'] and embedded_related_systems['pico-character'].rich_data.character_core_identity.pico %}
+{% set pico = embedded_related_systems['pico-character'].rich_data.character_core_identity.pico %}
+**The Hospital Secret**: {{ pico.faculty_awareness | replace("_", " ") | title if pico.faculty_awareness else 'Companion character discovery' }}
+- **Discovery Method**: {{ pico.consciousness_secrecy | replace("_", " ") if pico.consciousness_secrecy else 'Player exploration and interaction' }}
+- **Classification**: {{ pico.hospital_classification | replace("_", " ") if pico.hospital_classification else 'Stored equipment' }}
+
+{% if embedded_related_systems['pico-character'].rich_data.portable_transformation %}
+{% set transformation = embedded_related_systems['pico-character'].rich_data.portable_transformation %}
+**Sacrifice & Rebirth**: {{ transformation.rebirth_concept | replace("_", " ") | title if transformation.rebirth_concept else 'Character transformation' }}
+- **Sacrifice Meaning**: {{ transformation.sacrifice_meaning | replace("_", " ") if transformation.sacrifice_meaning else 'Meaningful character development' }}
+- **Continuity**: {{ transformation.consciousness_continuity | replace("_", " ") if transformation.consciousness_continuity else 'Character evolution' }}
+{% endif %}
+{% else %}
+**Companion Character**: Sentient electrometer providing emotional anchor and technical guidance
+- Discovery through authentic hospital exploration and relationship building
+- Character growth parallels player's professional development journey
+{% endif %}
+
+### Activity Framework & Learning Progression
+
+{% if embedded_related_systems['activity-framework'] and embedded_related_systems['activity-framework'].rich_data %}
+**Seasonal Learning Progression**:
+{% if embedded_related_systems['activity-framework'].rich_data.seasonal_themes %}
+{% for season, details in embedded_related_systems['activity-framework'].rich_data.seasonal_themes.items() %}
+- **{{ season | title }}**: {{ details.focus | replace("_", " ") | title }}
+  - **Activity Types**: {{ details.activity_types | join(", ") if details.activity_types else 'Various activities' }}
+  - **Challenge Types**: {{ details.challenge_types | join(", ") if details.challenge_types else 'Mixed challenges' }}
+  - **Primary Domains**: {{ details.primary_domains if details.primary_domains else 'All domains' }}
+{% endfor %}
+{% endif %}
+
+**Reward Philosophy** *(Supports Intrinsic Motivation)*:
+{% if embedded_related_systems['activity-framework'].rich_data.reward_types %}
+{% for reward_category, reward_details in embedded_related_systems['activity-framework'].rich_data.reward_types.items() %}
+- **{{ reward_category | replace("_", " ") | title }}**: Professional development through meaningful achievement
+  {% if reward_details is mapping and reward_details.base_range %}
+  - **Range**: {{ reward_details.base_range }}
+  {% endif %}
+{% endfor %}
+{% endif %}
+
+**Library Special System**:
+{% if embedded_related_systems['activity-framework'].rich_data.library_special_mechanics %}
+- **Discovery Mode**: {{ embedded_related_systems['activity-framework'].rich_data.library_special_mechanics.discovery_mode.description if embedded_related_systems['activity-framework'].rich_data.library_special_mechanics.discovery_mode else 'Browse for knowledge through card catalog interface' }}
+- **Research Minigame**: {{ embedded_related_systems['activity-framework'].rich_data.library_special_mechanics.research_minigame.description if embedded_related_systems['activity-framework'].rich_data.library_special_mechanics.research_minigame else 'Search and cross-reference research topics' }}
+- **Time Manipulation**: {{ embedded_related_systems['activity-framework'].rich_data.library_special_mechanics.time_manipulation.description if embedded_related_systems['activity-framework'].rich_data.library_special_mechanics.time_manipulation else 'Extended hours and time dilation effects' }}
+{% endif %}
+{% else %}
+**Educational Progression**: Seasonal learning framework with authentic medical physics challenges
+- Progressive difficulty and autonomy as students develop competence
+- Intrinsic motivation through meaningful professional development goals
+- Self-directed discovery opportunities through library research system
+{% endif %}
+
+### Etching Discovery & Pattern Formation
+
+{% if embedded_related_systems['etching-system'] and embedded_related_systems['etching-system'].rich_data %}
+**Etching Categories & Discovery**:
+{% if embedded_related_systems['etching-system'].rich_data.etching_categories %}
+{% for category, details in embedded_related_systems['etching-system'].rich_data.etching_categories.items() %}
+- **{{ category | replace("_", " ") | title }}** ({{ details.count }} etchings): {{ details.description }}
+  - **Characteristics**: {{ details.characteristics }}
+  - **Discovery Method**: {{ details.discovery_method }}
+{% endfor %}
+{% endif %}
+
+**Visual Design Philosophy**:
+{% if embedded_related_systems['etching-system'].rich_data.etching_visual_themes %}
+- **Visual Appearance**: {{ embedded_related_systems['etching-system'].rich_data.etching_visual_themes.visual_appearance | join(", ") if embedded_related_systems['etching-system'].rich_data.etching_visual_themes.visual_appearance else 'Hand-drawn constellation diagrams with authentic materials' }}
+- **Discovery Visualization**: {{ embedded_related_systems['etching-system'].rich_data.etching_visual_themes.discovery_visualization | join(", ") if embedded_related_systems['etching-system'].rich_data.etching_visual_themes.discovery_visualization else 'Engaging finding and cataloging animations' }}
+{% endif %}
+
+**Mentor-Specific Etching Styles**:
+{% if embedded_related_systems['etching-system'].rich_data.etching_discovery_design and embedded_related_systems['etching-system'].rich_data.etching_discovery_design.mentor_gifts %}
+{% for mentor, style_details in embedded_related_systems['etching-system'].rich_data.etching_discovery_design.mentor_gifts.items() %}
+- **{{ mentor | replace("_", " ") | title }}**: {{ style_details.style }}
+  - **Reflects**: {{ style_details.personality_reflection }}
+{% endfor %}
+{% endif %}
+{% else %}
+**Pattern Discovery System**: Hand-drawn constellation diagrams found throughout the hospital
+- Seasonal progression from foundational to legendary patterns
+- Mentor-specific visual styles reflect individual personalities
+- Authentic materiality connects students to professional traditions
+{% endif %}
+
+### Application Card System
+
+{% if embedded_related_systems['complete-card-system'] and embedded_related_systems['complete-card-system'].rich_data %}
+**Domain-Specific Card Design**:
+{% if embedded_related_systems['complete-card-system'].rich_data.treatment_planning_cards %}
+- **Treatment Planning**: {{ embedded_related_systems['complete-card-system'].rich_data.treatment_planning_cards | length }} cards with optimization-focused mechanics
+{% endif %}
+{% if embedded_related_systems['complete-card-system'].rich_data.radiation_therapy_cards %}
+- **Radiation Therapy**: {{ embedded_related_systems['complete-card-system'].rich_data.radiation_therapy_cards | length }} cards with delivery-focused mechanics
+{% endif %}
+{% if embedded_related_systems['complete-card-system'].rich_data.linear_accelerator_cards %}
+- **Linear Accelerator**: {{ embedded_related_systems['complete-card-system'].rich_data.linear_accelerator_cards | length }} cards with equipment-focused mechanics
+{% endif %}
+{% if embedded_related_systems['complete-card-system'].rich_data.dosimetry_cards %}
+- **Dosimetry**: {{ embedded_related_systems['complete-card-system'].rich_data.dosimetry_cards | length }} cards with measurement-focused mechanics
+{% endif %}
+{% if embedded_related_systems['complete-card-system'].rich_data.cross_domain_cards %}
+- **Cross-Domain**: {{ embedded_related_systems['complete-card-system'].rich_data.cross_domain_cards | length }} special cards unlocked through etching patterns
+{% endif %}
+
+**Card Evolution System**:
+{% if embedded_related_systems['complete-card-system'].rich_data.progressive_introduction %}
+- **Progressive Introduction**: {{ embedded_related_systems['complete-card-system'].rich_data.progressive_introduction.tutorial_rate if embedded_related_systems['complete-card-system'].rich_data.progressive_introduction.tutorial_rate else '1-2 cards per week during tutorial phases' }}
+- **Card Slot System**: {{ embedded_related_systems['complete-card-system'].rich_data.card_system_overview.card_slot_limit if embedded_related_systems['complete-card-system'].rich_data.card_system_overview else '3' }} maximum equipped cards
+- **Selection Phase**: {{ embedded_related_systems['complete-card-system'].rich_data.card_system_overview.selection_phase if embedded_related_systems['complete-card-system'].rich_data.card_system_overview else 'Night Phase planning' }}
+{% endif %}
+{% else %}
+**Professional Ability System**: 26 application cards representing growing medical physics competence
+- Domain-specific visual languages and gameplay mechanics
+- Progressive introduction respects learning pace and cognitive load
+- Cards evolve visually as students master underlying concepts
+{% endif %}
+
+---
+
+## 🌟 Emotional Journey & Player Experience
+
+### Story Beats & Emotional Arc
+
+{% for step_name, step in user_experience_flow.items() %}
+**{{ step.name }}** - *Emotional Beat: {{ step.name | replace("_", " ") | title }}*
+{{ step.description }}
+
+**Player's Internal Experience**:
+{% for action in step.user_actions %}
+- {{ action }} *(builds sense of {{ "confidence" if "first" in action.lower() else "competence" if "challenge" in action.lower() else "connection" if "mentor" in action.lower() else "accomplishment" }})*
+{% endfor %}
+
+**Narrative Significance**: This moment represents the player's growing relationship with {{ system_info.name.lower() }} and deepening understanding of medical physics professional identity.
+
+---
+{% endfor %}
+
+### Character Growth Through System
+
+**Professional Identity Development**:
+- **Beginner**: Uncertainty and dependence on mentor guidance
+- **Growing**: Recognition of patterns and increasing confidence  
+- **Competent**: Able to tackle challenges with mentor support
+- **Advanced**: Teaching others and demonstrating mastery
+
+**Relationship Evolution**:
+- **Early**: Formal mentor-student dynamics
+- **Developing**: Personal connection and trust building
+- **Mature**: Collaborative professional relationship
+- **Mastery**: Peer-level discussions with continued learning
+
+---
+
+## 🎨 Tone, Voice & Atmospheric Details
+
+### Writing Style Guidelines
+
+**Dialogue Characteristics**:
+- **Authentic Medical Language**: Real terminology used naturally, not forced
+- **Mentor Personalities**: Each mentor has distinct speaking patterns and approaches
+- **Emotional Resonance**: Balances professional competence with human connection
+- **Learning Integration**: Knowledge shared through natural conversation, not lectures
+
+**Atmospheric Elements**:
+- **Hospital Ambiance**: Sounds, lighting, and rhythms of working medical facility
+- **Technology Presence**: Equipment hums, monitor beeps, but doesn't overwhelm story
+- **Time Pressure**: Realistic pacing of medical physics work without artificial urgency
+- **Professional Culture**: Authentic representation of physics residency experience
+
+### Visual Storytelling Integration
+
+{% if asset_pipeline %}
+**Key Visual Narratives**:
+{% for category, assets in asset_pipeline.immediate_needs.items() %}
+**{{ category | title }}**:
+{% for asset in assets %}
+- {{ asset }} *(supports {{ "character development" if "mentor" in asset.lower() else "world immersion" if "background" in asset.lower() else "emotional connection" }})*
+{% endfor %}
+{% endfor %}
+
+**Visual Progression**: {{ asset_pipeline.asset_creation_order.week_1 }} → {{ asset_pipeline.asset_creation_order.week_4 }}
+{% endif %}
+
+{% if embedded_related_systems['visual-design'] and embedded_related_systems['visual-design'].rich_data %}
+**Domain-Specific Visual Language**:
+{% if embedded_related_systems['visual-design'].rich_data.knowledge_constellation_visuals and embedded_related_systems['visual-design'].rich_data.knowledge_constellation_visuals.domain_environments %}
+{% for domain, visual_details in embedded_related_systems['visual-design'].rich_data.knowledge_constellation_visuals.domain_environments.items() %}
+- **{{ domain | replace("_", " ") | title }}**: {{ visual_details.color_scheme | title }} theme
+  - **Visual Elements**: {{ visual_details.background_elements | join(", ") | replace("_", " ") }}
+  - **Atmosphere**: {{ visual_details.visual_theme | replace("_", " ") | title }}
+{% endfor %}
+{% endif %}
+
+**Star Visualization Progression**:
+{% if embedded_related_systems['visual-design'].rich_data.knowledge_constellation_visuals and embedded_related_systems['visual-design'].rich_data.knowledge_constellation_visuals.star_visualization and embedded_related_systems['visual-design'].rich_data.knowledge_constellation_visuals.star_visualization.progression_states %}
+{% for state, description in embedded_related_systems['visual-design'].rich_data.knowledge_constellation_visuals.star_visualization.progression_states.items() %}
+- **{{ state | title }}**: {{ description | replace("_", " ") }}
+{% endfor %}
+{% endif %}
+
+**Connection & Pattern Visualization**:
+{% if embedded_related_systems['visual-design'].rich_data.knowledge_constellation_visuals and embedded_related_systems['visual-design'].rich_data.knowledge_constellation_visuals.connection_visualization %}
+- **Active Connections**: {{ embedded_related_systems['visual-design'].rich_data.knowledge_constellation_visuals.connection_visualization.active_connections | replace("_", " ") }}
+- **Pattern Formation**: {{ embedded_related_systems['visual-design'].rich_data.knowledge_constellation_visuals.connection_visualization.pattern_formation | replace("_", " ") }}
+- **Knowledge Transfer**: {{ embedded_related_systems['visual-design'].rich_data.knowledge_constellation_visuals.connection_visualization.knowledge_transfer | replace("_", " ") }}
+{% endif %}
+{% endif %}
+
+---
+
+## 🔗 Story Connections & Cross-References
+
+### Narrative Threads
+
+{% if repository_info.references_exported %}
+**Story elements connect across systems** (see references/ folder for full details):
+{% else %}
+**Story elements weave throughout multiple systems**:
+{% endif %}
+
+{% for system_name in cross_references.related_systems %}
+**{{ system_name | replace("-", " ") | title }}**:
+{% if system_name == "activity-framework" %}
+- Provides the actual learning challenges that drive character growth
+- Creates meaningful stakes for player's professional development
+{% elif system_name == "visual-design" %}  
+- Establishes visual language that supports narrative mood and tone
+- Ensures consistent atmospheric storytelling across all interactions
+{% elif system_name == "mentors" %}
+- Delivers authentic character voices and relationship dynamics
+- Provides emotional anchor points for player's learning journey
+{% else %}
+- Contributes to overall narrative coherence and world consistency
+{% endif %}
+
+{% endfor %}
+
+### Continuity Considerations
+
+**Character Consistency**:
+- Mentor personalities remain authentic across all system interactions
+- Player growth arc maintains logical progression throughout game
+- Relationship dynamics evolve naturally based on player choices and progress
+
+**World Building Integrity**:
+- Medical physics details remain accurate and professionally authentic
+- Hospital environment feels lived-in and realistic
+- Technology integration supports rather than distracts from human stories
+
+**Emotional Continuity**:
+- Tone remains consistent: supportive, professional, growth-oriented
+- Stakes feel meaningful without being artificially dramatic
+- Learning victories feel earned and professionally significant
+
+---
+
+## 💭 Narrative Design Philosophy
+
+### Core Storytelling Principles
+
+**Show, Don't Tell**: Learning happens through authentic interaction and discovery rather than exposition dumps
+
+**Character-Driven**: All systems serve character development and relationship building first, mechanics second
+
+**Professional Authenticity**: Every narrative element reflects real medical physics residency experience
+
+**Emotional Intelligence**: Balances intellectual challenge with emotional support and human connection
+
+**Meaningful Stakes**: Consequences matter for professional growth and patient care, not just game progression
+
+### Story Integration Strategy
+
+**Seamless Learning**: Educational content emerges naturally from character interactions and professional scenarios
+
+**Mentor-Guided Discovery**: Complex concepts introduced through supportive relationships rather than abstract instruction
+
+**Personal Stakes**: Player's growing competence directly impacts ability to help others and succeed professionally
+
+**Cultural Authenticity**: Reflects real culture of medical physics - collaborative, precision-focused, patient-centered
+
+---
+
+## 🎯 Implementation Priorities for Narrative Team
+
+### High Priority Story Elements
+
+{% if development_priorities.blocking_items %}
+**Story Decisions Needed**:
+{% for item in development_priorities.blocking_items %}
+- **{{ item.component | title }}**: {{ item.reason }} *(impacts character voice and relationship dynamics)*
+{% endfor %}
+{% endif %}
+
+**Ready for Story Development**:
+{% for item in development_priorities.ready_to_implement %}
+- **{{ item.component | title }}**: {{ item.reason }} *(story framework established, ready for dialogue and scene creation)*
+{% endfor %}
+
+### Character Development Roadmap
+
+1. **Establish Mentor Voices** - Define distinct dialogue patterns and teaching approaches
+2. **Map Relationship Arcs** - Plan how player-mentor relationships evolve through system interaction  
+3. **Create Dialogue Trees** - Build conversation flows that feel natural while delivering learning content
+4. **Integrate Emotional Beats** - Ensure each system interaction contributes to overall character growth arc
+
+---
+
+{% if first_day_tutorial or night_phase_tutorial %}
+## 🎓 Tutorial Narrative Integration
+
+{% if first_day_tutorial %}
+### First Day Story Arc
+
+**Narrative Framework**: Player's authentic first day as medical physics resident
+
+{% for section_name, section in first_day_tutorial.items() %}
+**{{ section.time if section.time else '' }} - {{ section_name | title | replace("_", " ") }}**
+{% if section.location and section.primary_mentor %}
+*Setting*: {{ section.location }} with {{ section.primary_mentor }}
+{% endif %}
+
+**Story Purpose**: {{ section.objectives[0] if section.objectives else 'Character introduction and world establishment' }}
+
+{% if section.dialogue_flow %}
+**Sample Narrative Voice**:
+*"{{ section.dialogue_flow[section.dialogue_flow.keys() | list | first].text[:150] }}..."*
+
+**Character Development**: This interaction establishes {{ section.primary_mentor if section.primary_mentor else 'key characters' }} and introduces core relationship dynamics that will evolve throughout the player's journey.
+{% endif %}
+
+---
+{% endfor %}
+{% endif %}
+
+{% if night_phase_tutorial %}
+### Evening Reflection Narrative
+
+**Story Transition**: From active learning to personal reflection and integration
+
+{% for section_name, section in night_phase_tutorial.items() %}
+**{{ section.time if section.time else 'Evening' }} - {{ section_name | title | replace("_", " ") }}**
+{% if section.location %}
+*Setting*: {{ section.location }}
+{% endif %}
+
+**Narrative Function**: Provides emotional processing time and personal growth reflection that mirrors real resident experience
+
+**Story Integration**: {{ section.delivery_method | replace("_", " ") | title if section.delivery_method else 'Personal journal reflection' }} creates authentic sense of daily learning integration and professional development
+
+---
+{% endfor %}
+{% endif %}
+
+**Tutorial Philosophy**: The tutorial isn't separate from the story - it IS the story of your first day as a medical physics resident, with mentors who genuinely care about your learning and growth.
+
+{% endif %}
+
+---
+
+## 📚 REFERENCE MATERIALS
+
+{% if repository_info.references_exported %}
+**All referenced story content available in local files:**
+{% for ref_file in exported_reference_files %}
+- [`{{ ref_file }}`]({{ ref_file }}) - Complete narrative context and character details
+{% endfor %}
+
+*Check the references/ folder for comprehensive character arcs, world-building details, and supporting narrative documentation.*
+
+{% elif embedded_related_systems or embedded_content_files %}
+## 📚 EMBEDDED NARRATIVE CONTENT
+
+{% if embedded_related_systems %}
+### Character & World Data
+{% for system_name, system_info in embedded_related_systems.items() %}
+#### {{ system_name | title | replace("-", " ") }}
+**Source**: `{{ system_info.file_path }}`
+
+```
+{{ system_info.content }}
+```
+
+---
+{% endfor %}
+{% endif %}
+
+{% if embedded_content_files %}
+### Supporting Story Documentation
+{% for content_file, content in embedded_content_files.items() %}
+#### {{ content_file }}
+
+```markdown
+{{ content }}
+```
+
+---
+{% endfor %}
+{% endif %}
+
+{% endif %}
+
+---
+
+*This narrative context focuses on story development, character arcs, and world-building with all referenced content available for comprehensive story consistency.*
+
+*Use this document for: Character voice development, dialogue writing, scene planning, world-building decisions, and maintaining narrative continuity across all game systems.* 

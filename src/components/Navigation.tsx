@@ -11,6 +11,7 @@ const Navigation = () => {
     { href: '/cards', label: 'Cards', icon: '🃏' },
     { href: '/stars', label: 'Stars', icon: '⭐' },
     { href: '/mentors', label: 'Mentors', icon: '👨‍🏫' },
+    { href: '/narrative', label: 'Narrative', icon: '🎭' },
     { href: '/exports', label: 'Exports', icon: '📄' },
     { href: '/editor', label: 'Editor', icon: '✏️' },
   ];

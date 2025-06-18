@@ -1,0 +1,471 @@
+# {{ system_info.name }} - Story Continuity Reference
+
+> **🧠 AI Assistant Context**: {{ system_info.description }}  
+> **📚 Narrative Consistency**: {{ system_info.user_experience_philosophy }}  
+> **🎭 Story Integration**: {{ development_context.inspiration }}
+
+{% if repository_info %}
+---
+
+## 📍 SOURCE CONTEXT
+
+**Source Repository**: {{ repository_info.source_repository }}  
+**Generated At**: {{ repository_info.generated_at }}  
+**AI Context**: Complete story bible for narrative consistency maintenance
+
+{% endif %}
+---
+
+## 🎭 COMPLETE CHARACTER PROFILES
+
+### Mentor Character Database
+
+{% if mentors_data and mentors_data.structured_mentors %}
+{% for mentor_id, mentor_info in mentors_data.structured_mentors.items() %}
+#### {{ mentor_info.name }}
+
+**Core Identity**:
+- **Full Name**: {{ mentor_info.name }}
+- **Professional Role**: {{ mentor_info.role }}
+- **Teaching Philosophy**: {{ mentor_info.teaching_style | replace("_", " ") | title }}
+
+**Personality Consistency Rules**:
+- **Voice Pattern**: {{ mentor_info.personality.dialogue_style | replace("_", " ") | title }}, builds on student knowledge
+- **Emotional Register**: Consistently supportive while maintaining professional boundaries
+- **Communication Style**: Clear explanations with encouraging tone
+- **Response to Confusion**: Patient re-explanation without condescension
+- **Response to Success**: Genuine celebration of progress with forward momentum
+
+**Professional Expertise Domain**:
+- **{{ mentor_info.personality.domain_expertise | replace("_", " ") | title }}**: {{ mentor_info.role }}
+
+**Dialogue Consistency Guidelines**:
+- ALWAYS maintains {{ mentor_info.teaching_style | replace("_", " ") }} approach
+- NEVER uses condescending language or dismissive tone
+- ALWAYS builds on what student already knows
+- NEVER overwhelms with information dumps
+- ALWAYS connects learning to real professional practice
+
+**Relationship Evolution Pattern**:
+- **Early Interactions**: Formal but welcoming, assessing student's baseline knowledge
+- **Growing Familiarity**: More personal anecdotes, increased trust and openness
+- **Established Relationship**: Collaborative discussions, peer-level professional exchanges
+- **Advanced Mentorship**: Complex problem-solving together, mutual professional respect
+
+---
+{% endfor %}
+{% endif %}
+
+### Main Character Arcs
+
+{% if character_arcs %}
+{% for char_name, char_info in character_arcs.items() %}
+#### {{ char_name | title | replace("-", " ") }}
+
+**Character Continuity Requirements**:
+{{ char_info.content_preview }}
+
+**Key Personality Traits to Maintain**:
+- Core personality framework must remain consistent across all interactions
+- Distinctive dialogue patterns and speaking voice
+- Character development follows logical progression arc
+- Relationship dynamics evolve naturally based on player interactions
+
+**Story Integration Points**:
+- Character appears in narrative systems with consistent voice
+- Personality traits established here carry forward to all other systems
+- Character development in this system affects all future interactions
+- Relationship states must be maintained across system boundaries
+
+---
+{% endfor %}
+{% endif %}
+
+{% if boss_characters %}
+{% for boss_name, boss_info in boss_characters.items() %}
+#### {{ boss_info.name }} (Boss Character)
+
+**Character Type**: {{ boss_info.type | title | replace("_", " ") }}
+**Story Function**: {{ boss_info.description }}
+
+**Character Development Arc**:
+{% if boss_info.character_arc %}
+- Complex progression through multiple phases of character growth
+- Conflict resolution requires both mechanical skill and emotional intelligence
+- Character evolution affects ongoing narrative relationships
+{% endif %}
+
+**Consistency Requirements**:
+- Boss encounter personality must align with established character traits
+- Character growth during encounter affects all future interactions
+- Emotional journey must feel authentic to medical physics training environment
+
+---
+{% endfor %}
+{% endif %}
+
+---
+
+## 🌍 WORLD BUILDING CANON
+
+### Medical Physics Hospital Environment
+
+**Setting Consistency Rules**:
+- **Professional Atmosphere**: Always maintain authentic medical facility environment
+- **Equipment Realism**: All medical physics technology references must be accurate
+- **Workflow Authenticity**: Hospital procedures and protocols reflect real practice
+- **Cultural Accuracy**: Medical physics professional culture portrayed authentically
+
+**Environmental Details to Maintain**:
+- **Sound Design**: Equipment hums, monitors beeping, quiet professional conversations
+- **Visual Elements**: Clean, modern medical facility with high-tech physics equipment
+- **Lighting**: Professional fluorescent with some warmer areas for mentor conversations
+- **Spatial Layout**: Physics department layout consistent across all interactions
+
+### Constellation Phenomenon Lore
+
+{% if embedded_related_systems['constellation-phenomenon'] %}
+**Core Mythology**: {{ embedded_related_systems['constellation-phenomenon'].system_info.description if embedded_related_systems['constellation-phenomenon'].system_info else 'The mysterious phenomenon allowing enhanced learning and pattern recognition' }}
+
+**Three Philosophical Interpretations** *(Deliberately Ambiguous)*:
+{% if embedded_related_systems['constellation-phenomenon'].rich_data.philosophical_interpretations %}
+{% for interpretation, details in embedded_related_systems['constellation-phenomenon'].rich_data.philosophical_interpretations.items() %}
+- **{{ interpretation | replace("_", " ") | title }}**: {{ details.description }}
+  - **Emphasis**: {{ details.emphasis }}
+  - **Evidence Focus**: {{ details.evidence_focus }}
+{% endfor %}
+{% endif %}
+
+**Consistency Requirements**:
+- **Knowledge Visualization**: Learning always represented through constellation metaphors
+- **Discovery Moments**: Each new understanding "illuminates" another star in personal constellation
+- **Progressive Revelation**: Mystery of the phenomenon revealed gradually through gameplay
+- **Mentor Integration**: Mentors acknowledge and respond to constellation discoveries appropriately
+- **Visual Consistency**: Star and constellation imagery remains consistent across all systems
+- **Ambiguity Maintenance**: Never definitively confirm any single interpretation - all remain valid
+{% else %}
+**Core Learning Metaphor**: Knowledge visualization through constellation and star formation
+**Consistency Requirements**:
+- Knowledge visualization through star constellation metaphors
+- Discovery moments create "illumination" of understanding
+- Progressive revelation maintains mystery and engagement
+- Visual consistency across all systems
+{% endif %}
+
+### Journal & Ability System Lore
+
+{% if embedded_related_systems['journal-system'] %}
+**Four-Season Narrative Framework**:
+{% if embedded_related_systems['journal-system'].rich_data.narrative_themes %}
+{% for season, theme in embedded_related_systems['journal-system'].rich_data.narrative_themes.items() %}
+- **{{ season | title }}**: {{ theme | replace("_", " ") | title }}
+  - **Amara Character State**: {{ embedded_related_systems['journal-system'].rich_data.amara_character_arc[season] | replace("_", " ") if embedded_related_systems['journal-system'].rich_data.amara_character_arc else 'Professional development stage' }}
+  - **Visual Evolution**: {{ embedded_related_systems['journal-system'].rich_data.visual_progression[season].journal_appearance | replace("_", " ") if embedded_related_systems['journal-system'].rich_data.visual_progression else 'Journal progresses with experience' }}
+{% endfor %}
+{% endif %}
+
+**Mechanical Gating Integration**:
+{% if embedded_related_systems['journal-system'].rich_data.mechanical_gating %}
+- **Story Progression**: Each journal unlocks new narrative understanding
+- **Constellation Features**: Journal capabilities grow with story advancement
+- **Character Development**: Journal discovery tied to character relationship growth
+{% endif %}
+
+**Story Integration Rules**:
+- **Personal Reflection**: Journal entries reflect authentic resident learning experience
+- **Ability Cards**: Represent growing professional competence, not arbitrary game mechanics
+- **Progress Tracking**: Learning milestones feel earned through genuine understanding
+- **Mentor Connection**: Journal system connects to mentor relationships naturally
+- **Seasonal Progression**: Four journals tell complete story of professional development
+{% else %}
+**Narrative Framework**: Personal reflection and professional development tracking
+
+**Story Integration Rules**:
+- Personal reflection mirrors real resident experience
+- Ability cards represent growing professional competence
+- Progress tracking feels earned through genuine understanding
+- Mentor connection system integrates naturally
+{% endif %}
+
+---
+
+## 🎯 NARRATIVE STATE TRACKING
+
+### Player Progress & Story Evolution
+
+**Relationship Progression Stages**:
+1. **Initial Meeting** - Formal introductions, baseline assessment
+2. **Trust Building** - Personal connections form, increased openness
+3. **Professional Growth** - Collaborative problem-solving, increased confidence
+4. **Peer Recognition** - Advanced discussions, mutual professional respect
+5. **Ongoing Mentorship** - Continued learning with established relationship dynamics
+
+**Knowledge Progression Integration**:
+- **Beginner Concepts** → Basic constellation formations
+- **Intermediate Understanding** → Connected star patterns emerge
+- **Advanced Mastery** → Complex constellation relationships revealed
+- **Expert Application** → Full constellation phenomenon understanding
+
+**Emotional Journey Milestones**:
+- **Uncertainty** → **Growing Confidence** → **Professional Competence** → **Mastery Teaching**
+
+### System Integration Continuity
+
+**Activity Framework Integration**:
+{% if cross_references.related_systems and "activity-framework" in cross_references.related_systems %}
+- All learning activities connected to mentor personalities and teaching approaches
+- Challenge systems reflect authentic medical physics learning scenarios
+- Progress in activities affects mentor relationship dynamics
+- Educational content delivered through character interactions, not abstract tutorials
+{% endif %}
+
+**Visual Design Integration**:
+{% if cross_references.related_systems and "visual-design" in cross_references.related_systems %}
+- All visual elements support narrative mood and character development
+- Hospital environment visuals remain consistent across all story interactions
+- Character design reflects authentic medical physics professional culture
+- UI design supports story immersion rather than disrupting narrative flow
+{% endif %}
+
+---
+
+## 💬 DIALOGUE CONSISTENCY DATABASE
+
+### Universal Voice Guidelines
+
+**Professional Medical Physics Dialogue**:
+- **Terminology Usage**: Real medical physics terms used naturally, not forced
+- **Explanation Style**: Build on existing knowledge, avoid information dumps
+- **Professional Tone**: Competent and caring, never condescending or dismissive
+- **Educational Integration**: Learning emerges from conversation, not separate from it
+
+**Mentor-Specific Voice Patterns**:
+
+{% if mentors_data and mentors_data.structured_mentors %}
+{% for mentor_id, mentor_info in mentors_data.structured_mentors.items() %}
+**{{ mentor_info.name }}**:
+- **Greeting Style**: Warm professional acknowledgment
+- **Explanation Approach**: {{ mentor_info.teaching_style | replace("_", " ") | title }}
+- **Encouragement Method**: Specific recognition of progress and competence
+- **Challenge Response**: Supportive guidance without judgment
+- **Success Celebration**: Genuine enthusiasm for student growth
+
+{% if mentor_info.dialogue_themes %}
+**Domain-Specific Dialogue Themes**:
+{% for theme in mentor_info.dialogue_themes %}
+- {{ theme | replace("_", " ") | title }}
+{% endfor %}
+{% endif %}
+
+**Dialogue Consistency Checklist for {{ mentor_info.name }}**:
+- ✓ Uses {{ mentor_info.teaching_style | replace("_", " ") }} teaching approach
+- ✓ Maintains {{ mentor_info.personality.dialogue_style | replace("_", " ") }} communication style
+- ✓ Never breaks character voice or personality
+- ✓ Always supports student learning and growth
+- ✓ Connects all learning to real professional practice
+
+---
+{% endfor %}
+{% endif %}
+
+### Emotional Tone Consistency
+
+**Supportive Learning Environment**:
+- **Challenge Reaction**: "Let's work through this together" not "You got it wrong"
+- **Success Recognition**: Specific celebration of understanding and growth
+- **Confusion Response**: Patient re-explanation with different approach
+- **Progress Acknowledgment**: Recognition of both small steps and major breakthroughs
+
+**Professional Relationship Boundaries**:
+- **Mentor Authority**: Maintains expertise while being approachable
+- **Student Respect**: Treats learner as capable professional-in-training
+- **Collaborative Tone**: "We're figuring this out together" when appropriate
+- **Growth Mindset**: Focus on learning and improvement, not evaluation
+
+---
+
+## 🎮 TUTORIAL NARRATIVE INTEGRATION
+
+{% if first_day_tutorial %}
+### First Day Tutorial Story Bible
+
+**Narrative Consistency Requirements**:
+- Tutorial is NOT separate from story - it IS the story of first day as resident
+- All tutorial guidance delivered through authentic mentor interactions
+- No artificial "tutorial mode" feeling - seamless story experience
+- Player choices during tutorial affect ongoing relationship dynamics
+
+{% for section_name, section in first_day_tutorial.items() %}
+#### {{ section.time if section.time else 'Morning' }} - {{ section_name | title | replace("_", " ") }}
+
+**Story Context**: {{ section.objectives[0] if section.objectives else 'Character introduction and world establishment' }}
+{% if section.location and section.primary_mentor %}
+**Setting**: {{ section.location }} with {{ section.primary_mentor }}
+{% endif %}
+
+**Narrative Consistency Rules**:
+- {{ section.primary_mentor if section.primary_mentor else 'Mentor' }} must maintain established personality throughout
+- Tutorial guidance feels like natural mentor support, not artificial game instruction
+- Player's responses during this section affect ongoing relationship development
+- All learning content delivered through authentic professional interaction
+
+{% if section.dialogue_flow %}
+**Character Voice Reference**:
+{% for dialogue_key, dialogue_content in section.dialogue_flow.items() %}
+- *{{ dialogue_content.mentor if dialogue_content.mentor else section.primary_mentor }}*: "{{ dialogue_content.text[:100] }}..." 
+  - **Voice Consistency**: {{ dialogue_content.tone if dialogue_content.tone else 'Supportive professional guidance' }}
+{% endfor %}
+{% endif %}
+
+**Story Integration Points**:
+- This interaction establishes relationship baseline for all future encounters
+- Mentor personality shown here must remain consistent across all systems
+- Player's first impression of hospital environment set during this section
+- Tutorial completion affects mentor's perception of player competence level
+
+---
+{% endfor %}
+{% endif %}
+
+{% if night_phase_tutorial %}
+### Night Phase Reflection Story Integration
+
+**Narrative Function**: Authentic evening reflection and personal processing time
+
+{% for section_name, section in night_phase_tutorial.items() %}
+#### {{ section.time if section.time else 'Evening' }} - {{ section_name | title | replace("_", " ") }}
+
+**Story Purpose**: {{ section.delivery_method | replace("_", " ") | title if section.delivery_method else 'Personal reflection and learning integration' }}
+{% if section.location %}
+**Setting**: {{ section.location }}
+{% endif %}
+
+**Consistency Requirements**:
+- Reflection feels authentic to medical physics resident experience
+- Journal entries maintain consistent personal voice and growth mindset
+- Evening transitions respect pacing of real professional learning
+- Night phase content connects meaningfully to day phase experiences
+
+---
+{% endfor %}
+{% endif %}
+
+---
+
+## 🔗 CROSS-SYSTEM CONTINUITY
+
+### Story Thread Management
+
+**Character Continuity Across Systems**:
+{% for system_name in cross_references.related_systems %}
+- **{{ system_name | replace("-", " ") | title }}**: 
+  - Mentor personalities established in {{ system_info.name }} carry forward unchanged
+  - Relationship progression states must be maintained across system boundaries
+  - Character voice and dialogue patterns remain consistent
+  - Professional development arc continues logically from previous interactions
+
+{% endfor %}
+
+**World Building Coherence**:
+- Hospital environment details remain consistent across all system interactions
+- Medical physics equipment and procedures maintain accuracy throughout
+- Professional culture and workplace dynamics stay authentic across systems
+- Constellation phenomenon lore remains coherent regardless of system entry point
+
+**Narrative State Dependencies**:
+- Player's relationship level with mentors affects dialogue options in all systems
+- Knowledge progression unlocks affect mentor responses and available conversations
+- Tutorial completion status influences how systems present information to player
+- Ability acquisition affects mentor recognition and professional relationship development
+
+---
+
+## 🎯 AI ASSISTANT GUIDELINES
+
+### Consistency Maintenance Protocols
+
+**When Generating Dialogue**:
+1. **Check Character Database**: Verify mentor personality traits and voice patterns
+2. **Maintain Relationship State**: Ensure dialogue reflects current player-mentor relationship level
+3. **Professional Authenticity**: All medical physics content must be accurate and appropriate
+4. **Emotional Consistency**: Response tone must match established character personality
+5. **Story Integration**: Dialogue must advance or maintain narrative coherence
+
+**When Developing Story Content**:
+1. **Canon Compliance**: All content must align with established world building and character lore
+2. **Progression Logic**: Character and relationship development must follow logical patterns
+3. **Professional Accuracy**: Medical physics content must reflect real-world practice accurately
+4. **Emotional Intelligence**: Story moments must respect player learning journey and emotional needs
+5. **Integration Readiness**: New content must work seamlessly with existing narrative systems
+
+**Quality Assurance Checklist**:
+- ✓ Character voices remain consistent with established personalities
+- ✓ Medical physics content is accurate and professionally appropriate
+- ✓ Story progression follows logical and emotionally satisfying patterns
+- ✓ Mentor relationships evolve naturally based on player interactions
+- ✓ World building details remain coherent across all narrative elements
+- ✓ Learning integration feels authentic to medical physics residency experience
+
+---
+
+## 📚 COMPLETE REFERENCE MATERIALS
+
+{% if repository_info.references_exported %}
+**All story continuity references available in local files:**
+{% for ref_file in exported_reference_files %}
+- [`{{ ref_file }}`]({{ ref_file }}) - Complete character, world, and narrative data
+{% endfor %}
+
+*Reference these files for complete story details, character development arcs, and world-building specifications.*
+
+{% elif embedded_related_systems or embedded_content_files %}
+## 📚 EMBEDDED STORY BIBLE
+
+{% if embedded_related_systems %}
+### Complete System Narratives
+{% for system_name, system_info in embedded_related_systems.items() %}
+#### {{ system_name | title | replace("-", " ") }}
+**Source Data**: `{{ system_info.file_path }}`
+
+```
+{{ system_info.content }}
+```
+
+**Narrative Consistency Requirements**:
+- All story elements from this system must remain consistent across interactions
+- Character development shown here affects all future narrative encounters
+- World building details established here are canonical for entire game
+- Professional and educational content must maintain accuracy shown in source data
+
+---
+{% endfor %}
+{% endif %}
+
+{% if embedded_content_files %}
+### Supporting Story Documentation
+{% for content_file, content in embedded_content_files.items() %}
+#### {{ content_file }}
+
+```markdown
+{{ content }}
+```
+
+**Integration Notes**:
+- Character details and personality traits shown here are authoritative
+- Story elements and world building details are canonical
+- Professional medical physics content represents authentic practice standards
+- Emotional tone and relationship dynamics established here must be maintained
+
+---
+{% endfor %}
+{% endif %}
+
+{% endif %}
+
+---
+
+*This story continuity reference provides complete narrative context for maintaining consistent character voices, world building, and story progression across all game systems.*
+
+*Use this document for: Dialogue generation, character consistency checking, story development, narrative quality assurance, and ensuring seamless story integration across all systems.*
+
+**🎭 Remember**: Every interaction shapes the player's relationship with mentors and understanding of the medical physics world. Consistency in character voice, professional authenticity, and emotional support creates the foundation for meaningful educational storytelling. 

@@ -274,19 +274,114 @@ This index provides quick navigation to all documentation update logs in chronol
 
 ---
 
+### Update 009: Narrative Workflow Character Data Integration
+**Type**: System Enhancement & Bug Fix  
+**Session Duration**: Character data extraction and template integration  
+**Impact**: Critical fix for missing character data in narrative workflow generation
+
+**Summary**: Comprehensive fix for missing character data in narrative workflow generation. Previously, generated narrative documents (character/world/plot contexts) contained empty character sections despite rich character data existing in the single source of truth. This update implements robust data extraction and template integration to ensure all character information is properly included.
+
+**Key Changes:**
+- **Enhanced Mentor Data Extraction**: Fixed YAML structure parsing to correctly access mentor personalities
+- **Character Arc Integration**: Enhanced character arc extraction from content files with preview and full content preservation  
+- **Focus Area Filtering Fix**: Ensured content data (containing character arcs) is always preserved regardless of focus area filtering
+- **Web App Download Naming**: Fixed naming for both technical and narrative modes
+
+**Major Implementations Synchronized:**
+- **Complete Character Context**: All 4 mentors + 3 character arcs properly displayed in generated docs
+- **Rich Character Personalities**: Full details (teaching styles, dialogue themes, domain expertise) flowing through
+- **Cross-System Integration**: Character data maintained across world/plot focus areas
+- **Template Data Flow**: Fixed template access patterns for mentor and character data structures
+
+**Critical Discovery**: Previously, generated narrative documents showed empty character sections despite comprehensive character data existing in YAML files due to template-data structure mismatch.
+
+**Files Modified:**
+- `scripts/export.py` - Enhanced mentor data extraction and character arc integration
+- `update-logs/009-narrative-workflow-character-data-integration.md` - Comprehensive sync documentation
+
+[📄 View Full Log](009-narrative-workflow-character-data-integration.md)
+
+---
+
+### Update 010: Narrative Concept Backporting and Template Enhancement
+**Type**: Critical YAML Sync & Template Enhancement  
+**Priority**: CRITICAL - Advanced Narrative Concepts Integration  
+**Impact**: Prevents narrative concept drift and ensures sophisticated storytelling vision preservation
+
+**Summary**: Critical backporting operation to integrate user's advanced narrative concepts from external development into the single source of truth YAML files. Addressed a classic "Rich Data Going Dark" scenario where comprehensive narrative evolution existed outside the documentation system, preventing sophisticated concepts from appearing in generated documents.
+
+**Key Changes:**
+- **Enhanced YAML Files**: Integrated spiritual autolysis framework, holographic principle, faculty paradigm split, and Pico's hospital secret
+- **Template Enhancement**: Updated templates to display advanced concepts including cross-domain examples and doubt cycles
+- **Rich Data Flow Restoration**: Ensured sophisticated narrative concepts flow from YAML → templates → generated docs
+- **Advanced Concept Validation**: Confirmed all user's narrative evolution appears in generated documentation
+
+**Major Narrative Concepts Integrated:**
+- **Spiritual Autolysis Framework**: Jed McKenna parallel for Amara's philosophical journey
+- **Holographic Principle**: Every piece of knowledge contains pattern of whole (fractal reality enhancement)
+- **Faculty Paradigm Split**: Quinn & Jesse vs Garcia & Kapoor empathy/support levels
+- **Pico Hospital Secret**: No faculty know about sentience, discovery through player interaction
+- **Cross-Domain Examples**: Concrete holographic learning principles across medical physics domains
+- **Doubt Cycle Integration**: Julie-like daily wrestling with truth in journal progression
+
+**Critical Achievement**: Successfully resolved narrative concept disconnect, ensuring user's advanced storytelling vision is preserved and accessible through the documentation system.
+
+**Files Modified:**
+- `data/constants/constellation-phenomenon.yaml` - Holographic principle and faculty paradigm split
+- `data/constants/amara-narrative.yaml` - Spiritual autolysis and doubt cycle concepts
+- `data/constants/pico-character.yaml` - Hospital secret and enhanced sacrifice narrative
+- `templates/narrative-context.md.jinja` - Template enhancements for advanced concept display
+- `update-logs/010-narrative-concept-backporting-and-template-enhancement.md` - Comprehensive documentation
+
+[📄 View Full Log](010-narrative-concept-backporting-and-template-enhancement.md)
+
+---
+
+### Update 011: Comprehensive Narrative Bible Integration
+**Type**: Content Enhancement & System Integration  
+**Session Duration**: Comprehensive narrative bible processing and integration  
+**Impact**: Complete - All narrative bible details integrated into single source of truth
+
+**Summary**: Successfully integrated a comprehensive 270-line Pico & Amara narrative bible into the existing documentation system, following Three-Audience Workflow Guide best practices. Enhanced existing character and narrative systems with rich story details, boss encounter connections, and implementation-ready content rather than creating duplicate systems.
+
+**Key Changes:**
+- **Enhanced Character Content**: Updated both Pico and Amara character arcs (v1.0 → v2.0) with complete narrative bible details
+- **YAML System Enhancement**: Added character voice guidelines, boss encounter integration, four-season journal progression to existing systems
+- **Three-Audience Documentation**: Generated focused character and boss interface docs for writers, developers, and AI collaboration
+- **Cross-System Integration**: Connected character arcs to boss encounters, journal progression, and mentor relationships
+
+**Major Implementations Synchronized:**
+- **Six-Phase Relationship Arc**: Complete progression from mystery equipment to sacrifice and rebirth
+- **Four-Season Journal System**: Discovery mechanics with Pico as "third journal" concept
+- **Boss Encounter Integration**: All four bosses connected to character progression (Marcus Chen storage access, Vendor Trio mobility, Audit Team validation, IONIX sacrifice)
+- **Character Voice Guidelines**: Specific dialogue examples and personality consistency rules
+
+**Critical Achievement**: Transformed comprehensive narrative bible into structured single-source-of-truth that flows through YAML → templates → generated focused documentation for three distinct audiences while maintaining implementation readiness.
+
+**Files Modified:**
+- `content/character-arcs/pico.md` - Complete narrative bible integration (v2.0)
+- `content/character-arcs/amara-sato.md` - Enhanced character arc with philosophy integration (v2.0)
+- `data/constants/pico-character.yaml` - Added character voice guidelines and boss integration (v2.0)
+- `data/constants/amara-narrative.yaml` - Four-season progression and spiritual autolysis framework (v2.0)
+- Generated three-audience documentation: narrative contexts, implementation guides, story continuity references
+
+[📄 View Full Log](011-comprehensive-narrative-bible-integration.md)
+
+---
+
 ## Statistics
 
-**Total Updates**: 8  
+**Total Updates**: 11  
 **Implementation Syncs**: 3  
-**System Enhancements**: 2  
-**Critical Bug Fixes**: 2  
+**System Enhancements**: 4  
+**Critical Bug Fixes**: 3  
+**Template Enhancements**: 2  
 **System Maturation**: 1  
 **System Expansions**: 1  
-**Template Enhancements**: 1  
 **Architecture Revisions**: 0  
-**Content Additions**: 0  
+**Content Enhancements**: 1  
 
-**Most Recent Update**: 008 (SESSION_LOG Implementation Sync)  
+**Most Recent Update**: 011 (Comprehensive Narrative Bible Integration)  
 **Sequential Numbering**: Consistent 001, 002, 003, 004, 005, 006, 007... format established  
 **Major Version Changes**: 3 documents  
 **Revolutionary Updates**: 1 (Update 002 - Dual System Architecture)  

@@ -10,7 +10,7 @@
 ## 📍 SOURCE CONTEXT
 
 **Source Repository**: rogue-resident-docs  
-**Generated At**: 2025-06-16 14:01:35  
+**Generated At**: 2025-06-17 15:10:39  
 **Self-Contained**: Yes - all referenced files embedded below
 
 

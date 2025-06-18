@@ -175,7 +175,7 @@
 **Three Interpretations**:
 - **Pattern Recognition Extreme** (psychological)
   - constellation_represents_exceptional_pattern_recognition_ability
-- **Fractal Reality** (philosophical)
+- **Fractal Reality (Holographic Principle)** (philosophical)
   - all_knowledge_has_underlying_unified_structure_repeating_at_every_scale
 - **Perception Creates Reality** (metaphysical)
   - deep_understanding_begins_to_shape_reality_itself
@@ -186,7 +186,7 @@
 **See**: `content/visual-design-philosophy.md` for complete details
 
 ### Pico Character System
-**Description**: Sentient electrometer character mechanics, progression, and relationship development
+**Description**: Complete sentient companion character system with relationship progression, narrative integration, and boss encounter connections
 **See**: `content/character-arcs/pico.md` for complete details
 
 ### Four-Journal System
@@ -203,7 +203,7 @@
 **See**: `content/amara-journals/journal-progression.md` for complete details
 
 ### Amara Sato Narrative System
-**Description**: Background mystery and narrative progression for the Knowledge Constellation approach
+**Description**: Complete character arc with four-season journal progression, boss encounter integration, and cautionary transcendence narrative
 **See**: `content/character-arcs/amara-sato.md` for complete details
 
 ### Activity Framework
@@ -298,6 +298,7 @@
 - `content/mentors/mentor-philosophies.md`
 - `content/qa-testing.md`
 - `content/time-system-design.md`
+- `content/tutorial-design.md`
 - `content/visual-design-philosophy.md`
 
 ---

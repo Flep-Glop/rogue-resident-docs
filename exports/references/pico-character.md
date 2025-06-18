@@ -1,3 +1,8 @@
+# Pico Character
+
+**Source**: `data/constants/pico-character.yaml`
+
+```yaml
 system_info:
   name: "Pico Character System"
   description: "Complete sentient companion character system with relationship progression, narrative integration, and boss encounter connections"
@@ -322,3 +327,4 @@ cross_references:
     pico_discovery: "summer_journal_progression"
     portable_form: "ionix_encounter_sacrifice_sequence"
     companionship: "player_choice_post_sacrifice" 
+```

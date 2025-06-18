@@ -1,3 +1,8 @@
+# Amara Narrative
+
+**Source**: `data/constants/amara-narrative.yaml`
+
+```yaml
 system_info:
   name: "Amara Sato Narrative System"
   description: "Complete character arc with four-season journal progression, boss encounter integration, and cautionary transcendence narrative"
@@ -292,3 +297,4 @@ cross_references:
     - "claude-context"
     - "team-review"
     - "narrative-focused" 
+```

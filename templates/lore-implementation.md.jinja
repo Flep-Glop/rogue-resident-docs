@@ -1,0 +1,494 @@
+# {{ system_info.name }} - Lore Implementation Guide
+
+> **🛠️ System Integration**: {{ system_info.description }}  
+> **⚙️ Technical Role**: {{ system_info.user_experience_philosophy }}  
+> **🎯 Implementation Goal**: {{ development_context.inspiration }}
+
+{% if repository_info %}
+---
+
+## 📍 SOURCE CONTEXT
+
+**Source Repository**: {{ repository_info.source_repository }}  
+**Generated At**: {{ repository_info.generated_at }}  
+**Implementation Context**: Developer-focused narrative integration guide
+
+{% endif %}
+---
+
+## 🏗️ Technical Implementation Overview
+
+### System Architecture for Narrative
+
+**Core Components**:
+{% for component_name, component in components.items() %}
+- **{{ component.name }}**: {{ component.user_experience_role }}
+  - **Implementation Status**: {{ component.implementation_status }}
+  - **Narrative Integration**: {{ component.user_experience_role | replace("Experience", "Integration") }}
+{% endfor %}
+
+**Data Flow for Story Elements**:
+1. **Character Data** → Dialogue Trees → UI Components
+2. **Lore Content** → Contextual Display → Player Discovery  
+3. **Narrative State** → Progress Tracking → Continuity Management
+4. **Voice/Tone** → Text Generation → Consistency Validation
+
+### Narrative Data Structure
+
+```typescript
+interface NarrativeSystem {
+  characters: CharacterData[];
+  loreElements: LoreContent[];
+  storyState: NarrativeState;
+  dialogueTrees: DialogueFlow[];
+  mentorVoices: MentorPersonality[];
+}
+
+interface CharacterData {
+  id: string;
+  name: string;
+  role: MentorRole;
+  personality: PersonalityTraits;
+  dialogueStyle: VoicePattern;
+  teachingApproach: EducationalStyle;
+  relationshipDynamics: RelationshipMap;
+}
+
+interface LoreContent {
+  id: string;
+  category: "world_building" | "character_backstory" | "medical_context";
+  content: string;
+  unlockConditions: GameState[];
+  presentationMethod: "dialogue" | "journal" | "environmental" | "discovery";
+}
+```
+
+---
+
+## 🎭 Character System Implementation
+
+### Mentor Personality Engine
+
+{% if mentors_data and mentors_data.structured_mentors %}
+{% for mentor_id, mentor_info in mentors_data.structured_mentors.items() %}
+**{{ mentor_info.name }}** Implementation:
+
+```typescript
+const {{ mentor_id.replace('-', '').upper() }}_PERSONALITY: MentorPersonality = {
+  teachingStyle: "{{ mentor_info.teaching_style }}",
+  dialoguePatterns: {
+    greeting: ["Professional but warm acknowledgment"],
+    explanation: ["Builds on student's existing knowledge"],
+    encouragement: ["Reinforces competence and growth"],
+    correction: ["Gentle guidance without judgment"]
+  },
+  responseGenerationRules: {
+    formalityLevel: "professional_casual",
+    technicalDepth: "appropriate_to_context",
+    emotionalSupport: "consistently_present",
+    personalConnection: "builds_over_time"
+  }
+};
+```
+
+**Integration Points**:
+- Dialogue system queries personality for response generation
+- Progress tracking adjusts relationship dynamics over time
+- Activity completion modifies mentor-specific interactions
+- Tutorial system uses mentor voice for guided discovery
+
+---
+{% endfor %}
+{% endif %}
+
+### Dialogue Generation System
+
+**Dynamic Response Creation**:
+```typescript
+class NarrativeDialogueEngine {
+  generateResponse(
+    mentorId: string, 
+    context: GameContext, 
+    playerHistory: PlayerProgress
+  ): DialogueResponse {
+    const mentor = this.getMentorPersonality(mentorId);
+    const relationship = this.getRelationshipState(mentorId, playerHistory);
+    const contextualTone = this.determineAppropriateResponse(context);
+    
+    return this.composeDialogue({
+      personality: mentor,
+      relationship: relationship,
+      context: contextualTone,
+      continuity: this.maintainVoiceConsistency(mentorId)
+    });
+  }
+
+  maintainVoiceConsistency(mentorId: string): VoiceGuidelines {
+    // Ensures each mentor maintains authentic voice across all interactions
+    return this.personalityDatabase[mentorId].voiceConsistencyRules;
+  }
+}
+```
+
+---
+
+## 📖 Lore & World Building Integration
+
+### Medical Physics Authenticity System
+
+**Knowledge Verification Pipeline**:
+```typescript
+interface MedicalPhysicsLore {
+  clinicalAccuracy: boolean;
+  professionalContext: HospitalEnvironment;
+  equipmentDetails: MedicalTechnology;
+  procedureAuthenticity: WorkflowAccuracy;
+  terminologyPrecision: ProfessionalLanguage;
+}
+
+class LoreValidationSystem {
+  validateMedicalContent(content: string): ValidationResult {
+    return {
+      clinicalAccuracy: this.checkAgainstStandards(content),
+      professionalismLevel: this.assessProfessionalTone(content),
+      educationalValue: this.measureLearningPotential(content),
+      narrativeIntegration: this.evaluateStoryCoherence(content)
+    };
+  }
+}
+```
+
+### Constellation Phenomenon Technical Integration
+
+{% if embedded_related_systems['constellation-phenomenon'] %}
+**Lore Implementation Strategy**:
+```typescript
+interface ConstellationSystem {
+  knowledgeVisualization: {
+    starMapping: ConceptToStar[];
+    progressionVisualization: ConstellationGrowth;
+    discoveryMoments: IlluminationEvents[];
+  };
+  narrativeIntegration: {
+    mysteryProgression: StoryRevealSchedule;
+    characterReactions: MentorResponseToDiscovery;
+    worldBuildingConsistency: LoreCoherence;
+  };
+}
+
+class ConstellationLoreEngine {
+  revealKnowledgeNaturally(
+    discoveredConcept: MedicalPhysicsConcept,
+    playerProgress: LearningState
+  ): NarrativeReveal {
+    return {
+      visualMetaphor: this.generateStarConstellation(discoveredConcept),
+      mentorCommentary: this.getMentorReactionToDiscovery(discoveredConcept),
+      loreProgression: this.advanceOverallMystery(playerProgress),
+      continuityCheck: this.maintainWorldConsistency()
+    };
+  }
+}
+```
+{% endif %}
+
+---
+
+## 🎮 User Experience Flow Implementation
+
+### Tutorial Narrative Integration
+
+{% if first_day_tutorial %}
+**First Day Tutorial Technical Implementation**:
+
+{% for section_name, section in first_day_tutorial.items() %}
+```typescript
+// {{ section_name | upper }} Implementation
+const {{ section_name.upper() }}_TUTORIAL: TutorialSection = {
+  id: "{{ section_name }}",
+  location: "{{ section.location if section.location else 'hospital_environment' }}",
+  primaryMentor: "{{ section.primary_mentor if section.primary_mentor else 'garcia' }}",
+  objectives: [
+    {% for objective in section.objectives if section.objectives %}
+    "{{ objective }}",
+    {% endfor %}
+  ],
+  narrativeHooks: {
+    entryDialogue: this.generateContextualIntroduction("{{ section.primary_mentor if section.primary_mentor else 'garcia' }}"),
+    progressionCues: this.createNaturalTransitions(),
+    completionReaction: this.generateMentorApproval("{{ section.primary_mentor if section.primary_mentor else 'garcia' }}")
+  },
+  implementationDetails: {
+    triggerConditions: "{{ 'first_interaction' if 'intro' in section_name else 'previous_section_complete' }}",
+    uiIntegration: "seamless_narrative_flow",
+    progressTracking: "automatic_state_advancement"
+  }
+};
+```
+
+---
+{% endfor %}
+{% endif %}
+
+### Narrative State Management
+
+```typescript
+class NarrativeStateManager {
+  private storyProgress: Map<string, NarrativeProgress> = new Map();
+  private characterRelationships: RelationshipTracker = new RelationshipTracker();
+  private loreDiscoveryState: LoreProgressTracker = new LoreProgressTracker();
+
+  updateNarrativeState(
+    systemInteraction: SystemEvent,
+    playerChoice: PlayerAction
+  ): NarrativeStateUpdate {
+    const stateChanges = {
+      storyProgression: this.advanceRelevantStorylines(systemInteraction),
+      relationshipEvolution: this.updateMentorRelationships(playerChoice),
+      loreUnlocks: this.checkForNewLoreAvailability(systemInteraction),
+      continuityValidation: this.ensureNarrativeCoherence()
+    };
+
+    this.persistNarrativeState(stateChanges);
+    return stateChanges;
+  }
+
+  ensureNarrativeCoherence(): CoherenceReport {
+    return {
+      characterConsistency: this.validateCharacterVoices(),
+      timelineLogic: this.checkStoryProgression(),
+      relationshipLogic: this.validateRelationshipDevelopment(),
+      loreConsistency: this.checkWorldBuildingCoherence()
+    };
+  }
+}
+```
+
+---
+
+## 🔧 Technical Integration Points
+
+### API Endpoints for Narrative
+
+```typescript
+// Narrative data API routes
+app.get('/api/narrative/characters', this.getCharacterData);
+app.get('/api/narrative/lore/:category', this.getLoreContent);
+app.post('/api/narrative/dialogue/generate', this.generateDialogue);
+app.put('/api/narrative/state/update', this.updateNarrativeState);
+
+// Integration with existing systems
+app.get('/api/activity-integration/narrative', this.getActivityNarrativeContext);
+app.get('/api/mentor-integration/personality', this.getMentorPersonalityData);
+app.get('/api/tutorial-integration/story', this.getTutorialNarrativeFlow);
+```
+
+### Database Schema for Narrative Content
+
+```sql
+-- Character and personality data
+CREATE TABLE mentors (
+  id VARCHAR PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  personality_data JSON NOT NULL,
+  teaching_style VARCHAR NOT NULL,
+  dialogue_patterns JSON NOT NULL
+);
+
+-- Lore and world-building content
+CREATE TABLE lore_content (
+  id VARCHAR PRIMARY KEY,
+  category VARCHAR NOT NULL,
+  content TEXT NOT NULL,
+  unlock_conditions JSON,
+  presentation_method VARCHAR
+);
+
+-- Narrative state tracking
+CREATE TABLE narrative_progress (
+  player_id VARCHAR NOT NULL,
+  story_element VARCHAR NOT NULL,
+  progress_state JSON NOT NULL,
+  last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Relationship dynamics
+CREATE TABLE mentor_relationships (
+  player_id VARCHAR NOT NULL,
+  mentor_id VARCHAR NOT NULL,
+  relationship_level INTEGER DEFAULT 0,
+  interaction_history JSON,
+  PRIMARY KEY (player_id, mentor_id)
+);
+```
+
+---
+
+## 🎨 Asset Integration for Narrative
+
+### Visual Storytelling Assets
+
+{% if asset_pipeline %}
+**Implementation Timeline**:
+
+**Week 1**: {{ asset_pipeline.asset_creation_order.week_1 }}
+```typescript
+const WEEK_1_NARRATIVE_ASSETS = {
+  mentorPortraits: "high_definition_character_faces.png",
+  hospitalBackgrounds: "authentic_medical_environment.png",
+  uiIntegration: "narrative_overlay_components.tsx"
+};
+```
+
+**Week 4**: {{ asset_pipeline.asset_creation_order.week_4 }}
+```typescript
+const WEEK_4_NARRATIVE_ASSETS = {
+  fullCharacterAnimations: "mentor_gesture_systems.gif",
+  environmentalStorytelling: "contextual_detail_overlays.png",
+  dynamicBackgrounds: "mood_responsive_environments.png"
+};
+```
+
+**Asset Integration Strategy**:
+{% for category, assets in asset_pipeline.immediate_needs.items() %}
+- **{{ category | title }}**: 
+  {% for asset in assets %}
+  - `{{ asset | replace(" ", "_") | lower }}.png` → {{ "Character development" if "mentor" in asset.lower() else "Environmental storytelling" if "background" in asset.lower() else "Emotional resonance" }} system
+  {% endfor %}
+{% endfor %}
+{% endif %}
+
+### Audio Integration for Narrative
+
+```typescript
+interface NarrativeAudioSystem {
+  mentorVoices: {
+    [mentorId: string]: {
+      voiceProfile: AudioProfile;
+      speechPatterns: SpeechTiming;
+      emotionalRange: EmotionalAudioCues;
+    }
+  };
+  ambientStorytelling: {
+    hospitalSounds: EnvironmentalAudio;
+    equipmentSounds: TechnicalAmbience;
+    emotionalUnderscore: MoodAudio;
+  };
+}
+```
+
+---
+
+## 📊 Testing & Quality Assurance for Narrative
+
+### Narrative Consistency Testing
+
+```typescript
+class NarrativeQASystem {
+  runConsistencyTests(): TestResults {
+    return {
+      characterVoiceConsistency: this.testMentorPersonalities(),
+      storyProgressionLogic: this.validateStoryFlow(),
+      relationshipDevelopment: this.testRelationshipArcs(),
+      loreCoherence: this.validateWorldBuilding(),
+      technicalAccuracy: this.verifyMedicalPhysicsContent()
+    };
+  }
+
+  testMentorPersonalities(): PersonalityTestResults {
+    // Validates that each mentor maintains consistent voice across all interactions
+    return this.mentorPersonalityTests.map(mentor => ({
+      mentorId: mentor.id,
+      consistencyScore: this.calculateVoiceConsistency(mentor),
+      flaggedInconsistencies: this.identifyVoiceDeviations(mentor),
+      recommendedCorrections: this.suggestVoiceAdjustments(mentor)
+    }));
+  }
+}
+```
+
+### Integration Testing Strategy
+
+1. **Character Voice Validation**: Automated testing of mentor dialogue consistency
+2. **Story Flow Testing**: Verification of narrative progression logic
+3. **Relationship Arc Testing**: Validation of player-mentor relationship evolution
+4. **Lore Consistency Checking**: World-building coherence verification
+5. **Medical Accuracy Validation**: Professional content accuracy verification
+
+---
+
+## 🚀 Implementation Roadmap
+
+### Phase 1: Core Narrative Infrastructure
+- [ ] Character personality system implementation
+- [ ] Basic dialogue generation engine  
+- [ ] Narrative state management system
+- [ ] Database schema setup and migration
+
+### Phase 2: Content Integration
+- [ ] Mentor personality data integration
+- [ ] Lore content management system
+- [ ] Tutorial narrative flow implementation
+- [ ] Activity-narrative integration hooks
+
+### Phase 3: Advanced Features
+- [ ] Dynamic dialogue generation
+- [ ] Relationship progression system
+- [ ] Environmental storytelling integration
+- [ ] Audio-narrative synchronization
+
+### Phase 4: Polish & Testing
+- [ ] Comprehensive narrative QA system
+- [ ] Performance optimization for narrative systems
+- [ ] Accessibility features for narrative content
+- [ ] Final integration testing and validation
+
+---
+
+## 📚 IMPLEMENTATION REFERENCE
+
+{% if repository_info.references_exported %}
+**All technical reference materials available in local files:**
+{% for ref_file in exported_reference_files %}
+- [`{{ ref_file }}`]({{ ref_file }}) - Source data and implementation details
+{% endfor %}
+
+*Check the references/ folder for complete technical specifications and data structures.*
+
+{% elif embedded_related_systems or embedded_content_files %}
+## 📚 EMBEDDED TECHNICAL REFERENCE
+
+{% if embedded_related_systems %}
+### System Data Structures
+{% for system_name, system_info in embedded_related_systems.items() %}
+#### {{ system_name | title | replace("-", " ") }}
+**Source**: `{{ system_info.file_path }}`
+
+```yaml
+{{ system_info.content }}
+```
+
+---
+{% endfor %}
+{% endif %}
+
+{% if embedded_content_files %}
+### Supporting Technical Documentation
+{% for content_file, content in embedded_content_files.items() %}
+#### {{ content_file }}
+
+```markdown
+{{ content }}
+```
+
+---
+{% endfor %}
+{% endif %}
+
+{% endif %}
+
+---
+
+*This implementation guide provides complete technical context for integrating narrative and lore systems with all necessary data structures, API specifications, and integration patterns.*
+
+*Use this document for: Technical planning, API development, database design, testing strategy, and ensuring seamless narrative-gameplay integration.* 

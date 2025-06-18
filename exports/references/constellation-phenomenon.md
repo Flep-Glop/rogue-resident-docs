@@ -1,3 +1,8 @@
+# Constellation Phenomenon
+
+**Source**: `data/constants/constellation-phenomenon.yaml`
+
+```yaml
 system_info:
   name: "Knowledge Constellation Phenomenon"
   description: "The mysterious phenomenon allowing enhanced learning and pattern recognition"
@@ -212,3 +217,4 @@ cross_references:
     - "particle_effects_deliberately_ambiguous"
     - "cross_domain_connections_work_regardless"
     - "ionix_responds_to_understanding_not_interpretation" 
+```

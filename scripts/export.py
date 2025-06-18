@@ -13,6 +13,7 @@ from jinja2 import Environment, FileSystemLoader
 import glob
 from collections import defaultdict
 import re
+from datetime import datetime
 
 class DocumentationExporter:
     def __init__(self, base_path="."):
@@ -1742,7 +1743,6 @@ class DocumentationExporter:
 
     def _get_timestamp(self):
         """Get current timestamp for generation tracking"""
-        from datetime import datetime
         return datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     def export_three_audience_workflow(self, system_name=None, include_archives=False, copy_to=None, export_references=False):
@@ -1972,14 +1972,568 @@ Source: Rogue Resident documentation system
         if exported_files:
             context['exported_reference_files'] = exported_files
         
+        # CRITICAL FIX: Populate embedded_related_systems with rich data for template access
+        if 'embedded_related_systems' not in context:
+            context['embedded_related_systems'] = {}
+            
+            # Get all the data we need for rich template access
+            all_constants = system_data.get('constants_data', {})
+            all_content = system_data.get('content_data', {})
+            all_cards = system_data.get('cards_data', {})
+            
+            # Add key narrative systems with their rich data (same logic as self-contained context)
+            narrative_systems = [
+                'constellation-phenomenon', 'journal-system', 'visual-design', 
+                'activity-framework', 'amara-narrative', 'pico-character',
+                'etching-system', 'journal-integration', 'visual-time-system',
+                'complete-card-system', 'educational-framework', 'game-constants'
+            ]
+            
+            # Include constants data (YAML files with rich system specifications)
+            for system_name, system_data_item in all_constants.items():
+                if any(narrative_sys in system_name for narrative_sys in narrative_systems):
+                    if isinstance(system_data_item, dict):
+                        import yaml
+                        yaml_content = yaml.dump(system_data_item, default_flow_style=False, sort_keys=False)
+                        context['embedded_related_systems'][system_name] = {
+                            'file_path': f'data/constants/{system_name}.yaml',
+                            'content': yaml_content,
+                            'system_info': system_data_item.get('system_info', {}),
+                            'rich_data': system_data_item  # Keep structured data for template logic
+                        }
+            
+            # Include content data (markdown files with rich narrative content)
+            for content_file, content in all_content.items():
+                content_name = content_file.replace('content/', '').replace('.md', '').replace('/', '-')
+                if any(narrative_sys in content_name for narrative_sys in narrative_systems):
+                    context['embedded_related_systems'][content_name] = {
+                        'file_path': content_file,
+                        'content': content,
+                        'type': 'content'
+                    }
+            
+            # Include cards data from cards directory
+            for system_name, system_data_item in all_cards.items():
+                if any(narrative_sys in system_name for narrative_sys in narrative_systems):
+                    if isinstance(system_data_item, dict):
+                        import yaml
+                        yaml_content = yaml.dump(system_data_item, default_flow_style=False, sort_keys=False)
+                        context['embedded_related_systems'][system_name] = {
+                            'file_path': f'data/cards/{system_name}.yaml',
+                            'content': yaml_content,
+                            'system_info': system_data_item.get('system_info', {}),
+                            'rich_data': system_data_item  # Keep structured data for template logic
+                        }
+        
         return context
+
+    def export_narrative_workflow(self, focus_area=None, include_archives=False, copy_to=None, export_references=False):
+        """🎭 Export documentation for the narrative/lore/storybuilding workflow! 🎭"""
+        
+        if include_archives:
+            print("📚 Generating Enhanced Narrative Workflow Documentation (with archives)... ✨")
+        else:
+            print("📚 Generating Narrative Workflow Documentation... ✨")
+        
+        # Determine focus area - can be character, world, plot, or a specific system
+        focus_areas = {
+            'character': ['pico-character', 'amara-narrative', 'mentors'],
+            'world': ['constellation-phenomenon', 'visual-design', 'game-constants'],
+            'plot': ['journal-system', 'activity-framework', 'tutorial-design'],
+            'all': None  # Will include everything
+        }
+        
+        if focus_area and focus_area in focus_areas:
+            target_systems = focus_areas[focus_area]
+            print(f"🎯 Focusing on {focus_area} narrative elements...")
+        else:
+            # If focus_area is a specific system name or 'all', include everything
+            target_systems = None
+            if focus_area and focus_area != 'all':
+                print(f"🎯 Focusing on specific system: {focus_area}")
+            else:
+                print("🎯 Creating comprehensive narrative documentation...")
+        
+        # Load all available data for narrative context
+        all_data = {
+            'constants': self.load_all_constants(),
+            'mentors': self.load_all_mentors(),
+            'cards': self.load_all_cards(),
+            'bosses': self.load_all_bosses(),
+            'interfaces': self.load_all_interfaces(),
+            'content': self.load_markdown_content()
+        }
+        
+        # Don't filter data too aggressively - always include core narrative elements
+        core_narrative_systems = ['pico-character', 'amara-narrative', 'constellation-phenomenon', 'journal-system', 'activity-framework', 'etching-system', 'complete-card-system', 'visual-design', 'mentors']
+        
+        if target_systems:
+            # Include target systems PLUS core narrative systems
+            expanded_targets = list(set(target_systems + core_narrative_systems))
+            filtered_data = {}
+            for category, data in all_data.items():
+                if category == 'content':
+                    # Always preserve all content data since it contains character arcs and world building
+                    filtered_data[category] = data
+                else:
+                    filtered_data[category] = {}
+                    for system_name, system_data in data.items():
+                        if any(target in system_name for target in expanded_targets) or system_name in core_narrative_systems:
+                            filtered_data[category][system_name] = system_data
+            narrative_data = filtered_data
+        else:
+            narrative_data = all_data
+        
+        # Create narrative-focused system info
+        system_info = {
+            'name': f"Narrative {'& ' + focus_area.title() if focus_area and focus_area != 'all' else ''} Systems",
+            'description': f"Story, character, and world-building elements{'focused on ' + focus_area if focus_area and focus_area != 'all' else ''} for Rogue Resident",
+            'user_experience_philosophy': 'Authentic medical physics storytelling through character-driven discovery'
+        }
+        
+        # Create development context
+        development_context = {
+            'current_status': 'Rich narrative foundation with character arcs, world building, and mentor personalities established',
+            'inspiration': 'Create meaningful educational experience through compelling character relationships and authentic professional development',
+            'decision_points': 'Balancing story depth with educational goals and professional authenticity',
+            'success_metrics': 'Players form genuine connections with mentors and feel authentic professional growth',
+            'constraints': 'Must maintain medical physics accuracy while creating emotionally engaging narrative'
+        }
+        
+        # Extract and structure mentor data properly
+        mentors_structured = {}
+        if 'mentors' in narrative_data and narrative_data['mentors']:
+            for mentor_file, mentor_data in narrative_data['mentors'].items():
+                if 'mentors' in mentor_data:
+                    # Extract individual mentors from the structured data
+                    for mentor_id, mentor_info in mentor_data['mentors'].items():
+                        mentors_structured[mentor_id] = {
+                            'name': mentor_info.get('full_name', mentor_info.get('title', mentor_id)),
+                            'title': mentor_info.get('title', mentor_id),
+                            'role': mentor_info.get('role', 'Medical Physics Mentor'),
+                            'teaching_style': mentor_info.get('character_traits', {}).get('teaching_style', 'supportive_guidance'),
+                            'personality': {
+                                'primary': mentor_info.get('character_traits', {}).get('primary', 'professional'),
+                                'dialogue_style': mentor_info.get('character_traits', {}).get('communication_style', 'supportive'),
+                                'domain_expertise': mentor_info.get('domain_expertise', 'medical_physics')
+                            },
+                            'narrative_role': mentor_info.get('narrative_role', {}),
+                            'dialogue_themes': mentor_info.get('dialogue_themes', [])
+                        }
+        
+        # Extract boss character data
+        boss_characters = {}
+        if 'bosses' in narrative_data:
+            for boss_name, boss_data in narrative_data['bosses'].items():
+                if 'boss_encounter' in boss_data:
+                    encounter = boss_data['boss_encounter']
+                    boss_characters[boss_name] = {
+                        'name': encounter.get('character_name', boss_name.replace('-', ' ').title()),
+                        'type': encounter.get('encounter_type', 'character_conflict'),
+                        'description': encounter.get('description', 'Character encounter'),
+                        'character_arc': encounter.get('character_development', {}),
+                        'phases': encounter.get('phases', {}),
+                        'difficulty': encounter.get('difficulty', 'intermediate'),
+                        'season': encounter.get('season', 'varies'),
+                        'duration': encounter.get('duration', '20-30 minutes'),
+                        'mastery_required': encounter.get('mastery_required', '40%'),
+                        'special_mechanic': encounter.get('special_mechanic', 'standard'),
+                        'preparation_activities': encounter.get('preparation_activities', []),
+                        'sp_reward': encounter.get('rewards', {}).get('sp_reward', 20),
+                        'special_traits': encounter.get('special_traits', []),
+                        'rich_encounter_data': encounter  # Keep full data for templates
+                    }
+        
+        # Extract character arc data from content files
+        character_arcs = {}
+        if 'content' in narrative_data:
+            for content_file, content in narrative_data['content'].items():
+                if 'character-arcs/' in content_file:
+                    char_name = content_file.replace('character-arcs/', '').replace('.md', '')
+                    # Extract key info from markdown content
+                    character_arcs[char_name] = {
+                        'file': content_file,
+                        'content_preview': content[:500] + '...' if len(content) > 500 else content,
+                        'full_content': content
+                    }
+        
+        # Create enhanced narrative context with properly structured data
+        narrative_context = {
+            'system_info': system_info,
+            'development_context': development_context,
+            'mentors_data': {'structured_mentors': mentors_structured},  # Fixed structure
+            'boss_characters': boss_characters,
+            'character_arcs': character_arcs,
+            'constants_data': narrative_data.get('constants', {}),
+            'cards_data': narrative_data.get('cards', {}),
+            'content_data': narrative_data.get('content', {}),
+            'cross_references': {
+                'related_systems': list(narrative_data.get('constants', {}).keys()) + list(narrative_data.get('mentors', {}).keys())
+            },
+            # Add required template variables with enhanced data
+            'components': {
+                'character_system': {
+                    'name': 'Character Development System',
+                    'user_experience_role': 'Provides authentic mentor personalities and character growth arcs',
+                    'implementation_status': 'Character arcs and mentor personalities established',
+                    'narrative_integration': 'Provides authentic mentor personalities and character growth arcs'
+                },
+                'world_building': {
+                    'name': 'World Building System', 
+                    'user_experience_role': 'Creates immersive medical physics hospital environment',
+                    'implementation_status': 'Core lore and setting established',
+                    'narrative_integration': 'Creates immersive medical physics hospital environment'
+                },
+                'narrative_flow': {
+                    'name': 'Narrative Flow System',
+                    'user_experience_role': 'Manages story progression and emotional pacing',
+                    'implementation_status': 'Tutorial and progression frameworks designed',
+                    'narrative_integration': 'Manages story progression and emotional pacing'
+                }
+            },
+            'user_experience_flow': {
+                'character_introduction': {
+                    'name': 'Character Introduction',
+                    'description': 'Players meet mentors and begin forming professional relationships',
+                    'user_actions': ['Meet mentor', 'Begin first conversation', 'Establish trust']
+                },
+                'story_progression': {
+                    'name': 'Story Progression',
+                    'description': 'Narrative advances through authentic mentor interactions and learning scenarios',
+                    'user_actions': ['Engage in dialogue', 'Complete learning activities', 'Build relationships']
+                },
+                'character_development': {
+                    'name': 'Character Development',
+                    'description': 'Both player and mentors evolve through continued professional interaction',
+                    'user_actions': ['Master concepts', 'Gain mentor recognition', 'Develop competence']
+                }
+            },
+            'asset_pipeline': {
+                'immediate_needs': {
+                    'character_portraits': ['High-definition mentor faces', 'Character expression sets'],
+                    'environments': ['Hospital room backgrounds', 'Medical physics equipment'],
+                    'ui_elements': ['Dialogue interface elements', 'Character interaction overlays']
+                },
+                'asset_creation_order': {
+                    'week_1': 'Character portraits and basic dialogue interface',
+                    'week_4': 'Full character animation and environmental storytelling'
+                }
+            },
+            'development_priorities': {
+                'blocking_items': [
+                    {
+                        'component': 'character_voice_consistency',
+                        'reason': 'Need to establish voice guidelines for each mentor across all systems'
+                    }
+                ],
+                'ready_to_implement': [
+                    {
+                        'component': 'mentor_personalities',
+                        'reason': 'Character framework established, ready for dialogue implementation'
+                    }
+                ]
+            },
+            # Add tutorial data for template compatibility
+            'first_day_tutorial': {
+                'morning_arrival': {
+                    'time': '8:00 AM',
+                    'location': 'Hospital Physics Department',
+                    'primary_mentor': 'Dr. Garcia',
+                    'objectives': ['Meet mentor', 'Introduction to hospital environment', 'First professional interaction']
+                },
+                'mentor_introduction': {
+                    'time': '8:30 AM', 
+                    'location': 'Physics Office',
+                    'primary_mentor': 'Dr. Garcia',
+                    'objectives': ['Establish mentor relationship', 'Learn department structure', 'Begin learning journey']
+                }
+            },
+            'night_phase_tutorial': {
+                'reflection_time': {
+                    'time': '6:00 PM',
+                    'location': 'Resident lounge',
+                    'delivery_method': 'personal_journal',
+                    'objectives': ['Process daily learning', 'Reflect on mentor interactions', 'Plan tomorrow']
+                }
+            }
+        }
+        
+        # Choose context creation approach
+        if export_references:
+            print("📚 Creating context with local file references...")
+            # For narrative workflow, we want to reference character arcs and content files
+            exported_files = self.export_narrative_referenced_files(narrative_context, self.export_path)
+            template_context = self.create_file_reference_context(narrative_context, exported_files)
+            print(f"✅ Exported {len(exported_files)} narrative reference files to references/ directory")
+        else:
+            print("📚 Creating self-contained context with embedded content...")
+            template_context = self.create_self_contained_narrative_context(narrative_context, include_archives)
+            
+            if include_archives:
+                print(f"✅ Enhanced with comprehensive narrative content and character data")
+            else:
+                print("✅ Basic self-contained narrative context created")
+        
+        # Generate the three narrative-focused documents
+        generated_files = []
+        
+        # Generate Narrative Context (for writers/narrative designers)
+        print("🎭 Generating Narrative Context (Writers & Narrative Designers)...")
+        try:
+            template = self.jinja_env.get_template('narrative-context.md.jinja')
+            output = template.render(**template_context)
+            
+            focus_suffix = f"-{focus_area}" if focus_area and focus_area != 'all' else ""
+            output_file = self.export_path / f"narrative{focus_suffix}-context.md"
+            with open(output_file, 'w') as f:
+                f.write(output)
+            generated_files.append(output_file)
+            print(f"✅ Narrative context: {output_file}")
+        except Exception as e:
+            print(f"❌ Error generating narrative context: {e}")
+        
+        # Generate Lore Implementation Guide (for developers)
+        print("🛠️ Generating Lore Implementation Guide (Developers)...")
+        try:
+            template = self.jinja_env.get_template('lore-implementation.md.jinja')
+            output = template.render(**template_context)
+            
+            focus_suffix = f"-{focus_area}" if focus_area and focus_area != 'all' else ""
+            output_file = self.export_path / f"lore{focus_suffix}-implementation.md"
+            with open(output_file, 'w') as f:
+                f.write(output)
+            generated_files.append(output_file)
+            print(f"✅ Lore implementation: {output_file}")
+        except Exception as e:
+            print(f"❌ Error generating lore implementation: {e}")
+        
+        # Generate Story Continuity Reference (for AI assistants)
+        print("🧠 Generating Story Continuity Reference (AI Assistants)...")
+        try:
+            template = self.jinja_env.get_template('story-continuity.md.jinja')
+            output = template.render(**template_context)
+            
+            focus_suffix = f"-{focus_area}" if focus_area and focus_area != 'all' else ""
+            output_file = self.export_path / f"story{focus_suffix}-continuity.md"
+            with open(output_file, 'w') as f:
+                f.write(output)
+            generated_files.append(output_file)
+            print(f"✅ Story continuity: {output_file}")
+        except Exception as e:
+            print(f"❌ Error generating story continuity: {e}")
+        
+        # Copy files to specified directory if requested
+        if copy_to and generated_files:
+            self._copy_narrative_files_to_destination(generated_files, copy_to, focus_area)
+        
+        print("🎉 Narrative workflow documentation generated successfully!")
+        print(f"📁 Files available in: {self.export_path}")
+        
+        return {
+            'narrative_context': f"narrative{'-' + focus_area if focus_area and focus_area != 'all' else ''}-context.md",
+            'lore_implementation': f"lore{'-' + focus_area if focus_area and focus_area != 'all' else ''}-implementation.md",
+            'story_continuity': f"story{'-' + focus_area if focus_area and focus_area != 'all' else ''}-continuity.md"
+        }
+
+    def export_narrative_referenced_files(self, narrative_context, export_dir):
+        """Export narrative-specific referenced files"""
+        references_dir = Path(export_dir) / "references"
+        references_dir.mkdir(exist_ok=True)
+        
+        exported_files = []
+        
+        # Export character arc files
+        character_arcs = ['character-arcs/amara-sato.md', 'character-arcs/pico.md', 'character-arcs/marcus-chen.md']
+        for arc_file in character_arcs:
+            content = self.load_referenced_content(f"content/{arc_file}")
+            if "[CONTENT NOT FOUND:" not in content:
+                ref_file_path = references_dir / arc_file
+                ref_file_path.parent.mkdir(parents=True, exist_ok=True)
+                with open(ref_file_path, 'w') as f:
+                    f.write(content)
+                exported_files.append(f"references/{arc_file}")
+        
+        # Export mentor philosophy file
+        mentor_philosophy = 'mentors/mentor-philosophies.md'
+        content = self.load_referenced_content(f"content/{mentor_philosophy}")
+        if "[CONTENT NOT FOUND:" not in content:
+            ref_file_path = references_dir / mentor_philosophy
+            ref_file_path.parent.mkdir(parents=True, exist_ok=True)
+            with open(ref_file_path, 'w') as f:
+                f.write(content)
+            exported_files.append(f"references/{mentor_philosophy}")
+        
+        # Export visual design philosophy
+        visual_design = 'visual-design-philosophy.md'
+        content = self.load_referenced_content(f"content/{visual_design}")
+        if "[CONTENT NOT FOUND:" not in content:
+            ref_file_path = references_dir / visual_design
+            with open(ref_file_path, 'w') as f:
+                f.write(content)
+            exported_files.append(f"references/{visual_design}")
+        
+        # Export key narrative YAML files as readable references
+        narrative_systems = ['pico-character', 'amara-narrative', 'constellation-phenomenon', 'journal-system']
+        for system_name in narrative_systems:
+            content = self.load_referenced_content(f"data/constants/{system_name}.yaml")
+            if "[CONTENT NOT FOUND:" not in content:
+                ref_file = references_dir / f"{system_name}.md"
+                with open(ref_file, 'w') as f:
+                    f.write(f"# {system_name.replace('-', ' ').title()}\n\n")
+                    f.write(f"**Source**: `data/constants/{system_name}.yaml`\n\n")
+                    f.write("```yaml\n")
+                    f.write(content)
+                    f.write("\n```\n")
+                exported_files.append(f"references/{system_name}.md")
+        
+        return exported_files
+
+    def create_self_contained_narrative_context(self, narrative_context, include_archives):
+        """Create narrative context with embedded content instead of file references"""
+        
+        # Get all the data we need
+        all_constants = narrative_context.get('constants_data', {})
+        all_content = narrative_context.get('content_data', {})
+        
+        # Create embedded systems data with rich YAML content
+        embedded_related_systems = {}
+        
+        # Add key narrative systems with their rich data
+        narrative_systems = [
+            'constellation-phenomenon', 'journal-system', 'visual-design', 
+            'activity-framework', 'amara-narrative', 'pico-character',
+            'etching-system', 'journal-integration', 'visual-time-system',
+            'complete-card-system', 'educational-framework', 'game-constants'
+        ]
+        
+        # Include constants data (YAML files with rich system specifications)
+        for system_name, system_data in all_constants.items():
+            if any(narrative_sys in system_name for narrative_sys in narrative_systems):
+                # Extract the actual YAML content for template use
+                if isinstance(system_data, dict):
+                    # Convert YAML data to readable string format for templates
+                    import yaml
+                    yaml_content = yaml.dump(system_data, default_flow_style=False, sort_keys=False)
+                    embedded_related_systems[system_name] = {
+                        'file_path': f'data/constants/{system_name}.yaml',
+                        'content': yaml_content,
+                        'system_info': system_data.get('system_info', {}),
+                        'rich_data': system_data  # Keep structured data for template logic
+                    }
+        
+        # Include content data (markdown files with rich narrative content)
+        for content_file, content in all_content.items():
+            content_name = content_file.replace('content/', '').replace('.md', '').replace('/', '-')
+            if any(narrative_sys in content_name for narrative_sys in narrative_systems):
+                embedded_related_systems[content_name] = {
+                    'file_path': content_file,
+                    'content': content,
+                    'type': 'content'
+                }
+        
+        # Include cards data from cards directory
+        all_cards = narrative_context.get('cards_data', {})
+        for system_name, system_data in all_cards.items():
+            if any(narrative_sys in system_name for narrative_sys in narrative_systems):
+                if isinstance(system_data, dict):
+                    import yaml
+                    yaml_content = yaml.dump(system_data, default_flow_style=False, sort_keys=False)
+                    embedded_related_systems[system_name] = {
+                        'file_path': f'data/cards/{system_name}.yaml',
+                        'content': yaml_content,
+                        'system_info': system_data.get('system_info', {}),
+                        'rich_data': system_data  # Keep structured data for template logic
+                    }
+        
+        # Create enhanced context with rich embedded data
+        context = {
+            **narrative_context,
+            'embedded_related_systems': embedded_related_systems,
+            'repository_info': {
+                'source_repository': 'rogue-resident-docs',
+                'generated_at': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+                'references_exported': False
+            }
+        }
+        
+        if include_archives:
+            # Add archive content if available
+            context['embedded_content_files'] = all_content
+            
+        return context
+
+    def _copy_narrative_files_to_destination(self, generated_files, copy_to, focus_area):
+        """Copy narrative workflow files to the specified destination directory"""
+        import shutil
+        
+        try:
+            destination_path = Path(copy_to)
+            destination_path.mkdir(parents=True, exist_ok=True)
+            
+            focus_label = f" ({focus_area.title()})" if focus_area and focus_area != 'all' else ""
+            print(f"\n📂 Copying narrative workflow files{focus_label} to {destination_path}...")
+            
+            for file_path in generated_files:
+                if file_path.exists():
+                    dest_file = destination_path / file_path.name
+                    shutil.copy2(file_path, dest_file)
+                    print(f"✅ Copied {file_path.name} → {dest_file}")
+            
+            # Copy references directory if it exists
+            references_dir = self.export_path / "references"
+            if references_dir.exists():
+                dest_references = destination_path / "references"
+                if dest_references.exists():
+                    shutil.rmtree(dest_references)
+                shutil.copytree(references_dir, dest_references)
+                print(f"✅ Copied references/ directory → {dest_references}")
+            
+            # Create narrative-specific README
+            focus_suffix = f"-{focus_area}" if focus_area and focus_area != 'all' else ""
+            readme_content = f"""# Rogue Resident Narrative Workflow{focus_label}
+
+Generated by Rogue Resident Narrative Documentation System
+
+## Files
+
+- **narrative{focus_suffix}-context.md**: Complete narrative guide (Writers & Narrative Designers)
+- **lore{focus_suffix}-implementation.md**: Technical implementation guide (Developers)  
+- **story{focus_suffix}-continuity.md**: Story bible and consistency reference (AI Assistants)
+
+## Usage
+
+These files provide focused narrative documentation for different audiences:
+
+1. **Narrative Context**: Character development, world building, story integration
+2. **Lore Implementation**: Technical systems for implementing narrative elements
+3. **Story Continuity**: Complete story bible for maintaining narrative consistency
+
+## Focus Area{': ' + focus_area.title() if focus_area and focus_area != 'all' else ''}
+
+{f'This documentation focuses specifically on {focus_area} elements of the narrative system.' if focus_area and focus_area != 'all' else 'This documentation covers all narrative systems comprehensively.'}
+
+Generated on: {self._get_timestamp()}
+Source: Rogue Resident documentation system
+"""
+            
+            readme_file = destination_path / "README.md"
+            with open(readme_file, 'w') as f:
+                f.write(readme_content)
+            print(f"✅ Created README.md → {readme_file}")
+            
+            print(f"🎉 Successfully copied all narrative files to {destination_path}")
+            
+        except Exception as e:
+            print(f"❌ Error copying narrative files to {copy_to}: {e}")
 
 def main():
     parser = argparse.ArgumentParser(description='Export Rogue Resident documentation')
-    parser.add_argument('--format', choices=['nextjs', 'claude', 'visual', 'workflow', 'all'], 
+    parser.add_argument('--format', choices=['nextjs', 'claude', 'visual', 'workflow', 'narrative', 'all'], 
                        default='all', help='Export format')
     parser.add_argument('--system', 
                        help='System name for workflow export (e.g., activity-interface)')
+    parser.add_argument('--focus-area', choices=['character', 'world', 'plot', 'all'],
+                       help='Focus area for narrative workflow (character, world, plot, or all)')
     parser.add_argument('--base-path', default='.', 
                        help='Base path for the project')
     parser.add_argument('--include-archives', action='store_true',
@@ -2004,6 +2558,9 @@ def main():
     
     if args.format == 'workflow':
         exporter.export_three_audience_workflow(args.system, args.include_archives, args.copy_to, args.export_references)
+    
+    if args.format == 'narrative':
+        exporter.export_narrative_workflow(args.focus_area, args.include_archives, args.copy_to, args.export_references)
 
 if __name__ == "__main__":
     main() 
